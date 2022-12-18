@@ -34,4 +34,7 @@ class MainController extends Controller
     function single_news(){
         return view("client/single-news");
     }
+    function single_product(){
+        return view("client/single-product");
+    }
 }

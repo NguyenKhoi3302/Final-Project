@@ -13,12 +13,20 @@ jQuery(document).ready(function (){
     loginForm();
     show_search_form();
     showMoreProduct();
-
     jQuery(document).ready( function () {
         jQuery('#dtBasicExample').DataTable({
             paging: false,
         });
     } );
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > 100){
+            jQuery('.site_header').addClass("sticky");
+        }
+        else{
+            jQuery('.site_header').removeClass("sticky");
+
+        }
+    });
 })
 function swiper(){
     var swiper = new Swiper(".homeBannerSwiper", {

@@ -156,7 +156,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -247,7 +247,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -338,7 +338,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -429,7 +429,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -520,7 +520,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -611,7 +611,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -702,7 +702,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -793,7 +793,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -884,7 +884,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="single-product.html">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao

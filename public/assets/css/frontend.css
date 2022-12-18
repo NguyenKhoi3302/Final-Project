@@ -1468,28 +1468,58 @@ header .inside_header{
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    position: relative;
 }
 header{
-    box-shadow: -1px 8px 14px #1b4d2742;
-    height: 80px;
+    height: 120px;
     display: flex;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
+    width: 100vw;
     z-index: 9999999;
-    background: white;
+    background: transparent;
+    transition: 0.3s ease-in-out;
+}
+header:before{
+    position: absolute;
+    width: 100%;
+    height: 120%;
+    background: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 99.2%);
+    opacity: 0.6;
+    top: 0;
+    content: '';
+    pointer-events: none;
+    transition: .5s all;
 }
 .primary_menu > ul > li > a{
     font-size: 20px;
     font-weight: 600;
-    color: #333333;
+    color: #FFF;
     margin: 0 20px;
+    position: relative;
+}
+.primary_menu > ul > li > a:before{
+    position: absolute;
+    content: '';
+    background: rgb(0,212,255);
+    left: 50%;
+    bottom: -5px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    transition: 0.3s ease-in-out;
+    opacity: 0;
 }
 .primary_menu > ul > li.active > a,
 .primary_menu > ul > li > a:hover{
-    border-bottom: 2px solid #313591;
-    color: #313591;
+    color: rgb(0,212,255)
+}
+.primary_menu > ul > li.active > a:before,
+.primary_menu > ul > li > a:hover:before{
+    width: 100%;
+    opacity: 1;
 }
 .header_actions > ul > li > i{
     height: 100%;
@@ -1497,6 +1527,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #FFF;
 }
 .header_actions > ul > li{
     font-size: 20px;
@@ -1516,9 +1547,38 @@ header{
 .header_actions > ul > li:hover{
     box-shadow: 0 0 5px #555555;
 }
+header .logo img{
+    height: 100px;
+    transition: 0.3s ease-in-out;
+}
+header.sticky .header_actions > ul > li > i{
+    color: #333333;
+}
+header.sticky{
+    background: #FFF;
+    height: 100px;
+    box-shadow: -1px 8px 14px #1b4d2742;
+}
+header.sticky .logo img{
+    height: 80px;
+}
+header.sticky:before{
+    height: 0;
+}
+header.sticky .primary_menu > ul > li > a{
+    color: #333333;
+}
+
+header.sticky .primary_menu > ul > li.active > a,
+header.sticky .primary_menu > ul > li > a:hover{
+    color: #313591;
+}
+header.sticky .primary_menu > ul > li > a:before{
+    background: #313591;
+}
 .login_box{
     position: fixed;
-    top: 80px;
+    top: 100px;
     right: calc(calc(100vw - 1200px) / 2);
     background: #FFF;
     z-index: 99;

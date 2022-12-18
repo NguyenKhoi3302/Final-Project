@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
-    <link rel="icon" href="{{asset('images/logo-nobg.png')}}">
+    <link rel="icon" href="{{asset('images/logo/page_logo.png')}}">
     <link rel="stylesheet" href="{{asset('assets/css/aos.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/swiper.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/unsematic.css')}}">
@@ -31,7 +31,9 @@
             </div>
         </div>
         <div class="logo">
-            LOGO
+            <a href="{{url('/')}}">
+                <img src="{{asset('images/logo/page_logo_2.png')}}" alt="">
+            </a>
         </div>
         <div class="primary_menu">
             <ul>
