@@ -30,6 +30,7 @@ Route::get('/cart', [MainController::class, 'cart']);
 Route::get('/checkout', [MainController::class, 'checkout']);
 Route::get('/single-news', [MainController::class, 'single_news']);
 Route::get('/single-product', [MainController::class, 'single_product']);
+Route::get('/account-profile', [MainController::class, 'account_profile']);
 
 Route::get('/', function () {
     return view('client/home');

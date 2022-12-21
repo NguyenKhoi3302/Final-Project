@@ -1,5 +1,5 @@
 *{
-    box-sizing: inherit;
+    box-sizing: border-box;
     font-family: 'Montserrat';
 }
 body{
@@ -199,9 +199,10 @@ img{
 .home_prod_wrap{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 .home_prod_wrap .item{
-    width: calc(33.333333333% - 50px);
+    width: calc(33.333333333% - 20px);
     box-shadow: 0px 0px 20px rgb(49 85 166 / 20%);
     border-radius: 20px;
     padding: 15px;
@@ -1471,7 +1472,7 @@ header .inside_header{
     position: relative;
 }
 header{
-    height: 120px;
+    height: 100px;
     display: flex;
     align-items: center;
     position: fixed;
@@ -1494,7 +1495,7 @@ header:before{
     transition: .5s all;
 }
 .primary_menu > ul > li > a{
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 600;
     color: #FFF;
     margin: 0 20px;
@@ -1548,19 +1549,21 @@ header:before{
     box-shadow: 0 0 5px #555555;
 }
 header .logo img{
-    height: 100px;
+    height: 80px;
     transition: 0.3s ease-in-out;
+    filter: brightness(0) invert(1);
 }
 header.sticky .header_actions > ul > li > i{
     color: #333333;
 }
 header.sticky{
     background: #FFF;
-    height: 100px;
+    height: 80px;
     box-shadow: -1px 8px 14px #1b4d2742;
 }
 header.sticky .logo img{
-    height: 80px;
+    height: 60px;
+    filter: unset;
 }
 header.sticky:before{
     height: 0;
@@ -2778,4 +2781,216 @@ input[name='gender']{
 }
 #logout_frm input:hover{
     color: #313591;
+}
+.site_footer .footer_bottom{
+    display: flex;
+    justify-content: space-between;
+}
+.site_footer .footer_bottom .item{
+    width: calc(25% - 10px);
+}
+.site_footer .footer_bottom .item ul{
+    flex-direction: column;
+}
+.site_footer .footer_bottom .item ul li{
+    margin-bottom: 16px;
+}
+.site_footer .footer_bottom .item ul li a{
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+}
+.site_footer .footer_bottom .title{
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+.site_footer .footer_main{
+    padding: 60px 0 40px;
+}
+
+.site_footer .footer_bottom .item.social_wrap{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.site_footer .footer_top{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(51, 51, 51, 0.4);
+}
+.site_footer .footer_top .footer_logo img{
+    max-width: 85%;
+    filter: brightness(0) invert(1);
+}
+.site_footer .footer_top .footer_logo,
+.site_footer .footer_top .footer_map{
+    width: calc(25% - 10px);
+}
+.site_footer .footer_top .footer_info{
+    width: calc(50% - 10px);
+}
+
+.site_footer .footer_top .footer_info p{
+    margin: 8px 0 ;
+}
+.site_footer .footer_top .footer_info p>*{
+    font-size: 18px;
+    line-height: 28px;
+}
+.site_footer .footer_top .footer_map iframe{
+    width: 100%;
+}
+.copyright_wrap{
+    padding: 22px 0;
+    background: #313591;
+}
+.copyright{
+    max-width: 1200px;
+    margin: auto;
+    font-size: 14px;
+    opacity: 0.9;
+}
+.site_footer{
+    background: linear-gradient(300deg, #58B0E3 0.04%, #3155A6 99.94%);
+}
+.site_footer * {
+    color: #FFF;
+}
+.account_profile .grid-container:before,
+.account_profile .grid-container:after{
+    display: none;
+}
+.account_profile .grid-container{
+    display: flex;
+    justify-content: space-between;
+}
+.left_account{
+    width: calc(25% - 20px);
+    border: 2px solid rgba(222, 222, 222, 0.8);
+}
+.right_account{
+    width: calc(75% - 20px);
+}
+.left_col_menu{
+    padding: 30px 0;
+}
+.left_col_menu h4{
+    padding: 0 30px;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 30px 0;
+}
+.left_col_menu ul{
+    flex-direction: column;
+    overflow: hidden;
+}
+.left_col_menu form{
+    margin: 0;
+    padding: 0;
+}
+.left_col_menu ul li:not(:last-child),
+.left_col_menu ul input{
+    padding: 12px 0 12px 30px;
+    font-size: 16px;
+    color: #333333;
+    opacity: 0.8;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: left;
+}
+.left_col_menu ul li:not(:last-child):hover,
+.left_col_menu ul input:hover{
+    background: #dedede;
+}
+.left_col_menu ul li.active{
+    border-left: 2px solid black;
+    color: black;
+    opacity: 1;
+}
+.right_account >div{
+    display: none !important;
+}
+.right_account >div.active{
+    display: flex !important;
+}
+.right_account .info_wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.right_account .info_box,
+.right_account .address_box{
+    width: calc(50% - 15px);
+    border: 2px solid rgba(222, 222, 222, 0.8);
+    padding: 30px;
+}
+.right_account .pending_order{
+    width: 100%;
+    margin-top: 30px;
+    border: 2px solid rgba(222, 222, 222, 0.8);
+}
+.right_account .pending_order table{
+    width: 100%;
+    border-spacing: inherit;
+}
+.right_account .pending_order th{
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #555555;
+    opacity: 0.9;
+    font-size: 18px;
+}
+.right_account .pending_order th,
+.right_account .pending_order td{
+    text-align: left;
+    padding: 15px 30px 15px 30px;
+    border-bottom: 2px solid rgba(222, 222, 222, 0.8);
+}
+.right_account .pending_order td{
+    font-size: 16px;
+    font-weight: 500;
+    color: #333333;
+}
+.right_account .info_box img{
+    margin: 0 auto 15px auto;
+}
+.right_account .name{
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.right_account .email{
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+.right_account .edit_profile_btn{
+    padding: 10px 20px;
+    background: #dedede;
+    font-size: 16px;
+    font-weight: 600;
+    display: inline-block;
+}
+.right_account .info_box{
+    text-align: center;
+}
+.right_account .address_box span{
+    opacity: 0.8;
+    font-size: 13px;
+    margin-bottom: 2px;
+    display: block;
+}
+.right_account .address_box p{
+    margin: 0 0 15px 0;
+    font-weight: 600;
+    font-size: 16px;
+    opacity: 0.95;
 }
