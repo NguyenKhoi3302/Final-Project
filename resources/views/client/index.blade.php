@@ -54,51 +54,16 @@
             </ul>
         </div>
     </div>
-{{--    @if (Auth::check())--}}
-{{--        <div class="login_box">--}}
-{{--            <div class="user_info">--}}
-{{--                <div class="ava_wrap">--}}
-{{--                    <img src="{{asset('images/icon/Frame-18806.png')}}" alt="">--}}
-{{--                </div>--}}
-{{--                <div class="user_name">--}}
-{{--                    <h5>{{Auth::user()->name}}</h5>--}}
-{{--                    <span> {{Auth::user()->email}}</span>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="user_link">--}}
-{{--                <ul>--}}
-{{--                    <li><a href="/">Thay đổi thông tin</a></li>--}}
-{{--                    <li><a href="/">Lịch sử mua hàng</a></li>--}}
-{{--                    <li><a href="/">Đổi mật khẩu</a></li>--}}
-{{--                </ul>--}}
-{{--            </div>--}}
-{{--            @if(Auth::user()->idgroup == 1)--}}
-{{--                <div class="admin">--}}
-{{--                    <a href="{{url('/nk-admin')}}">Trang quản trị</a>--}}
-{{--                </div>--}}
-{{--            @endif--}}
-{{--            <form id="logout_frm" action="{{ route('logout') }}" method="POST">--}}
-{{--                <input type="submit" value="Đăng xuất">--}}
-{{--                {{ csrf_field() }}--}}
-{{--            </form>--}}
-{{--            <span class="close_logn_form"><i class="fas fa-times"></i></span>--}}
-{{--        </div>--}}
-{{--    @else--}}
-        <div class="login_box">
-{{--            <form id="login_box" method="POST" action="{{ route('login') }}"> @csrf--}}
-            <form id="login_box" method="POST" action=""> @csrf
-                <h4>Đăng nhập</h4>
-                <input  id="email" type="email" name="email" :value="old('email')" placeholder="Email">
-                <div class="form_gr">
-                    <input id="password" type="password" name="password" placeholder="Mật khẩu">
-                    <a class="forgot_pass" href="{{url('forgot-password')}}">Quên?</a>
-                </div>
-                <input type="submit" value="Đăng nhập">
-                <a href="/register">Tạo tài khoản</a>
-            </form>
-            <span class="close_logn_form"><i class="fas fa-times"></i></span>
-        </div>
-{{--    @endif--}}
+    <div class="login_box">
+        @if(Auth::check())
+            <h3>Xin chào {{ $user = Auth::user()->name }} </h3>
+            <a href="{{ route('logout') }}">Đăng xuất</a><br>
+            <a href="{{ route('profile') }}">Thông tin cá nhân</a>
+        @else
+            <h3><a href="{{ route('login') }}">Đăng nhập</a></h3>
+            <h3><a href="{{ route('register') }}">Đăng ký</a></h3>
+        @endif
+    </div>
 </header>
 <div class="site_body grid-container">
     <div class="site_content">

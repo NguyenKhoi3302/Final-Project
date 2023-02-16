@@ -93,6 +93,7 @@
                 </div>
             </div>
             <div class="shop_item_wrap grid">
+            @foreach($products as $data)
                 <div class="item">
                     <div class="prod-popup" id="prod-1">
                         <div class="bg_close"></div>
@@ -103,15 +104,15 @@
                                 </div>
                                 <div class="grid-60">
                                     <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
+                                        <a href="#">{{$data->name}}</a>
+                                        <p>Loại sản phẩm: <a href="#">{{$data->brand}}</a></p>
                                     </div>
                                     <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
+                                        <h3>{{$data->price}}   <del>{{$data->discount}}</del></h3>
                                         <p><span>Trạng thái: </span>Còn hàng</p>
                                     </div>
                                     <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
+                                        {{$data->description}}
                                     </div>
                                     <div class="popup_action">
                                         <div class="qtty_box">
@@ -156,7 +157,7 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('/single-product')}}">{{$data->name}}</a>
                         </div>
                         <div class="prod_des">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -165,10 +166,10 @@
                     <div class="prod_actions">
                         <div class="prod_price">
                             <span class="discount">
-                                1.000.000đ
+                                {{ $data->price}}
                             </span>
                             <del>
-                                1.200.000đ
+                            {{ $data->discount}}
                             </del>
                         </div>
                         <div class="btn_wrap">
@@ -184,7 +185,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
+            @endforeach
+                <!-- <div class="item">
                     <div class="prod-popup" id="prod-2">
                         <div class="bg_close"></div>
                         <div class="popup">
@@ -911,7 +913,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>

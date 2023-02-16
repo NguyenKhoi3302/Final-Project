@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\products;
+use DB;
 
 class MainController extends Controller
 {
@@ -11,7 +13,8 @@ class MainController extends Controller
         return view("client/home");
     }
     function shop(){
-        return view("client/shop");
+        $products = DB::table('products')->get()->all();
+        return view('client/shop', ['products' => $products]);
     }
     function contact(){
         return view("client/contact");
@@ -26,7 +29,6 @@ class MainController extends Controller
         return view("client/checkout");
     }
     function product(){
-        return view("client/single-product");
     }
     function news(){
         return view("client/news");
