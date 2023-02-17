@@ -37,3 +37,4 @@ Route::get('/account-profile', [MainController::class, 'account_profile']);
 // });
 
 Route::view('admin','admin.dashboard');
+// adasd
