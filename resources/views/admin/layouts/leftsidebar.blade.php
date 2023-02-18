@@ -8,7 +8,21 @@
                 <li class="text-muted menu-title">Navigation</li>
 
                 <li class="has_sub">
-                    <a href="index.html" class="waves-effect"><span class="label label-pill label-primary float-right">1</span><i class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>
+                    <a href="/admin" class="waves-effect"><span class="label label-pill label-primary float-right">1</span><i class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>
+                </li>
+
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        {{--                        <span class="label label-pill label-warning float-right">8</span>--}}
+                        <span class="menu-arrow"></span>
+                        <i class="zmdi zmdi-collection-text"></i>
+                        <span> News </span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li><a href="/admin/news">News List</a></li>
+                        <li><a href="/admin/news/add">Add News</a></li>
+                        <li><a href="/admin/news/categories">News Category</a></li>
+                    </ul>
                 </li>
 
                 <li class="has_sub">

@@ -5,7 +5,6 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
 
 
@@ -35,5 +34,17 @@ Route::get('/account-profile', [MainController::class, 'account_profile']);
 // Route::get('/', function () {
 //     return view('client/home');
 // });
-
+// News
 Route::view('admin','admin.dashboard');
+Route::get('/admin/news', [NewsController::class, 'news_list']);
+Route::get('/admin/news/add', [NewsController::class, 'add']);
+Route::post('/admin/news/add', [NewsController::class, 'add_']);
+Route::get('/admin/news/update/{id}', [NewsController::class, 'update']);
+Route::post('/admin/news/update/{id}', [NewsController::class, 'update_']);
+Route::get('/admin/news/delete/{id}', [NewsController::class, 'delete']);
+// News categories
+Route::get('/admin/news/categories', [CategoryController::class, 'news_cat']);
+Route::post('/admin/category/add', [CategoryController::class, 'add_cat']);
+Route::get('/admin/category/delete/{id}', [CategoryController::class, 'delete_cat']);
+Route::get('/admin/category/update/{id}', [CategoryController::class, 'update_cat']);
+Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_cat_']);
