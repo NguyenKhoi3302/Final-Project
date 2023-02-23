@@ -49,7 +49,10 @@ Route::get('/account-profile', [MainController::class, 'account_profile']);
 
 
     route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    route::post('/profile', [UserController::class, 'profile_action'])->name('profile.action');
+    Route::get('/profileEdit/{id}', [UserController::class, 'profile_edit'])->name('profile.edit');
+    Route::put('/profileUpdate/{id}', [UserController::class, 'profile_update'])->name('profile.update');
+
+    Route::post('/passUpdate', [UserController::class, 'pass_update'])->name('pass.update');
 
 //End Auth
 

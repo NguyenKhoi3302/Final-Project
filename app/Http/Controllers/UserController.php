@@ -65,10 +65,10 @@ class UserController extends Controller
             'tel' => 'required|digits_between:9,10',
         ],[
             'name.required'=>'Vui lòng  nhập tên  người  dùng !',
-            'password.required_with'=>'Vui lòng nhập mật khẩu !',
-            // 'password_confrim.same'=>'Mật khẩu xác nhận không đúng !',
+            'password.required'=>'Vui lòng nhập mật khẩu !',
+            'password_confrim.same'=>'Mật khẩu xác nhận không đúng !',
             'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',           
-            // 'password_confrim.required'=>'Vui lòng xác nhận lại mật khẩu !',
+            'password_confrim.required'=>'Vui lòng xác nhận lại mật khẩu !',
             'email.required'=>'Vui lòng  nhập  email !',
             'email.unique'=>'Email đã được đăng ký !',
             'email.regex'=>'Định dạng email không dúng vui  lòng  nhập  lại !',
@@ -103,16 +103,66 @@ class UserController extends Controller
 // thông  tin  cá  nhân
     public function  profile()
     {
-        return  view('auth.profile')->with('user', auth()->user());
+        return view("auth/profile")->with('user', auth()->user());
     }
 
-    public function  profile_action(Request $request)
-    {
-        User::where('email', $request->email)
-                    ->update(['name' => $request->name,
-                            'tel' => $request->tel,
-                            'address' => $request->address]);
-        return redirect()->route('profile')->with('sussec', 'Cập nhập thành công');
+    public function  profile_edit($id)
+    {   
+        $user = user::find($id);
+        return view('auth/profileEdit', compact('user'));
+    }
+
+    public function profile_update(Request $request, $id){
+
+        $request->validate([
+            'name'=>'required',
+            'tel' => 'required|digits_between:9,10',
+            'address'=>'required',
+        ],[
+            'name.required'=>'Vui lòng  nhập tên  người  dùng !',
+            'tel.required'=>'Vui lòng  nhập  số điện  thoại !',
+            'tel.digits_between'=>'Định dạng số điện thoại không đúng !',
+            'address.required'=>'Vui lòng  nhập địa  chỉ !',
+            
+        ]);
+        $user = user::find($id);
+
+        if($request->hasfile('avatar'))
+        {
+            $file = $request->file('avatar');
+            $extenstion = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extenstion;
+            $file->move('images/uploads/', $filename);
+            $user->avatar = $filename;
+        }
+
+        $user->name = $request->input('name');
+        $user->tel = $request->input('tel');
+        $user->address = $request->input('address');
+        $user->update();
+        return redirect()->route('profile')->with('sussec','Cập  nhập  thành  công  !!');
+    }
+
+    public function pass_update(Request $request){
+        $request->validate([
+            'old_password' => 'required|min:8',
+            'new_password' => 'required|confirmed',
+        ],[
+            'old_password.required'=>'Vui lòng nhập mật khẩu !',
+            'old_password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',           
+            'new_password.required'=>'Vui lòng xác nhận lại mật khẩu !',
+            'new_password.confirmed'=>'Mật khẩu xác nhận không đúng !',
+            
+        ]);
+
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
     }
 // quên mật  khẩu
     public function showForgetPasswordForm()
@@ -124,6 +174,11 @@ class UserController extends Controller
     {
         $request->validate([
         'email' => 'required|email|exists:users',
+        ],[
+            'email.required'=>'Vui lòng  nhập  email  quên  mật  khẩu !!',
+            'email.email'=>'Định  dạng  không  đúng, vui lòng  nhập  lại !!',
+            'email.exists'=>'Email không tồn tại !!',
+            
         ]);
 
         $token = Str::random(64);

@@ -39,7 +39,4 @@ class MainController extends Controller
     function single_product(){
         return view("client/single-product");
     }
-    function account_profile(){
-        return view("client/account-profile");
-    }
 }

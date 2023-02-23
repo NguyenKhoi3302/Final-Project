@@ -65,6 +65,9 @@
     .Con .link span{
         color:#04AA6D;
     }
+    .Con .form-forget  span{
+        color: red;
+    }
 </style>
 </head>
 <body>

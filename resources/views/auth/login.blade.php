@@ -74,6 +74,9 @@
     float: right;
     padding-top: 16px;
     }
+    .login .form-login  span{
+        color: red;
+    }
 </style>
 </head>
 <body>
