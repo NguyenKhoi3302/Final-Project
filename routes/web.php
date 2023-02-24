@@ -8,6 +8,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -26,13 +27,18 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 Route::get('/news', [MainController::class, 'news']);
-Route::get('/shop', [MainController::class, 'shop']);
 Route::get('/cart', [MainController::class, 'cart']);
 Route::get('/checkout', [MainController::class, 'checkout']);
 Route::get('/single-news', [MainController::class, 'single_news']);
-Route::get('/single-product', [MainController::class, 'single_product']);
 Route::get('/account-profile', [MainController::class, 'account_profile']);
-
+//Product Site
+    Route::get('/shop', [ProductController::class, 'shop']);
+    Route::get('/single-product/{id}', [ProductController::class, 'single_product']);
+// cart
+    Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
+    Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
+    Route::post('/update-qty-cart/{id}', [CartController::class, 'update_quantity'])->name('updateCart');
+    Route::get('delete-cart/{id}', [CartController::class, 'delete_cart'])->name('deleteCart');
 // Auth
     route::get('/login', [UserController::class, 'login'])->name('login');
     route::post('/login', [UserController::class, 'login_action'])->name('login.action');

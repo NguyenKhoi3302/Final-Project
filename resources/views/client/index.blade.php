@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{asset('assets/css/stylesheet.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/frontend.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/imagehover.css')}}">
+    
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
     <title>@yield('title')</title>
 </head>
 <body>
@@ -47,7 +50,7 @@
         <div class="header_actions">
             <ul>
                 <li class="search search_item search_open"><i class="fas fa-search"></i></li>
-                <li><i class="fas fa-shopping-cart"></i></li>
+                <li><i class="fas fa-shopping-cart"><a href="{{ route('showCart') }}"></a></i></li>
                 <li class="login_dropdown">
                     <i class="far fa-user login_form"></i>
                 </li>

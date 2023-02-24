@@ -93,9 +93,9 @@
                 </div>
             </div>
             <div class="shop_item_wrap grid">
-            @foreach($products as $data)
+            @foreach($products as $products)
                 <div class="item">
-                    <div class="prod-popup" id="prod-1">
+                    <div class="prod-popup" id="prod-{{$products->id}}">
                         <div class="bg_close"></div>
                         <div class="popup">
                             <div class="grid-container">
@@ -104,27 +104,27 @@
                                 </div>
                                 <div class="grid-60">
                                     <div class="title_gr">
-                                        <a href="#">{{$data->name}}</a>
-                                        <p>Loại sản phẩm: <a href="#">{{$data->brand}}</a></p>
+                                        <a href="#">{{$products->name}}</a>
+                                        <p>Loại sản phẩm: <a href="#">{{$products->brand}}</a></p>
                                     </div>
                                     <div class="price_gr">
-                                        <h3>{{$data->price}}   <del>{{$data->discount}}</del></h3>
+                                        <h3>{{$products->price}}   <del>{{$products->discount}}</del></h3>
                                         <p><span>Trạng thái: </span>Còn hàng</p>
                                     </div>
                                     <div class="popup_des">
-                                        {{$data->description}}
+                                        {{$products->description}}
                                     </div>
                                     <div class="popup_action">
                                         <div class="qtty_box">
                                             <span class="qtty_minus">
                                                 <i class="fas fa-minus"></i>
                                             </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
+                                            <input max="99" min="1" value="1" type="number" name="quantity" >
                                             <span class="qtty_plus">
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                         </div>
-                                        <a href="#" class="add_to_cart_btn">
+                                        <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}"> 
                                             Thêm vào giỏ hàng
                                         </a>
                                     </div>
@@ -139,10 +139,10 @@
                         <img src="images/products/prod_img.png" alt="example-image">
                         <figcaption>
                             <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
+                                <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}">
                                     <i class="fas fa-cart-plus"></i>
                                 </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="1">
+                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="{{ $products->id}}">
                                     <i class="far fa-eye"></i>
                                 </a>
                                 <a title="Thêm vào yêu thích" href="#">
@@ -157,19 +157,19 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="{{url('/single-product')}}">{{$data->name}}</a>
+                            <a href="{{url('single-product/'.$products->id)}}">{{$products->name}}</a>
                         </div>
                         <div class="prod_des">
-                            {{ $data->description }}
+                            {{ $products->description }}
                         </div>
                     </div>
                     <div class="prod_actions">
                         <div class="prod_price">
                             <span class="discount">
-                                {{ $data->price}}
+                                {{ $products->price}}
                             </span>
                             <del>
-                            {{ $data->discount}}
+                            {{ $products->discount}}
                             </del>
                         </div>
                         <div class="btn_wrap">
@@ -189,4 +189,28 @@
             </div>
         </div>
     </section>
+
+    <script>
+        function addcart(event){
+            event.preventDefault();
+            let urlcart = $(this).data('url');
+            $.ajax({
+                type:"GET",
+                url:urlcart,
+                dataType: 'json',
+                success: function (data){
+                    if(data.code === 200){
+                        alert ('thêm sản phẩm thành công !!');
+                    }
+                },
+                error: function (){
+
+                }
+            });
+            // alert('123')
+        }
+        $(function(){
+            $('.add_cart').on('click', addcart)
+        });
+    </script>
 @endsection

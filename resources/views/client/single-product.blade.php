@@ -43,7 +43,7 @@
                 </div>
                 <div class="grid-60">
                     <div class="single_product_name">
-                        Chỗ này để hiện tên sản phẩm nha
+                        {{ $products->name }}
                     </div>
                     <div class="single_product_cont text_over">
                         <div class="nav_bar">
@@ -59,21 +59,6 @@
                         <div class="description">
                             Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
                         </div>
-                        <div class="product_options">
-                            <ul class="prod_color">
-                                <span>Màu sắc: </span>
-                                <li>Kem</li>
-                                <li>Trắng</li>
-                                <li>Đen</li>
-                            </ul>
-                            <ul class="prod_size">
-                                <span>Kích thước: </span>
-                                <li>S</li>
-                                <li>M</li>
-                                <li>L</li>
-                                <li>XL</li>
-                            </ul>
-                        </div>
                         <div class="product_action">
                             <div class="qtty_box">
                                 <span class="qtty_minus">
@@ -84,7 +69,7 @@
                                     <i class="fas fa-plus"></i>
                                 </span>
                             </div>
-                            <a href="#" class="add_to_cart_btn">
+                            <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}"> 
                                 Thêm vào giỏ hàng
                             </a>
                         </div>
@@ -98,51 +83,50 @@
                 <li id="tt" class="">Thông tin chi tiết</li>
                 <li id="cmt" class="">Bình luận</li>
             </ul>
-        <div class="grid-container">
-            <div class="prod_des active" id="mota">
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <div class="grid-container">
+                <div class="prod_des active" id="mota">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                </div>
+                <div class="prod_info" id="tt">
+                    <table>
+                        <tbody><tr>
+                            <td>Kích thước: </td>
+                            <td>600 x 1200 (mm)</td>
+                        </tr>
+                        <tr>
+                            <td>Phân loại: </td>
+                            <td>Gạch Ceramic</td>
+                        </tr>
+                        <tr>
+                            <td>Không gian: </td>
+                            <td>Nhà bếp</td>
+                        </tr>
+                        <tr>
+                            <td>Đặc tính: </td>
+                            <td>Đá phủ men Matt</td>
+                        </tr>
+                        <tr>
+                            <td>Ứng dụng: </td>
+                            <td>Lát sàn</td>
+                        </tr>
+                        <tr>
+                            <td>Hoa văn: </td>
+                            <td>Hoa văn</td>
+                        </tr>
+                        <tr>
+                            <td>Số viên / thùng: </td>
+                            <td>04 viên </td>
+                        </tr>
+                        </tbody></table>
+                </div>
+                <div class="prod_cmt" id="cmt">
+                    asdfadsfadsfasdfsdaf
+                </div>
             </div>
-            <div class="prod_info" id="tt">
-                <table>
-                    <tbody><tr>
-                        <td>Kích thước: </td>
-                        <td>600 x 1200 (mm)</td>
-                    </tr>
-                    <tr>
-                        <td>Phân loại: </td>
-                        <td>Gạch Ceramic</td>
-                    </tr>
-                    <tr>
-                        <td>Không gian: </td>
-                        <td>Nhà bếp</td>
-                    </tr>
-                    <tr>
-                        <td>Đặc tính: </td>
-                        <td>Đá phủ men Matt</td>
-                    </tr>
-                    <tr>
-                        <td>Ứng dụng: </td>
-                        <td>Lát sàn</td>
-                    </tr>
-                    <tr>
-                        <td>Hoa văn: </td>
-                        <td>Hoa văn</td>
-                    </tr>
-                    <tr>
-                        <td>Số viên / thùng: </td>
-                        <td>04 viên </td>
-                    </tr>
-                    </tbody></table>
-            </div>
-            <div class="prod_cmt" id="cmt">
-                asdfadsfadsfasdfsdaf
-            </div>
-        </div>
-
-    </section>
+        </section>
         <section class="single_product_3">
             <div class="section_heading text_center">
                 <div class="title_group">
@@ -632,4 +616,24 @@
                 </div>
             </div>
         </section>
+         <script>
+            function addcart(event){
+                event.preventDefault();
+                let urlcart = $(this).data('url');
+                $.ajax({
+                    type:"GET",
+                    url:urlcart,
+                    dataType: 'json',
+                    success: function (data){
+
+                    },
+                    error: function (){
+
+                    }
+                });
+            }
+            $(function(){
+                $('.add_cart').on('click', addcart)
+            });
+        </script>
 @endsection
