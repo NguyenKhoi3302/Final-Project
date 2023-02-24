@@ -27,6 +27,17 @@
 <!-- Modernizr js -->
 <script src="{{asset('assets-admin/js/modernizr.min.js')}}"></script>
 
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+
+<!-- JS toast -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+
+
+<link href="{{asset('assets-admin/plugins/fileuploads/css/dropify.min.css')}}" rel="stylesheet" type="text/css">
+
+
+
+
 @stack('styles')
 
 @livewireStyles
