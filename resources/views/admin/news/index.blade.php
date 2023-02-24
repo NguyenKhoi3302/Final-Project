@@ -79,7 +79,7 @@
                                     </button>
                                 </td>
                                 <td class="text-center">
-                                    <a href="#">
+                                    <a href="/admin/news/hot/{{$news->id}}">
                                         @if($news->hot == 0)
                                             <i class="zmdi zmdi-star-outline" style="font-size: 20px"></i>
                                         @else
@@ -88,7 +88,7 @@
                                     </a>
                                 </td>
                                 <td class="text-center">
-                                    <a href="#">
+                                    <a href="/admin/news/appear/{{$news->id}}">
                                         @if($news->appear == 0)
                                             <i class="zmdi zmdi-eye" style="font-size: 20px"></i>
                                         @else

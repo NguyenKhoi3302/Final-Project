@@ -35,6 +35,28 @@ class NewsController extends Controller
         $n->save();
         return redirect('admin/news');
     }
+    function hot($id){
+        $news = News::find($id);
+        if($news->hot == 0){
+            $news->hot = 1;
+        }
+        else{
+            $news->hot = 0;
+        }
+        $news->save();
+        return redirect('admin/news');
+    }
+    function appear($id){
+        $news = News::find($id);
+        if($news->appear == 0){
+            $news->appear = 1;
+        }
+        else{
+            $news->appear = 0;
+        }
+        $news->save();
+        return redirect('admin/news');
+    }
     function update($id){
         $n = News::find($id);
         $cat = DB::table('news_categories')->get();
@@ -63,5 +85,4 @@ class NewsController extends Controller
 //        }
         return redirect('admin/news');
     }
-
 }

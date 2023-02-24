@@ -35,6 +35,11 @@
                     <div class="form_group mb-3">
                         <label for="slug">Liên kết</label>
                         <input name="slug" id="slug" class="form-control">
+                        <input name="name" id="name" class="form-control title_input">
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="slug">Liên kết</label>
+                        <input name="slug" id="slug" class="form-control slug_output">
                     </div>
                     <div class="form_group mb-3">
                         <label for="appear">Hiện</label>
@@ -98,7 +103,7 @@
                                 <a class="mr-3" href="{{url('admin/category/update/'.$cat->id)}}">
                                     <i class="zmdi zmdi-edit" style="font-size: 20px"></i>
                                 </a>
-                                <a onclick="return confirm('Bạn có chắc chắn muốn xoá?')" href="{{url('admin/category/delete/'.$cat->id)}}">
+                                <a onclick="@if($count == 0)return confirm('Bạn có chắc chắn muốn xoá?')@else return alert('Danh mục này không thể xoá!')@endif" href="@if($count == 0){{url('admin/category/delete/'.$cat->id)}}@else javascript:void(0)@endif">
                                     <i class="zmdi zmdi-delete" style="font-size: 20px"></i>
                                 </a>
                             </td>

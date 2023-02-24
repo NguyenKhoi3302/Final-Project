@@ -3,7 +3,7 @@ $(document).ready(function (){
 })
 
 function ChangeToSlug() {
-    $("input#name").keyup(function (e) {
+    $("input.title_input").keyup(function (e) {
         e.preventDefault();
         var title, slug;
 
@@ -34,6 +34,6 @@ function ChangeToSlug() {
         //Xóa các ký tự gạch ngang ở đầu và cuối
         slug = '@' + slug + '@';
         slug = slug.replace(/\@\-|\-\@|\@/gi, '');
-        $("input#slug").val(slug)
+        $("input.slug_output").val(slug)
     })
 }

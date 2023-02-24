@@ -34,11 +34,12 @@ Route::get('/account-profile', [MainController::class, 'account_profile']);
 // Route::get('/', function () {
 //     return view('client/home');
 // });
-// News
 Route::view('admin','admin.dashboard');
 Route::get('/admin/news', [NewsController::class, 'news_list']);
 Route::get('/admin/news/add', [NewsController::class, 'add']);
 Route::post('/admin/news/add', [NewsController::class, 'add_']);
+Route::get('/admin/news/hot/{id}', [NewsController::class, 'hot']);
+Route::get('/admin/news/appear/{id}', [NewsController::class, 'appear']);
 Route::get('/admin/news/update/{id}', [NewsController::class, 'update']);
 Route::post('/admin/news/update/{id}', [NewsController::class, 'update_']);
 Route::get('/admin/news/delete/{id}', [NewsController::class, 'delete']);

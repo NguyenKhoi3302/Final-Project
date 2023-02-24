@@ -45,3 +45,12 @@
 
 <!-- Page specific js -->
 <script src="{{asset('/assets-admin/pages/jquery.dashboard.js')}}"></script>
+{{--Custom JS--}}
+<script src="{{asset('assets-admin/js/custom.js')}}"></script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( 'textarea#content' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

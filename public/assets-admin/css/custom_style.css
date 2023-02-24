@@ -101,4 +101,7 @@ button{
     outline: none !important;
     cursor: pointer;
 }
-.
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    min-height: 200px;
+}
