@@ -24,17 +24,21 @@ use App\Http\Controllers\MainController;
 Route::get('/', [MainController::class, 'index']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
-Route::get('/news', [MainController::class, 'news']);
+
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/{id}', [NewsController::class, 'detail']);
+
 Route::get('/shop', [MainController::class, 'shop']);
 Route::get('/cart', [MainController::class, 'cart']);
 Route::get('/checkout', [MainController::class, 'checkout']);
-Route::get('/single-news', [MainController::class, 'single_news']);
+Route::get('/single-news/{id}', [NewsController::class, 'single_news']);
 Route::get('/single-product', [MainController::class, 'single_product']);
 Route::get('/account-profile', [MainController::class, 'account_profile']);
+
 
 // Route::get('/', function () {
 //     return view('client/home');
 // });
 
 Route::view('admin','admin.dashboard');
-// íahkajw
+
