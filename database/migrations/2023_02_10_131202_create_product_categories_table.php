@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('slug', 50);
             $table->tinyInteger('appear')->default(1);
+            $table->tinyInteger('deleted')->default(0);
             $table->integer('sort')->unique();
             $table->timestamps();
         });

@@ -1,14 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductCategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MainController;
-
-
+use \App\Http\Controllers\BECategoryCotroller;
+use \App\Http\Controllers\BEBrandsController;
+use \App\Http\Controllers\BEProductController;
+use \App\Http\Controllers\BEProductAttributeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,4 +35,34 @@ Route::get('/account-profile', [MainController::class, 'account_profile']);
 //     return view('client/home');
 // });
 
+//admin
 Route::view('admin','admin.dashboard');
+
+
+Route::prefix('admin')->group(function (){
+//  categorys
+    Route::get('categorys', [BECategoryCotroller::class, 'index']);
+    Route::post('category/save', [BECategoryCotroller::class, 'save']);
+    Route::post('category/delete', [BECategoryCotroller::class, 'delete']);
+    Route::post('category/update', [BECategoryCotroller::class, 'update']);
+    Route::get('category/changeStatus/{id}', [BECategoryCotroller::class, 'change_status']);
+
+// brands
+    Route::get('brands', [BEBrandsController::class, 'index']);
+    Route::post('brand/delete', [BEBrandsController::class, 'delete']);
+    Route::post('brand/save', [BEBrandsController::class, 'save']);
+    Route::post('brand/update', [BEBrandsController::class, 'update']);
+    Route::get('brand/changeStatus/{id}', [BEBrandsController::class, 'change_status']);
+
+//  Products
+    Route::get('products', [BEProductController::class, 'index']);
+    Route::get('product/add', [BEProductController::class, 'add']);
+    Route::post('product/save', [BEProductController::class, 'save']);
+    Route::post('product/delete', [BEProductController::class, 'delete']);
+    Route::get('product/update/{id}', [BEProductController::class, 'update']);
+    Route::post('product/update/save/{id}', [BEProductController::class, 'update_save']);
+    Route::get('product/changeStatus/{id}', [BEProductController::class, 'change_status']);
+
+    Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);
+    Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);
+});
