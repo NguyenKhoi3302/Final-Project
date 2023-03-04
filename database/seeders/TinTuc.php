@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use DB;
+use Arr;
+use Str;
 
-class TinTuc extends Seeder
+class Tintuc extends Seeder
 {
     /**
      * Run the database seeds.
@@ -20,17 +22,20 @@ class TinTuc extends Seeder
             DB::table('news')->insert([
                 'user_id' => 1,
                 'category_id' => 1,
-                'image' => 'images/demo.jpg',
-                'title' => 'Đồng hồ nam 21mm'. $i,
-                'summary' => 'Sản phẩm đồng hồ mang thương hiệu Elio với nhiều mẫu mã năng động, trẻ trung nhưng không kém phần tinh tế và sang trọng, phù hợp với tất cả mọi người hoạt động ở nhiều lĩnh vực từ dân văn phòng đến doanh nhân.',
-                'content' => 'Thiết kế tinh tế với độ hoàn thiện cao, mẫu đồng hồ quartz dành cho các cô nàng nữ tính và dịu dàng
-                Đồng hồ Elio ES026-01 là chiếc đồng hồ nữ nằm trong bộ sưu tập Nàng thơ ra mắt đầu năm 2021 đến từ hãng Elio của Việt Nam. Ấn tượng với người dùng bởi thiết kế trẻ trung, dây đeo silicone năng động, nhiều màu sắc, phù hợp cho các bạn gái đeo khi đi chơi, đi học, đi làm. Chiếc đồng hồ kim sử dụng bộ máy có nguồn gốc Nhật Bản - nơi có nền kỹ thuật hàng đầu, cho độ chính xác cao và tính ổn định tốt, bền bỉ với thời gian
-                Bền bỉ trước với va đập thông thường
-                - Khung viền chịu lực tốt, khả năng chống ăn mòn, chống oxi hóa tốt giúp bảo vệ tốt lõi bên trong đồng hồ.
+                'image' => 'images/news/news_2.jpg',
+                'title' => 'TIÊU CHUẨN TỦ TRƯNG BÀY ĐỒNG HỒ ĐEO TAY ĐẸP TẠI S_Watch'. $i,
+                'summary' => 'Không chỉ tuân thủ hai nguyên tắc trưng bày “phù hợp” và “đúng kỹ thuật”, tủ trưng bày tại Đồng Hồ Hải Triều còn vượt qua nhiều tiêu chuẩn khác, đáp ứng và hoàn thiện điều kiện showroom đạt chuẩn Thụy Sỹ.',
+                'content' => 'Là một đại lý phân phối hàng loạt thương hiệu đồng hồ cao cấp đến từ Thụy Sỹ như Longines, Doxa, Tissot, Rado… Hải Triều hiểu rằng nhóm khách hàng của mình cần nhiều hơn một mẫu đồng hồ chất lượng.
+                - Tiêu chuẩn trưng bày của các hãng đồng hồ cao cấp yêu cầu rõ ràng về số lượng sản phẩm trên kệ, phương pháp đặt để sản phẩm, chất lượng tủ đạt thẩm mỹ.
+                - Một trong những tiêu chuẩn khác chính là tủ trưng bày là điều kiện cần cho việc bảo quản một chiếc đồng hồ giá trị.
 
-                - Mặt kính của chiếc đồng hồ Elio nữ trong suốt và có độ cứng cao, hạn chế nứt vỡ khi va chạm ở mức độ vừa phải.',
+                Trong quá trình đồng hồ về tay chủ nhân phù hợp, khách hàng hoàn toàn yên tâm rằng các sản phẩm luôn được bảo quản theo đúng tiêu chuẩn.
+                Từng mẫu đều đặt để trên một giá đỡ đồng hồ tương ứng. Việc đặt trong tủ và kệ trưng bày này hạn chế tác nhân ảnh hưởng từ môi trường bên ngoài.
+                ',
                 'created_at' => now(),
             ]);
         }
+        
     }
+
 }
