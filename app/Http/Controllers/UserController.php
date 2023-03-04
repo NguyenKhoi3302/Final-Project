@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Mail;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
@@ -208,9 +208,19 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required'
+        ],[
+            'email.required'=>'Vui lòng  nhập  email  quên  mật  khẩu !!',
+            'email.email'=>'Định  dạng  không  đúng, vui lòng  nhập  lại !!',
+            'email.exists'=>'Email không tồn tại !!',
+            'password.required'=>'Vui lòng nhập mật khẩu !',
+            'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',  
+            'password.confirmed'=>'Mật khẩu xác nhận không đúng !',          
+            'password_confrim.required'=>'Vui lòng xác nhận lại mật khẩu !',
+            
         ]);
+
 
         $updatePassword = DB::table('password_resets')
                             ->where([

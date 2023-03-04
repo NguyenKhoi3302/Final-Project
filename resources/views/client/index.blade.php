@@ -50,7 +50,7 @@
         <div class="header_actions">
             <ul>
                 <li class="search search_item search_open"><i class="fas fa-search"></i></li>
-                <li><i class="fas fa-shopping-cart"><a href="{{ route('showCart') }}"></a></i></li>
+                <li><a href="{{ route('showCart') }}"><i class="fas fa-shopping-cart"></i></a></li>
                 <li class="login_dropdown">
                     <i class="far fa-user login_form"></i>
                 </li>

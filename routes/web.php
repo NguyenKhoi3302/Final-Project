@@ -5,10 +5,11 @@ use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
 
 
 /*
@@ -37,8 +38,14 @@ Route::get('/account-profile', [MainController::class, 'account_profile']);
 // cart
     Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
     Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
-    Route::post('/update-qty-cart/{id}', [CartController::class, 'update_quantity'])->name('updateCart');
-    Route::get('delete-cart/{id}', [CartController::class, 'delete_cart'])->name('deleteCart');
+    Route::get('/update-cart', [CartController::class, 'update_cart'])->name('updateCart');
+    Route::get('delete-cart', [CartController::class, 'delete_cart'])->name('deleteCart');
+//order
+    Route::get('order', [CartController::class, 'order'])->name('order');
+    Route::get('save', [CartController::class, 'save_order'])->name('saveOrder');
+//commmetntt
+    // Route::get('/single-product/{id}', 'HomeController@index');
+    // Route::post('home/comment','HomeController@storecomment');
 // Auth
     route::get('/login', [UserController::class, 'login'])->name('login');
     route::post('/login', [UserController::class, 'login_action'])->name('login.action');
