@@ -38,13 +38,22 @@
     // });
 </script>--}}
 
-<<<<<<< HEAD
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"> </script>
 @stack('styles')
 
 {{--@livewireStyles--}}
-=======
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
+
+<!-- JS toast -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/js/toastr.js"></script>
+
+
+<link href="{{asset('assets-admin/plugins/fileuploads/css/dropify.min.css')}}" rel="stylesheet" type="text/css">
+
+
+
+
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.0/css/toastr.css" rel="stylesheet" />
 
 <!-- JS toast -->
@@ -58,5 +67,4 @@
 
 @stack('styles')
 
-@livewireStyles
->>>>>>> 2979dc69ebe99b12539cde8f6c296002e3dc9ba6
+{{--@livewireStyles--}}

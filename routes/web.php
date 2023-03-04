@@ -33,7 +33,6 @@ Route::get('/single-news', [MainController::class, 'single_news']);
 Route::get('/single-product', [MainController::class, 'single_product']);
 Route::get('/account-profile', [MainController::class, 'account_profile']);
 
-
 // Dashboard
 Route::get('admin', [AdminController::class, 'dashboard']);
 // News
@@ -55,13 +54,15 @@ Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_c
 Route::get('/admin/orders', [OrdersController::class, 'index']);
 Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
 //admin
+
+
 Route::prefix('admin')->group(function (){
-// products categories
+//  categories
     Route::get('product_categories', [BECategoryCotroller::class, 'index']);
-    Route::post('category/save', [BECategoryCotroller::class, 'save']);
-    Route::post('category/delete', [BECategoryCotroller::class, 'delete']);
-    Route::post('category/update', [BECategoryCotroller::class, 'update']);
-    Route::get('category/changeStatus/{id}', [BECategoryCotroller::class, 'change_status']);
+    Route::post('product_category/save', [BECategoryCotroller::class, 'save']);
+    Route::post('product_category/delete', [BECategoryCotroller::class, 'delete']);
+    Route::post('product_category/update', [BECategoryCotroller::class, 'update']);
+    Route::get('product_category/changeStatus/{id}', [BECategoryCotroller::class, 'change_status']);
 
 // brands
     Route::get('brands', [BEBrandsController::class, 'index']);

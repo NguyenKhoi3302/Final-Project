@@ -112,6 +112,14 @@
 {{--                    </ul>--}}
 {{--                </li>--}}
 
+{{--                    <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-format-clear-all"></i><span> Sản Phẩm </span> <span class="menu-arrow"></span></a>--}}
+{{--                    <ul class="list-unstyled">--}}
+{{--                        <li><a href="{{url('admin/products')}}">Danh sách </a></li>--}}
+{{--                        <li><a href="{{url('admin/categorys')}}">Danh mục sản phẩm</a></li>--}}
+{{--                        <li><a href="{{url('admin/brands')}}">Thương hiệu </a></li>--}}
+{{--                    </ul>--}}
+{{--                </li>--}}
+
 
             </ul>
             <div class="clearfix"></div>

@@ -25,9 +25,6 @@
     @include('admin.layouts.footer')
 @stack('js')
 </body>
-<<<<<<< HEAD
-
-=======
 @stack('modal')
->>>>>>> 2979dc69ebe99b12539cde8f6c296002e3dc9ba6
+@stack('modal')
 </html>
