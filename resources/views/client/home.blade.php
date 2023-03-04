@@ -51,11 +51,31 @@
                     <div class="sec_title">Sản phẩm</div>
                 </div>
                 <div class="sec_des">
-                    Mang đến những dòng sản phẩm phần mềm chuyên sâu cho ngành vàng bạc đá quý
+                    Các dòng sản phẩm bán chạy tại S_Watch
                 </div>
             </div>
             <div class="home_prod_wrap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+                @foreach($new as $news)
                 <div class="item">
+                    <a href="#">
+                        <div class="img_wrap">
+                            <img src="{{$news->images}}" alt="">
+                            <div class="home_prod_cont">
+                                <p>{{$news->contents}}</p>
+                                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M25.34 49.6479C38.8604 49.6479 49.8207 38.6875 49.8207 25.1672C49.8207 11.6469 38.8604 0.686523 25.34 0.686523C11.8197 0.686523 0.859375 11.6469 0.859375 25.1672C0.859375 38.6875 11.8197 49.6479 25.34 49.6479Z" stroke="white"></path>
+                                    <line x1="16.2773" y1="24.6675" x2="34.4013" y2="24.6675" stroke="white" stroke-linecap="round"></line>
+                                    <line x1="24.8398" y1="34.229" x2="24.8398" y2="16.105" stroke="white" stroke-linecap="round"></line>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="home_prod_name">
+                            {{$news->name}}
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+                {{--<div class="item">
                     <a href="#">
                         <div class="img_wrap">
                             <img src="images/products/prod_img.png" alt="">
@@ -207,26 +227,7 @@
                         </div>
                     </a>
                 </div>
-                <div class="item">
-                    <a href="#">
-                        <div class="img_wrap">
-                            <img src="images/products/prod_img.png" alt="">
-                            <div class="home_prod_cont">
-                                <p>Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao</p>
-                                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M25.34 49.6479C38.8604 49.6479 49.8207 38.6875 49.8207 25.1672C49.8207 11.6469 38.8604 0.686523 25.34 0.686523C11.8197 0.686523 0.859375 11.6469 0.859375 25.1672C0.859375 38.6875 11.8197 49.6479 25.34 49.6479Z" stroke="white"></path>
-                                    <line x1="16.2773" y1="24.6675" x2="34.4013" y2="24.6675" stroke="white" stroke-linecap="round"></line>
-                                    <line x1="24.8398" y1="34.229" x2="24.8398" y2="16.105" stroke="white" stroke-linecap="round"></line>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="home_prod_name">
-                            Chỗ này là tên sản phẩm
-                            Chỗ này là tên sản phẩm
-                        </div>
-                    </a>
-                </div>
-            </div>
+            </div>--}}
             <div id="view_more_prod" class="btn_primary">
                 Xem thêm
             </div>
@@ -323,7 +324,26 @@
                 </div>
             </div>
             <div class="home_news_wrap">
+                @foreach($nha as $news)
                 <div class="item">
+                    <div class="img_wrap">
+                        <img src="{{$news->image}}" alt="">
+                    </div>
+                    <div class="item_cont">
+                        <div class="title">
+                            <h3><a href="/single-news{{$news->id}}">{{$news->title}}</a></h3>
+                        </div>
+                        <div class="date"> 
+                            <span><?=date('d/m/Y' , strtotime($news->created_at)) ?></span>
+                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org 000/svg">
+                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{--<div class="item">
                     <div class="img_wrap">
                         <img src="images/news/news_1.jpg" alt="">
                     </div>
@@ -362,17 +382,7 @@
                         <div class="date">26/11/2022</div>
                         <div class="des">Giá vàng SJC trong nước phiên sáng 7/9 tiếp tục giữ ổn định trong khi đồng USD giao dịch tại một số ngân hàng thương mại lớn có xu hướng đi xuống.</div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="img_wrap">
-                        <img src="images/news/news_1.jpg" alt="">
-                    </div>
-                    <div class="item_cont">
-                        <div class="title">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</div>
-                        <div class="date">26/11/2022</div>
-                        <div class="des">Giá vàng SJC trong nước phiên sáng 7/9 tiếp tục giữ ổn định trong khi đồng USD giao dịch tại một số ngân hàng thương mại lớn có xu hướng đi xuống.</div>
-                    </div>
-                </div>
+                </div>--}}
             </div>
         </div>
     </section>

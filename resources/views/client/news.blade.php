@@ -12,44 +12,73 @@
                 </div>
             </div>
             <div class="news_wrap">
+                @foreach($news as $new)
                 <div class="news_item">
                     <div class="img_wrap">
-                        <a href="/single-news">
-                            <img src="images/news/news_1.jpg" alt="">
+                        <a href="/single-news/{{$new->id}}">
+                            <img src="{{$new->image}}" alt="">
                         </a>
                     </div>
                     <div class="news_cont">
                         <div class="news_title">
-                            <a href="/single-news">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</a>
+                            <a href="/single-news">{{$new->title}}</a>
                         </div>
                         <div class="news_des">
-                            Giá vàng SJC trong nước phiên sáng 7/9 tiếp tục giữ ổn định trong khi đồng USD giao dịch tại một số ngân hàng thương mại lớn có xu hướng đi xuống. Cụ thể, Công ty vàng bạc đá quý Sài Gòn thông báo giá mua và bán từ 56,75 – 57,45 triệu đồng/lượng. Tại…
+                            {{$new->content}}
+                        </div>
+                        <div class="news_date">
+                            <span>{{$new->created_at}}</span>
+                            <a href="/single-news">Xem chi tiết</a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                {{-- <div class="news_item">
+                    <div class="img_wrap">
+                        <a href="/single-news">
+                            <img src="images/news/news_3.jpg" alt="">
+                        </a>
+                    </div>
+                    <div class="news_cont">
+                        <div class="news_title">
+                            <a href="/single-news">CÁCH ĐO, CHỌN SIZE ĐỒNG HỒ ĐEO TAY NAM, NỮ CHUẨN, DỄ HIỂU</a>
+                        </div>
+                        <div class="news_des">
+                            Để chọn được một chiếc đồng hồ đeo tay nam hoặc nữ ưng ý thì cách đơn giản nhất thiết thực nhất vẫn là bạn đến trực tiếp shop để lựa chọn. Nhưng nếu như bạn ở quá xa, hoặc không có thời gian thì chúng ta phải làm thế nào? Hãy cùng tham khảo ngay cách chọn size đồng hồ thực sự phù hợp với cổ tay.
                         </div>
                         <div class="news_date">
                             <span>03/10/2022 01:28:49</span>
                             <a href="/single-news">Xem chi tiết</a>
                         </div>
                     </div>
-                </div>
-                <div class="news_item">
-                    <div class="img_wrap">
-                        <a href="/single-news">
-                            <img src="images/news/news_1.jpg" alt="">
+                </div> --}}
+            </div>
+            <div class="Page navigation m-auto">
+                <?php
+                $total = $news->total();
+                $pages = ceil($total / $news->perPage());
+                ?>
+                <ul class="pagination">
+                    <li class="prev page-item">
+                        <a class="page-link" href="{{$news->previousPageUrl()}}">
+                            <i class="zmdi zmdi-chevron-left"></i>
                         </a>
-                    </div>
-                    <div class="news_cont">
-                        <div class="news_title">
-                            <a href="/single-news">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</a>
-                        </div>
-                        <div class="news_des">
-                            Giá vàng SJC trong nước phiên sáng 7/9 tiếp tục giữ ổn định trong khi đồng USD giao dịch tại một số ngân hàng thương mại lớn có xu hướng đi xuống. Cụ thể, Công ty vàng bạc đá quý Sài Gòn thông báo giá mua và bán từ 56,75 – 57,45 triệu đồng/lượng. Tại…
-                        </div>
-                        <div class="news_date">
-                            <span>03/10/2022 01:28:49</span>
-                            <a href="/single-news">Xem chi tiết</a>
-                        </div>
-                    </div>
-                </div>
+                    </li>
+                    @for($i = 1; $i <= $pages; $i++)
+                        <li class="@if($news->currentPage() == $i)current @endif page-item">
+                            <a class="page-link" @if($news->currentPage() != $i)href="{{$news->url($i)}}" @endif>
+                                {{$i}}
+                            </a>
+                        </li>
+
+                    @endfor
+                    <li class="next page-item">
+                        <a class="page-link" href="{{$news->nextPageUrl()}}">
+                            <i class="zmdi zmdi-chevron-right"></i>
+
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="grid-30">
@@ -60,14 +89,19 @@
                 </h4>
                 <ul>
                     <li>
-                        <a href="single-news.html">
-                            Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng
-                        </a>
-                    </li>
-                    <li>
-                        <a href="single-news.html">
-                            Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng
-                        </a>
+                        <div class="news">
+                            @foreach($news as $new)
+                            <div class="news_item">
+                                <div class="news_cont">
+                                    <div class="news_title">
+                                        <a href="/single-news">{{$new->title}}</a>
+                                    </div>
+                                    <div class="news_des">
+                                        {{$new->content}}
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
                     </li>
                 </ul>
             </div>
@@ -76,10 +110,10 @@
                     <i class="far fa-newspaper"></i> Tin xem nhiều
                 </h4>
                 <ul>
-                    <li><a href="single-news.html">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</a></li>
-                    <li><a href="single-news.html">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</a></li>
-                    <li><a href="single-news.html">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</a></li>
-                    <li><a href="single-news.html">Giá vàng SJC phiên sáng 7/9 giữ ổn định quanh ngưỡng 57,5 triệu đồng/lượng</a></li>
+                    <li><a href="single-news.html">ĐỒNG HỒ CỦA BẠN CÓ ĐANG ĐƯỢC BẢO HÀNH TẠI TRUNG TÂM HÃNG?</a></li>
+                    <li><a href="single-news.html">10 “CHECKLIST” GIÚP ĐỒNG HỒ TẠI S_Watch CHẤT LƯỢNG HƠN ĐỐI THỦ</a></li>
+                    <li><a href="single-news.html">CÁCH ĐO, CHỌN SIZE ĐỒNG HỒ ĐEO TAY NAM, NỮ CHUẨN, DỄ HIỂU</a></li>
+                    <li><a href="single-news.html">GIỚI THIỆU HỆ THỐNG SHOWROOM ĐỒNG HỒ S_Watch</a></li>
                 </ul>
             </div>
         </div>

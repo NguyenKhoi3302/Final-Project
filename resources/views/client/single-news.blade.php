@@ -11,7 +11,7 @@
                         <!--                    </h4>-->
 
                         <h2 class="title_news">
-                            Royal Group và những dự định đổi mới					</h2>
+                            S_Watch và những dự định đổi mới					</h2>
                     </div>
 
                     <div class="nav">
@@ -70,27 +70,27 @@
 
                     </div>
                     <div class="single_post_excerpt">
-                        Lấy cảm hứng từ những đường vân đá tự nhiên đa dạng, uốn lượn, bộ sưu tập gạch vân đá marble với nhiều kiểu dáng và mẫu mã sang trọng là lựa chọn tối ưu cho những công trình xây dựng hiện nay.				</div>
+                        Không chỉ tuân thủ hai nguyên tắc trưng bày “phù hợp” và “đúng kỹ thuật”, tủ trưng bày tại Đồng Hồ S_Watch còn vượt qua nhiều tiêu chuẩn khác, đáp ứng và hoàn thiện điều kiện showroom đạt chuẩn Thụy Sỹ.			</div>
                     <div class="mota wrap_content">
-                        <p>1. Đá marble và cảm hứng loang màu nhân tạo<br>
-                            Đá marble từ lâu là cảm hứng cho nhiều công trình nghệ thuật, các kiến trúc từ thời La Mã cổ đại cho đến thời Phục Hưng hay kiến trúc đương đại. Đá marble tự nhiên được hình thành từ các hoạt động địa chất, thành phần đá có chứa nhiều canxit, độ cứng đo được từ 3-4 Mohs. Màu sắc của đá marble tự nhiên vô cùng phong phú và biến hóa đa dạng, do đó chúng ta rất khó để tìm thấy sự trùng lặp về hệ thống đường vân và màu sắc trong đá marble tự nhiên.</p>
-                        <p>Ngày nay với sự khan hiếm của nguồn nguyên vật liệu tự nhiên, đá marble tự nhiên không còn hiện diện nhiều như trước nữa, các công trình xây dựng chủ động chuyến hướng sang sử dụng các nguồn nguyên liệu thân thiện với môi trường hơn và dễ tìm kiếm, được sản xuất nhiều trên thị trường.</p>
-                        <p>Nắm được những yêu cầu cấp thiết đó, những sản phẩm gạch và đá nhân tạo được chú trọng sản xuất với số lượng lớn.</p>
-                        <p>Lấy cảm hứng từ những đường vân đá tự nhiên đa dạng, uốn lượn, bộ sưu tập gạch vân đá marble với nhiều kiểu dáng và mẫu mã sang trọng là lựa chọn tối ưu cho những công trình xây dựng hiện nay.</p>
-                        <p><img decoding="async" loading="lazy" class="aligncenter wp-image-155 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-494.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-494.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-494-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-494-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p>2. Đá marble và cảm hứng loang màu nhân tạo<br>
-                            Đá marble từ lâu là cảm hứng cho nhiều công trình nghệ thuật, các kiến trúc từ thời La Mã cổ đại cho đến thời Phục Hưng hay kiến trúc đương đại. Đá marble tự nhiên được hình thành từ các hoạt động địa chất, thành phần đá có chứa nhiều canxit, độ cứng đo được từ 3-4 Mohs. Màu sắc của đá marble tự nhiên vô cùng phong phú và biến hóa đa dạng, do đó chúng ta rất khó để tìm thấy sự trùng lặp về hệ thống đường vân và màu sắc trong đá marble tự nhiên.</p>
-                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-157 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-493.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-493.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-493-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-493-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p>Đá marble từ lâu là cảm hứng cho nhiều công trình nghệ thuật, các kiến trúc từ thời La Mã cổ đại cho đến thời Phục Hưng hay kiến trúc đương đại. Đá marble tự nhiên được hình thành từ các hoạt động địa chất, thành phần đá có chứa nhiều canxit, độ cứng đo được từ 3-4 Mohs. Màu sắc của đá marble tự nhiên vô cùng phong phú và biến hóa đa dạng, do đó chúng ta rất khó để tìm thấy sự trùng lặp về hệ thống đường vân và màu sắc trong đá marble tự nhiên.</p>
-                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-161 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-491.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-491.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-491-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-491-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p>1. ĐẠT TIÊU CHUẨN TRƯNG BÀY CỦA CÁC HÃNG ĐỒNG HỒ CAO CẤP<br>
+                            Là một đại lý phân phối hàng loạt thương hiệu đồng hồ cao cấp đến từ Thụy Sỹ như Longines, Doxa, Tissot, Rado… Hải Triều hiểu rằng nhóm khách hàng của mình cần nhiều hơn một mẫu đồng hồ chất lượng.</p>
+                        <p>Tiêu chuẩn trưng bày của các hãng đồng hồ cao cấp yêu cầu rõ ràng về số lượng sản phẩm trên kệ, phương pháp đặt để sản phẩm, chất lượng tủ đạt thẩm mỹ..</p>
+                        <p><img decoding="async" loading="lazy" class="aligncenter wp-image-155 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p>2. BẢO QUẢN ĐỒNG HỒ TỐT HƠN<br>
+                            Một trong những tiêu chuẩn khác chính là tủ trưng bày là điều kiện cần cho việc bảo quản một chiếc đồng hồ giá trị.
+
+                            Trong quá trình đồng hồ về tay chủ nhân phù hợp, khách hàng hoàn toàn yên tâm rằng các sản phẩm luôn được bảo quản theo đúng tiêu chuẩn.</p>
+                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-157 size-full" src="hhttps://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p>Từng mẫu đều đặt để trên một giá đỡ đồng hồ tương ứng. Việc đặt trong tủ và kệ trưng bày này hạn chế tác nhân ảnh hưởng từ môi trường bên ngoài.</p>
+                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-161 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
                         <p>&nbsp;</p>
                     </div>
                     <div class="tags">
                         <span>Thẻ:</span>
                         <ul>
-                            <li class="tag"><a href="https://royal.canhcam.asia/tag/gach-ceramic/">Gạch Ceramic</a></li>
-                            <li class="tag"><a href="https://royal.canhcam.asia/tag/gach-valencia/">Gạch Valencia</a></li>
+                            <li class="tag"><a href="http://127.0.0.1:8000/shop">LONGINES ELEGANT L4.910.4.11.6</a></li>
+                            <li class="tag"><a href="http://127.0.0.1:8000/shop">LONGINES L2.673.4.78.6</a></li>
                         </ul>
                     </div>
 
@@ -101,13 +101,34 @@
                             Tin tức liên quan
                         </h3>
                         <div class="wrap">
+                            @foreach($list as $new)
                             <div class="item">
 
-                                <a href="https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-9/" class="style_center max">
+                                <a href="" class="style_center max">
                                     <div class="item_img">
-                                        <img width="380" height="380" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/5d3966ab4e8a7924c072b936303c68aa-3.png" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/5d3966ab4e8a7924c072b936303c68aa-3.png 380w, https://royal.canhcam.asia/wp-content/uploads/2022/11/5d3966ab4e8a7924c072b936303c68aa-3-300x300.png 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/5d3966ab4e8a7924c072b936303c68aa-3-150x150.png 150w" sizes="(max-width: 380px) 100vw, 380px">										</div>
+                                        <img width="380" height="380" src="{{asset($new->image)}}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">										</div>
+                                    
+                                        <div class="item_cont">
+                                        <h3>{{$new->title}}</h3>
+                                        <div class="date_line">
+                                            <span><?=date('d/m/Y' , strtotime($new->created_at)) ?></span>
+                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org 000/svg">
+                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    
+                                    </div>
+                                </a>
+                            </div>
+                            @endforeach
+                            {{--<div class="item">
+
+                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg" class="style_center max">
+                                    <div class="item_img">
+                                        <img width="387" height="330" src="https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg 387w, https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg 300w" sizes="(max-width: 387px) 100vw, 387px">										</div>
                                     <div class="item_cont">
-                                        <h3>Royal Group – Đồng hành sẻ chia những giá trị xanh.</h3>
+                                        <h3>TISSOT PR 100</h3>
                                         <div class="date_line">
                                             <span>19 - 11 - 2022</span>
                                             <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,11 +142,11 @@
                             </div>
                             <div class="item">
 
-                                <a href="https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-10/" class="style_center max">
+                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg" class="style_center max">
                                     <div class="item_img">
-                                        <img width="387" height="330" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-497.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-497.jpg 387w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-497-300x256.jpg 300w" sizes="(max-width: 387px) 100vw, 387px">										</div>
+                                        <img width="750" height="500" src="https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg 750w, https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg 300w" sizes="(max-width: 750px) 100vw, 750px">										</div>
                                     <div class="item_cont">
-                                        <h3>Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát</h3>
+                                        <h3>DANIEL WELLINGTON DW00100007</h3>
                                         <div class="date_line">
                                             <span>19 - 11 - 2022</span>
                                             <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -139,11 +160,11 @@
                             </div>
                             <div class="item">
 
-                                <a href="https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-8/" class="style_center max">
+                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg" class="style_center max">
                                     <div class="item_img">
-                                        <img width="750" height="500" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/2-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/2-2.jpg 750w, https://royal.canhcam.asia/wp-content/uploads/2022/11/2-2-300x200.jpg 300w" sizes="(max-width: 750px) 100vw, 750px">										</div>
+                                        <img width="1450" height="967" src="https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 1450w, https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 1024w, https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 768w" sizes="(max-width: 1450px) 100vw, 1450px">										</div>
                                     <div class="item_cont">
-                                        <h3>Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát</h3>
+                                        <h3>DANIEL WELLINGTON DW00100161</h3>
                                         <div class="date_line">
                                             <span>19 - 11 - 2022</span>
                                             <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -156,12 +177,11 @@
 
                             </div>
                             <div class="item">
-
-                                <a href="https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-6/" class="style_center max">
+                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg" class="style_center max">
                                     <div class="item_img">
-                                        <img width="1450" height="967" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg 1450w, https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2-300x200.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2-1024x683.jpg 1024w, https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2-768x512.jpg 768w" sizes="(max-width: 1450px) 100vw, 1450px">										</div>
-                                    <div class="item_cont">
-                                        <h3>Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát</h3>
+                                        <img width="380" height="380" src="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg 380w, https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg 300w,  150w" sizes="(max-width: 380px) 100vw, 380px">										</div>
+                            
+                                        <h3>DANIEL WELLINGTON DW00100319</h3>
                                         <div class="date_line">
                                             <span>19 - 11 - 2022</span>
                                             <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -172,24 +192,7 @@
                                     </div>
                                 </a>
 
-                            </div>
-                            <div class="item">
-                                <a href="https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-7/" class="style_center max">
-                                    <div class="item_img">
-                                        <img width="380" height="380" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Tien-ich-du-an-can-ho-D-Homme-Quan-6-2-1.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Tien-ich-du-an-can-ho-D-Homme-Quan-6-2-1.jpg 380w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Tien-ich-du-an-can-ho-D-Homme-Quan-6-2-1-300x300.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Tien-ich-du-an-can-ho-D-Homme-Quan-6-2-1-150x150.jpg 150w" sizes="(max-width: 380px) 100vw, 380px">										</div>
-                                    <div class="item_cont">
-                                        <h3>Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát</h3>
-                                        <div class="date_line">
-                                            <span>19 - 11 - 2022</span>
-                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
+                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -205,25 +208,27 @@
                 <div class="box_swiper">
                     <div class="swiper postDetailSwiper">
                         <div class="swiper-wrapper">
+                    @foreach($list as $kq)
                             <div class="swiper-slide">
                             <a href="#">
                                 <div class="home_swiper_img">
-                                    <img src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg"/>
+                                    <img src="{{asset($kq->image)}}">
                                 </div>
                                 <div class="item_cont">
                                     <div class="date">
                                         <div class="day">
-                                            19										</div>
+                                            <span><?=date('d' , strtotime($new->created_at)) ?></span>										</div>
                                         <div class="mY">
-                                            11 - 2022										</div>
+                                            <span><?=date('m/Y' , strtotime($new->created_at)) ?></span>								</div>
                                     </div>
                                     <div class="name" href="#">
-                                        Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát
+                                        {{$kq->title}}
                                     </div>
                                 </div>
                             </a>
                         </div>
-                            <div class="swiper-slide">
+                    @endforeach
+                            {{--<div class="swiper-slide">
                             <a href="#">
                                 <div class="home_swiper_img">
                                     <img src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg"/>
@@ -298,7 +303,7 @@
                             </a>
                         </div>
 
-                        </div>
+                        </div>--}}
                         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                     <div class="outside-btn prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-2bd6af7db48b072c">
                         <svg width="25" height="48" viewBox="0 0 25 48" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -22,14 +22,17 @@ use \App\Http\Controllers\BEProductAttributeController;
 */
 
 
-Route::get('/', [MainController::class, 'index']);
+Route::get('/', [NewsController::class, 'home']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
-Route::get('/news', [MainController::class, 'news']);
+
+Route::get('/news', [NewsController::class, 'index']);
+Route::get('/news/{id}', [NewsController::class, 'detail']);
+
 Route::get('/shop', [MainController::class, 'shop']);
 Route::get('/cart', [MainController::class, 'cart']);
 Route::get('/checkout', [MainController::class, 'checkout']);
-Route::get('/single-news', [MainController::class, 'single_news']);
+Route::get('/single-news/{id}', [NewsController::class, 'single_news']);
 Route::get('/single-product', [MainController::class, 'single_product']);
 Route::get('/account-profile', [MainController::class, 'account_profile']);
 
@@ -53,6 +56,7 @@ Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_c
 
 Route::get('/admin/orders', [OrdersController::class, 'index']);
 Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
+
 //admin
 
 
@@ -83,3 +87,4 @@ Route::prefix('admin')->group(function (){
     Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);
 });
+
