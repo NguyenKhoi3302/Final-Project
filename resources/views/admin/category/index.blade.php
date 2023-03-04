@@ -28,11 +28,11 @@
                             <td>{{$item->name}}</td>
                             @if($item->appear === 1)
                                 <td style="text-align: center"><a
-                                        href="{{url('admin/category/changeStatus',$item->id)}}"><span
+                                        href="{{url('admin/product_category/changeStatus',$item->id)}}"><span
                                             class="label label-success">active</span></a></td>
                             @elseif($item->appear === 0)
                                 <td style="text-align: center"><a
-                                        href="{{url('admin/category/changeStatus',$item->id)}}"><span
+                                        href="{{url('admin/product_category/changeStatus',$item->id)}}"><span
                                             class="label label-danger">inactive</span></a></td>
                             @endif
                             <td style="text-align: center"><?= date("H:i:s d-m-Y", strtotime($item->created_at))  ?></td>
@@ -84,7 +84,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="mySmallModalLabel">THÊM DANH MỤC SẢN PHẨM</h5>
                 </div>
-                <form action="{{url('admin/category/save')}}" method="post">
+                <form action="{{url('admin/product_category/save')}}" method="post">
                     @csrf
                     <div class="modal-body">
                         <fieldset class="form-group">
@@ -110,7 +110,7 @@
                     <h5 class="modal-title" id="mySmallModalLabel">XÁC NHẬN</h5>
                 </div>
                 <div class="modal-body">
-                    <form  action="{{url('admin/category/delete')}}" method="post">
+                    <form  action="{{url('admin/product_category/delete')}}" method="post">
                         @csrf
                         <input type="hidden" name="item_id" class="item_id">
                         <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
@@ -132,7 +132,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="mySmallModalLabel">CẬP NHẬT DANH MỤC</h5>
                 </div>
-                <form action="{{url('admin/category/update')}}" method="post">
+                <form action="{{url('admin/product_category/update')}}" method="post">
                     @csrf
                     <div class="modal-body">
                         <fieldset class="form-group">
