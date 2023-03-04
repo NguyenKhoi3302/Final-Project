@@ -16,13 +16,18 @@
             <!-- Start content -->
             <div class="content">
                 @yield('admin_content')
-                @if(isset($slog)){{$slog}}@endif
+
             </div> <!-- content -->
         </div>
         <!-- End content-page -->
         @include('admin.layouts.rightsidebar')
     </div>
     @include('admin.layouts.footer')
+@stack('js')
 </body>
+<<<<<<< HEAD
 
+=======
+@stack('modal')
+>>>>>>> 2979dc69ebe99b12539cde8f6c296002e3dc9ba6
 </html>

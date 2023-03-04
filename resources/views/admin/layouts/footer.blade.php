@@ -48,9 +48,24 @@
 {{--Custom JS--}}
 <script src="{{asset('assets-admin/js/custom.js')}}"></script>
 <script>
-    ClassicEditor
-        .create( document.querySelector( 'textarea#content' ) )
-        .catch( error => {
-            console.error( error );
-        } );
+    if($("textarea#content").length){
+        ClassicEditor
+            .create( document.querySelector( 'textarea#content' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    }
+
 </script>
+
+<!-- Modal-Effect -->
+<script src="{{asset('/assets-admin/plugins/custombox/js/custombox.min.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/custombox/js/legacy.min.js')}}"></script>
+
+<script type="text/javascript" src="{{asset('assets-admin/plugins/parsleyjs/parsley.min.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/toastr/toastr.min.js')}}"></script>
+
+<script src="{{asset('assets-admin/plugins/autoNumeric/autoNumeric.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets-admin/plugins/fileuploads/js/dropify.min.js')}}"></script>
+
+<script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>

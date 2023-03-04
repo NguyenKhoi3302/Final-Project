@@ -64,7 +64,7 @@
                         <input type="radio" name="appear" id="appear" value="0" @if($news->appear == 0) checked @endif>
                     </div>
                     <div class="form_group">
-                        <button type="submit" class="bg-success p-2">Thêm tin</button>
+                        <button type="submit" class="bg-success p-2">Cập nhật</button>
                     </div>
                     @csrf
                 </form>

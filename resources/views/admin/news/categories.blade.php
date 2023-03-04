@@ -30,11 +30,6 @@
                 <form action="/admin/category/add" method="post" class="m-auto">
                     <div class="form_group mb-3">
                         <label for="name">Tên danh mục</label>
-                        <input name="name" id="name" class="form-control">
-                    </div>
-                    <div class="form_group mb-3">
-                        <label for="slug">Liên kết</label>
-                        <input name="slug" id="slug" class="form-control">
                         <input name="name" id="name" class="form-control title_input">
                     </div>
                     <div class="form_group mb-3">
