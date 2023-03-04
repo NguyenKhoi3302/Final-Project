@@ -1,0 +1,107 @@
+.line_1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.line_2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.line_3{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.line_4{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.w_5{
+    width: 5%;
+}
+.w_10{
+    width: 10%;
+}
+.w_15{
+    width: 15%;
+}
+.w_20{
+    width: 20%;
+}
+.w_25{
+    width: 25%;
+}
+.w_30{
+    width: 30%;
+}
+.w_35{
+    width: 35%;
+}
+.w_40{
+    width: 40%;
+}
+.w_45{
+    width: 45%;
+}
+.w_50{
+    width: 50%;
+}
+.w_55{
+    width: 55%;
+}
+.w_60{
+    width: 60%;
+}
+.w_65{
+    width: 65%;
+}
+.w_70{
+    width: 70%;
+}
+.w_75{
+    width: 75%;
+}
+.w_80{
+    width: 80%;
+}
+.w_85{
+    width: 85%;
+}
+.w_90{
+    width: 90%;
+}
+.w_95{
+    width: 95%;
+}
+.w_100{
+    width: 100%;
+}
+.w_content{
+    width: max-content;
+    display: block;
+}
+table.news_table th span{
+    width: max-content;
+    display: block;
+}
+a{
+    color: #000000 !important;
+}
+button{
+    outline: none !important;
+    cursor: pointer;
+}
+.ck-editor__editable[role="textbox"] {
+    /* editing area */
+    min-height: 200px;
+}

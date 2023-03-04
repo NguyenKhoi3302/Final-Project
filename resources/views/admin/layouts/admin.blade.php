@@ -3,6 +3,7 @@
 
 <head>
     @include('admin.layouts.head')
+    <title>@yield('title')</title>
 </head>
 
 <body class="fixed-left">
@@ -24,5 +25,6 @@
     @include('admin.layouts.footer')
 @stack('js')
 </body>
+@stack('modal')
 @stack('modal')
 </html>

@@ -45,6 +45,18 @@
 
 <!-- Page specific js -->
 <script src="{{asset('/assets-admin/pages/jquery.dashboard.js')}}"></script>
+{{--Custom JS--}}
+<script src="{{asset('assets-admin/js/custom.js')}}"></script>
+<script>
+    if($("textarea#content").length){
+        ClassicEditor
+            .create( document.querySelector( 'textarea#content' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    }
+
+</script>
 
 <!-- Modal-Effect -->
 <script src="{{asset('/assets-admin/plugins/custombox/js/custombox.min.js')}}"></script>

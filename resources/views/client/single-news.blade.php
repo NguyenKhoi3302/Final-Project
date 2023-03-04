@@ -290,9 +290,11 @@
                                 <div class="item_cont">
                                     <div class="date">
                                         <div class="day">
-                                            19										</div>
+                                            19
+                                        </div>
                                         <div class="mY">
-                                            11 - 2022										</div>
+                                            11 - 2022
+                                        </div>
                                     </div>
                                     <div class="name" href="#">
                                         Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát
