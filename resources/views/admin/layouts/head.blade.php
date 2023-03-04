@@ -36,8 +36,6 @@
 <link href="{{asset('assets-admin/plugins/fileuploads/css/dropify.min.css')}}" rel="stylesheet" type="text/css">
 
 
-
-
 @stack('styles')
 
 @livewireStyles

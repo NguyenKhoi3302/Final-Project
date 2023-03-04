@@ -17,11 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('email', 50);
-            $table->string('password', 50);
+            $table->string('password', 255);
             $table->string('avatar', 100);
             $table->integer('phone');
             $table->string('address', 100);
             $table->string('description', 50)->nullable();
+            $table->string('remember_token')->nullable();
             $table->timestamps();
         });
     }
