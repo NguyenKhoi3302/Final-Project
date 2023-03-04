@@ -38,8 +38,8 @@
                     </a>
                     <ul class="list-unstyled">
                         <li><a href="/admin/products">Danh sách</a></li>
-                        <li><a href="/admin/products/add">Thêm sản phẩm mới</a></li>
-                        <li><a href="/admin/categorys">Danh mục sản phẩm</a></li>
+                        <li><a href="/admin/product/add">Thêm sản phẩm mới</a></li>
+                        <li><a href="/admin/product_categories">Danh mục sản phẩm</a></li>
                         <li><a href="/admin/brands">Thương hiệu</a></li>
                     </ul>
                 </li>

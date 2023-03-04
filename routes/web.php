@@ -57,7 +57,7 @@ Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
 //admin
 Route::prefix('admin')->group(function (){
 // products categories
-    Route::get('categorys', [BECategoryCotroller::class, 'index']);
+    Route::get('product_categories', [BECategoryCotroller::class, 'index']);
     Route::post('category/save', [BECategoryCotroller::class, 'save']);
     Route::post('category/delete', [BECategoryCotroller::class, 'delete']);
     Route::post('category/update', [BECategoryCotroller::class, 'update']);
