@@ -10,7 +10,7 @@
       border-radius: 4px;
       box-sizing: border-box;
     }
-    
+
     input[type=submit] {
       width: 100%;
       background-color: #4CAF50;
@@ -21,13 +21,13 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    
+
     input[type=submit]:hover {
       background-color: #45a049;
     }
 </style>
 
-    
+
     <section class="section account_profile">
         @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -46,8 +46,7 @@
                         <li data-id="0" class="active">Thông tin tài khoản</li>
                         <li data-id="1" class="history">Lịch sử mua hàng</li>
                         <li data-id="2" class="updatePass">Đổi mật khẩu</li>
-                        <li>
-                        </li>
+                        <li><a href="{{ route('logout') }}">Đăng xuất</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +55,7 @@
                     <div class="info_box">
                         <div class="avt_wrap">
                             @if($user->avatar)
-                                <img src="{{asset('images/uploads/'.$user->avatar)}}" alt="" style="width:250px; height:250px;">
+                                <img src="{{asset($user->avatar)}}" alt="" style="width:250px; height:250px;">
                             @else
                                 <img src="{{asset('images/logo/page_logo.png')}}" alt="" style="width:250px; height:250px;">
                             @endif
@@ -73,7 +72,7 @@
                         </div>
                         <div class="item">
                             <span>Số điện thoại</span>
-                            <p>{{ $user->tel }}</p>
+                            <p>{{ $user->phone }}</p>
                         </div>
                         <div class="item">
                             <span>Địa chỉ</span>
@@ -117,35 +116,32 @@
                     </table>
                 </div>
 
-                <div  id="2" class="pending_order updatePass">
-                        <form action="{{ route('pass.update') }}" method="POST">
+                <div id="2" class="updatePass">
+                    <form action="{{ route('pass.update') }}" method="POST">
                         @csrf
-                            <div class="mb-3">
-                                <label for="oldPasswordInput" class="form-label">Old Password</label>
-                                <input name="old_password" type="password" class="form-control" id="oldPasswordInput">
-                                @error('old_password')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="newPasswordInput" class="form-label">New Password</label>
-                                <input name="new_password" type="password" class="form-control" id="newPasswordInput">
-                                @error('new_password')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label for="confirmNewPasswordInput" class="form-label">Confirm New Password</label>
-                                <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput">
-                            </div>
+                        <div class="mb-3">
+                            <label for="oldPasswordInput" class="form-label">Mật khẩu cũ</label>
+                            <input name="old_password" type="password" class="form-control" id="oldPasswordInput">
+                            @error('old_password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="newPasswordInput" class="form-label">Mật khẩu mới</label>
+                            <input name="new_password" type="password" class="form-control" id="newPasswordInput">
+                            @error('new_password')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmNewPasswordInput" class="form-label">Xác nhận mật khẩu</label>
+                            <input name="new_password_confirmation" type="password" class="form-control" id="confirmNewPasswordInput">
+                        </div>
 
-                            </div>
-
-                            <div class="card-footer">
-                                <button class="btn btn-success">Submit</button>
-                            </div>
-                        </form>
-
+                        <div class="card-footer">
+                            <button class="btn-success">Lưu</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

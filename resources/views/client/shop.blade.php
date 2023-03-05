@@ -5,69 +5,53 @@
             <div class="block_wrap">
                 <h3 class="block_title">Danh mục sản phẩm</h3>
                 <ul>
-                    <li><a href="#">Tất cả sản phẩm</a></li>
-                    <li><a href="#">Quần dài</a></li>
-                    <li><a href="#">Áo thun</a></li>
-                    <li><a href="#">Áo khoác</a></li>
-                    <li><a href="#">Quần short</a></li>
+                    @foreach($cats as $cat)
+                        <li>
+                            <a href="{{url('/danh-muc-san-pham/'.$cat->slug)}}">
+                                {{$cat->name}}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="block_wrap">
-                <h3 class="block_title">Danh mục sản phẩm</h3>
+                <h3 class="block_title">Thương hiệu</h3>
                 <ul>
-                    <li><a href="#">Tất cả sản phẩm</a></li>
-                    <li><a href="#">Quần dài</a></li>
-                    <li><a href="#">Áo thun</a></li>
-                    <li><a href="#">Áo khoác</a></li>
-                    <li><a href="#">Quần short</a></li>
-                </ul>
-            </div>
-            <div class="block_wrap">
-                <h3 class="block_title">Danh mục sản phẩm</h3>
-                <ul>
-                    <li><a href="#">Tất cả sản phẩm</a></li>
-                    <li><a href="#">Quần dài</a></li>
-                    <li><a href="#">Áo thun</a></li>
-                    <li><a href="#">Áo khoác</a></li>
-                    <li><a href="#">Quần short</a></li>
-                </ul>
-            </div>
-            <div class="block_wrap">
-                <h3 class="block_title">Danh mục sản phẩm</h3>
-                <ul>
-                    <li><a href="#">Tất cả sản phẩm</a></li>
-                    <li><a href="#">Quần dài</a></li>
-                    <li><a href="#">Áo thun</a></li>
-                    <li><a href="#">Áo khoác</a></li>
-                    <li><a href="#">Quần short</a></li>
+                    @foreach($brands as $brand)
+                        <li>
+                            <a href="{{url('/danh-muc-san-pham/'.$brand->slug)}}">
+                                {{$brand->name}}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
         <div class="shop_main grid-75">
-            <div class="box_slider">
-                <div class="swiper shopSwiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <img src="images/banner/home_banner.png" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/banner/home_banner_2.jpg" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="images/banner/home_banner_3.png" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-btn next">
-                        <i class="fas fa-chevron-right"></i>
-                    </div>
-                    <div class="swiper-btn prev">
-                        <i class="fas fa-chevron-left"></i>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="box_slider">--}}
+{{--                <div class="swiper shopSwiper">--}}
+{{--                    <div class="swiper-wrapper">--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img src="images/banner/home_banner.png" alt="">--}}
+{{--                        </div>--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img src="images/banner/home_banner_2.jpg" alt="">--}}
+{{--                        </div>--}}
+{{--                        <div class="swiper-slide">--}}
+{{--                            <img src="images/banner/home_banner_3.png" alt="">--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="swiper-btn next">--}}
+{{--                        <i class="fas fa-chevron-right"></i>--}}
+{{--                    </div>--}}
+{{--                    <div class="swiper-btn prev">--}}
+{{--                        <i class="fas fa-chevron-left"></i>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
             <div class="shop_nav">
                 <div class="prod_count">
-                    <strong>999</strong>
+                    <strong>12</strong>
                     <span>sản phẩm trong tổng số</span>
                     <strong>1000</strong>
                 </div>
@@ -83,7 +67,6 @@
                     </ul>
                 </div>
                 <div id="prod_view" class="prod_view">
-                    <span>View:</span>
                     <div id="grid_icon" class="active">
                         <i class="fas fa-th"></i>
                     </div>
@@ -93,9 +76,9 @@
                 </div>
             </div>
             <div class="shop_item_wrap grid">
-            @foreach($products as $products)
+            @foreach($products as $product)
                 <div class="item">
-                    <div class="prod-popup" id="prod-{{$products->id}}">
+                    <div class="prod-popup" id="prod-{{$product->id}}">
                         <div class="bg_close"></div>
                         <div class="popup">
                             <div class="grid-container">
@@ -104,15 +87,17 @@
                                 </div>
                                 <div class="grid-60">
                                     <div class="title_gr">
-                                        <a href="#">{{$products->name}}</a>
-                                        <p>Loại sản phẩm: <a href="#">{{$products->brand}}</a></p>
+                                        <a href="#">{{$product->name}}</a>
+                                        <p>Loại sản phẩm: <a href="#">{{$product->brand}}</a></p>
                                     </div>
                                     <div class="price_gr">
-                                        <h3>{{$products->price}}   <del>{{$products->discount}}</del></h3>
+                                        <h3>{{number_format($product->price, 0, ",", ".")}} vnđ
+                                            <del>{{number_format($product->price*(100 - $product->discount)/100, 0, ",", ".")}} vnđ</del>
+                                        </h3>
                                         <p><span>Trạng thái: </span>Còn hàng</p>
                                     </div>
                                     <div class="popup_des">
-                                        {{$products->description}}
+                                        {{$product->description}}
                                     </div>
                                     <div class="popup_action">
                                         <div class="qtty_box">
@@ -124,7 +109,7 @@
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                         </div>
-                                        <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}"> 
+                                        <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $product->id]) }}">
                                             Thêm vào giỏ hàng
                                         </a>
                                     </div>
@@ -139,10 +124,10 @@
                         <img src="images/products/prod_img.png" alt="example-image">
                         <figcaption>
                             <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}">
+                                <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $product->id]) }}">
                                     <i class="fas fa-cart-plus"></i>
                                 </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="{{ $products->id}}">
+                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="{{ $product->id}}">
                                     <i class="far fa-eye"></i>
                                 </a>
                                 <a title="Thêm vào yêu thích" href="#">
@@ -157,19 +142,19 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="{{url('single-product/'.$products->id)}}">{{$products->name}}</a>
+                            <a href="{{url('single-product/'.$product->id)}}">{{$product->name}}</a>
                         </div>
                         <div class="prod_des">
-                            {{ $products->description }}
+                            {{ $product->description }}
                         </div>
                     </div>
                     <div class="prod_actions">
                         <div class="prod_price">
                             <span class="discount">
-                                {{ $products->price}}
+                                {{ number_format($product->price, 0, ",", ".")}} vnđ
                             </span>
                             <del>
-                            {{ $products->discount}}
+                            {{ number_format($product->price*(100 - $product->discount)/100, 0, ",", ".")}} vnđ
                             </del>
                         </div>
                         <div class="btn_wrap">
@@ -186,6 +171,34 @@
                     </div>
                 </div>
             @endforeach
+            </div>
+
+            <div class="Page pagination m-auto">
+                <?php
+                $total = $products->total();
+                $pages = ceil($total / $products->perPage());
+                ?>
+                <ul class="pagination">
+                    <li class="prev page-item">
+                        <a class="page-link" href="{{$products->previousPageUrl()}}">
+                            <i class="zmdi zmdi-chevron-left"></i>
+                        </a>
+                    </li>
+                    @for($i = 1; $i <= $pages; $i++)
+                        <li class="@if($products->currentPage() == $i)current @endif page-item">
+                            <a class="page-link" @if($products->currentPage() != $i)href="{{$products->url($i)}}" @endif>
+                                {{$i}}
+                            </a>
+                        </li>
+
+                    @endfor
+                    <li class="next page-item">
+                        <a class="page-link" href="{{$products->nextPageUrl()}}">
+                            <i class="zmdi zmdi-chevron-right"></i>
+
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </section>

@@ -100,8 +100,8 @@
             <div class="card-box tilebox-one">
                 <i class="icon-bubble float-right text-muted"></i>
                 <h6 class="text-muted text-uppercase m-b-20">Bình luận tin tức</h6>
-                <h2 class="m-b-20" data-plugin="counterup">1,587</h2>
-                <span class="label label-success"> +11% </span> <span class="text-muted">From previous period</span>
+                <h2 class="m-b-20" data-plugin="counterup">287</h2>
+                <span class="label label-success"> 15 </span> <span class="text-muted">Trong tháng này</span>
             </div>
         </div>
 
@@ -109,8 +109,8 @@
             <div class="card-box tilebox-one">
                 <i class="icon-bubble float-right text-muted"></i>
                 <h6 class="text-muted text-uppercase m-b-20">Bình luận sản phẩm</h6>
-                <h2 class="m-b-20">$<span data-plugin="counterup">46,782</span></h2>
-                <span class="label label-danger"> -29% </span> <span class="text-muted">From previous period</span>
+                <h2 class="m-b-20"><span data-plugin="counterup">382</span></h2>
+                <span class="label label-danger"> 36 </span> <span class="text-muted">Trong tháng này</span>
             </div>
         </div>
 
@@ -119,7 +119,7 @@
                 <i class="icon-envelope float-right text-muted"></i>
                 <h6 class="text-muted text-uppercase m-b-20">Số email được gửi</h6>
                 <h2 class="m-b-20"><span data-plugin="counterup">15</span></h2>
-                <span class="label label-pink"> 0% </span> <span class="text-muted">From previous period</span>
+                <span class="label label-pink"> 3 </span> <span class="text-muted">Trong tháng này</span>
             </div>
         </div>
 

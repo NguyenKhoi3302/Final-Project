@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
-use Carbon\Carbon; 
+use Carbon\Carbon;
 
 
 
@@ -20,7 +20,7 @@ class UserController extends Controller
 // Đăng nhập
     public function login()
     {
-        
+
         return view('auth.login');
     }
 
@@ -44,18 +44,18 @@ class UserController extends Controller
 
             return redirect('/');
         }else{
-            return redirect()->route('login')->with('fail','Tài khoản hoặc mật khẩu không đúng !!');            
+            return redirect()->route('login')->with('fail','Tài khoản hoặc mật khẩu không đúng !!');
         }
 
     }
 // Đăng  ký thành  viên
     public function register()
-    {   
+    {
         return view('auth.register');
     }
 
     public function register_action(Request $request)
-    {  
+    {
 
         $request->validate([
             'name'=>'required',
@@ -67,20 +67,20 @@ class UserController extends Controller
             'name.required'=>'Vui lòng  nhập tên  người  dùng !',
             'password.required'=>'Vui lòng nhập mật khẩu !',
             'password_confrim.same'=>'Mật khẩu xác nhận không đúng !',
-            'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',           
+            'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',
             'password_confrim.required'=>'Vui lòng xác nhận lại mật khẩu !',
             'email.required'=>'Vui lòng  nhập  email !',
             'email.unique'=>'Email đã được đăng ký !',
             'email.regex'=>'Định dạng email không dúng vui  lòng  nhập  lại !',
             'tel.required'=>'Vui lòng  nhập  số điện  thoại !',
             'tel.digits_between'=>'Định dạng số điện thoại không đúng !',
-            
+
         ]);
         $users = new User([
             'name' => $request->name,
             'password' => hash::make($request->password),
             'email' => $request->email,
-            'tel' => $request->tel,
+            'phone' => $request->tel,
         ]);
         $users->save();
         if($request) {
@@ -94,12 +94,12 @@ class UserController extends Controller
             if(Cookie::has('email')){
                 Auth::logout();
                 return redirect()->route('login');
-            };   
+            };
         }else{
             Auth::logout();
             return redirect()->route('login');
         }
-    }  
+    }
 // thông  tin  cá  nhân
     public function  profile()
     {
@@ -107,7 +107,7 @@ class UserController extends Controller
     }
 
     public function  profile_edit($id)
-    {   
+    {
         $user = user::find($id);
         return view('auth/profileEdit', compact('user'));
     }
@@ -123,7 +123,7 @@ class UserController extends Controller
             'tel.required'=>'Vui lòng  nhập  số điện  thoại !',
             'tel.digits_between'=>'Định dạng số điện thoại không đúng !',
             'address.required'=>'Vui lòng  nhập địa  chỉ !',
-            
+
         ]);
         $user = user::find($id);
 
@@ -137,7 +137,7 @@ class UserController extends Controller
         }
 
         $user->name = $request->input('name');
-        $user->tel = $request->input('tel');
+        $user->phone = $request->input('tel');
         $user->address = $request->input('address');
         $user->update();
         return redirect()->route('profile')->with('sussec','Cập  nhập  thành  công  !!');
@@ -149,10 +149,10 @@ class UserController extends Controller
             'new_password' => 'required|confirmed',
         ],[
             'old_password.required'=>'Vui lòng nhập mật khẩu !',
-            'old_password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',           
+            'old_password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',
             'new_password.required'=>'Vui lòng xác nhận lại mật khẩu !',
             'new_password.confirmed'=>'Mật khẩu xác nhận không đúng !',
-            
+
         ]);
 
         if(!Hash::check($request->old_password, auth()->user()->password)){
@@ -178,14 +178,14 @@ class UserController extends Controller
             'email.required'=>'Vui lòng  nhập  email  quên  mật  khẩu !!',
             'email.email'=>'Định  dạng  không  đúng, vui lòng  nhập  lại !!',
             'email.exists'=>'Email không tồn tại !!',
-            
+
         ]);
 
         $token = Str::random(64);
 
         DB::table('password_resets')->insert([
-        'email' => $request->email, 
-        'token' => $token, 
+        'email' => $request->email,
+        'token' => $token,
         'created_at' => Carbon::now()
         ]);
 
@@ -199,8 +199,8 @@ class UserController extends Controller
         return back()->with('message', 'Chúng tôi đã đặt email liên kêt đặt lại mật khẩu của bạn !');
     }
 
-    public function showResetPasswordForm($token) 
-    { 
+    public function showResetPasswordForm($token)
+    {
         return view('auth.forgetPasswordLink', ['token' => $token]);
     }
 
@@ -214,7 +214,7 @@ class UserController extends Controller
 
         $updatePassword = DB::table('password_resets')
                             ->where([
-                            'email' => $request->email, 
+                            'email' => $request->email,
                             'token' => $request->token
                             ])
                             ->first();
@@ -231,5 +231,5 @@ class UserController extends Controller
         return redirect('/login')->with('message', 'Your password has been changed!');
     }
 
-    
+
 }

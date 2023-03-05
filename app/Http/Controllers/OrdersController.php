@@ -8,7 +8,7 @@ use DB;
 class OrdersController extends Controller
 {
     function index(){
-        $list = DB::table('orders')->orderBy('created_at', 'desc')->get();
+        $list = DB::table('orders')->orderBy('created_at', 'desc')->Paginate(20);
         $customers = DB::table('users')->select('name', 'id')->get();
 
         $data = ['list' => $list, 'customers' => $customers];

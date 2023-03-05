@@ -78,6 +78,36 @@
                     @endforeach
                     </tbody>
                 </table>
+
+                <div class="row mt-3">
+                    <div class="Page navigation m-auto">
+                        <?php
+                        $total = $list->total();
+                        $pages = ceil($total / $list->perPage());
+                        ?>
+                        <ul class="pagination">
+                            <li class="prev page-item">
+                                <a class="page-link" href="{{$list->previousPageUrl()}}">
+                                    <i class="zmdi zmdi-chevron-left"></i>
+                                </a>
+                            </li>
+                            @for($i = 1; $i <= $pages; $i++)
+                                <li class="@if($list->currentPage() == $i)current @endif page-item">
+                                    <a class="page-link" @if($list->currentPage() != $i)href="{{$list->url($i)}}" @endif>
+                                        {{$i}}
+                                    </a>
+                                </li>
+
+                            @endfor
+                            <li class="next page-item">
+                                <a class="page-link" href="{{$list->nextPageUrl()}}">
+                                    <i class="zmdi zmdi-chevron-right"></i>
+
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 {{--        <div class="row mt-3">--}}

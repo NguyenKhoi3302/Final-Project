@@ -108,6 +108,35 @@
                 </div>
             @endif
 
+            <div class="row mt-3">
+                <div class="Page navigation m-auto">
+                    <?php
+                    $total = $data->total();
+                    $pages = ceil($total / $data->perPage());
+                    ?>
+                    <ul class="pagination">
+                        <li class="prev page-item">
+                            <a class="page-link" href="{{$data->previousPageUrl()}}">
+                                <i class="zmdi zmdi-chevron-left"></i>
+                            </a>
+                        </li>
+                        @for($i = 1; $i <= $pages; $i++)
+                            <li class="@if($data->currentPage() == $i)current @endif page-item">
+                                <a class="page-link" @if($data->currentPage() != $i)href="{{$data->url($i)}}" @endif>
+                                    {{$i}}
+                                </a>
+                            </li>
+
+                        @endfor
+                        <li class="next page-item">
+                            <a class="page-link" href="{{$data->nextPageUrl()}}">
+                                <i class="zmdi zmdi-chevron-right"></i>
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
     </div>

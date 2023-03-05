@@ -53,7 +53,7 @@
                     </div>
                 </div> --}}
             </div>
-            <div class="Page navigation m-auto">
+            <div class="Page pagination m-auto">
                 <?php
                 $total = $news->total();
                 $pages = ceil($total / $news->perPage());
@@ -88,21 +88,11 @@
                     <i class="far fa-newspaper"></i> Danh mục tin
                 </h4>
                 <ul>
-                    <li>
-                        <div class="news">
-                            @foreach($news as $new)
-                            <div class="news_item">
-                                <div class="news_cont">
-                                    <div class="news_title">
-                                        <a href="/single-news">{{$new->title}}</a>
-                                    </div>
-                                    <div class="news_des">
-                                        {{$new->content}}
-                                    </div>
-                                </div>
-                            </div>
-                            @endforeach
-                    </li>
+                    @foreach($cat as $item)
+                        <li>
+                            <a href="/danh-muc-tin-tuc/{{$item->slug}}">{{$item->name}}</a>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="item">

@@ -34,7 +34,7 @@ Route::get('/about', [MainController::class, 'about']);
 Route::get('/news', [NewsController::class, 'index']);
 
 Route::get('/single-news/{id}', [NewsController::class, 'single_news']);
-Route::get('/', [MainController::class, 'index'])->name('home');
+//Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 //Route::get('/cart', [MainController::class, 'cart']);

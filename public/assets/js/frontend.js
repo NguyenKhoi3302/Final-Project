@@ -232,7 +232,7 @@ function showMoreProduct(){
     });
 }
 function profileTab(){
-    $('.left_col_menu li').click(function (e){
+    $('.left_col_menu li:not(:last-child)').click(function (e){
         e.preventDefault();
         $('.left_col_menu li').removeClass('active');
         $(this).addClass('active');

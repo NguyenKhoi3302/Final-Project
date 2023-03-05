@@ -22,7 +22,7 @@ class BEProductController extends Controller
                 'product_categories.name as cate_name', 'brands.name as brand_name')
             ->join('product_categories', 'product_categories.id', '=', 'products.product_category')
             ->join('brands', 'brands.id', '=', 'products.brand')
-            ->get();
+            ->Paginate(20);
         return view('admin.product.index', compact('data'));
     }
 

@@ -27,7 +27,7 @@
 {{--Custom JS--}}
 <script src="{{asset('assets-admin/js/custom.js')}}"></script>
 {{--<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>--}}
-<{{--script>
+{{--<script>
     // tinymce.init({
     //     selector: "textarea#content",
     //     plugins: [

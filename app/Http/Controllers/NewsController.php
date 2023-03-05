@@ -10,8 +10,10 @@ use App\Models\NewsCategories;
 class NewsController extends Controller
 {
     public function index(){
-        $news = DB::table('news')->Paginate(6);
-        return view('client.news',compact('news'));
+        $news = DB::table('news')->Paginate(12);
+        $cat = DB::table('news_categories')->get();
+        $data = ['cat'=>$cat, 'news' => $news];
+        return view('client.news', $data);
     }
 
     public function single_news($id){
@@ -20,7 +22,7 @@ class NewsController extends Controller
         $data = ['list'=>$list, 'kq' => $kq];
         return view("client.single-news", $data);
     }
-    
+
     public function home(){
         $home = DB::table('news')->get();
         $nha = DB::table('news')->limit(5)->get();

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password', 50);
             $table->string('avatar', 100);
             $table->integer('phone');
-            $table->string('address', 100);
+            $table->string('address', 100)->nullable();
             $table->string('description', 50)->nullable();
             $table->timestamps();
         });
