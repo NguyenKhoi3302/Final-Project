@@ -10,6 +10,11 @@ use \App\Http\Controllers\BECategoryCotroller;
 use \App\Http\Controllers\BEBrandsController;
 use \App\Http\Controllers\BEProductController;
 use \App\Http\Controllers\BEProductAttributeController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ProductController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,14 +32,46 @@ Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 
 Route::get('/news', [NewsController::class, 'index']);
-Route::get('/news/{id}', [NewsController::class, 'detail']);
 
-Route::get('/shop', [MainController::class, 'shop']);
-Route::get('/cart', [MainController::class, 'cart']);
-Route::get('/checkout', [MainController::class, 'checkout']);
 Route::get('/single-news/{id}', [NewsController::class, 'single_news']);
-Route::get('/single-product', [MainController::class, 'single_product']);
+Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/contact', [MainController::class, 'contact']);
+Route::get('/about', [MainController::class, 'about']);
+//Route::get('/cart', [MainController::class, 'cart']);
+Route::get('/checkout', [MainController::class, 'checkout']);
 Route::get('/account-profile', [MainController::class, 'account_profile']);
+//Product Site
+    Route::get('/shop', [ProductController::class, 'shop']);
+    Route::get('/single-product/{id}', [ProductController::class, 'single_product']);
+// cart
+    Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
+    Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
+    Route::post('/update-qty-cart/{id}', [CartController::class, 'update_quantity'])->name('updateCart');
+    Route::get('delete-cart/{id}', [CartController::class, 'delete_cart'])->name('deleteCart');
+// Auth
+    route::get('/login', [UserController::class, 'login'])->name('login');
+    route::post('/login', [UserController::class, 'login_action'])->name('login.action');
+
+    route::get('/register', [UserController::class, 'register'])->name('register');
+    route::post('/register', [UserController::class, 'register_action'])->name('register.action');
+
+    route::get('/logout', [UserController::class, 'logout'])->name('logout');
+
+    Route::get('forget-password', [UserController::class, 'showForgetPasswordForm'])->name('forget.password.get');
+    Route::post('forget-password', [UserController::class, 'submitForgetPasswordForm'])->name('forget.password.post');
+    Route::get('reset-password/{token}', [UserController::class, 'showResetPasswordForm'])->name('reset.password.get');
+    Route::post('reset-password', [UserController::class, 'submitResetPasswordForm'])->name('reset.password.post');
+
+
+    route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::get('/profileEdit/{id}', [UserController::class, 'profile_edit'])->name('profile.edit');
+    Route::put('/profileUpdate/{id}', [UserController::class, 'profile_update'])->name('profile.update');
+
+    Route::post('/passUpdate', [UserController::class, 'pass_update'])->name('pass.update');
+
+//End Auth
+
+//admin
 
 // Dashboard
 Route::get('admin', [AdminController::class, 'dashboard']);
@@ -56,8 +93,6 @@ Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_c
 
 Route::get('/admin/orders', [OrdersController::class, 'index']);
 Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
-
-//admin
 
 
 Route::prefix('admin')->group(function (){

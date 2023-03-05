@@ -93,8 +93,9 @@
                 </div>
             </div>
             <div class="shop_item_wrap grid">
+            @foreach($products as $products)
                 <div class="item">
-                    <div class="prod-popup" id="prod-1">
+                    <div class="prod-popup" id="prod-{{$products->id}}">
                         <div class="bg_close"></div>
                         <div class="popup">
                             <div class="grid-container">
@@ -103,27 +104,27 @@
                                 </div>
                                 <div class="grid-60">
                                     <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
+                                        <a href="#">{{$products->name}}</a>
+                                        <p>Loại sản phẩm: <a href="#">{{$products->brand}}</a></p>
                                     </div>
                                     <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
+                                        <h3>{{$products->price}}   <del>{{$products->discount}}</del></h3>
                                         <p><span>Trạng thái: </span>Còn hàng</p>
                                     </div>
                                     <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
+                                        {{$products->description}}
                                     </div>
                                     <div class="popup_action">
                                         <div class="qtty_box">
                                             <span class="qtty_minus">
                                                 <i class="fas fa-minus"></i>
                                             </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
+                                            <input max="99" min="1" value="1" type="number" name="quantity" >
                                             <span class="qtty_plus">
                                                 <i class="fas fa-plus"></i>
                                             </span>
                                         </div>
-                                        <a href="#" class="add_to_cart_btn">
+                                        <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}"> 
                                             Thêm vào giỏ hàng
                                         </a>
                                     </div>
@@ -138,10 +139,10 @@
                         <img src="images/products/prod_img.png" alt="example-image">
                         <figcaption>
                             <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
+                                <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}">
                                     <i class="fas fa-cart-plus"></i>
                                 </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="1">
+                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="{{ $products->id}}">
                                     <i class="far fa-eye"></i>
                                 </a>
                                 <a title="Thêm vào yêu thích" href="#">
@@ -156,19 +157,19 @@
                     </figure>
                     <div class="prod_cont">
                         <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
+                            <a href="{{url('single-product/'.$products->id)}}">{{$products->name}}</a>
                         </div>
                         <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
+                            {{ $products->description }}
                         </div>
                     </div>
                     <div class="prod_actions">
                         <div class="prod_price">
                             <span class="discount">
-                                1.000.000đ
+                                {{ $products->price}}
                             </span>
                             <del>
-                                1.200.000đ
+                            {{ $products->discount}}
                             </del>
                         </div>
                         <div class="btn_wrap">
@@ -184,735 +185,32 @@
                         </div>
                     </div>
                 </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-2">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="2">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge new">
-                            new
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-3">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="3">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-4">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="4">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-5">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="5">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-6">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="6">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-7">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="7">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-8">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="8">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="prod-popup" id="prod-9">
-                        <div class="bg_close"></div>
-                        <div class="popup">
-                            <div class="grid-container">
-                                <div class="grid-40">
-                                    <img src="images/products/prod_img.png" alt="example-image">
-                                </div>
-                                <div class="grid-60">
-                                    <div class="title_gr">
-                                        <a href="#">Phần mềm hiển thị giá vàng trên tivi</a>
-                                        <p>Loại sản phẩm: <a href="#">Brand 1</a></p>
-                                    </div>
-                                    <div class="price_gr">
-                                        <h3>1.000.000đ   <del>1.000.000đ</del></h3>
-                                        <p><span>Trạng thái: </span>Còn hàng</p>
-                                    </div>
-                                    <div class="popup_des">
-                                        Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                                    </div>
-                                    <div class="popup_action">
-                                        <div class="qtty_box">
-                                            <span class="qtty_minus">
-                                                <i class="fas fa-minus"></i>
-                                            </span>
-                                            <input max="99" min="1" value="1" type="number" name="" >
-                                            <span class="qtty_plus">
-                                                <i class="fas fa-plus"></i>
-                                            </span>
-                                        </div>
-                                        <a href="#" class="add_to_cart_btn">
-                                            Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="close_btn">
-                                    <i class="fas fa-times"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <figure class="imghvr-zoom-in">
-                        <img src="images/products/prod_img.png" alt="example-image">
-                        <figcaption>
-                            <div class="icon_wrap">
-                                <a title="Thêm vào giỏ hàng" href="#">
-                                    <i class="fas fa-cart-plus"></i>
-                                </a>
-                                <a title="Xem nhanh sản phẩm" class="showPopup" data-id="9">
-                                    <i class="far fa-eye"></i>
-                                </a>
-                                <a title="Thêm vào yêu thích" href="#">
-                                    <i class="far fa-heart"></i>
-                                </a>
-                            </div>
-                        </figcaption>
-
-                        <div class="badge sale">
-                            Sale
-                        </div>
-                    </figure>
-                    <div class="prod_cont">
-                        <div class="prod_name">
-                            <a href="{{url('/single-product')}}">Tên của một cái sản phẩm gì đó ở đây</a>
-                        </div>
-                        <div class="prod_des">
-                            Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
-                        </div>
-                    </div>
-                    <div class="prod_actions">
-                        <div class="prod_price">
-                            <span class="discount">
-                                1.000.000đ
-                            </span>
-                            <del>
-                                1.200.000đ
-                            </del>
-                        </div>
-                        <div class="btn_wrap">
-                            <a href="" class="add_to_cart_btn">
-                                Thêm vào giỏ hàng
-                            </a>
-                        </div>
-                        <div class="btn_wrap">
-                            <div class="add_to_wishlist">
-                                <i class="far fa-heart"></i>
-                                <span>Thêm vào yêu thích</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            @endforeach
             </div>
         </div>
     </section>
+
+    <script>
+        function addcart(event){
+            event.preventDefault();
+            let urlcart = $(this).data('url');
+            $.ajax({
+                type:"GET",
+                url:urlcart,
+                dataType: 'json',
+                success: function (data){
+                    if(data.code === 200){
+                        alert ('thêm sản phẩm thành công !!');
+                    }
+                },
+                error: function (){
+
+                }
+            });
+            // alert('123')
+        }
+        $(function(){
+            $('.add_cart').on('click', addcart)
+        });
+    </script>
 @endsection
