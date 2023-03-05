@@ -4,7 +4,7 @@
             <div class="grid-container">
                 <div class="grid-40">
                     <div class="feature_img" id="feature_img">
-                        <img src="images/products/prod_img.png" alt="">
+                        <img src="images/uploads/{{ $products->images}}" alt="example-image">
                     </div>
                     <div class="box_swiper product_gallery">
                         <div class="swiper singleProduct">
@@ -237,7 +237,7 @@
                                     <div class="popup">
                                         <div class="grid-container">
                                             <div class="grid-40">
-                                                <img src="images/products/prod_img.png" alt="example-image">
+                                                <img src="images/uploads/{{ $products->images}}" alt="example-image">
                                             </div>
                                             <div class="grid-60">
                                                 <div class="title_gr">
@@ -616,7 +616,7 @@
                 </div>
             </div>
         </section>
-         <script>
+        <script>
             function addcart(event){
                 event.preventDefault();
                 let urlcart = $(this).data('url');
@@ -625,12 +625,15 @@
                     url:urlcart,
                     dataType: 'json',
                     success: function (data){
-
+                        if(data.code === 200){
+                            alert ('thêm sản phẩm thành công !!');
+                        }
                     },
                     error: function (){
-
+    
                     }
                 });
+                // alert('123')
             }
             $(function(){
                 $('.add_cart').on('click', addcart)
