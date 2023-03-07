@@ -10,13 +10,15 @@ use App\Http\Controllers\CategoryController;
 use \App\Http\Controllers\BECategoryCotroller;
 use \App\Http\Controllers\BEBrandsController;
 use \App\Http\Controllers\BEProductController;
+use \App\Http\Controllers\BEProductCommentController;
 use \App\Http\Controllers\BEProductAttributeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
-
-
+use \App\Http\Controllers\BEUserController;
+use App\Http\Livewire\Admin\RoleComponent;
+use App\Http\Livewire\Admin\PermissionComponent;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -129,5 +131,17 @@ Route::prefix('admin')->group(function (){
 
     Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);
+
+    Route::get('/product/comments', [BEProductCommentController::class, 'index'])->name('product.comment');
+    Route::post('/product/comments/delete', [BEProductCommentController::class, 'destroy'])->name('product.comment.destroy');
+
+    //user
+    Route::get('/user',[BEUserController::class, 'index'])->name('admin.user');
+    Route::get('user/{id}/permission', [BEUserController::class,'permission'])->name('user.permission');
+    Route::post('user/permission', [BEUserController::class,'permissionStore'])->name('user.permission.store');
+    Route::post('/user',[BEUserController::class, 'destroy'])->name('admin.user.destroy');
+
+    Route::get('/role', RoleComponent::class)->name('admin.user.role');
+    Route::get('/permission', PermissionComponent::class)->name('admin.user.permission');
 });
 

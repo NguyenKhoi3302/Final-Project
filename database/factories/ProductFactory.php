@@ -22,6 +22,7 @@ class ProductFactory extends Factory
         return [
             'brand_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
             'category_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
+//            'product_category_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
             'name' => $name,
             'slug' => $slug,
             'images' => $this->faker->imageUrl(),

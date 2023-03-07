@@ -1,5 +1,5 @@
- <!-- ========== Left Sidebar Start ========== -->
- <div class="left side-menu">
+<!-- ========== Left Sidebar Start ========== -->
+<div class="left side-menu">
     <div class="sidebar-inner slimscrollleft">
 
         <!--- Sidemenu -->
@@ -8,6 +8,7 @@
 
                 <li class="has_sub">
                     <a href="/admin" class="waves-effect"><span class="label label-pill label-primary float-right">1</span><i class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>
+
                 </li>
 
                 <li class="text-muted menu-title">Tin Tức</li>
@@ -23,6 +24,17 @@
                         <li><a href="/admin/news">Danh sách</a></li>
                         <li><a href="/admin/news/add">Thêm tin tức mới</a></li>
                         <li><a href="/admin/news/categories">Danh mục tin tức</a></li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <i class="zmdi zmdi-format-clear-all"></i>
+                        <span> Quyền truy cập </span> <span class="menu-arrow"></span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{route('admin.user')}}">Thành viên </a></li>
+                        <li><a href="{{route('admin.user.role')}}">Vai trò </a></li>
+                        <li><a href="{{route('admin.user.permission')}}">Quyền </a></li>
                     </ul>
                 </li>
 
@@ -41,6 +53,7 @@
                         <li><a href="/admin/product/add">Thêm sản phẩm mới</a></li>
                         <li><a href="/admin/product_categories">Danh mục sản phẩm</a></li>
                         <li><a href="/admin/brands">Thương hiệu</a></li>
+                        <li><a href="{{route('product.comment')}}">Bình luận</a></li>
                     </ul>
                 </li>
 
