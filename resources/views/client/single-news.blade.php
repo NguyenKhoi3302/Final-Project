@@ -1,4 +1,4 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
         <section class="section post_detail">
             <div class="grid-container">
@@ -107,7 +107,7 @@
                                 <a href="" class="style_center max">
                                     <div class="item_img">
                                         <img width="380" height="380" src="{{asset($new->image)}}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">										</div>
-                                    
+
                                         <div class="item_cont">
                                         <h3>{{$new->title}}</h3>
                                         <div class="date_line">
@@ -117,7 +117,7 @@
                                                 <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                             </svg>
                                         </div>
-                                    
+
                                     </div>
                                 </a>
                             </div>
@@ -180,7 +180,7 @@
                                 <a href="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg" class="style_center max">
                                     <div class="item_img">
                                         <img width="380" height="380" src="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg 380w, https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg 300w,  150w" sizes="(max-width: 380px) 100vw, 380px">										</div>
-                            
+
                                         <h3>DANIEL WELLINGTON DW00100319</h3>
                                         <div class="date_line">
                                             <span>19 - 11 - 2022</span>

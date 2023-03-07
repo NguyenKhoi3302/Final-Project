@@ -26,6 +26,7 @@ class NewsController extends Controller
     public function home(){
         $home = DB::table('news')->get();
         $nha = DB::table('news')->limit(5)->get();
+        // dd($nha);
         $sp = DB::table('products')->get();
         $new =  DB::table('products')->limit(9)->get();
         $data = ['nha'=>$nha, 'home' => $home, 'sp'=>$sp, 'new'=>$new ];

@@ -14,4 +14,7 @@ class Product extends Model
        'name','brand_id', 'category_id','slug','images','view','bought','description','contents',
         'price','price_pay','discount','sku','sex', 'appear', 'created_at','updated_at'
     ];
+    public function brand(){
+        return $this->belongsTo(Brands::class);
+    }
 }

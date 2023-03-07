@@ -1,4 +1,4 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
 <style>
     * {
@@ -6,6 +6,7 @@
         padding: 0;
         box-sizing: border-box
     }
+
     a {
         font-size: 14px;
         line-height: 1.7;
@@ -18,7 +19,7 @@
     }
 
     a:focus {
-        outline: none!important
+        outline: none !important
     }
 
     a:hover {
@@ -26,7 +27,12 @@
         color: #57b846
     }
 
-    h1,h2,h3,h4,h5,h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         margin: 0
     }
 
@@ -38,7 +44,8 @@
         margin: 0
     }
 
-    ul,li {
+    ul,
+    li {
         margin: 0;
         list-style-type: none
     }
@@ -53,8 +60,9 @@
         border: none
     }
 
-    textarea:focus,input:focus {
-        border-color: transparent!important
+    textarea:focus,
+    input:focus {
+        border-color: transparent !important
     }
 
     input:focus::-webkit-input-placeholder {
@@ -122,7 +130,7 @@
     }
 
     button {
-        outline: none!important;
+        outline: none !important;
         border: none;
         background: 0 0
     }
@@ -132,7 +140,7 @@
     }
 
     iframe {
-        border: none!important
+        border: none !important
     }
 
     .txt1 {
@@ -167,10 +175,10 @@
         align-items: center;
         padding: 15px;
         background: #9053c7;
-        background: -webkit-linear-gradient(-135deg,#c850c0,#4158d0);
-        background: -o-linear-gradient(-135deg,#c850c0,#4158d0);
-        background: -moz-linear-gradient(-135deg,#c850c0,#4158d0);
-        background: linear-gradient(-135deg,#c850c0,#4158d0)
+        background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+        background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+        background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+        background: linear-gradient(-135deg, #c850c0, #4158d0)
     }
 
     .wrap-login100 {
@@ -188,10 +196,10 @@
         justify-content: space-between;
         padding: 177px 130px 33px 95px;
         background: #9053c7;
-        background: -webkit-linear-gradient(-135deg,#c850c0,#4158d0);
-        background: -o-linear-gradient(-135deg,#c850c0,#4158d0);
-        background: -moz-linear-gradient(-135deg,#c850c0,#4158d0);
-        background: linear-gradient(-135deg,#c850c0,#4158d0)
+        background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
+        background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
+        background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
+        background: linear-gradient(-135deg, #c850c0, #4158d0)
     }
 
     .login100-pic {
@@ -247,7 +255,7 @@
         width: 100%;
         height: 100%;
         box-shadow: 0 0;
-        color: rgba(87,184,70,.8)
+        color: rgba(87, 184, 70, .8)
     }
 
     .input100:focus+.focus-input100 {
@@ -339,7 +347,7 @@
 
     @media(max-width: 992px) {
         .wrap-login100 {
-            padding:177px 90px 33px 85px
+            padding: 177px 90px 33px 85px
         }
 
         .login100-pic {
@@ -353,7 +361,7 @@
 
     @media(max-width: 768px) {
         .wrap-login100 {
-            padding:100px 80px 33px
+            padding: 100px 80px 33px
         }
 
         .login100-pic {
@@ -367,7 +375,7 @@
 
     @media(max-width: 576px) {
         .wrap-login100 {
-            padding:100px 15px 33px
+            padding: 100px 15px 33px
         }
     }
 
@@ -377,76 +385,82 @@
 
     @media(max-width: 992px) {
         .alert-validate::before {
-            visibility:visible;
+            visibility: visible;
             opacity: 1
         }
     }
-    section.login_page{
+
+    section.login_page {
         padding-top: 100px;
         padding-bottom: 100px;
     }
-    .text-center a{
+
+    .text-center a {
         color: #FFF
     }
-    .text-center{
+
+    .text-center {
         text-align: center;
 
     }
 </style>
 </head>
-<body>
-<section class="section login_page">
-    <div class="grid-container">
-        <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt="" style="will-change: transform; transform: perspective(300px) rotateX(-5.73deg) rotateY(2.09deg) scale3d(1.1, 1.1, 1.1); transition: all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;">
-                <img src="{{asset('/images/img-01.webp')}}" alt="IMG">
-            </div>
-            <form class="login100-form validate-form" action="{{ route('login.action') }}" method="post">
-                @csrf
-                <span class="login100-form-title">
-            Đăng nhập
-            </span>
-                <div class="wrap-input100 validate-input">
-                    <input type="email" placeholder="Nhập email" class="input100" name="email" value="{{ old('email') }}">
-                    <p>@error('email') {{$message}} @enderror</p>
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                </span>
-                </div>
-                <div class="wrap-input100 validate-input">
-                    <input class="input100" type="password" placeholder="Nhập mật khẩu" name="password" >
-                    <p>@error('password') {{$message}}@enderror</p>
-                    <span class="focus-input100"></span>
-                    <span class="symbol-input100">
-                        <i class="fa fa-lock" aria-hidden="true"></i>
-                    </span>
-                </div>
-                <div class="wrap-input100">
-                    <input type="checkbox" name="remember">Nhớ mật khẩu
-                    @if(Session::has('fail')) <h3>{{ session::get('fail') }}</h3> @endif
-                </div>
-                <div class="container-login100-form-btn">
-                    <button type="submit" class="login100-form-btn">
-                        Đăng nhập
-                    </button>
-                </div>
-                <div class="text-center p-t-12">
-                    <a class="txt2" href="{{ route('forget.password.get') }}">
-                        Quên mật khẩu?
-                    </a>
-                </div>
-                <div class="text-center p-t-136">
-                    <a class="txt2" href="{{ route('register') }}">
-                        Đăng ký tài khoản
-                        <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-                    </a>
-                </div>
-            </form>
-        </div>
-    </div>
 
-</section>
+<body>
+    <section class="section login_page">
+        <div class="grid-container">
+            <div class="wrap-login100">
+                <div class="login100-pic js-tilt" data-tilt=""
+                    style="will-change: transform; transform: perspective(300px) rotateX(-5.73deg) rotateY(2.09deg) scale3d(1.1, 1.1, 1.1); transition: all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;">
+                    <img src="{{asset('/images/img-01.webp')}}" alt="IMG">
+                </div>
+                <form class="login100-form validate-form" action="{{ route('login.action') }}" method="post">
+                    @csrf
+                    <span class="login100-form-title">
+                        Đăng nhập
+                    </span>
+                    <div class="wrap-input100 validate-input">
+                        <input type="email" placeholder="Nhập email" class="input100" name="email"
+                            value="{{ old('email') }}">
+                        <p>@error('email') {{$message}} @enderror</p>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-envelope" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100 validate-input">
+                        <input class="input100" type="password" placeholder="Nhập mật khẩu" name="password">
+                        <p>@error('password') {{$message}}@enderror</p>
+                        <span class="focus-input100"></span>
+                        <span class="symbol-input100">
+                            <i class="fa fa-lock" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="wrap-input100">
+                        <input type="checkbox" name="remember">Nhớ mật khẩu
+                        @if(Session::has('fail')) <h3>{{ session::get('fail') }}</h3> @endif
+                    </div>
+                    <div class="container-login100-form-btn">
+                        <button type="submit" class="login100-form-btn">
+                            Đăng nhập
+                        </button>
+                    </div>
+                    <div class="text-center p-t-12">
+                        <a class="txt2" href="{{ route('forget.password.get') }}">
+                            Quên mật khẩu?
+                        </a>
+                    </div>
+                    <div class="text-center p-t-136">
+                        <a class="txt2" href="{{ route('register') }}">
+                            Đăng ký tài khoản
+                            <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
 
 </body>
 @endsection('content')

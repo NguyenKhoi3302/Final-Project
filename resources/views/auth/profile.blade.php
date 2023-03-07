@@ -1,4 +1,4 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
 <style>
     input[type=text], input[type=password], {

@@ -1,11 +1,11 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
 <div class="cart_wrapper">
-  @include('cart.component.cart_component')
+    @include('cart.component.cart_component')
 </div>
-  
-    <script> 
-         function cartUpdate(event){
+
+<script>
+    function cartUpdate(event){
             event.preventDefault();
             let urlUpdateCart = $('.update_cart_url').data('url');
             let id = $(this).data('id');
@@ -48,5 +48,5 @@
             $(document).on('click','.cart_update', cartUpdate)
             $(document).on('click','.cart_delete', cartDelete)
         });
-    </script>
+</script>
 @endsection

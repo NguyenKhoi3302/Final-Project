@@ -14,7 +14,7 @@ use Cart;
 
 class CartController extends Controller
 {
-    public function add_cart($id){ 
+    public function add_cart($id){
         // session()->forget('cart');
 
         $products = Products::find($id);
@@ -32,10 +32,10 @@ class CartController extends Controller
             ];
         }
         session()->put('cart', $cart);
-        
+
         return response()->json([
             'code' => 200,
-            'message' => 'succes !!', 
+            'message' => 'succes !!',
         ],status: 200);
     }
 
@@ -75,6 +75,7 @@ class CartController extends Controller
     }
 
     public function save_order(Request $request){
+        //code
         $cart = Session::get('cart');
         $user = Auth::user();
         $order = new orders;

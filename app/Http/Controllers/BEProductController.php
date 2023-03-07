@@ -20,12 +20,9 @@ class BEProductController extends Controller
             ->select('products.id','products.name as name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
                 'products.sex', 'products.appear',
                 'product_categories.name as cate_name', 'brands.name as brand_name')
-            ->join('product_categories', 'product_categories.id', '=', 'products.product_category')
-            ->join('brands', 'brands.id', '=', 'products.brand')
-            ->Paginate(20)
             ->join('product_categories', 'product_categories.id', '=', 'products.product_category_id')
             ->join('brands', 'brands.id', '=', 'products.brand_id')
-            ->get();
+            ->paginate();
         return view('admin.product.index', compact('data'));
     }
 

@@ -1,5 +1,5 @@
 
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
 <style>
     .Con{
@@ -13,7 +13,7 @@
         text-align: center;
     }
 
-    .Con input[type=text], 
+    .Con input[type=text],
     input[type=password],
     input[type=email] {
     width: 100%;
@@ -87,11 +87,11 @@
             @if ($errors->has('email'))
                 <span class="text-danger">{{ $errors->first('email') }}</span>
             @endif
-                
+
             <button type="submit">Gửi link tới email của  bạnn!</button>
         </div>
     </form>
 </div>
 
-</body> 
+</body>
 @endsection('content')

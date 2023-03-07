@@ -1,4 +1,4 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
 <style>
     .Con{
@@ -12,7 +12,7 @@
         text-align: center;
     }
 
-    .Con input[type=text], 
+    .Con input[type=text],
     input[type=password],
     input[type=email] {
     width: 100%;
@@ -66,12 +66,12 @@
 <body>
 <div class="Con">
     <h2>Đặt lại  mật  khẩu</h2>
-    
+
 
     <form action="{{ route('reset.password.post') }}" method="POST">
         @csrf
         <input type="hidden" name="token" value="{{ $token }}">
-        
+
         <div class="form-forget">
             <label for="uname"><b>Nhập email của bạn</b></label>
             <input type="text" id="email_address" class="form-control" name="email" required autofocus>
@@ -96,5 +96,5 @@
     </form>
 </div>
 
-</body> 
+</body>
 @endsection('content')

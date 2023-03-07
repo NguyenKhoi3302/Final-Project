@@ -13,10 +13,10 @@ class ProductController extends Controller
         $cats = DB::table('product_categories')->get();
         $brands = DB::table('brands')->get();
         $data = ['products'=>$products, 'cats' => $cats, 'brands' => $brands];
-        return view('client/shop', $data);
+        return view('client.shop', $data);
     }
     function single_product($id){
         $products = Products::find($id);
-        return view("client/single-product", compact('products'));
+        return view("client.single-product", compact('products'));
     }
 }

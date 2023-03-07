@@ -1,4 +1,4 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
         <section class="section single_product_1">
             <div class="grid-container">
