@@ -17,7 +17,7 @@ class Tintuc extends Seeder
      */
     public function run()
     {
-        for ($i = 0; $i<100; $i++){
+        for ($i = 0; $i<10; $i++){
 
             DB::table('news')->insert([
                 'user_id' => 1,
@@ -35,7 +35,7 @@ class Tintuc extends Seeder
                 'created_at' => now(),
             ]);
         }
-        
+
     }
 
 }
