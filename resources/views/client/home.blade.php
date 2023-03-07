@@ -55,6 +55,7 @@
                 </div>
             </div>
             <div class="home_prod_wrap" data-aos="fade-up" data-aos-duration="800" data-aos-delay="500">
+{{--                Hiện sản phẩm--}}
                 @foreach($new as $news)
                 <div class="item">
                     <a href="{{url('single-product/'.$news->id)}}">
@@ -171,6 +172,7 @@
                 </div>
             </div>
             <div class="home_news_wrap">
+{{--                Hiện tin tức --}}
                 @foreach($nha as $j => $news)
                 <div class="item">
                     <div class="img_wrap">
@@ -184,10 +186,6 @@
                         </div>
                         <div class="date">
                             <span><?=date('d/m/Y' , strtotime($news->created_at)) ?></span>
-{{--                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org 000/svg">--}}
-{{--                                <path d="M7.30469 22.5H37.2075" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>--}}
-{{--                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>--}}
-{{--                            </svg>--}}
                         </div>
                     </div>
                 </div>

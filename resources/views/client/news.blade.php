@@ -12,6 +12,7 @@
                 </div>
             </div>
             <div class="news_wrap">
+{{--                Lấy tin tức--}}
                 @foreach($news as $new)
                 <div class="news_item">
                     <div class="img_wrap">
@@ -53,6 +54,7 @@
                     </div>
                 </div> --}}
             </div>
+{{--            Phân trang--}}
             <div class="Page pagination m-auto">
                 <?php
                 $total = $news->total();

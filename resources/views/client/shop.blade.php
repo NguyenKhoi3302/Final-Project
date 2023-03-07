@@ -77,13 +77,14 @@
             </div>
             <div class="shop_item_wrap grid">
             @foreach($products as $product)
+{{--                Lấy thông tin sản phẩm--}}
                 <div class="item">
                     <div class="prod-popup" id="prod-{{$product->id}}">
                         <div class="bg_close"></div>
                         <div class="popup">
                             <div class="grid-container">
                                 <div class="grid-40">
-                                    <img src="images/uploads/{{ $products->images}}" alt="example-image">
+                                    <img src="{{$product->images}}" alt="example-image">
                                 </div>
                                 <div class="grid-60">
                                     <div class="title_gr">
@@ -121,7 +122,7 @@
                         </div>
                     </div>
                     <figure class="imghvr-zoom-in">
-                        <img src="images/uploads/{{ $products->images }}" alt="example-image">
+                        <img src="{{ asset('/images/prod_img.png') }}" alt="example-image">
                         <figcaption>
                             <div class="icon_wrap">
                                 <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $product->id]) }}">

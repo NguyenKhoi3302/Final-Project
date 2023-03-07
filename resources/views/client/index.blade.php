@@ -61,9 +61,6 @@
     <div class="login_box">
         @if(Auth::check())
             <div class="user_info">
-{{--                <div class="ava_wrap">--}}
-{{--                    <img src="{{asset('images/icon/Frame-18806.png')}}" alt="">--}}
-{{--                </div>--}}
                 <div class="user_name">
                     <h5>{{ $user = Auth::user()->name }}</h5>
                     <span> {{$user = Auth::user()->email}}</span>

@@ -4,28 +4,29 @@
             <div class="grid-container">
                 <div class="grid-40">
                     <div class="feature_img" id="feature_img">
-                        <img src="images/uploads/{{ $products->images}}" alt="example-image">
+                        <img src="{{asset('images/prod_img.png')}}" alt="">
+{{--                        <img src="{{asset('images/prod_img.png')}}" alt="example-image">--}}
                     </div>
                     <div class="box_swiper product_gallery">
                         <div class="swiper singleProduct">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="images/products/prod_img.png" alt="">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="images/products/prod_img.png" alt="">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="images/products/1x1.png" alt="">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="images/products/prod_img.png" alt="">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="images/products/prod_img.png" alt="">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src="images/products/prod_img.png" alt="">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -69,7 +70,7 @@
                                     <i class="fas fa-plus"></i>
                                 </span>
                             </div>
-                            <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}"> 
+                            <a href="#" class="add_to_cart_btn add_cart" data-url="{{ route('addCart', ['id' => $products->id]) }}">
                                 Thêm vào giỏ hàng
                             </a>
                         </div>
@@ -87,7 +88,7 @@
                 <div class="prod_des active" id="mota">
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                    <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg" alt="" width="793" height="339" srcset="https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492.jpg 793w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-300x128.jpg 300w, https://royal.canhcam.asia/wp-content/uploads/2022/11/Rectangle-492-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                    <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://royal.royaltiles.vn/wp-content/uploads/2022/11/Rectangle-492.jpg" alt="" width="793" height="339" srcset="https://royal.royaltiles.vn/wp-content/uploads/2022/11/Rectangle-492.jpg 793w, https://royal.royaltiles.vn/wp-content/uploads/2022/11/Rectangle-492-300x128.jpg 300w, https://royal.royaltiles.vn/wp-content/uploads/2022/11/Rectangle-492-768x328.jpg 768w" sizes="(max-width: 793px) 100vw, 793px"></p>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 </div>
                 <div class="prod_info" id="tt">
@@ -144,7 +145,7 @@
                                     <div class="popup">
                                         <div class="grid-container">
                                             <div class="grid-40">
-                                                <img src="images/products/prod_img.png" alt="example-image">
+                                                <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                             </div>
                                             <div class="grid-60">
                                                 <div class="title_gr">
@@ -180,7 +181,7 @@
                                     </div>
                                 </div>
                                 <figure class="imghvr-zoom-in">
-                                    <img src="images/products/prod_img.png" alt="example-image">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                     <figcaption>
                                         <div class="icon_wrap">
                                             <a title="Thêm vào giỏ hàng" href="#">
@@ -201,7 +202,7 @@
                                 </figure>
                                 <div class="prod_cont">
                                     <div class="prod_name">
-                                        <a href="#">Tên của một cái sản phẩm gì đó ở đây asdfasdf</a>
+                                        <a href="#">Sản phẩm demo  </a>
                                     </div>
                                     <div class="prod_des">
                                         Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -237,7 +238,7 @@
                                     <div class="popup">
                                         <div class="grid-container">
                                             <div class="grid-40">
-                                                <img src="images/uploads/{{ $products->images}}" alt="example-image">
+                                                <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                             </div>
                                             <div class="grid-60">
                                                 <div class="title_gr">
@@ -273,7 +274,7 @@
                                     </div>
                                 </div>
                                 <figure class="imghvr-zoom-in">
-                                    <img src="images/products/prod_img.png" alt="example-image">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                     <figcaption>
                                         <div class="icon_wrap">
                                             <a title="Thêm vào giỏ hàng" href="#">
@@ -294,7 +295,7 @@
                                 </figure>
                                 <div class="prod_cont">
                                     <div class="prod_name">
-                                        <a href="#">Tên của một cái sản phẩm gì đó ở đây asdfasdf</a>
+                                        <a href="#">Sản phẩm demo  </a>
                                     </div>
                                     <div class="prod_des">
                                         Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -330,7 +331,7 @@
                                     <div class="popup">
                                         <div class="grid-container">
                                             <div class="grid-40">
-                                                <img src="images/products/prod_img.png" alt="example-image">
+                                                <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                             </div>
                                             <div class="grid-60">
                                                 <div class="title_gr">
@@ -366,7 +367,7 @@
                                     </div>
                                 </div>
                                 <figure class="imghvr-zoom-in">
-                                    <img src="images/products/prod_img.png" alt="example-image">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                     <figcaption>
                                         <div class="icon_wrap">
                                             <a title="Thêm vào giỏ hàng" href="#">
@@ -387,7 +388,7 @@
                                 </figure>
                                 <div class="prod_cont">
                                     <div class="prod_name">
-                                        <a href="#">Tên của một cái sản phẩm gì đó ở đây asdfasdf</a>
+                                        <a href="#">Sản phẩm demo  </a>
                                     </div>
                                     <div class="prod_des">
                                         Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -423,7 +424,7 @@
                                     <div class="popup">
                                         <div class="grid-container">
                                             <div class="grid-40">
-                                                <img src="images/products/prod_img.png" alt="example-image">
+                                                <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                             </div>
                                             <div class="grid-60">
                                                 <div class="title_gr">
@@ -459,7 +460,7 @@
                                     </div>
                                 </div>
                                 <figure class="imghvr-zoom-in">
-                                    <img src="images/products/prod_img.png" alt="example-image">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                     <figcaption>
                                         <div class="icon_wrap">
                                             <a title="Thêm vào giỏ hàng" href="#">
@@ -480,7 +481,7 @@
                                 </figure>
                                 <div class="prod_cont">
                                     <div class="prod_name">
-                                        <a href="#">Tên của một cái sản phẩm gì đó ở đây asdfasdf</a>
+                                        <a href="#">Sản phẩm demo  </a>
                                     </div>
                                     <div class="prod_des">
                                         Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -516,7 +517,7 @@
                                     <div class="popup">
                                         <div class="grid-container">
                                             <div class="grid-40">
-                                                <img src="images/products/prod_img.png" alt="example-image">
+                                                <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                             </div>
                                             <div class="grid-60">
                                                 <div class="title_gr">
@@ -552,7 +553,7 @@
                                     </div>
                                 </div>
                                 <figure class="imghvr-zoom-in">
-                                    <img src="images/products/prod_img.png" alt="example-image">
+                                    <img src="{{asset('images/prod_img.png')}}" alt="example-image">
                                     <figcaption>
                                         <div class="icon_wrap">
                                             <a title="Thêm vào giỏ hàng" href="#">
@@ -573,7 +574,7 @@
                                 </figure>
                                 <div class="prod_cont">
                                     <div class="prod_name">
-                                        <a href="#">Tên của một cái sản phẩm gì đó ở đây asdfasdf</a>
+                                        <a href="#">Sản phẩm demo  </a>
                                     </div>
                                     <div class="prod_des">
                                         Giải pháp quản lý dành riêng cho tiệm cầm đồ, đáp ứng mô hình kinh doanh đơn lẻ hay hệ thống chuỗi cửa hàng cầm đồ với các chức năng nâng cao
@@ -630,7 +631,7 @@
                         }
                     },
                     error: function (){
-    
+
                     }
                 });
                 // alert('123')
