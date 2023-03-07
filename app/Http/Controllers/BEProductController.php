@@ -16,7 +16,7 @@ class BEProductController extends Controller
     public function index()
     {
         $data = Product::query('products')
-            ->select('products.id','products.name as name','products.price_pay', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
+            ->select('products.id', 'products.name as name', 'products.price_pay', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
                 'products.sex', 'products.appear',
                 'product_categories.name as cate_name', 'brands.name as brand_name')
             ->join('product_categories', 'product_categories.id', '=', 'products.category_id')
@@ -24,6 +24,7 @@ class BEProductController extends Controller
             ->get();
         return view('admin.product.index', compact('data'));
     }
+
 
     public function add()
     {
@@ -42,12 +43,12 @@ class BEProductController extends Controller
         $products->fill([
             'name' => $request->name,
             'brand_id' => $request->brand_id,
-            'category_id'=> $request->category_id,
-            'slug'=> $slug,
+            'category_id' => $request->category_id,
+            'slug' => $slug,
             'contents' => $request->contents,
             'description' => $request->description,
             'price' => $request->price,
-            'price_pay'=> $request->price_pay,
+            'price_pay' => $request->price_pay,
             'discount' => $request->discount,
             'sku' => $sku,
             'sex' => $request->sex,
@@ -74,13 +75,15 @@ class BEProductController extends Controller
 
     }
 
-    public function delete(Request $request){
-         $product = Product::where('id', $request->item_id)->first();
-         $product->delete();
-         return redirect()->back()->with('msg', 'Xóa thành công');
+    public function delete(Request $request)
+    {
+        $product = Product::where('id', $request->item_id)->first();
+        $product->delete();
+        return redirect()->back()->with('msg', 'Xóa thành công');
     }
 
-    public function change_status(Request $request, $id){
+    public function change_status(Request $request, $id)
+    {
         $product = Product::select('appear')->where('id', $id)->first();
         if ($product->appear == 0) {
             $appear = 1;
@@ -95,26 +98,28 @@ class BEProductController extends Controller
 
     }
 
-    public function update(Request $request ,$id){
-            $product = Product::find($id);
-            $categorys = Category::all();
-            $brands = Brands::all();
-           return view('admin/product/edit', compact('product', 'categorys','brands'));
+    public function update(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $categorys = Category::all();
+        $brands = Brands::all();
+        return view('admin/product/edit', compact('product', 'categorys', 'brands'));
     }
 
-    public function update_save(Request $request, $id){
-           $products = Product::find($id);
+    public function update_save(Request $request, $id)
+    {
+        $products = Product::find($id);
         $slug = Str::slug($request->name);
         $sku = 'PROD-' . Carbon::now()->format('YmdHis');
         $products->fill([
             'name' => $request->name,
             'brand_id' => $request->brand_id,
-            'category_id'=> $request->category_id,
-            'slug'=> $slug,
+            'category_id' => $request->category_id,
+            'slug' => $slug,
             'contents' => $request->contents,
             'description' => $request->description,
             'price' => $request->price,
-            'price_pay'=> $request->price_pay,
+            'price_pay' => $request->price_pay,
             'discount' => $request->discount,
             'sku' => $sku,
             'sex' => $request->sex,
