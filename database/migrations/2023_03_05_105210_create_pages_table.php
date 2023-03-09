@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('brands', function (Blueprint $table) {
+        Schema::create('pages', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 50);
-            $table->string('slug', 50);
-            $table->tinyInteger('appear')->default(1);
-            $table->tinyInteger('deleted')->default(0);
-            $table->integer('sort')->unique();
+            $table->
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('brands');
+        Schema::dropIfExists('pages');
     }
 };
