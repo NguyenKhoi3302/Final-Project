@@ -3,17 +3,18 @@
         <section class="section post_detail">
             <div class="grid-container">
                 <div class="grid-66 tablet-grid-100 mobile-grid-100">
+                    {{-- @foreach($list as $kq) --}}
                     <div class="title_group">
 
                         <!--                    <h4 class="sub_title_news">-->
                         <!--                    -->
                         <!--                        Cơ hội việc làm-->
                         <!--                    </h4>-->
-
+                         
                         <h2 class="title_news">
-                            S_Watch và những dự định đổi mới					</h2>
+                            {{$kq->title}}					</h2>
                     </div>
-
+            
                     <div class="nav">
                         <div class="day-view">
                             <div class="day">
@@ -24,7 +25,7 @@
                                     <path d="M3.125 6.875H16.875" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                 </svg>
                                 <p class="day">
-                                    19 - 11 - 2022							</p>
+                                    <?=date('d/m/Y' , strtotime($kq->created_at)) ?>						</p>
                             </div>
 
                         </div>
@@ -70,21 +71,10 @@
 
                     </div>
                     <div class="single_post_excerpt">
-                        Không chỉ tuân thủ hai nguyên tắc trưng bày “phù hợp” và “đúng kỹ thuật”, tủ trưng bày tại Đồng Hồ S_Watch còn vượt qua nhiều tiêu chuẩn khác, đáp ứng và hoàn thiện điều kiện showroom đạt chuẩn Thụy Sỹ.			</div>
+                        {{$kq->summary}}</div>
                     <div class="mota wrap_content">
-                        <p>1. ĐẠT TIÊU CHUẨN TRƯNG BÀY CỦA CÁC HÃNG ĐỒNG HỒ CAO CẤP<br>
-                            Là một đại lý phân phối hàng loạt thương hiệu đồng hồ cao cấp đến từ Thụy Sỹ như Longines, Doxa, Tissot, Rado… Hải Triều hiểu rằng nhóm khách hàng của mình cần nhiều hơn một mẫu đồng hồ chất lượng.</p>
-                        <p>Tiêu chuẩn trưng bày của các hãng đồng hồ cao cấp yêu cầu rõ ràng về số lượng sản phẩm trên kệ, phương pháp đặt để sản phẩm, chất lượng tủ đạt thẩm mỹ..</p>
-                        <p><img decoding="async" loading="lazy" class="aligncenter wp-image-155 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p>2. BẢO QUẢN ĐỒNG HỒ TỐT HƠN<br>
-                            Một trong những tiêu chuẩn khác chính là tủ trưng bày là điều kiện cần cho việc bảo quản một chiếc đồng hồ giá trị.
-
-                            Trong quá trình đồng hồ về tay chủ nhân phù hợp, khách hàng hoàn toàn yên tâm rằng các sản phẩm luôn được bảo quản theo đúng tiêu chuẩn.</p>
-                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-157 size-full" src="hhttps://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p>Từng mẫu đều đặt để trên một giá đỡ đồng hồ tương ứng. Việc đặt trong tủ và kệ trưng bày này hạn chế tác nhân ảnh hưởng từ môi trường bên ngoài.</p>
-                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-161 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
-                        <p>&nbsp;</p>
+                        <p>{{$kq->content}}<br>
+                  &nbsp;</p>
                     </div>
                     <div class="tags">
                         <span>Thẻ:</span>
@@ -93,7 +83,6 @@
                             <li class="tag"><a href="http://127.0.0.1:8000/shop">LONGINES L2.673.4.78.6</a></li>
                         </ul>
                     </div>
-
                 </div>
                 <div class="grid-25 tablet-grid-100 mobile-grid-100">
                     <div class="cat_td more_post">
@@ -208,11 +197,11 @@
                 <div class="box_swiper">
                     <div class="swiper postDetailSwiper">
                         <div class="swiper-wrapper">
-                    @foreach($list as $kq)
+                    @foreach($list as $new)
                             <div class="swiper-slide">
                             <a href="#">
                                 <div class="home_swiper_img">
-                                    <img src="{{asset($kq->image)}}">
+                                    <img src="{{asset($new->image)}}">
                                 </div>
                                 <div class="item_cont">
                                     <div class="date">
@@ -222,7 +211,7 @@
                                             <span><?=date('m/Y' , strtotime($new->created_at)) ?></span>								</div>
                                     </div>
                                     <div class="name" href="#">
-                                        {{$kq->title}}
+                                        {{$new->title}}
                                     </div>
                                 </div>
                             </a>

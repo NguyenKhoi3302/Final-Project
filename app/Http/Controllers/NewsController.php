@@ -17,6 +17,7 @@ class NewsController extends Controller
     }
 
     public function single_news($id){
+        //first() là lấy 1
         $kq = DB::table('news')->WHERE('id', $id)->first();
         $list = DB::table('news')->limit(5)->get();
         $data = ['list'=>$list, 'kq' => $kq];
