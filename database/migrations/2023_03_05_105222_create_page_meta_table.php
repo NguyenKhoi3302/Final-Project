@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('templates', function (Blueprint $table) {
+        Schema::create('page_meta', function (Blueprint $table) {
             $table->id();
-            $table->string('template_name', 100);
-            $table->string('template_code', 100);
-            $table->string('value', 5000);
+            $table->bigInteger('page_id')->unsigned();
+            $table->string('meta_key', 100);
+            $table->string('meta_label', 100);
+            $table->string('meta_type', 50);
+            $table->text('meta_value')->nullable();
             $table->timestamps();
         });
     }

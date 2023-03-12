@@ -54,7 +54,7 @@
                     <a href="/admin/orders" class="waves-effect">
                         {{-- <span class="label label-pill label-warning float-right">8</span>--}}
                         {{-- <span class="menu-arrow"></span>--}}
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="zmdi zmdi-shopping-basket"></i>
                         <span> Đơn hàng </span>
                     </a>
                     {{-- <ul class="list-unstyled">--}}
@@ -79,18 +79,11 @@
                 </li>
                 <li class="text-muted menu-title">More</li>
 
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect">
-                        <span class="menu-arrow"></span>
+                <li>
+                    <a href="/admin/pages" class="waves-effect">
                         <i class="zmdi zmdi-collection-item"></i>
                         <span> Trang </span>
                     </a>
-                    <ul class="list-unstyled">
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                    </ul>
                 </li>
 
                 {{-- <li class="has_sub">--}}

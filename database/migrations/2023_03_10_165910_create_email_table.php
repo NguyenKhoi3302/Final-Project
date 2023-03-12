@@ -13,14 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pages', function (Blueprint $table) {
+        Schema::create('email', function (Blueprint $table) {
             $table->id();
             $table->string('name', 255);
-            $table->string('title', 255);
-            $table->text('description')->nullable();
-            $table->string('keywords', 500)->nullable();
-            $table->string('featured_image',500)->nullable();
-            $table->bigInteger('template_id')->unsigned();
+            $table->string('phone', 10)->nullable();
+            $table->string('email', 255);
+            $table->text('message');
             $table->timestamps();
         });
     }
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pages');
+        Schema::dropIfExists('email');
     }
 };

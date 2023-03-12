@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('description'){{$page->description}}@endsection
+@section('title'){{$page->title}}@endsection
+@section('keywords'){{$page->keywords}}@endsection
 @section('content')
 <section class="shop_container grid-container">
     <div class="shop_aside grid-25">

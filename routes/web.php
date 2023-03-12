@@ -7,18 +7,19 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\CategoryController;
-use \App\Http\Controllers\BECategoryCotroller;
-use \App\Http\Controllers\BEBrandsController;
-use \App\Http\Controllers\BEProductController;
-use \App\Http\Controllers\BEProductCommentController;
-use \App\Http\Controllers\BEProductAttributeController;
+use App\Http\Controllers\BECategoryCotroller;
+use App\Http\Controllers\BEBrandsController;
+use App\Http\Controllers\BEProductController;
+use App\Http\Controllers\BEProductCommentController;
+use App\Http\Controllers\BEProductAttributeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
-use \App\Http\Controllers\BEUserController;
+use App\Http\Controllers\BEUserController;
 use App\Http\Livewire\Admin\RoleComponent;
 use App\Http\Livewire\Admin\PermissionComponent;
+use App\Http\Controllers\PageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,15 +32,17 @@ use App\Http\Livewire\Admin\PermissionComponent;
 */
 
 
-Route::get('/', [NewsController::class, 'home']);
+Route::get('/', [MainController::class, 'index']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 
-Route::get('/news', [NewsController::class, 'index']);
+Route::get('/search', [MainController::class, 'search']);
+Route::get('/news', [MainController::class, 'news']);
 
 Route::get('/single-news/{id}', [NewsController::class, 'single_news'])->name('single-news');
 //Route::get('/', [MainController::class, 'index'])->name('home');
 Route::get('/contact', [MainController::class, 'contact']);
+Route::post('/send-contact', [MainController::class, 'sendContact']);
 Route::get('/about', [MainController::class, 'about']);
 //Route::get('/cart', [MainController::class, 'cart']);
 Route::get('/checkout', [MainController::class, 'checkout']);
@@ -104,6 +107,9 @@ Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_c
 Route::get('/admin/orders', [OrdersController::class, 'index']);
 Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
 
+Route::get('/admin/pages', [PageController::class, 'index']);
+Route::get('/admin/page/update/{id}', [PageController::class, 'update_page']);
+Route::post('/admin/page/update/{id}', [PageController::class, 'update_page_']);
 
 Route::prefix('admin')->group(function (){
 //  categories
