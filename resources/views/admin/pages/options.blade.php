@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xl-12">
                 <div class="page-title-box">
-                    <h4 class="page-title float-left">{{$page->name}}</h4>
+                    <h4 class="page-title float-left">Options</h4>
                     {{--                    <ol class="breadcrumb float-right">--}}
                     {{--                        <li class="breadcrumb-item"><a href="#">Uplon</a></li>--}}
                     {{--                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>--}}
@@ -19,34 +19,7 @@
         </div>
         <div class="row">
             <div class="col-xl-10 m-auto">
-                <form action="/admin/page/update/{{$page->id}}" method="post" class="m-auto">
-                    <h2 class="text-center">SEO</h2>
-                    <div class="seo_group" style="display: flex; flex-wrap: wrap">
-                        <div class="form_parent w_33 pr-3">
-                            <div class="form_group mb-3 w-33">
-                                <label for="id">ID tin</label>
-                                <input name="id" id="id" class="form-control" value="{{$page->id}}" readonly>
-                            </div>
-                            <div class="form_group mb-3">
-                                <label for="name">Tên trang</label>
-                                <input readonly name="name" id="name" class="form-control" value="{{$page->name}}">
-                            </div>
-                            <div class="form_group mb-3">
-                                <label for="title">Tiêu đề SEO</label>
-                                <input name="title" id="title" class="form-control" value="{{$page->title}}">
-                            </div>
-                        </div>
-                        <div class="form_parent w_33 px-3">
-                            <div class="form_group mb-3 w-33">
-                                <label for="keywords">Từ khoá</label>
-                                <textarea rows="8" name="keywords" id="keywords" class="form-control">{{$page->keywords}}</textarea>
-                            </div>
-                        </div>
-                        <div class="form_group mb-3 w_33 pl-3 h-100">
-                            <label for="description">Mô tả</label>
-                            <textarea rows="8" name="description" id="description" class="form-control">{{$page->description}}</textarea>
-                        </div>
-                    </div>
+                <form action="/admin/update_option" method="post" class="m-auto">
                     <div class="content_group">
                         <h3 class="text-center">CONTENT</h3>
                         @foreach($page_meta as $item)
@@ -203,10 +176,10 @@
                                         <h6>{{$item->meta_label}}</h6>
                                         <div class="relationship">
                                             <div class="list_block">
-                                                <ul>
+                                                <ul class="dragable">
                                                     @foreach($products as $pd)
                                                         @if(!in_array($pd->id, json_decode($item->meta_value)))
-                                                            <li data-id="{{$pd->id}}">{{$pd->name}}</li>
+                                                            <li draggable="true" class="sortable-bulk" data-id="{{$pd->id}}">{{$pd->name}}</li>
                                                         @endif
                                                     @endforeach
                                                 </ul>

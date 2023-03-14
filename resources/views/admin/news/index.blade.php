@@ -128,7 +128,6 @@
                                 {{$i}}
                             </a>
                         </li>
-
                     @endfor
                     <li class="next page-item">
                         <a class="page-link" href="{{$news_list->nextPageUrl()}}">

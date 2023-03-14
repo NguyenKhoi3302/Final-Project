@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Mail;
 
 class MainController extends Controller
 {
-
     function index(){
         $page = DB::table('pages')->where('name', 'Trang chủ')->first();
         $page_meta = DB::table('page_meta')->where('page_id', $page->id)->get();
@@ -46,13 +45,15 @@ class MainController extends Controller
                     break;
             }
         }
-        $data = ['products'=>$products, 'news'=>$news ,'page' => $page, 'page_meta' => $page_meta, 'brands' => $brands];
+        $footer = $this->footer();
+        $data = ['footer'=>$footer, 'products'=>$products, 'news'=>$news ,'page' => $page, 'page_meta' => $page_meta, 'brands' => $brands];
         return view("client/home", $data);
     }
     function contact(){
         $page = DB::table('pages')->where('name', 'Liên hệ')->first();
         $page_meta = DB::table('page_meta')->where('page_id', $page->id)->get();
-        $data = ['page' => $page, 'page_meta' => $page_meta];
+        $footer = $this->footer();
+        $data = ['footer'=>$footer, 'page' => $page, 'page_meta' => $page_meta];
         return view("client/contact", $data);
     }
     function sendContact(Request $request){
@@ -91,16 +92,9 @@ class MainController extends Controller
     }
     function about(){
         $page = DB::table('pages')->where('name', 'Giới thiệu')->first();
-        $data = ['page' => $page];
+        $footer = $this->footer();
+        $data = ['footer'=>$footer, 'page' => $page];
         return view("client/about", $data);
-    }
-    function cart(){
-        return view("client/cart");
-    }
-    function checkout(){
-        return view("client/checkout");
-    }
-    function product(){
     }
     function news(){
         $page = DB::table('pages')->where('name', 'Tin tức')->first();
@@ -128,10 +122,9 @@ class MainController extends Controller
                     break;
             }
         }
+        $footer = $this->footer();
         $news = DB::table('news')->where('appear', 1)->Paginate(12);
-
-
-        $data = ['cat'=>$cat, 'news' => $news, 'page'=> $page, 'page_meta' => $page_meta,'hot_news' => $hot_news ];
+        $data = ['footer'=>$footer, 'cat'=>$cat, 'news' => $news, 'page'=> $page, 'page_meta' => $page_meta,'hot_news' => $hot_news ];
         return view('client.news', $data);
     }
     function search(){
@@ -145,7 +138,8 @@ class MainController extends Controller
                 ->where('name', 'LIKE', '%' . $s_val . '%')
                 ->orWhere('content', 'LIKE', '%' . $s_val . '%')
                 ->get();
-            $data = ['pd_list' => $pd_list, 'news_list' => $news_list];
+            $footer = $this->footer();
+            $data = ['footer'=>$footer, 'pd_list' => $pd_list, 'news_list' => $news_list];
             return view("client/search", $data);
         }
         else{

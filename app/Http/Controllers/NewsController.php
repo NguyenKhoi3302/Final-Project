@@ -13,13 +13,10 @@ class NewsController extends Controller
     public function single_news($id){
         $kq = DB::table('news')->WHERE('id', $id)->first();
         $list = DB::table('news')->limit(5)->get();
-        $data = ['list'=>$list, 'kq' => $kq];
+        $footer = $this->footer();
+        $data = ['footer'=>$footer, 'list'=>$list, 'kq' => $kq];
         return view("client.single-news", $data);
     }
-
-//    public function home(){
-//        return view("client.home", $data);
-//    }
     function news_list(){
         $news_list = DB::table('news')
             ->orderBy('id','desc')

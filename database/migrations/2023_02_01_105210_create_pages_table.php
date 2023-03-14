@@ -14,13 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id')->autoIncrement();
             $table->string('name', 255);
             $table->string('title', 255);
             $table->text('description')->nullable();
             $table->string('keywords', 500)->nullable();
             $table->string('featured_image',500)->nullable();
-            $table->bigInteger('template_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -62,8 +62,19 @@
                         {{-- <li><a href="/admin/users/add">Thêm người dùng mới</a></li>--}}
                         {{-- </ul>--}}
                 </li>
-                <li class="text-muted menu-title">Người dùng</li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <span class="menu-arrow"></span>
+                        <i class="zmdi zmdi-ticket-star"></i>
 
+                        <span> Mã giảm giá </span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li><a href="/admin/coupon">Danh sách mã</a></li>
+                        <li><a href="/admin/coupon/add">Thêm mã mới</a></li>
+                    </ul>
+                </li>
+                <li class="text-muted menu-title">Người dùng</li>
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect">
                         {{-- <span class="label label-pill label-warning float-right">8</span>--}}
@@ -79,10 +90,21 @@
                 </li>
                 <li class="text-muted menu-title">More</li>
 
-                <li>
-                    <a href="/admin/pages" class="waves-effect">
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <span class="menu-arrow"></span>
                         <i class="zmdi zmdi-collection-item"></i>
                         <span> Trang </span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li><a href="/admin/pages">Danh sách trang</a></li>
+                        <li><a href="/admin/option">Cài đặt chung</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/contact" class="waves-effect">
+                        <i class="zmdi zmdi-email"></i>
+                        <span> Form liên hệ </span>
                     </a>
                 </li>
 

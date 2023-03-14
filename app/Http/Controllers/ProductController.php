@@ -13,11 +13,14 @@ class ProductController extends Controller
         $products = DB::table('products')->orderBy('created_at', 'desc')->Paginate(12);
         $cats = DB::table('product_categories')->get();
         $brands = DB::table('brands')->get();
-        $data = ['products'=>$products, 'cats' => $cats, 'brands' => $brands, 'page'=>$page];
+        $footer = $this->footer();
+        $data = ['footer'=> $footer, 'products'=>$products, 'cats' => $cats, 'brands' => $brands, 'page'=>$page];
         return view('client.shop', $data);
     }
     function single_product($id){
         $products = Products::find($id);
-        return view("client.single-product", compact('products'));
+        $footer = $this->footer();
+        $data = ['footer'=> $footer, 'products' => $products];
+        return view("client.single-product", $data);
     }
 }

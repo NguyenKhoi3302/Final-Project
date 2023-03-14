@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('product_comments', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('product_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
+            $table->integer('id')->autoIncrement();
+            $table->integer('product_id');
+            $table->integer('user_id');
             $table->text('message');
             $table->tinyInteger('appear')->default(1);
             $table->timestamps();
-            // $table->foreign('product_id')->references('id')->on('products');
-            // $table->foreign('user_id')->references('id')->on('users');
+             $table->foreign('product_id')->references('id')->on('products');
+             $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -45,7 +45,7 @@
             left: 50%;
             bottom: -150px;
             transform: translateX(-50%);
-            background-image: url({{asset('images/envelop.png')}});
+            background-image: url('https://beeswatch.online/img/envelop.png');
             background-size: cover;
             background-repeat: no-repeat;
             z-index: -1;

@@ -1,7 +1,72 @@
 $(document).ready(function (){
-    ChangeToSlug()
-})
+    ChangeToSlug();
+    $(document).delegate(".relationship > .list_block > ul > li","click",function(e){
+        e.preventDefault()
+        //code lấy dữ liệu khi click
+        var value = $(this);
+        var id = $(this).attr('data-id');
+        var data = $(this).parents(".relationship").next().val();
+        //code xử lý dữ liệu
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            data.push(id);
+        }
+        else{
+            var data = []
+        }
+        //code xuất dữ liệu
+        $(this).parents(".relationship").next().val(data);
+        $(this).parents(".list_block").next().children().append(value);
+    })
+    // $(".relationship > .chose > ul > li").click(function(e){
+    $(document).delegate(".relationship > .chose > ul > li","click",function(e){
+        e.preventDefault()
+        //code lấy dữ liệu khi click
+        var value = $(this);
+        var id = $(this).attr('data-id');
+        var data = $(this).parents(".relationship").next().val();
+        //code xử lý dữ liệu
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            var index = data.indexOf(id);
+            data.splice(index, 1);
+        }
+        //code xuất dữ liệu
+        $(this).parents(".relationship").next().val(data);
+        $(this).parents(".chose").prev().children().append(value);
+    })
 
+
+    var dragging = null;
+    document.addEventListener('dragstart', function(event) {
+        dragging = event.target;
+        var id = event.target.getAttribute('data-id');
+
+        event.dataTransfer.setData('text/html', dragging);
+    });
+
+    document.addEventListener('dragover', function(event) {
+        event.preventDefault();
+    });
+
+    document.addEventListener('dragenter', function(event) {
+        event.target.style['border-bottom'] = 'solid 2px #93ddf5';
+    });
+
+    document.addEventListener('dragleave', function(event) {
+        event.target.style['border-bottom'] = '';
+    });
+
+    document.addEventListener('drop', function(event) {
+        event.preventDefault();
+        event.target.style['border-bottom'] = '';
+        var id = event.target.getAttribute('data-id');
+        event.target.parentNode.insertBefore(dragging, event.target.nextSibling);
+    });
+})
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
 function ChangeToSlug() {
     $("input.title_input").keyup(function (e) {
         e.preventDefault();
