@@ -26,11 +26,8 @@ return new class extends Migration
             $table->text('content'); // Nội dung
             $table->string('keywords', 500)->nullable(); // Từ khoá SEO
             $table->integer('price'); // Giá sản phẩm
-//            $table->bigInteger('price_pay')->nullable(); // Giá đã giảm
             $table->integer('discount'); // Giảm giá
             $table->string('sku', 100); //
-//            $table->tinyInteger('sex',)->default(0);
-//            $table->tinyInteger('deleted')->default(0);
             $table->tinyInteger('appear')->default(1); // Ẩn hiện
             $table->timestamps();
              $table->foreign('product_category_id')->references('id')->on('product_categories');

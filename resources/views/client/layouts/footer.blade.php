@@ -24,6 +24,9 @@
         @case('choose_link_footer')
             @php $choose_link_footer = json_decode($item->meta_value) @endphp
             @break
+        @case('map_iframe_footer')
+            @php  $map_iframe_footer = $item->meta_value @endphp
+            @break
     @endswitch
 @endforeach
 <div class="inside_footer grid-container">
@@ -54,7 +57,7 @@
       </div>
       <div class="footer_map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.4607203898763!2d106.62490081424649!3d10.852520060753443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b161f50ae47%3A0x2328d1d1acc3b11a!2sFPT%20Polytechnic%20-%20T%C3%B2a%20F!5e0!3m2!1svi!2s!4v1671463256338!5m2!1svi!2s"
+          src="{{$map_iframe_footer}}"
           width="400" height="160" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>

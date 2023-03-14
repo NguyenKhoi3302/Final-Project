@@ -522,6 +522,13 @@ class metaSeeder extends Seeder
                 ],
                 [
                     'page_id' => '999',
+                    'meta_key' => 'map_iframe_footer',
+                    'meta_label' => 'Nhập link google map footer',
+                    'meta_type' => 'text',
+                    'meta_value' => 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1142.747860532402!2d106.62735183129713!3d10.852960517212846!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752b161f50ae47%3A0x2328d1d1acc3b11a!2sFPT%20Polytechnic%20-%20T%C3%B2a%20F!5e0!3m2!1svi!2s!4v1678504320294!5m2!1svi!2s',
+                ],
+                [
+                    'page_id' => '999',
                     'meta_key' => 'phone_footer',
                     'meta_label' => 'Nhập số điện thoại footer',
                     'meta_type' => 'text',
@@ -546,7 +553,7 @@ class metaSeeder extends Seeder
                     'meta_key' => 'copyright',
                     'meta_label' => 'Nhập copyright',
                     'meta_type' => 'text',
-                    'meta_value' => 'Copyright © 2023'
+                    'meta_value' => 'Copyright © 2023',
                 ],
                 [
                     'page_id' => '999',
@@ -604,7 +611,7 @@ class metaSeeder extends Seeder
                                 'child_value' => [
                                     'url' => 'images/icon/zalo.png',
                                     'alt' => '',
-                                ],
+                                ]
                             ],
                             [
                                 'child_key' => 'link',
@@ -625,7 +632,7 @@ class metaSeeder extends Seeder
                                 'child_value' => [
                                     'url' => 'images/icon/youtube.png',
                                     'alt' => '',
-                                ],
+                                ]
                             ],
                             [
                                 'child_key' => 'link',
@@ -640,6 +647,64 @@ class metaSeeder extends Seeder
                         ]
                     ]),
                 ],
+                [
+                    'page_id' => '999',
+                    'meta_key' => 'choose_pd_cat_footer',
+                    'meta_label' => 'Chọn danh mục sản phẩm footer',
+                    'meta_type' => 'pd_cat',
+                    'meta_value' => json_encode([1,2,3,4])
+                ],
+                [
+                    'page_id' => '999',
+                    'meta_key' => 'choose_news_cat_footer',
+                    'meta_label' => 'Chọn danh mục tin tức footer',
+                    'meta_type' => 'news_cat',
+                    'meta_value' => json_encode([1,2,3,4])
+                ],
+                [
+                    'page_id' => '999',
+                    'meta_key' => 'choose_link_footer',
+                    'meta_label' => 'Nhập link footer',
+                    'meta_type' => 'repeater',
+                    'meta_value' => json_encode([
+                        [
+                            [
+                                'child_key' => 'link',
+                                'child_label' => 'Nhập link',
+                                'child_type' => 'link',
+                                'child_value'=> [
+                                    'url' => 'http://127.0.0.1:8000/',
+                                    'title' => 'Trang chủ',
+                                    'target' => ''
+                                ]
+                            ],
+                        ],
+                        [
+                            [
+                                'child_key' => 'link',
+                                'child_label' => 'Nhập link',
+                                'child_type' => 'link',
+                                'child_value'=> [
+                                    'url' => 'http://127.0.0.1:8000/contact',
+                                    'title' => 'Liên hệ',
+                                    'target' => '_blank'
+                                ]
+                            ],
+                        ],
+                        [
+                            [
+                                'child_key' => 'link',
+                                'child_label' => 'Nhập link',
+                                'child_type' => 'link',
+                                'child_value'=> [
+                                    'url' => 'http://127.0.0.1:8000/shop',
+                                    'title' => 'Sản phẩm',
+                                    'target' => '_blank'
+                                ]
+                            ],
+                        ]
+                    ])
+                ]
             ]
         );
     }

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name', 50);
             $table->string('email', 100);
             $table->string('password', 255);
-            $table->string('avatar', 100)->nullable();
-            $table->integer('phone');
+            $table->string('avatar', 100)->default('images/avatar/default_ava.png');
+            $table->string('phone', 10);
             $table->string('address', 100)->nullable();
             $table->string('description', 50)->nullable();
             $table->string('remember_token')->nullable();

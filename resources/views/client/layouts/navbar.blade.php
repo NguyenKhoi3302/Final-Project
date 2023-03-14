@@ -1,3 +1,10 @@
+@foreach($footer['footer_meta'] as $item)
+    @switch($item->meta_key)
+        @case('logo_page')
+            @php $logo = json_decode($item->meta_value) @endphp
+            @break
+    @endswitch
+@endforeach
 <div class="inside_header grid-container">
   <div class="wrap_search_popup text_center">
     <div class="bg_close"></div>
@@ -17,7 +24,7 @@
   </div>
   <div class="logo">
     <a href="{{url('/')}}">
-      <img src="{{asset('images/logo/page_logo_2.png')}}" alt="">
+      <img src="{{asset($logo->url)}}" alt="">
     </a>
   </div>
   <div class="primary_menu">

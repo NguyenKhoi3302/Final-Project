@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug', 100)->unique();
             $table->string('description', 1000)->nullable();
             $table->string('keywords', 500)->nullable();
+            $table->string('image', 100)->nullable();
             $table->tinyInteger('appear')->default(1);
             $table->integer('sort')->unique();
             $table->timestamps();
