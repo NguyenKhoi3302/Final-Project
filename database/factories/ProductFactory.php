@@ -20,16 +20,18 @@ class ProductFactory extends Factory
         $name = $this->faker->unique()->word();
         $slug = Str::slug($name . '-' . Str::random(6));
         return [
-            'brand' => $this->faker->randomElement([ 1, 2,3,4,5]),
-            'product_category' => $this->faker->randomElement([ 1, 2,3,4,5]),
+            'brand_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
+            'category_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
+//            'product_category_id' => $this->faker->randomElement([ 1, 2,3,4,5]),
             'name' => $name,
             'slug' => $slug,
             'images' => $this->faker->imageUrl(),
             'view' => $this->faker->numberBetween(0, 1000),
             'bought' => $this->faker->numberBetween(0, 1000),
             'description' => $this->faker->paragraph(),
-            'content' => $this->faker->text(),
+            'contents' => $this->faker->text(),
             'price' => $this->faker->numberBetween(10000, 1000000),
+            'price_pay' => $this->faker->randomFloat(2, 0, 1),
             'discount' => $this->faker->randomFloat(2, 0, 1),
             'sku' => $this->faker->unique()->isbn10(),
             'sex' => $this->faker->randomElement([0, 1, 2]),

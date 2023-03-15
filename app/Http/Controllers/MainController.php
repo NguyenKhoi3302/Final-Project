@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\products;
+use DB;
 
 class MainController extends Controller
 {
 
     function index(){
         return view("client/home");
-    }
-    function shop(){
-        return view("client/shop");
     }
     function contact(){
         return view("client/contact");
@@ -26,18 +25,11 @@ class MainController extends Controller
         return view("client/checkout");
     }
     function product(){
-        return view("client/single-product");
     }
     function news(){
         return view("client/news");
     }
     function single_news(){
         return view("client/single-news");
-    }
-    function single_product(){
-        return view("client/single-product");
-    }
-    function account_profile(){
-        return view("client/account-profile");
     }
 }

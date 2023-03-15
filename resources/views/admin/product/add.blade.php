@@ -1,148 +1,148 @@
-@extends('admin.layouts.admin')
+@extends('layouts.admin')
 @section('admin_content')
-    <div class="row">
-        <div class="col-12">
-            <div class="card-box">
-                <h4 style="text-align: center" class="header-title m-t-0 m-b-30">THÊM MỚI SẢN PHẨM</h4>
-                <div class="row">
-                    <div class="col">
-                        <form action="{{url('admin/product/save')}}" method="post" enctype="multipart/form-data"
-                              id="frm-add-product" class="frm-add-product">
-                            @csrf
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label style=" color: red;" for="exampleInputEmail1">* TÊN SẢN PHẨM</label>
-                                            <input required type="text" name="name" autofocus class="form-control"
-                                                   id="exampleInputEmail1" placeholder="Nhập tên sản phẩm">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label style=" color: red;" for="exampleInputEmail1">* NHÓM SẢN PHẨM</label>
-                                            <select name="category_id" class="custom-select mb-3">
-                                                <option selected>chọn tại đây...</option>
-                                                @foreach($categorys as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
+<div class="row">
+    <div class="col-12">
+        <div class="card-box">
+            <h4 style="text-align: center" class="header-title m-t-0 m-b-30">THÊM MỚI SẢN PHẨM</h4>
+            <div class="row">
+                <div class="col">
+                    <form action="{{url('admin/product/save')}}" method="post" enctype="multipart/form-data"
+                        id="frm-add-product" class="frm-add-product">
+                        @csrf
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label style=" color: red;" for="exampleInputEmail1">* TÊN SẢN PHẨM</label>
+                                        <input required type="text" name="name" autofocus class="form-control"
+                                            id="exampleInputEmail1" placeholder="Nhập tên sản phẩm">
+                                    </fieldset>
+                                </div>
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label style=" color: red;" for="exampleInputEmail1">* NHÓM SẢN PHẨM</label>
+                                        <select name="category_id" class="custom-select mb-3">
+                                            <option selected>chọn tại đây...</option>
+                                            @foreach($categorys as $category)
+                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
 
-                                            </select>
-                                        </fieldset>
-                                    </div>
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label style=" color: red;" for="exampleInputEmail1">* THƯƠNG HIỆU</label>
-                                            <select name="brand_id" class="custom-select mb-3">
-                                                <option selected>chọn tại đây...</option>
-                                                @foreach($brands as $brand)
-                                                    <option value="{{$brand->id}}">{{$brand->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </fieldset>
-                                    </div>
+                                        </select>
+                                    </fieldset>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* GIÁ (VND)</label>
-                                            <input required type="number" name="price" onkeyup="calculatePrice()"
-                                                   class="form-control currency money_format ">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* GIẢM GIA (%)</label>
-                                            <input required type="number" name="discount"   onkeyup="calculatePrice()"
-                                                   class="form-control number_format">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* GIÁ SAU KHI GIẢM (VND)</label>
-                                            <input required type="number" name="price_pay"
-                                                   class="form-control money_pay">
-                                        </fieldset>
-                                    </div>
-
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label style=" color: red;" for="exampleInputEmail1">* THƯƠNG HIỆU</label>
+                                        <select name="brand_id" class="custom-select mb-3">
+                                            <option selected>chọn tại đây...</option>
+                                            @foreach($brands as $brand)
+                                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </fieldset>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* MÔ TẢ SẢN PHẨM</label>
-                                            <textarea class="c-tinymce" name="description" rows="5"></textarea>
-                                        </fieldset>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* GIÁ (VND)</label>
+                                        <input required type="number" name="price" onkeyup="calculatePrice()"
+                                            class="form-control currency money_format ">
+                                    </fieldset>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* NỘI DUNG SẢN PHẨM</label>
-                                            <textarea class="c-tinymce" name="contents" rows="5"></textarea>
-                                        </fieldset>
-                                    </div>
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* GIẢM GIA (%)</label>
+                                        <input required type="number" name="discount" onkeyup="calculatePrice()"
+                                            class="form-control number_format">
+                                    </fieldset>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* ẢNH ĐẠI DIỆN</label>
-                                            <input required class="form-control form-control-sm" id="formFileSm" name="images"
-                                                   type="file">
-                                        </fieldset>
-                                    </div>
-                                    <div class="col">
-                                        <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* SẢN PHẨM DÀNH CHO</label>
-                                            <div style="padding-top: 10px" class="row">
-                                                <div class="col-md-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="sex"
-                                                               id="gender_1" value="1">
-                                                        <label class="form-check-label" for="gender_1">
-                                                            Nam
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="sex"
-                                                               id="gender_2" value="2">
-                                                        <label class="form-check-label" for="gender_2">
-                                                            Nữ
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="radio" name="sex"
-                                                               id="gender_0" value="0" checked>
-                                                        <label class="form-check-label" for="gender_0">
-                                                            Nam và Nữ
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </fieldset>
-                                    </div>
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* GIÁ SAU KHI GIẢM (VND)</label>
+                                        <input required type="number" name="price_pay" class="form-control money_pay">
+                                    </fieldset>
                                 </div>
-                                <hr>
-                                <button type="reset" class="btn btn-danger waves-effect waves-light">Resets</button>
-                                <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
 
                             </div>
-                        </form>
-                    </div><!-- end col -->
+                            <div class="row">
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* MÔ TẢ SẢN PHẨM</label>
+                                        <textarea class="c-tinymce" name="description" rows="5"></textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* NỘI DUNG SẢN PHẨM</label>
+                                        <textarea class="c-tinymce" name="contents" rows="5"></textarea>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* ẢNH ĐẠI DIỆN</label>
+                                        <input required class="form-control form-control-sm" id="formFileSm"
+                                            name="images" type="file">
+                                    </fieldset>
+                                </div>
+                                <div class="col">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputEmail1">* SẢN PHẨM DÀNH CHO</label>
+                                        <div style="padding-top: 10px" class="row">
+                                            <div class="col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="sex"
+                                                        id="gender_1" value="1">
+                                                    <label class="form-check-label" for="gender_1">
+                                                        Nam
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="sex"
+                                                        id="gender_2" value="2">
+                                                    <label class="form-check-label" for="gender_2">
+                                                        Nữ
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="radio" name="sex"
+                                                        id="gender_0" value="0" checked>
+                                                    <label class="form-check-label" for="gender_0">
+                                                        Nam và Nữ
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+                            <hr>
+                            <button type="reset" class="btn btn-danger waves-effect waves-light">Resets</button>
+                            <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
 
-                </div><!-- end row -->
-            </div>
-        </div><!-- end col -->
-    </div>
+                        </div>
+                    </form>
+                </div><!-- end col -->
+
+            </div><!-- end row -->
+        </div>
+    </div><!-- end col -->
+</div>
 @endsection
 @push('js')
-    <script src="https://cdn.tiny.cloud/1/uia8on2oc5ua75809jee46xcvbpkgb46y5e3bzw1hm6et9wc/tinymce/5/tinymce.min.js"></script>
-    <script src="{{url('assets')}}/cutstom-js/product.js"></script>
-    <script>
-        $(document).ready(function () {
+<script src="https://cdn.tiny.cloud/1/uia8on2oc5ua75809jee46xcvbpkgb46y5e3bzw1hm6et9wc/tinymce/5/tinymce.min.js">
+</script>
+<script src="{{url('assets')}}/cutstom-js/product.js"></script>
+<script>
+    $(document).ready(function () {
             @if (Session::has('msg'))
             toastr.success('{{ Session::get('msg') }}');
             @elseif(Session::has('success'))
@@ -188,7 +188,5 @@
                 xhr.send(formData);
             },
         });
-    </script>
+</script>
 @endpush
-
-

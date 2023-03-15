@@ -13,16 +13,59 @@ use Illuminate\Support\Str;
 
 class BEProductController extends Controller
 {
+
+    public function filter(Request $request)
+    {
+
+       $price_range = $request->input('price_range');
+        $category_id = $request->input('category_id');
+        $brand_id = $request->input('brand_id');
+        $search = $request->input('search');
+        $appear = $request->input('appear');
+        $data = Product::select('products.id', 'products.name as product_name', 'products.view', 'products.price_pay', 'products.images', 'products.bought', 'products.price', 'products.discount',
+            'products.sex', 'products.appear',
+            'product_categories.name as cate_name', 'brands.name as brand_name')
+            ->from('products')
+            ->join('product_categories', 'product_categories.id', '=', 'products.pr_category_id')
+            ->join('brands', 'brands.id', '=', 'products.brand_id')
+            ->when($category_id, function ($query) use ($category_id) {
+                return $query->where('products.pr_category_id', $category_id);
+            })
+            ->when($brand_id, function ($query) use ($brand_id) {
+                return $query->where('products.brand_id', $brand_id);
+            })
+            ->when($appear, function ($query) use ($appear) {
+                return $query->where('products.appear', $appear);
+            })
+            ->when($search, function ($query) use ($search) {
+                return $query->where('products.name', 'like', "%$search%");
+            })
+            ->when($price_range , function ($query) use ($price_range) {
+                return $query->where('price', '<=', $price_range);
+            })
+            ->get();
+
+        $html = view('Modals.back_end.product_load')
+            ->with('products_load', $data)
+            ->render();
+        return response()->json(['BODY' => $html]);
+
+    }
+
     public function index()
     {
         $data = Product::query('products')
-            ->select('products.id', 'products.name as name', 'products.price_pay', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
+
+//            ->select('products.id','products.name as name','products.price_pay', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
+            ->select('products.id', 'products.name as name', 'products.view', 'products.price_pay', 'products.images', 'products.bought', 'products.price', 'products.discount',
                 'products.sex', 'products.appear',
                 'product_categories.name as cate_name', 'brands.name as brand_name')
-            ->join('product_categories', 'product_categories.id', '=', 'products.category_id')
+            ->join('product_categories', 'product_categories.id', '=', 'products.pr_category_id')
             ->join('brands', 'brands.id', '=', 'products.brand_id')
-            ->get();
-        return view('admin.product.index', compact('data'));
+            ->paginate();
+        $brand = Brands::all();
+        $Cate = Category::all();
+        return view('admin.product.index', compact('data', 'brand', 'Cate'));
     }
 
 
@@ -43,7 +86,7 @@ class BEProductController extends Controller
         $products->fill([
             'name' => $request->name,
             'brand_id' => $request->brand_id,
-            'category_id' => $request->category_id,
+            'pr_category_id' => $request->pr_category_id,
             'slug' => $slug,
             'contents' => $request->contents,
             'description' => $request->description,
@@ -114,7 +157,7 @@ class BEProductController extends Controller
         $products->fill([
             'name' => $request->name,
             'brand_id' => $request->brand_id,
-            'category_id' => $request->category_id,
+            'pr_category_id' => $request->pr_category_id,
             'slug' => $slug,
             'contents' => $request->contents,
             'description' => $request->description,

@@ -1,4 +1,4 @@
-@extends('client/index')
+@extends('layouts.guest')
 @section('content')
     <section class="section account_profile">
         <div class="grid-container">
