@@ -3,7 +3,6 @@
 
 <head>
     @include('admin.layouts.head')
-    <title>@yield('title')</title>
 </head>
 
 <body class="fixed-left">

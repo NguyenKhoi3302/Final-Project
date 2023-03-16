@@ -16,8 +16,7 @@ class BEProductController extends Controller
     public function index()
     {
         $data = Product::query('products')
-//            ->select('products.id','products.name as name','products.price_pay', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
-            ->select('products.id','products.name as name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
+            ->select('products.id','products.name as name','products.price_pay', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
                 'products.sex', 'products.appear',
                 'product_categories.name as cate_name', 'brands.name as brand_name')
             ->join('product_categories', 'product_categories.id', '=', 'products.product_category_id')
