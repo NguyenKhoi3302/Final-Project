@@ -82,7 +82,7 @@
         </div>
     </div>
 </section>
-<section class="single_product_2">
+<section class="single_product_2 section">
     <ul>
         <li class="active" id="mota">Mô tả</li>
         <li id="tt" class="">Thông tin chi tiết</li>
@@ -152,7 +152,7 @@
         </div>
     </div>
 </section>
-<section class="single_product_3">
+<section class="single_product_3 section">
     <div class="section_heading text_center">
         <div class="title_group">
             <div class="bg_title">Related</div>
