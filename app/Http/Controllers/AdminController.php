@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Media;
+use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use DB;
 use App\Models\coupon;
@@ -51,5 +53,49 @@ class AdminController extends Controller
 
         $c->delete();
         return redirect("admin/coupon");
+    }
+    function media(){
+        $medias = DB::table('media')->get();
+        return view('admin/media/index', compact('medias'));
+    }
+    function upload(Request $request){
+        $array = [];
+        foreach ($request->file('image') as $key => $img){
+            $imageName = str_replace(" ","-" ,$img->getClientOriginalName());
+            $img->move(public_path('images'), $imageName);
+            $array[] = [
+                'name' => $imageName,
+                'url' => 'images/'.$imageName,
+            ];
+        }
+        Media::insert($array);
+        session()->flash('success', 'Image Upload successfully');
+
+        return redirect()->route('admin.media');
+    }
+
+    public function popup(){
+        $media = DB::table('media')->get();
+        return view('admin/media/list', compact('media'));
+    }
+    public function img_detail($id){
+        $image = DB::table('media')->where('id', $id)->first();
+        return view('admin/media/detail', compact('image'));
+    }
+
+    public function update_img($id){
+        $img = Media::find($id);
+        $img->alt = $_POST['alt'];
+
+        $img->save();
+        return  redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function delete_img($id){
+        $img = Media::find($id);
+
+        $img->delete();
+        File::delete(public_path($img->url));
+
+        return  redirect('admin/media');
     }
 }

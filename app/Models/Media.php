@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class NewsCategories extends Model
+class Media extends Model
 {
     use HasFactory;
-    protected $table = 'news_categories';
+    protected $table = 'media';
     protected $primaryKey = 'id';
     protected $dates = ['created_at'];
     protected $fillable =[
-        'name',
-        'slug',
-        'sort',
-        'appear',
-        'updated_at'
+        'name', 'url', 'alt', 'updated_at'
     ];
 }

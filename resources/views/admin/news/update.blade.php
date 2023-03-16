@@ -29,11 +29,18 @@
                     </div>
                     <div class="form_group mb-3">
                         <label for="title">Tiêu đề tin</label>
-                        <input name="title" id="title" class="form-control" value="{{$news->title}}">
+                        <input name="title" id="title" class="form-control title_input" value="{{$news->title}}">
                     </div>
                     <div class="form_group mb-3">
-                        <label for="image">Link hình ảnh</label>
-                        <input name="image" id="image" class="form-control" value="{{$news->image}}">
+                        <label for="slug">Slug</label>
+                        <input name="slug" id="slug" class="form-control slug_output" value="{{$news->slug}}">
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="image">Chọn ảnh</label>
+                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn">Chọn hình ảnh</a>
+                        <img src="{{json_decode($news->image)->url}}" class="img_result">
+                        <input type="hidden" name="image_src" class="form-control src_result">
+                        <input type="hidden" name="image_alt" class="form-control alt_result">
                     </div>
                     <div class="form_group mb-3">
                         <label for="summary">Tóm tắt</label>
@@ -42,6 +49,10 @@
                     <div class="form_group mb-3">
                         <label for="content">Nội dung tin</label>
                         <textarea name="content" id="content" rows="10" class="form-control">{{$news->content}}</textarea>
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="keywords">Từ khoá SEO</label>
+                        <textarea name="keywords" id="keywords" class="form-control">{{$news->keywords}}</textarea>
                     </div>
                     <div class="form_group mb-3">
                         <label for="category_id">Loại tin</label>

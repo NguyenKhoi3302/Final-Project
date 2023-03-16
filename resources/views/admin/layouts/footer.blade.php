@@ -1,3 +1,27 @@
+<div id="media_wrap" class="popup_full">
+    <div class="bg_dark"></div>
+    <div class="list_img">
+        <div class="title">
+            <h4>Chi tiết hình ảnh</h4>
+            <div class="close_btn">
+                <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15 9L9 15" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M15 15L9 9" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+        </div>
+        <div class="media_gallery" id="popup_gallery">
+
+        </div>
+        <div class="img_info">
+            <img src="" class="thumbnail">
+            <div id="img_info">
+
+            </div>
+            <button class="btn btn-primary choose_btn" data-src="" data-alt="">Chọn</button>
+        </div>
+    </div>
+</div>
 <!-- following js will activate the menu in left side bar based on url -->
 <script type="text/javascript">
   // === following js will activate the menu in left side bar based on url ====

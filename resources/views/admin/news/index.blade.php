@@ -4,18 +4,15 @@
 @endsection
 @section('admin_content')
     <div class="container-fluid">
-
         <div class="row">
             <div class="col-xl-12">
                 <div class="page-title-box">
                     <h4 class="page-title float-left">Tin tức</h4>
-
 {{--                    <ol class="breadcrumb float-right">--}}
 {{--                        <li class="breadcrumb-item"><a href="#">Uplon</a></li>--}}
 {{--                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>--}}
 {{--                        <li class="breadcrumb-item active">Dashboard</li>--}}
 {{--                    </ol>--}}
-
                     <div class="clearfix"></div>
                 </div>
             </div>

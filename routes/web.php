@@ -153,5 +153,13 @@ Route::prefix('admin')->group(function (){
 
     Route::get('/role', RoleComponent::class)->name('admin.user.role');
     Route::get('/permission', PermissionComponent::class)->name('admin.user.permission');
+
+// Media
+    Route::get('/media',[AdminController::class, 'media'])->name('admin.media');
+    Route::post('/media/upload',[AdminController::class, 'upload'])->name('admin.media.upload');
+    Route::get('/media/img_full/{id}',[AdminController::class, 'img_detail'])->name('admin.media.full');
+    Route::post('/media/update/{id}',[AdminController::class, 'update_img'])->name('admin.media.update');
+    Route::get('/media/delete/{id}',[AdminController::class, 'delete_img'])->name('admin.media.delete');
+    Route::get('/media/popup',[AdminController::class, 'popup'])->name('admin.media.popup');
 });
 

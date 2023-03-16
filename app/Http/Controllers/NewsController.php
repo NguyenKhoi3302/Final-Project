@@ -35,8 +35,13 @@ class NewsController extends Controller
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
         $n->user_id = 1;
-        $n->image = $_POST['image'];
+        $n->image = json_encode([
+            'url' => $_POST['image_src'],
+            'alt' => $_POST['image_alt'],
+        ]);
         $n->title = $_POST['title'];
+        $n->slug = $this->slugConvert($_POST['slug']);
+        $n->keywords = $_POST['keywords'];
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
@@ -75,11 +80,16 @@ class NewsController extends Controller
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
         $n->user_id = 1;
-        $n->image = $_POST['image'];
+        $n->image = json_encode([
+            'url' => $_POST['image_src'],
+            'alt' => $_POST['image_alt'],
+        ]);
         $n->title = $_POST['title'];
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
+        $n->slug = $this->slugConvert($_POST['slug']);
+        $n->keywords = $_POST['keywords'];
         $n->save();
         return redirect('admin/news');
     }

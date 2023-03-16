@@ -1,42 +1,26 @@
 $(document).ready(function (){
     ChangeToSlug();
-    $(document).delegate(".relationship > .list_block > ul > li","click",function(e){
-        e.preventDefault()
-        //code lấy dữ liệu khi click
-        var value = $(this);
-        var id = $(this).attr('data-id');
-        var data = $(this).parents(".relationship").next().val();
-        //code xử lý dữ liệu
-        if(data != '' && data != null && data != undefined){
-            var data = data.trim().split(',');
-            data.push(id);
-        }
-        else{
-            var data = []
-        }
-        //code xuất dữ liệu
-        $(this).parents(".relationship").next().val(data);
-        $(this).parents(".list_block").next().children().append(value);
-    })
-    // $(".relationship > .chose > ul > li").click(function(e){
-    $(document).delegate(".relationship > .chose > ul > li","click",function(e){
-        e.preventDefault()
-        //code lấy dữ liệu khi click
-        var value = $(this);
-        var id = $(this).attr('data-id');
-        var data = $(this).parents(".relationship").next().val();
-        //code xử lý dữ liệu
-        if(data != '' && data != null && data != undefined){
-            var data = data.trim().split(',');
-            var index = data.indexOf(id);
-            data.splice(index, 1);
-        }
-        //code xuất dữ liệu
-        $(this).parents(".relationship").next().val(data);
-        $(this).parents(".chose").prev().children().append(value);
+    repeater();
+
+    jQuery("a.show_full").click(function (e){
+        e.preventDefault();
+        var url = jQuery(this).attr('href'),
+            img_src = jQuery(this).children().attr('src');
+
+        jQuery("#popup_fullsize").addClass('active');
+        jQuery(".image_full").attr('src', img_src);
+        jQuery('#img_info').empty().load(url);
     })
 
+    jQuery(".choose_img_btn").click(function (e){
+        e.preventDefault();
+        var url = jQuery(this).attr('href');
+        jQuery(".popup_full").addClass('active');
 
+        jQuery('#popup_gallery').empty().load(url);
+    })
+})
+function drag(){
     var dragging = null;
     document.addEventListener('dragstart', function(event) {
         dragging = event.target;
@@ -63,7 +47,44 @@ $(document).ready(function (){
         var id = event.target.getAttribute('data-id');
         event.target.parentNode.insertBefore(dragging, event.target.nextSibling);
     });
-})
+}
+function repeater(){
+
+    $(document).delegate(".relationship > .list_block > ul > li","click",function(e){
+        e.preventDefault()
+        //code lấy dữ liệu khi click
+        var value = $(this);
+        var id = $(this).attr('data-id');
+        var data = $(this).parents(".relationship").next().val();
+        //code xử lý dữ liệu
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            data.push(id);
+        }
+        else{
+            var data = []
+        }
+        //code xuất dữ liệu
+        $(this).parents(".relationship").next().val(data);
+        $(this).parents(".list_block").next().children().append(value);
+    })
+    $(document).delegate(".relationship > .chose > ul > li","click",function(e){
+        e.preventDefault()
+        //code lấy dữ liệu khi click
+        var value = $(this);
+        var id = $(this).attr('data-id');
+        var data = $(this).parents(".relationship").next().val();
+        //code xử lý dữ liệu
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            var index = data.indexOf(id);
+            data.splice(index, 1);
+        }
+        //code xuất dữ liệu
+        $(this).parents(".relationship").next().val(data);
+        $(this).parents(".chose").prev().children().append(value);
+    })
+}
 function onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
 }

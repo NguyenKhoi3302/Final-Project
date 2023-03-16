@@ -18,8 +18,9 @@ class CategoryController extends Controller
     function add_cat(){
         $c = new NewsCategories;
         $c->name = $_POST['name'];
-        $c->slug = $_POST['slug'];
+        $c->slug = $this->slugConvert($_POST['slug']);
         $c->appear = $_POST['appear'];
+        $c->sort = 123;
         $c->save();
         return redirect('admin/news/categories');
     }
@@ -30,7 +31,7 @@ class CategoryController extends Controller
     function update_cat_($id){
         $c = NewsCategories::find($id);
         $c->name = $_POST['name'];
-        $c->slug = $_POST['slug'];
+        $c->slug = $this->slugConvert($_POST['slug']);
         $c->appear = $_POST['appear'];
         $c->save();
         return redirect('admin/news/categories');
