@@ -109,4 +109,12 @@ class NewsController extends Controller
 //        }
         return redirect('admin/news');
     }
+
+    function category($slug){
+        $cat = DB::table('news_categories')->where('slug', $slug)->first();
+        $list_news = DB::table('news')->where('user_id', $cat->id)->Paginate(12);
+        $news_cat = DB::table('news_categories')->limit(5)->get();
+        $data =['list_news' => $list_news,'cat' => $cat, 'news_cat' => $news_cat];
+        return view('client.category', $data);
+    }
 }

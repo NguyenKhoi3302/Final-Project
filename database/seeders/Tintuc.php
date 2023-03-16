@@ -27,35 +27,32 @@ class Tintuc extends Seeder
                 'user_id' => rand(1, 5),
                 'category_id' => 1,
                 'image' => 'images/news/news_2.jpg',
-                'title' => 'TIÊU CHUẨN TỦ TRƯNG BÀY ĐỒNG HỒ ĐEO TAY ĐẸP TẠI S_Watch'. $i,
+                'title' =>'TIÊU CHUẨN TỦ TRƯNG BÀY ĐỒNG HỒ ĐEO TAY ĐẸP TẠI S_Watch'. $i,
                 'summary' => 'Không chỉ tuân thủ hai nguyên tắc trưng bày “phù hợp” và “đúng kỹ thuật”, tủ trưng bày tại S_Watch còn vượt qua nhiều tiêu chuẩn khác, đáp ứng và hoàn thiện điều kiện showroom đạt chuẩn Thụy Sỹ.',
                 'content' => 'TỦ TRƯNG BÀY ĐỒNG HỒ ĐEO TAY CỦA S_Watch ĐÃ ĐÁP ỨNG NHỮNG TIÊU CHÍ NÀO?
                 Điểm khác biệt của S_Watch chính là đầu tư đem đến trải nghiệm mua hàng hoàn hảo cho khách hàng. Và để thực hiện được, S_Watch đã không ngần ngại đầu tư kỹ lưỡng để đáp ứng các điều kiện khắt khe dưới đây.
-                
-                 
-                
                 1. ĐẠT TIÊU CHUẨN TRƯNG BÀY CỦA CÁC HÃNG ĐỒNG HỒ CAO CẤP
                 Là một đại lý phân phối hàng loạt thương hiệu đồng hồ cao cấp đến từ Thụy Sỹ như Longines, Doxa, Tissot, Rado… Hải Triều hiểu rằng nhóm khách hàng của mình cần nhiều hơn một mẫu đồng hồ chất lượng.
                 
                 Tiêu chuẩn trưng bày của các hãng đồng hồ cao cấp yêu cầu rõ ràng về số lượng sản phẩm trên kệ, phương pháp đặt để sản phẩm, chất lượng tủ đạt thẩm mỹ.
                 Ngoài ra còn cộng hưởng nhiều yếu tố khác ảnh hưởng đến hình ảnh bày trí như:
+                    
+                    ✔ Sắp xếp gần các thương hiệu có cùng phong cách hoặc phân khúc giá để người mua có thể dễ dàng so sánh và lựa chọn sản phẩm thật sự phù hợp.
 
-✔ Sắp xếp gần các thương hiệu có cùng phong cách hoặc phân khúc giá để người mua có thể dễ dàng so sánh và lựa chọn sản phẩm thật sự phù hợp.
+                    ✔ Khoảng cách đặt giữa các mẫu tạo điểm dừng và chú ý. Như vậy, người mua không bị choáng ngợp bởi quá nhiều sản phẩm, vừa đáp ứng sự thẩm mỹ trong cách bày trí.
 
-✔ Khoảng cách đặt giữa các mẫu tạo điểm dừng và chú ý. Như vậy, người mua không bị choáng ngợp bởi quá nhiều sản phẩm, vừa đáp ứng sự thẩm mỹ trong cách bày trí.
+                    ✔ Những mẫu cao cấp và giá trị hơn được đặt riêng biệt tương xứng.
 
-✔ Những mẫu cao cấp và giá trị hơn được đặt riêng biệt tương xứng.
+                    ✔ Ánh sáng phù hợp, có độ sáng đầu ra (Lumen) đạt tiêu chuẩn trưng bày quốc tế, giúp tăng trải nghiệm mua sắm và hấp dẫn thị giác khách hàng. Đồng thời, thương hiệu cũng được nhận diện một cách sang trọng hơn.
 
-✔ Ánh sáng phù hợp, có độ sáng đầu ra (Lumen) đạt tiêu chuẩn trưng bày quốc tế, giúp tăng trải nghiệm mua sắm và hấp dẫn thị giác khách hàng. Đồng thời, thương hiệu cũng được nhận diện một cách sang trọng hơn.
+                    ✔ Đa dạng kích thước tủ, phù hợp số lượng trưng bày từng thương hiệu.
+                    
+                Vượt qua “hàng tá” tiêu chuẩn không mấy dễ dàng, bài toán có vẻ “đau đầu” mà không có khá nhiều đại lý bán lẻ có thể trụ vững đem đến trải nghiệm mua sắm cho khách hàng của mình.
+                <p>2. BẢO QUẢN ĐỒNG HỒ TỐT HƠN
+                Một trong những tiêu chuẩn khác chính là tủ trưng bày là điều kiện cần cho việc bảo quản một chiếc đồng hồ giá trị.
 
-✔ Đa dạng kích thước tủ, phù hợp số lượng trưng bày từng thương hiệu.
-
-Vượt qua “hàng tá” tiêu chuẩn không mấy dễ dàng, bài toán có vẻ “đau đầu” mà không có khá nhiều đại lý bán lẻ có thể trụ vững đem đến trải nghiệm mua sắm cho khách hàng của mình.
-2. BẢO QUẢN ĐỒNG HỒ TỐT HƠN
-Một trong những tiêu chuẩn khác chính là tủ trưng bày là điều kiện cần cho việc bảo quản một chiếc đồng hồ giá trị.
-
-Trong quá trình đồng hồ về tay chủ nhân phù hợp, khách hàng hoàn toàn yên tâm rằng các sản phẩm luôn được bảo quản theo đúng tiêu chuẩn.
-Từng mẫu đều đặt để trên một giá đỡ đồng hồ tương ứng. Việc đặt trong tủ và kệ trưng bày này hạn chế tác nhân ảnh hưởng từ môi trường bên ngoài.
+                Trong quá trình đồng hồ về tay chủ nhân phù hợp, khách hàng hoàn toàn yên tâm rằng các sản phẩm luôn được bảo quản theo đúng tiêu chuẩn.
+                Từng mẫu đều đặt để trên một giá đỡ đồng hồ tương ứng. Việc đặt trong tủ và kệ trưng bày này hạn chế tác nhân ảnh hưởng từ môi trường bên ngoài.
                 ',
                 'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
             ]);
@@ -182,8 +179,102 @@ Không chỉ đảm bảo đầy đủ chế độ bảo hành mà S_Watch còn 
 'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
             ]);
 
-        }
+            DB::table('news')->insert([
+                'user_id' => rand(1, 5),
+                'category_id' => 1,
+                'image' => 'images/news/news5.jpg',
+                'title' => 'CÙNG MỘT SẢN PHẨM, ĐỒNG HỒ Ở S_Watch KHÁC GÌ SO VỚI NHỮNG NƠI KHÁC?'. $i,
+                'summary' => 'Có rất nhiều nơi bán cũng một mẫu mã đồng hồ, vậy sản phẩm của S_Watch có gì khác so với những nơi khác mà nhiều người tin tưởng lựa chọn và trở thành khách hàng trung thành như vậy?',
+                'content' => '1. LÀ HÀNG LOẠI 1, ĐƯỢC KỸ THUẬT VIÊN KIỂM TRA BẰNG TAY TRƯỚC KHI PHÂN PHỐI
+                Do là đại lý lớn có uy tín lâu đời nên S_Watch có một “đặc quyền” mà hiếm có đại lý nào có được, đó là S_Watch được quyền kiểm tra đồng hồ bằng tay trước khi đồng ý nhận phân phối.
+                
+                S_Watch thiết lập một quy trình kiểm tra nghiêm ngặt: Sau khi nhận sản phẩm từ Nhà phân phối, tất cả các sản phẩm được đội ngũ kỹ thuật viên tại S_Watch kiểm tra kỹ lưỡng bằng tay, nếu có bất kỳ vết trầy xước hay dấu hiệu “xấu” nào ở vẻ ngoài thì sản phẩm sẽ bị vận chuyển ngược lại cho Nhà phân phối.
+                Ở S_Watch, dù sản phẩm có giá rẻ hay đắt thì đều được kiểm tra như nhau, đảm bảo chất lượng xứng đáng với số tiền mà khách hàng bỏ ra, sẽ không có chuyện quảng cáo quá đà trong khi chất lượng sản phẩm không được đảm bảo như nhiều nơi bán khác.
 
+Uy tín chính là yếu tố đầu tiên mà khách hàng nhắc đến mỗi khi nghĩ về hệ thống Đồng Hồ S_Watch. Tất cả sản phẩm tại S_Watch đều được cam kết chính hãng, có đầy đủ giấy chứng nhận uỷ quyền từ hãng, nếu phát hiện hàng giả thì sẽ đền gấp 10 lần.',
+'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+                    ]); 
+					
+                    DB::table('news')->insert([
+                        'user_id' => rand(1, 5),
+                        'category_id' => 1,
+                        'image' => 'images/news/1.jpg',
+                        'title' => 'TISSOT ĐÀO TẠO VÀ CẤP CHỨNG CHỈ CHO NHÂN VIÊN CHO S_Watch'. $i,
+                        'summary' => 'Ngày 10/11/2022, tại khách sạn Novotel Saigon Centre, đội ngũ nhân viên S_Watch tham dự khóa đào tạo từ thương hiệu Tissot Thụy Sỹ.',
+                        'content' => '1. LỊCH SỬ THƯƠNG HIỆU
+                        Tissot là nhà sản xuất sang trọng, thành lập năm 1853 (hơn 160 năm kinh nghiệm). Trụ sở chính đặt tại thị trấn Le Locle (Thụy Sỹ), thương hiệu đang vận hành 16.000 điểm bán lẻ, tại hơn 150 quốc gia.
+                        2. CÁC DÒNG SẢN PHẨM
+                        Tại Việt Nam, Tissot phần lớn tập trung vào các dòng
+                        
+                        Tissot PRC
+                        Tissot Everytime
+                        Tissot PRX
+                        Tissot Chemin Des Tourelles
+                        Tissot Lovely Square
+                        Tissot Carson
+                        Tissot Couturier,…
+                        Đây cũng là những sản phẩm được khách hàng săn đón, tất cả đang được bán lẻ ủy quyền tại chuỗi cửa hàng S_Watch Trong đó, hai bộ sưu tập mới nhất đang gây sốt là Tissot PRX và Tissot Lovely Square.',
+        'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+                            ]); 
+
+                            
+            DB::table('news')->insert([
+                'user_id' => rand(1, 5),
+                'category_id' => 1,
+                'image' => 'images/news/2.jpg',
+                'title' => 'Giải đáp tại sao đồng hồ S_Watch không giảm giá?'. $i,
+                'summary' => 'Nhiều khách hàng thắc mắc rằng, tại sao chuỗi hệ thống Đồng Hồ S_Watch không bao giờ bán giảm giá đồng hồ, trong khi những nơi khác có chỗ lại giảm đến 10-20%? Và dưới đây chính là lời giải thích chính thức của chúng tôi.',
+                'content' => 'Để lý giải cho điều đó, trước tiên chúng ta cần hiểu rằng tại sao doanh nghiệp lại bán giảm giá?
+
+                Thực tế, giảm giá chính là một chiến lược Marketing nhằm mục đích thu hút khách hàng lựa chọn sản phẩm hoặc dịch vụ của doanh nghiệp. Hiện nay, hầu hết các doanh nghiệp đều lựa chọn chiến lược này để tiếp cận và thu về số lượng lớn khách hàng đầu vào.
+                
+                Chắc chắn bất kỳ ai khi là người mua hàng đều sẽ bị thu hút bởi 2 chữ “Giảm giá”. Bởi vậy, không thể phủ nhận độ ảnh hưởng của chiến lược này đến kết quả doanh thu của doanh nghiệp. Tuy nhiên, đó chỉ là doanh thu ngắn hạn, bài toán còn nằm ở phía sau mà không phải ai cũng nhận ra.
+                Với các doanh nghiệp thường xuyên giảm giá thì nhiều khả năng, họ chỉ đang tập trung thu thật nhiều số lượng khách hàng ở đầu vào và thường bỏ quên việc chăm sóc khách hàng ở đầu ra.
+
+Tiếp cận nhiều khách hàng, bán được nhiều hàng là một chuyện, chăm sóc và giữ chân khách hàng, khiến họ quay trở lại mua lần nữa và trở thành khách hàng trung thành của doanh nghiệp lại là chuyện hoàn toàn khác!',
+'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+                            ]); 
+                    DB::table('news')->insert([
+                        'user_id' => rand(1, 5),
+                        'category_id' => 1,
+                        'image' => 'images/news/3.jpg',
+                        'title' => 'MUA ONLINE ĐỒNG HỒ CITIZEN, NHẬN QUÀ ĐỘC QUYỀN 1 TRIỆU'. $i,
+                        'summary' => 'Từ ngày 01/10 cho đến khi hết quà, Đồng Hồ S_Watch x Citizen x Fujita ra mắt chương trình mua đồng hồ Citizen nam, tặng ngay ví da Fujita Nhật Bản cao cấp trị giá hơn 1 triệu (áp dụng khi mua tại cửa hàng và đặt giao Online miễn phí vận chuyển). Số lượng quà tặng giới hạn và có thể kết thúc sớm hơn dự kiến. Cùng tham khảo mua sắm và nhận quà khủng ngay hôm nay.',
+                        'content' => 'CHƯƠNG TRÌNH MUA ĐỒNG HỒ CITIZEN, TẶNG VÍ DA CAO CẤP
+                        Citizen được biết đến là thương hiệu đồng hồ Nhật Bản hàng đầu với lượng khách hàng lớn trong khi Fujita cũng là thương hiệu ví cao cấp được thiết kế theo phong cách Nhật Bản.
+                        
+                        Sự kết hợp giữa thương hiệu đồng hồ Nhật Bản và thương hiệu ví da cao cấp theo phong cách Nhật Bản sẽ là Combo hấp dẫn. Tất cả sẽ được miễn phí khi mua sắm tại hệ thống Đồng Hồ Hải Triều.
+                        
+                        Chương trình mua đồng hồ, tặng ví da:
+                        
+                        ● Thương hiệu áp dụng: Citizen – chỉ áp dụng đối với đồng hồ nam Citizen
+                        
+                        ● Khu vực áp dụng: Toàn quốc, áp dụng khi mua trực tiếp tại cửa hàng và đặt hàng Online. Riêng đặt hàng Online, quý khách sẽ được miễn phí vận chuyển, được xem hàng trước khi thanh toán.
+                        
+                        ● Thương hiệu quà tặng: Fujita – Thương hiệu giày da Việt Nam
+                        
+                        ● Thời gian áp dụng: từ 01/10/2021 và hiện tại đã kết thúc.
+                        
+                        ● Thông tin về quà tặng: Ví da sử dụng dòng da cao cấp nhập khẩu từ Ý, Pháp, Nhật,… sau đó gia công thủ công tại Việt Nam theo tiêu chuẩn của Nhật Bản.
+                        
+                        ● Giá trị quà tặng: Quà tặng ví da Fujita cao cấp Nhật Bản có trị giá trên thị trường là hơn 1 triệu và là phiên bản giới hạn được phối hợp giữa S_Watch x Fujita.
+                        QUA TUỔI 30 – THỜI GIAN CỦA ĐÀN ÔNG LÀ GIỚI HẠN
+                            Đây chính là thông điệp mà S_Watch muốn hướng tới dành cho đàn ông khi bước vào tuổi 30.
+
+                            “Qua tuổi 30, đàn ông không còn nhiều thời gian, cơ hội để thử và sai. 
+
+                            Mọi quyết định đều phải được lên kế hoạch một cách chính xác, bài bản. 
+
+                            Qua hơn 100 năm, độ chính xác của Citizen đã trở thành người bạn thân thiết thiết của đàn ông ngoài 30”
+
+                            Chính Citizen là người bạn đồng hành quen thuộc của người đàn ông tuổi 30. Nhân sự kiện này, S_Watch muốn mang đến một món quà nào đó ý nghĩa, thiết thực và giá trị để bạn yêu bản thân mình hơn, trân trọng từng khoảnh khắc.
+                        5 LÝ DO NÊN MUA ĐỒNG HỒ CITIZEN NAM
+                            Citizen là thương hiệu đồng hồ quá quen thuộc với nam giới và trở thành 1 trong 3 thương hiệu đồng hồ nam Nhật Bản bán chạy nhất tại thị trường Việt Nam.
+
+                            Vậy, lý do gì Citizen được yêu thích đến vậy?',
+        'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+                            ]);         
+        }
     }
 
 }

@@ -217,6 +217,149 @@ class Products extends Seeder
                 'sex' => rand(0, 3),
                 'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
             ]); 
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'DANIEL WELLINGTON DW00100161',
+                'slug' => 'DANIEL-WELLINGTON-DW00100161',
+                'images' => 'images/products/dw3.png',
+                'description'=>'DANIEL WELLINGTON DW00100161 – NỮ – QUARTZ (PIN) – DÂY KIM LOẠI – MẶT SỐ 32MM',
+                'content'=>'Một trong những thương hiệu “sinh sau đẻ muộn” nhưng chiếm trọn được cảm tình của người tiêu dùng đó là đồng hồ Daniel Wellington. Từ khi ra mắt hãng đã gây sốt trên toàn thế giới với thiết kế thời trang, đơn giản và hiện đại. Chiếc đồng hồ Daniel Wellington DW00100161 là sự kết hợp giữa sắc đen cá tính và vàng hồng nữ tính, phong cách đối lập nhau lại tạo nên sự hòa trộn độc đáo.',
+                'price' => rand(1000000, 10000000),
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]); 
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'DANIEL WELLINGTON DW00100245',
+                'slug' => 'DANIEL-WELLINGTON-DW00100245',
+                'images' => 'images/products/dw4.png',
+                'description'=>'DANIEL WELLINGTON DW00100245 – NỮ – QUARTZ (PIN) – MẶT SỐ 28MM, KÍNH CỨNG, CHỐNG NƯỚC 3ATM',
+                'content'=>'Nằm trong bộ sưu tập Petite Ashfield thời thượng, chiếc Daniel Wellington DW00100245 giữ nguyên những thiết kế truyền thống của thương hiệu đồng hồ Daniel Wellington như siêu mỏng, tối giản và không tính năng. Đặc biệt, việc phá cách bởi dây lưới đã giúp sản phẩm bán chạy nhất của hãng tính đến thời điểm hiện tại.',
+                'price' => rand(1000000, 10000000),
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+            
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'CASIO AEQ-110W-3AVDF',
+                'slug' => 'CASIO-AEQ-110W-3AVDF',
+                'images' => 'images/products/cs2.png',
+                'description'=>'CASIO AEQ-110W-3AVDF – NAM – KÍNH NHỰA – QUARTZ (PIN) – DÂY CAO SU',
+                'content'=>'Phiên bản Casio AEQ-110W-3AVDF là một trong những mẫu đồng hồ năng động, trẻ trung rất thích hợp với phái mạnh lại sở hữu những tính năng khá nổi bật. Chiếc đồng hồ Casio này còn sở hữu thời lượng sử dụng pin lên đến 10 năm cùng hàng loạt những tính năng nổi bật khác.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'CASIO AQ-S810W-1AVDF ',
+                'slug' => 'CASIO-AQ-S810W-1AVDF ',
+                'images' => 'images/products/cs3.png',
+                'description'=>'CASIO AQ-S810W-1AVDF – NAM – KÍNH NHỰA – TOUGH SOLAR (NĂNG LƯỢNG ÁNH SÁNG) – DÂY CAO SU',
+                'content'=>'Mẫu Casio AQ-S810W-1AVDF ấn tượng với đồng hồ sử dụng công nghệ hiện đại Tough Solar (Năng lượng ánh sáng), cùng với vẻ ngoài phong cách nam tính với sự kết hợp độc đáo giữa chức năng kim chỉ cùng với nền mặt số điện tử.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'CASIO NAM ',
+                'slug' => 'CASIO-NAM ',
+                'images' => 'images/products/cs4.png',
+                'description'=>'CASIO NAM – QUARTZ (PIN) – KÍNH NHỰA – DÂY CAO SU (W-800H-1AVDF)',
+                'content'=>'Đồng hồ Casio đã từ lâu là sản phẩm được nhiều người dùng lựa chọn bởi sự bền bỉ theo thời gian. Một trong những mẫu đồng hồ bán chạy nhất của Casio tại Hải Triều là Casio W-800H-1AVDF. Thiết kế mạnh mẽ và nam tính là điều mà mẫu này hướng đến.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'DOXA NOBLE D173TCM',
+                'slug' => 'DOXA-NOBL-D173TCM',
+                'images' => 'images/products/dx3.png',
+                'description'=>'DOXA NOBLE D173TCM – NAM – KÍNH SAPPHIRE – AUTOMATIC (TỰ ĐỘNG) – MẶT SỐ 40MM, TRỮ CÓT 38 GIỜ, ĐÍNH 8 VIÊN KIM CƯƠNG',
+                'content'=>'Mẫu Doxa nam D173TCM khoác lên phong cách đẳng cấp khi mặt số với thiết kế tinh xảo đính kèm các viên kim cương nổi bật trên nền kính Sapphire thời trang sang trọng phối cùng mẫu dây đeo demi.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'TISSOT PR 100 T101.417.23.061.00',
+                'slug' => 'TISSOT-PR-100-T101.417.23.061.00',
+                'images' => 'images/products/ts3.png',
+                'description'=>'TISSOT PR 100 T101.417.23.061.00 – NAM – QUARTZ (PIN) – MẶT SỐ 41MM, KÍNH CHỐNG TRẦY, CHỐNG NƯỚC 10ATM',
+                'content'=>'Phong cách thể thao kiểu dáng 6 kim cùng chức năng bấm giờ Chronograph đầy nam tính trên nền mặt kính Sapphire, không kém phần sang trọng đến từ thương hiệu Tissot dành cho mẫu đồng hồ T101.417.23.061.00 với mẫu kim chỉ cùng vạch số vàng hồng.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'TISSOT T086.407.11.051.00',
+                'slug' => 'TISSOT-T086.407.11.051.00',
+                'images' => 'images/products/ts4.png',
+                'description'=>'TISSOT T086.407.11.051.00 – NAM – AUTOMATIC – TRỮ CÓT 80 GIỜ, KÍNH SAPPHIRE, MẶT SỐ 41MM',
+                'content'=>'Đồng hồ Tissot T086.407.11.051.00 là phụ kiện thời trang sang trọng, khi được hãng gia công hoàn hảo đến từng chi tiết nhỏ nhất, mang cho đàn ông nét mạnh mẽ, lịch lãm.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'SAGA 53555-SVMWSV-2 – NỮ',
+                'slug' => 'SAGA-53555-SVMWSV-2–NỮ',
+                'images' => 'images/products/sg1.png',
+                'description'=>'SAGA 53555-SVMWSV-2 – NỮ – QUARTZ (PIN) – DÂY KIM LOẠI – MẶT SỐ 22.5MM',
+                'content'=>'Mẫu Saga 53555-SVMWSV-2 phiên bản mạ bạc thời trang với nền mặt số xà cừ size 22mm nổi bật thiết kế đính pha lê Swarovski kết hợp cùng bộ dây đeo tay kiểu dây lắc.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+
+            DB::table('products')->insert([
+                'brand_id' => Arr::random($brands),
+                'product_category_id' => Arr::random($cat),
+                'name' => 'SAGA 53623-RGBCFBCF-2 – NỮ ',
+                'slug' => 'SAGA-53623-RGBCFBCF-2–NỮ ',
+                'images' => 'images/products/sg2.png',
+                'description'=>'SAGA 53623-RGBCFBCF-2 – NỮ – QUARTZ (PIN) – DÂY DA – MẶT SỐ 34.5MM, KÍNH CỨNG, CHỐNG NƯỚC 3ATM',
+                'content'=>'Mẫu Saga 53623-RGBCFBCF-2 dây da phiên bản đính các hạt đá kết hợp cùng thiết kế đơn giản 3 kim, chi tiết kim chỉ được mạ tone màu vàng hồng.',
+                'discount' => rand(5, 15),
+                'sku' => '0',
+                'sex' => rand(0, 3),
+                'created_at' => '2023-'.Arr::random($month).'-'.Arr::random($day) .' 09:32:26',
+            ]);
+        
+        }
         }
     }
-}

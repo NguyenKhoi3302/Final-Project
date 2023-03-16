@@ -36,6 +36,8 @@ Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
 
 Route::get('/news', [NewsController::class, 'index']);
+Route::get('/danh-muc-tin-tuc/{slug}', [NewsController::class, 'category'])->name('category');
+
 
 Route::get('/single-news/{id}', [NewsController::class, 'single_news'])->name('single-news');
 //Route::get('/', [MainController::class, 'index'])->name('home');
