@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Models\News;
 use App\Models\NewsCategories;
+use App\Models\NewsComment;
 
 class NewsController extends Controller
 {
@@ -107,5 +108,23 @@ class NewsController extends Controller
         $t->delete();
 //        }
         return redirect('admin/news');
+    }
+    //comment
+    public function comment(){
+        $newsComments = NewsComment::with('user','news')->paginate();
+        return view('admin.news.comment', compact('newsComments'));
+    }
+    public function change(Request $request){
+        $id = $request->input('id');
+        $appear = $request->input('appear');
+        $newsComment = NewsComment::find($id);
+        $newsComment->appear = $appear;
+        $newsComment->save();
+        return response()->json(['success' => true, 'status' => 'OK']);
+    }
+    public function destroy(Request $request){
+        $newsCommentDelete = NewsComment::findOrFail($request->id);
+        $newsCommentDelete->delete();
+        return response()->json(['success' => true]);
     }
 }

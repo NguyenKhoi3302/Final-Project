@@ -26,6 +26,7 @@
                         <li><a href="/admin/news">Danh sách</a></li>
                         <li><a href="/admin/news/add">Thêm tin tức mới</a></li>
                         <li><a href="/admin/news/categories">Danh mục tin tức</a></li>
+                        <li><a href="{{route('admin.news.comment')}}">Bình luận tin tức</a></li>
                     </ul>
                 </li>
 

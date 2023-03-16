@@ -9,10 +9,7 @@
           </path>
         </svg>
       </div>
-      <form role="search" method="get" id="searchform" class="searchform" action="">
-        <input type="text" value="" name="s" id="s" placeholder="Nhập ở đây">
-        <input type="submit" id="searchsubmit" value="Tìm kiếm">
-      </form>
+      @livewire('nav-search-component')
     </div>
   </div>
   <div class="logo">

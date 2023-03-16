@@ -46,7 +46,8 @@ Route::get('/checkout', [MainController::class, 'checkout']);
 Route::get('/account-profile', [MainController::class, 'account_profile']);
 //Product Site
     Route::get('/shop', [ProductController::class, 'shop']);
-    Route::get('/single-product/{id}', [ProductController::class, 'single_product']);
+    Route::get('/search', [ProductController::class, 'search'])->name('search');
+    Route::get('/single-product/{id}', [ProductController::class, 'single_product'])->name('single-product');
 // cart
     Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
     Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
@@ -100,7 +101,13 @@ Route::post('/admin/category/add', [CategoryController::class, 'add_cat']);
 Route::get('/admin/category/delete/{id}', [CategoryController::class, 'delete_cat']);
 Route::get('/admin/category/update/{id}', [CategoryController::class, 'update_cat']);
 Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_cat_']);
-
+//News Comment
+Route::get('/admin/news/comment', [NewsController::class,'comment'])->name('admin.news.comment');
+Route::post('admin/news/changeAppear',[NewsController::class,'change'])
+    ->name('admin.newsComment.changeAppear');
+Route::post('admin/newsComment/destroy',[NewsController::class,'destroy'])
+    ->name('admin.newsComment.destroy');
+    //Order
 Route::get('/admin/orders', [OrdersController::class, 'index']);
 Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
 
@@ -133,6 +140,7 @@ Route::prefix('admin')->group(function (){
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);
 
     Route::get('/product/comments', [BEProductCommentController::class, 'index'])->name('product.comment');
+    Route::post('/product/comments/changeAppear', [BEProductCommentController::class, 'changeAppear'])->name('product.comment.changeAppear');
     Route::post('/product/comments/delete', [BEProductCommentController::class, 'destroy'])->name('product.comment.destroy');
 
     //user

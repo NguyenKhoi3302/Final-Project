@@ -21,28 +21,26 @@
           @foreach($productComments as $productComment)
           <tr>
             <td>{{$productComment->message}}</td>
-            <td>{{$productComment->user->name}}</td>
+            <td>{{$productComment->user->name ?? 'author'}}</td>
             <td>{{$productComment->product->name}}</td>
-            @if($productComment->appear === 1)
-            <td style="text-align: center">
-              <a href="{{url('admin/brand/changeStatus',$productComment->id)}}"><span
-                  class="label label-success">active</span>
+            <td class="text-center">
+              <a href="#" data-id="{{$productComment->id}}" data-appear="{{$productComment->appear}}"
+                class="btn-appear">
+                @if($productComment->appear == 1)
+                <i class="zmdi zmdi-eye" style="font-size: 20px"></i>
+                @else
+                <i class="zmdi zmdi-eye-off" style="font-size: 20px"></i>
+                @endif
               </a>
             </td>
-            @elseif($productComment->appear === 0)
-            <td style="text-align: center">
-              <a href="{{url('admin/brand/changeStatus',$productComment->id)}}"><span
-                  class="label label-danger">inactive</span></a>
-            </td>
-            @endif
             <td style="text-align: center">
               <?= date("H:i d-m-Y", strtotime($productComment->created_at)) ?>
             </td>
             <td style="text-align: right">
-              <a onclick="delete_product_comment({{$productComment->id}})" data-toggle="modal"
-                data-target="#modal-delete-product-comment">
-                <button class="btn waves-effect waves-light btn-danger disabled"><i class="fa fa-trash"
-                    aria-hidden="true"></i>
+              <a href="#" data-toggle="modal" data-target="#modal-delete-product-comment">
+                <button class="btn waves-effect waves-light btn-danger disabled btn-delete_comment"
+                  data-id="{{$productComment->id}}">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </a>
             </td>
@@ -70,14 +68,11 @@
         <h5 class="modal-title" id="mySmallModalLabel">XÁC NHẬN</h5>
       </div>
       <div class="modal-body">
-        <form action="{{route('product.comment.destroy')}}" method="post">
-          @csrf
-          <input type="hidden" name="product-comment-id" class="product-comment-id">
-          <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-            <button type="submit" class="btn btn-primary">Xác nhận</button>
-          </div>
+        <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+          <button type="submit" class="btn btn-primary btn-submit" data-dismiss="modal">Xác nhận</button>
+        </div>
         </form>
       </div>
     </div>
@@ -95,6 +90,57 @@
             toastr.error('{{ Session::get('success') }}');
             @endif
         });
+</script>
+<script>
+  $.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+  });
+  $('.btn-appear').on('click',function(){
+      const id = $(this).data('id');
+      const appear = 1 - $(this).data('appear');
+      $.ajax({
+          url: '{{ route("product.comment.changeAppear") }}',
+          method: 'POST',
+          data: {
+              id: id,
+              appear: appear,
+              _token: $('meta[name="csrf-token"]').attr('content')
+          },
+          success: function (response) {
+              if (response.success) {
+                  $('.btn-appear[data-id="' + id + '"]').data('appear', appear);
+                  $('.btn-appear[data-id="' + id + '"]').find('i').toggleClass('zmdi-eye zmdi-eye-off')
+              }
+          },
+          error: function (response) {
+              console.log(response);
+          },
+      })
+  });
+  $('.btn-delete_comment').on('click',function(){
+      const id = $(this).data('id');
+      const _this = $(this);
+      $('.btn-submit').on('click',function(){
+          $.ajax({
+              url: '{{ route("product.comment.destroy") }}',
+              method: 'POST',
+              data: {
+                  id: id,
+                  _token: $('meta[name="csrf-token"]').attr('content')
+              },
+              success: function (response) {
+                  if (response.success) {
+                      _this.closest("tr").remove();
+                  }
+              },
+              error: function (response) {
+                  console.log(response);
+              },
+          })
+      })
+  })
 </script>
 
 @endpush

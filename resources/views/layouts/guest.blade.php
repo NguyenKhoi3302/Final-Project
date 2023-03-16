@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  @include('client.layouts.head')
+    @include('client.layouts.head')
 </head>
 
 <body>
@@ -12,9 +12,9 @@
     <div class="site_body grid-container">
         <div class="site_content">
             @if(!Request::is('/'))
-                <section class="section banner_img">
-                    <img src="{{asset('images/banner/banner_1.jpg')}}" alt="">
-                </section>
+            <section class="section banner_img">
+                <img src="{{asset('images/banner/banner_1.jpg')}}" alt="">
+            </section>
             @endif
             @yield('content')
         </div>
@@ -31,5 +31,6 @@
 <script src="{{asset('assets/js/counterUp.js')}}"></script>
 <script src="{{asset('assets/js/swiper.js')}}"></script>
 <script src="{{asset('assets/js/frontend.js')}}"></script>
+@livewireScripts
 
 </html>

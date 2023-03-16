@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Products;
+use App\Models\Product;
 
 class ProductController extends Controller
 {
@@ -16,7 +16,12 @@ class ProductController extends Controller
         return view('client.shop', $data);
     }
     function single_product($id){
-        $products = Products::find($id);
-        return view("client.single-product", compact('products'));
+        $product = Product::find($id);
+        return view("client.single-product", compact('product'));
+    }
+    public function search(Request $request){
+        $keyword = $request->q;
+        $products = Product::where('name','like','%'. $keyword.'%')->paginate(8);
+        return view('client.search',compact('products'));
     }
 }
