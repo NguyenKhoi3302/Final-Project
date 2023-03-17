@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('news_categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name', 50);
-            $table->string('slug', 50);
+        Schema::create('product_categories', function (Blueprint $table) {
+            $table->integer('id')->autoIncrement();
+            $table->string('name', 100);
+            $table->string('slug', 100)->unique();
+            $table->string('description', 1000)->nullable();
+            $table->string('keywords', 500)->nullable();
+            $table->string('image', 100)->nullable();
             $table->tinyInteger('appear')->default(1);
             $table->integer('sort')->unique();
             $table->timestamps();
@@ -30,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('news_categories');
+        Schema::dropIfExists('product_categories');
     }
 };

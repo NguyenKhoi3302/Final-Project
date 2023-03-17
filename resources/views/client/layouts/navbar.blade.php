@@ -1,3 +1,10 @@
+@foreach($footer['footer_meta'] as $item)
+    @switch($item->meta_key)
+        @case('logo_page')
+            @php $logo = $item->meta_value @endphp
+            @break
+    @endswitch
+@endforeach
 <div class="inside_header grid-container">
   <div class="wrap_search_popup text_center">
     <div class="bg_close"></div>
@@ -9,7 +16,7 @@
           </path>
         </svg>
       </div>
-      <form role="search" method="get" id="searchform" class="searchform" action="">
+      <form method="get" id="searchform" class="searchform" action="/search">
         <input type="text" value="" name="s" id="s" placeholder="Nhập ở đây">
         <input type="submit" id="searchsubmit" value="Tìm kiếm">
       </form>
@@ -17,7 +24,7 @@
   </div>
   <div class="logo">
     <a href="{{url('/')}}">
-      <img src="{{asset('images/logo/page_logo_2.png')}}" alt="">
+        {!! App\Http\Controllers\Controller::get_img_attachment($logo) !!}
     </a>
   </div>
   <div class="primary_menu">

@@ -1,4 +1,3 @@
-
 @extends('layouts.guest')
 @section('content')
 <style>

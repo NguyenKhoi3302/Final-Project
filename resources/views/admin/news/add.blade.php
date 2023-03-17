@@ -25,11 +25,18 @@
                 <form action="/admin/news/add" method="post" class="m-auto">
                     <div class="form_group mb-3">
                         <label for="title">Tiêu đề tin</label>
-                        <input name="title" id="title" class="form-control">
+                        <input name="title" id="title" class="form-control title_input">
                     </div>
                     <div class="form_group mb-3">
-                        <label for="image">Link hình ảnh</label>
-                        <input name="image" id="image" class="form-control">
+                        <label for="slug">Slug</label>
+                        <input name="slug" id="slug" class="form-control slug_output">
+                    </div>
+                    <div class="form_group mb-3 image_input">
+                        <label for="image">Chọn ảnh</label>
+                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn">Chọn hình ảnh</a>
+                        <img src="" class="img_result">
+                        <input type="hidden" name="image_src" class="form-control src_result">
+                        <input type="hidden" name="image_alt" class="form-control alt_result">
                     </div>
                     <div class="form_group mb-3">
                         <label for="summary">Tóm tắt</label>
@@ -38,6 +45,10 @@
                     <div class="form_group mb-3">
                         <label for="content">Nội dung tin</label>
                         <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="keywords">Từ khoá SEO</label>
+                        <textarea name="keywords" id="keywords" class="form-control"></textarea>
                     </div>
                     <div class="form_group mb-3">
                         <label for="category_id">Loại tin</label>

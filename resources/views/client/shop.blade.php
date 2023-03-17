@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('description'){{$page->description}}@endsection
+@section('title'){{$page->title}}@endsection
+@section('keywords'){{$page->keywords}}@endsection
 @section('content')
 <section class="shop_container grid-container">
     <div class="shop_aside grid-25">
@@ -28,27 +31,6 @@
         </div>
     </div>
     <div class="shop_main grid-75">
-        {{-- <div class="box_slider">--}}
-            {{-- <div class="swiper shopSwiper">--}}
-                {{-- <div class="swiper-wrapper">--}}
-                    {{-- <div class="swiper-slide">--}}
-                        {{-- <img src="images/banner/home_banner.png" alt="">--}}
-                        {{-- </div>--}}
-                    {{-- <div class="swiper-slide">--}}
-                        {{-- <img src="images/banner/home_banner_2.jpg" alt="">--}}
-                        {{-- </div>--}}
-                    {{-- <div class="swiper-slide">--}}
-                        {{-- <img src="images/banner/home_banner_3.png" alt="">--}}
-                        {{-- </div>--}}
-                    {{-- </div>--}}
-                {{-- <div class="swiper-btn next">--}}
-                    {{-- <i class="fas fa-chevron-right"></i>--}}
-                    {{-- </div>--}}
-                {{-- <div class="swiper-btn prev">--}}
-                    {{-- <i class="fas fa-chevron-left"></i>--}}
-                    {{-- </div>--}}
-                {{-- </div>--}}
-            {{-- </div>--}}
         <div class="shop_nav">
             <div class="prod_count">
                 <strong>12</strong>

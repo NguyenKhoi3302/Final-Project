@@ -133,6 +133,7 @@
 <div class="grid-container">
     <div class="cart" data-url="{{ route('deleteCart') }}">
         <div class="container">
+            @if(!empty($cart))
             <div class="row">
                 <table class="table update_cart_url" data-url="{{ route('updateCart') }}">
                     <thead>
@@ -148,24 +149,24 @@
                     </thead>
                     <tbody>
                     @php $i=1; $total = 0; @endphp
-                    @foreach($cart as $id => $item)
-                        @php $total += $item['price']*$item['quantity']; @endphp
-                        <tr>
-                            <td scope="row" class="text_center">{{ $i }}</td>
-                            <td><img src="{{ $item['images'] }}"></td>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ number_format($item['price'], 0 , ',','.') }} vnđ</td>
-                            <td class="text_center">
-                                <input max="99" min="1" value="{{ $item['quantity'] }}" type="number" class="quatity text_center">
-                            </td>
-                            <td>{{ number_format($item['price']*$item['quantity'], 0 , ',','.') }} vnđ</td>
-                            <td class="text_center">
-                                <a href="" class="cart_update" data-id="{{ $id }}"><i class="far fa-edit"></i></a>
-                                <a href="" class="cart_delete" data-id="{{ $id }}"><i class="fas fa-trash-alt"></i></a>
-                            </td>
-                        </tr>
-                        @php $i++; @endphp
-                    @endforeach
+                        @foreach($cart as $id => $item)
+                            @php $total += $item['price']*$item['quantity']; @endphp
+                            <tr>
+                                <td scope="row" class="text_center">{{ $i }}</td>
+                                <td><img src="{{ $item['images'] }}"></td>
+                                <td>{{ $item['name'] }}</td>
+                                <td>{{ number_format($item['price'], 0 , ',','.') }} vnđ</td>
+                                <td class="text_center">
+                                    <input max="99" min="1" value="{{ $item['quantity'] }}" type="number" class="quatity text_center">
+                                </td>
+                                <td>{{ number_format($item['price']*$item['quantity'], 0 , ',','.') }} vnđ</td>
+                                <td class="text_center">
+                                    <a href="" class="cart_update" data-id="{{ $id }}"><i class="far fa-edit"></i></a>
+                                    <a href="" class="cart_delete" data-id="{{ $id }}"><i class="fas fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                            @php $i++; @endphp
+                        @endforeach
                     </tbody>
                 </table>
                 <div class="right_block">
@@ -194,6 +195,11 @@
                 </div>
 
             </div>
+            @else
+                <h2 class="cart_empty">
+                    Giỏ hàng rỗng
+                </h2>
+            @endif
         </div>
     </div>
 </div>
