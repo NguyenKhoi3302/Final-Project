@@ -20,6 +20,7 @@
 
 <!-- App CSS -->
 <link href="{{asset('assets-admin/css/style.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{asset('assets-admin/css/custom_style.css')}}" rel="stylesheet" type="text/css" />
 
 <!--Morris Chart CSS -->
 <link rel="stylesheet" href="{{asset('assets-admin/plugins/morris/morris.css')}}">

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\contactMail;
 use App\Models\Media;
+use App\Models\Contact;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use DB;
@@ -20,13 +22,19 @@ class AdminController extends Controller
         return view("admin/dashboard", $data);
     }
     function contact(){
-        $email_list = DB::table('email')->get();
+        $email_list = DB::table('email')->orderBy('created_at', 'desc')->get();
 
         $data = ['email_list' => $email_list];
         return view("admin/contact/index", $data);
     }
+    function contact_delete($id){
+        $c = Contact::find($id);
+        $c->delete();
+
+        return redirect("admin/contact");
+    }
     function coupon(){
-        $coupon_list = DB::table('coupon')->get();
+        $coupon_list = DB::table('coupon')->orderBy('created_at', 'desc')->get();
         $data = ['coupon_list' => $coupon_list];
         return view("admin/coupon/index", $data);
     }
@@ -45,7 +53,28 @@ class AdminController extends Controller
         $c->date_expire = $_POST['date_expire'];
         $c->quantity = $_POST['quantity'];
         $c->remaining = $_POST['quantity'];
+        $c->created_at = now();
         $c->save();
+        return redirect("admin/coupon");
+    }
+    function update_coupon($id){
+        $coupon = DB::table('coupon')->where('id', $id)->first();
+        return view("admin/coupon/update", compact('coupon'));
+    }
+    function update_coupon_($id){
+        $c = coupon::find($id);
+        $c->coupon_code = $_POST['coupon_code'];
+        $c->coupon_type = $_POST['coupon_type'];
+        $c->description = $_POST['description'];
+        $c->discount = $_POST['discount'];
+        $c->min_total = $_POST['min_total'];
+        $c->max_discount = $_POST['max_discount'];
+        $c->date_start = $_POST['date_start'];
+        $c->date_expire = $_POST['date_expire'];
+        $c->quantity = $_POST['quantity'];
+        $c->updated_at = now();
+        $c->save();
+
         return redirect("admin/coupon");
     }
     function delete_coupon($id){
@@ -55,7 +84,7 @@ class AdminController extends Controller
         return redirect("admin/coupon");
     }
     function media(){
-        $medias = DB::table('media')->get();
+        $medias = DB::table('media')->orderBy('created_at', 'desc')->get();
         return view('admin/media/index', compact('medias'));
     }
     function upload(Request $request){
@@ -66,6 +95,7 @@ class AdminController extends Controller
             $array[] = [
                 'name' => $imageName,
                 'url' => 'images/'.$imageName,
+                'created_at' => now(),
             ];
         }
         Media::insert($array);
@@ -75,7 +105,7 @@ class AdminController extends Controller
     }
 
     public function popup(){
-        $media = DB::table('media')->get();
+        $media = DB::table('media')->orderBy('created_at', 'desc')->get();
         return view('admin/media/list', compact('media'));
     }
     public function img_detail($id){
@@ -86,6 +116,7 @@ class AdminController extends Controller
     public function update_img($id){
         $img = Media::find($id);
         $img->alt = $_POST['alt'];
+        $img->updated_at = now();
 
         $img->save();
         return  redirect($_SERVER['HTTP_REFERER']);

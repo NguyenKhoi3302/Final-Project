@@ -33,10 +33,9 @@
                     </div>
                     <div class="form_group mb-3 image_input">
                         <label for="image">Chọn ảnh</label>
-                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn">Chọn hình ảnh</a>
-                        <img src="" class="img_result">
-                        <input type="hidden" name="image_src" class="form-control src_result">
-                        <input type="hidden" name="image_alt" class="form-control alt_result">
+                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn" data-key="image">Chọn hình ảnh</a>
+                        <img src="" class="image img_result">
+                        <input type="hidden" name="image" value="">
                     </div>
                     <div class="form_group mb-3">
                         <label for="summary">Tóm tắt</label>

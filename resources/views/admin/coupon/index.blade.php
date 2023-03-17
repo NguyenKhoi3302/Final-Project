@@ -44,6 +44,12 @@
                                 <td style="text-align: center">{{$item->date_start}}</td>
                                 <td style="text-align: center">{{$item->date_expire}}</td>
                                 <td style="text-align: center">
+
+                                    <a href="/admin/coupon/update/{{$item->id}}">
+                                        <button class="btn waves-effect waves-light btn-warning">
+                                            <i class="fa fa-pencil"></i>
+                                        </button>
+                                    </a>
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xoá?')"   href="/admin/coupon/delete/{{$item->id}}">
                                         <button class="btn waves-effect waves-light btn-danger disabled"><i
                                                 class="fa fa-trash" aria-hidden="true"></i>

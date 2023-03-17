@@ -42,8 +42,9 @@ Route::post('/send-contact', [MainController::class, 'sendContact']);
 
 // News
 Route::get('/news', [MainController::class, 'news']);
-Route::get('/single-news/{id}', [NewsController::class, 'single_news'])->name('single-news');
-    //Route::get('/checkout', [MainController::class, 'checkout']);
+Route::get('/single-news/{slug}', [NewsController::class, 'single_news'])->name('single-news');
+Route::get('/news-category/{slug}', [CategoryController::class, 'category'])->name('category');
+//Route::get('/checkout', [MainController::class, 'checkout']);
     //Route::get('/account-profile', [MainController::class, 'account_profile']);
 // Products
 Route::get('/shop', [ProductController::class, 'shop']);
@@ -112,10 +113,13 @@ Route::prefix('admin')->group(function (){
     Route::post('/option', [PageController::class, 'update_option']);
 // Contact Email
     Route::get('/contact', [AdminController::class, 'contact']);
+    Route::get('/contact/delete/{id}', [AdminController::class, 'contact_delete']);
 // Coupon
     Route::get('/coupon', [AdminController::class, 'coupon']);
     Route::get('/coupon/add', [AdminController::class, 'add_coupon']);
-    Route::get('/coupon/add', [AdminController::class, 'add_coupon']);
+    Route::post('/coupon/add', [AdminController::class, 'add_coupon_']);
+    Route::get('/coupon/update/{id}', [AdminController::class, 'update_coupon']);
+    Route::post('/coupon/update/{id}', [AdminController::class, 'update_coupon_']);
     Route::get('/coupon/delete/{id}', [AdminController::class, 'delete_coupon']);
 // Categories
     Route::get('product_categories', [BECategoryCotroller::class, 'index']);

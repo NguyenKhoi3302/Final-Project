@@ -32,20 +32,20 @@
                 @foreach($news as $new)
                     <div class="news_item">
                         <div class="img_wrap">
-                            <a href="/single-news/{{$new->id}}">
-                                <img src="{{$new->image}}" alt="">
+                            <a href="{{url('/single-news/'.$new->slug)}}">
+                                {!! App\Http\Controllers\Controller::get_img_attachment($new->image)!!}
                             </a>
                         </div>
                         <div class="news_cont">
                             <div class="news_title">
-                                <a href="/single-news">{{$new->title}}</a>
+                                <a href="{{url('/single-news/'.$new->slug)}}">{{$new->title}}</a>
                             </div>
                             <div class="news_des">
                                 {{$new->content}}
                             </div>
                             <div class="news_date">
                                 <span>{{$new->created_at}}</span>
-                                <a href="/single-news">Xem chi tiết</a>
+                                <a href="{{url('/single-news/'.$new->slug)}}">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                 <ul>
                     @foreach($cat as $item)
                     <li>
-                        <a href="/danh-muc-tin-tuc/{{$item->slug}}">{{$item->name}}</a>
+                        <a href="{{url('/news-category/'.$item->slug)}}">{{$item->name}}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -105,7 +105,7 @@
                 <ul>
                     @foreach($hot_news as $item)
                         <li>
-                            <a href="single-news/{{$item->id}}">
+                            <a href="{{url('/single-news/'.$item->slug)}}">
                                 {{$item->title}}
                             </a>
                         </li>

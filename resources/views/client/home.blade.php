@@ -102,6 +102,7 @@
                 <div class="item">
                     <a href="{{url('single-product/'.$item->id)}}">
                         <div class="img_wrap">
+{{--                            {!! App\Http\Controllers\Controller::get_img_attachment($item->images)!!}--}}
                             <img src="{{asset($item->images)}}" alt="">
                             <div class="home_prod_cont">
                                 <p>{{$item->description}}</p>
@@ -150,7 +151,6 @@
                     </div>
                     <div class="item_img">
                         {!! App\Http\Controllers\Controller::get_img_attachment($item[2]->child_value)!!}
-{{--                        <img src="{{$item[2]->child_value->url}}" alt="{{$item[2]->child_value->alt}}">--}}
                     </div>
                 </div>
             @endforeach
@@ -198,6 +198,8 @@
                     <div class="img_wrap">
                         <a href="{{route('single-news',[$item->id])}}">
                             <img src="{{$item->image}}" alt="">
+{{--                            {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}--}}
+
                         </a>
                     </div>
                     <div class="item_cont">
@@ -230,6 +232,7 @@
             <div class="swiper-wrapper">
                 @foreach($brands as $item)
                     <div class="swiper-slide">
+{{--                        {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}--}}
                         <img src="{{asset($item->image)}}" alt="">
                     </div>
                 @endforeach

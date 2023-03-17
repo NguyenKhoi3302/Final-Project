@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\News;
 use Illuminate\Http\Request;
 use DB;
 
 class NewsController extends Controller
 {
-    public function single_news($id){
-        $kq = DB::table('news')->WHERE('id', $id)->first();
+    public function single_news($slug){
+        $kq = DB::table('news')->WHERE('slug', $slug)->first();
         $list = DB::table('news')->limit(5)->get();
         $footer = $this->footer();
         $data = ['footer'=>$footer, 'list'=>$list, 'kq' => $kq];
@@ -16,7 +17,7 @@ class NewsController extends Controller
     }
     function news_list(){
         $news_list = DB::table('news')
-            ->orderBy('id','desc')
+            ->orderBy('created_at','desc')
             ->Paginate(20);
         $author = DB::table('users')->select('name', 'id')->get();
         $cat_list = DB::table('news_categories')->select('name', 'id')->get();
@@ -32,16 +33,14 @@ class NewsController extends Controller
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
         $n->user_id = 1;
-        $n->image = json_encode([
-            'url' => $_POST['image_src'],
-            'alt' => $_POST['image_alt'],
-        ]);
+        $n->image = $_POST['image'];
         $n->title = $_POST['title'];
         $n->slug = $this->slugConvert($_POST['slug']);
         $n->keywords = $_POST['keywords'];
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
+        $n->created_at = now();
         $n->save();
         return redirect('admin/news');
     }
@@ -53,6 +52,7 @@ class NewsController extends Controller
         else{
             $news->hot = 0;
         }
+        $news->updated_at = now();
         $news->save();
         return redirect('admin/news');
     }
@@ -64,6 +64,7 @@ class NewsController extends Controller
         else{
             $news->appear = 0;
         }
+        $news->updated_at = now();
         $news->save();
         return redirect('admin/news');
     }
@@ -77,16 +78,14 @@ class NewsController extends Controller
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
         $n->user_id = 1;
-        $n->image = json_encode([
-            'url' => $_POST['image_src'],
-            'alt' => $_POST['image_alt'],
-        ]);
+        $n->image = $_POST['image'];
         $n->title = $_POST['title'];
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
         $n->slug = $this->slugConvert($_POST['slug']);
         $n->keywords = $_POST['keywords'];
+        $n->updated_at = now();
         $n->save();
         return redirect('admin/news');
     }

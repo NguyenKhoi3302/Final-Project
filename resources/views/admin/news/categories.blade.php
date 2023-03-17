@@ -37,6 +37,20 @@
                         <input name="slug" id="slug" class="form-control slug_output">
                     </div>
                     <div class="form_group mb-3">
+                        <label for="description">Mô tả</label>
+                        <input name="description" id="description" class="form-control">
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="keywords">Từ khoá</label>
+                        <input name="keywords" id="keywords" class="form-control">
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="image">Chọn ảnh</label>
+                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn" data-key="image">Chọn hình ảnh</a>
+                        <img src="" class="image img_result">
+                        <input type="hidden" name="image" class="image">
+                    </div>
+                    <div class="form_group mb-3">
                         <label for="appear">Hiện</label>
                         <input type="radio" name="appear" id="hide" value="1" checked>
                         <label for="appear">Ẩn</label>
@@ -65,7 +79,7 @@
                     @foreach($cat_list as $cat)
                         <tr>
                             <th class="text-muted">{{$cat->id}}</th>
-                            <td>{{$cat->name}}</td>
+                            <td><a href="{{url('/news-category/'.$cat->slug)}}" target="_blank">{{$cat->name}}</a></td>
                             <td>{{$cat->slug}}</td>
                             <td>
                                     <span class="w_content">

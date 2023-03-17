@@ -31,7 +31,6 @@
                         <th><span>Tiêu đề SEO</span></th>
                         <th><span>Mô tả</span></th>
                         <th><span>Từ khoá</span></th>
-                        <th><span>Template ID</span></th>
                         <th><span>Hành động</span></th>
                     </tr>
                     </thead>
@@ -43,7 +42,6 @@
                             <td>{{$page->title}}</td>
                             <td>{{$page->description}}</td>
                             <td>{{$page->keywords}}</td>
-                            <td class="text-center">{{$page->template_id}}</td>
                             <td class="text-center">
                                 <a href="{{url('admin/page/update/'.$page->id)}}">
                                     <i class="zmdi zmdi-edit" style="font-size: 20px"></i>

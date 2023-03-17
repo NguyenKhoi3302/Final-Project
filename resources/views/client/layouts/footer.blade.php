@@ -95,7 +95,7 @@
         </div>
         <ul>
             @foreach($footer['news_cat_footer'] as $val)
-              <li><a href="/danh-muc-tin-tuc/{{$val->slug}}">{{$val->name}}</a></li>
+              <li><a href="/news-category/{{$val->slug}}">{{$val->name}}</a></li>
             @endforeach
         </ul>
       </div>

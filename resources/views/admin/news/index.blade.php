@@ -42,7 +42,7 @@
                         @foreach($news_list as $news)
                             <tr>
                                 <th class="text-muted">{{$news->id}}</th>
-                                <td>{{$news->title}}</td>
+                                <td><a href="{{url('/single-news/'.$news->slug)}}" target="_blank">{{$news->title}}</a></td>
                                 <td>
                                     <span class="w_content">
                                         @foreach($author as $aut)

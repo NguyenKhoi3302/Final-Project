@@ -22,11 +22,11 @@
                             <tr>
                                 <td>{{$item->name}}</td>
                                 <td>{{$item->phone}}</td>
-                                <td>{{$item->	email}}</td>
+                                <td>{{$item->email}}</td>
                                 <td>{{$item->message}}</td>
                                 <td style="text-align: center"><?= date("H:i:s d-m-Y", strtotime($item->created_at))  ?></td>
                                 <td style="text-align: center">
-                                    <a onclick="delete_category({{$item->id}})" data-toggle="modal" data-target="#modal-delete-category">
+                                    <a onclick="return confirm('Bạn có chắc muốn xoá?')" href="/admin/contact/delete/{{$item->id}}">
                                         <button class="btn waves-effect waves-light btn-danger disabled"><i
                                                 class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
