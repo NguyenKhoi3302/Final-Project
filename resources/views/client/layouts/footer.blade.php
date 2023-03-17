@@ -85,7 +85,7 @@
         </div>
         <ul>
             @foreach($footer['pd_cat_footer'] as $val)
-                <li><a href="/danh-muc-tin-tuc/{{$val->id}}">{{$val->name}}</a></li>
+                <li><a href="/danh-muc-san-pham/{{$val->slug}}">{{$val->name}}</a></li>
             @endforeach
         </ul>
       </div>
@@ -95,7 +95,7 @@
         </div>
         <ul>
             @foreach($footer['news_cat_footer'] as $val)
-              <li><a href="/danh-muc-san-pham/{{$val->id}}">{{$val->name}}</a></li>
+              <li><a href="/danh-muc-tin-tuc/{{$val->slug}}">{{$val->name}}</a></li>
             @endforeach
         </ul>
       </div>
@@ -103,7 +103,7 @@
           @foreach($social_footer as $item)
                 <div class="social">
                   <a href="{{$item[1]->child_value->url}}" target="{{$item[1]->child_value->target}}" title="{{$item[1]->child_value->title}}">
-                      <img src="{{asset($item[0]->child_value->url)}}" alt="">
+                      {!! App\Http\Controllers\Controller::get_img_attachment($item[0]->child_value)!!}
                   </a>
                 </div>
           @endforeach

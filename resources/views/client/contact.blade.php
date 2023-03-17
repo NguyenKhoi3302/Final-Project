@@ -17,7 +17,7 @@
             @php $social_icon = json_decode($val->meta_value) @endphp
             @break
         @case('img_contact')
-            @php $img_contact = json_decode($val->meta_value) @endphp
+            @php $img_contact = $val->meta_value @endphp
             @break
     @endswitch
 @endforeach
@@ -37,7 +37,7 @@
                                 @foreach($social_icon as $social)
                                     <li>
                                         <a href="{{$social[1]->child_value->url}}" target="{{$social[1]->child_value->target}}">
-                                            <img width="42" height="42" src="{{asset($social[0]->child_value->url)}}"  alt="{{$social[0]->child_value->alt}}">
+                                            {!! App\Http\Controllers\Controller::get_img_attachment($social[0]->child_value)!!}
                                             <span>{{$social[1]->child_value->title}}</span>
                                         </a>
                                     </li>
@@ -66,7 +66,8 @@
 {{--                        </div>--}}
                     </div>
                     <div class="img">
-                        <img style="object-fit: cover" width="447" height="333" src="{{$img_contact->url}}" class="" alt="{{$img_contact->alt}}">
+                        {!! App\Http\Controllers\Controller::get_img_attachment($img_contact)!!}
+{{--                        <img style="object-fit: cover" width="447" height="333" src="{{$img_contact->url}}" class="" alt="{{$img_contact->alt}}">--}}
                     </div>
                     </div>
                 <div class="grid-55">

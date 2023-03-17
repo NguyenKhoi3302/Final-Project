@@ -106,6 +106,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/pages', [PageController::class, 'index']);
     Route::get('/page/update/{id}', [PageController::class, 'update_page']);
     Route::post('/page/update/{id}', [PageController::class, 'update_page_']);
+    Route::post('/update_option', [PageController::class, 'update_option']);
 // Options Page
     Route::get('/option', [PageController::class, 'option']);
     Route::post('/option', [PageController::class, 'update_option']);

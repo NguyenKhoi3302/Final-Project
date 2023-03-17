@@ -31,7 +31,7 @@
                         <label for="slug">Slug</label>
                         <input name="slug" id="slug" class="form-control slug_output">
                     </div>
-                    <div class="form_group mb-3">
+                    <div class="form_group mb-3 image_input">
                         <label for="image">Chọn ảnh</label>
                         <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn">Chọn hình ảnh</a>
                         <img src="" class="img_result">

@@ -83,17 +83,20 @@
                                         @break
                                     @case('image')
                                         @php $val = json_decode($item->meta_value) @endphp
-                                        <div class="image_wrap" style="display: flex;flex-wrap: wrap">
-                                            <h6 style="width: 100%">{{$item->meta_label}}</h6>
-                                            <div class="w-50 input_wrap px-3">
-                                                <label for="image_url">Chọn hình ảnh</label>
-                                                <input class="form-control" name="{{$item->meta_key}}_url" type="text" id="image_url" value="{{$val->url}}">
+                                            <div class="image_wrap image_input">
+                                                <h6 style="width: 100%">{{$item->meta_label}}</h6>
+                                                <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn" data-key="{{$item->meta_key}}">Chọn hình ảnh</a>
+                                                <img src="{{ asset(App\Http\Controllers\Controller::get_img_url($item->meta_value))}}" class="{{$item->meta_key}} img_result" style="display:block;">
+                                                <input type="hidden" name="{{$item->meta_key}}" class="form-control src_result {{$item->meta_key}}" value="{{$item->meta_value}}">
+{{--                                                <div class="w-50 input_wrap px-3">--}}
+{{--                                                    <label for="image_url">Chọn hình ảnh</label>--}}
+{{--                                                    <input class="form-control" name="{{$item->meta_key}}_url" type="text" id="image_url" value="{{$val->url}}">--}}
+{{--                                                </div>--}}
+{{--                                                <div class="w-50 input_wrap px-3">--}}
+{{--                                                    <label for="alt_text">Nhập alt cho ảnh</label>--}}
+{{--                                                    <input class="form-control"name="{{$item->meta_key}}_alt"  type="text" id="alt_text" value="{{$val->alt}}">--}}
+{{--                                                </div>--}}
                                             </div>
-                                            <div class="w-50 input_wrap px-3">
-                                                <label for="alt_text">Nhập alt cho ảnh</label>
-                                                <input class="form-control"name="{{$item->meta_key}}_alt"  type="text" id="alt_text" value="{{$val->alt}}">
-                                            </div>
-                                        </div>
                                         @break
                                     @case('brands')
                                         <h6>{{$item->meta_label}}</h6>
@@ -232,66 +235,72 @@
                                         @break
                                     @case('gallery')
                                         <h6>{{$item->meta_label}}</h6>
-                                        <div class="gallery_wrap">
-                                            @foreach(json_decode($item->meta_value) as $gal)
+                                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn mb-3 gallery_add" data-key="{{$item->meta_key}}">Thêm hình ảnh</a>
+                                        <div class="gallery_wrap {{$item->meta_key}}">
+                                            @php $val = json_decode($item->meta_value) @endphp
+                                            @foreach($val as $key => $gal)
                                                 <div class="img_gallery_wrap">
-                                                    <img src="{{asset($gal->url)}}" alt="{{$gal->alt}}">
+                                                    <div class="delete_img" data-id="{{$gal}}">
+                                                        <i class="zmdi zmdi-close"></i>
+                                                    </div>
+                                                    <img src="{{asset( App\Http\Controllers\Controller::get_img_url($gal) )}}">
                                                 </div>
                                             @endforeach
                                         </div>
+                                        <input type="hidden" value="{{trim($item->meta_value, '[]')}}" class="{{$item->meta_key}}" name="{{$item->meta_key}}">
                                         @break
                                     @case('repeater')
                                         <h6>{{$item->meta_label}}</h6>
-                                        @foreach(json_decode($item->meta_value) as $j => $value)
-                                            <div class="repeater_inner">
-                                                @foreach($value as $val)
-                                                    @switch($val->child_type)
-                                                        @case('image')
-                                                            @php $detail = $val->child_value @endphp
-                                                            <div class="image_wrap w-100 px-3" style="display: flex;flex-wrap: wrap">
-                                                                <h6 style="width: 100%">{{$val->child_label}}</h6>
-                                                                <div class="w-100 input_wrap">
-                                                                    <label for="title">Chọn hình ảnh</label>
-                                                                    <input class="form-control" name="{{$val->child_key}}_url_{{$j}}" type="text" id="title" value="{{$detail->url}}">
+                                        <div class="repeater_wrap">
+                                            @foreach(json_decode($item->meta_value) as $j => $value)
+                                                <div class="repeater_inner">
+                                                    @foreach($value as $val)
+                                                        @switch($val->child_type)
+                                                            @case('image')
+                                                                @php $detail = $val->child_value @endphp
+                                                                <div class="image_wrap w-100 px-3">
+                                                                    <h6 style="width: 100%">{{$val->child_label}}</h6>
+                                                                    <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn" data-key="{{$val->child_key}}_{{$j}}">Chọn hình ảnh</a>
+                                                                    <img src="{{ asset(App\Http\Controllers\Controller::get_img_url($val->child_value))}}" class="{{$val->child_key}}_{{$j}} img_result" style="display:block;">
+                                                                    <input type="hidden" name="{{$val->child_key}}_{{$j}}" class="form-control src_result {{$val->child_key}}_{{$j}}" value="{{$detail}}">
                                                                 </div>
-                                                                <div class="w-100 input_wrap">
-                                                                    <label for="alt_text">Nhập alt cho ảnh</label>
-                                                                    <input class="form-control"name="{{$val->child_key}}_alt_{{$j}}"  type="text" id="alt_test" value="{{$detail->alt}}">
+                                                                @break
+                                                            @case('link')
+                                                                @php $detail = $val->child_value @endphp
+                                                                <div class="link_wrap w-100 px-3">
+                                                                    <h6 style="width: 100%">{{$val->child_label}}</h6>
+                                                                    <div class="w-100 input_wrap">
+                                                                        <label for="title">Nhập link</label>
+                                                                        <input class="form-control" name="{{$val->child_key}}_url_{{$j}}" type="text" id="title" value="{{$detail->url}}">
+                                                                    </div>
+                                                                    <div class="w-100 input_wrap">
+                                                                        <label for="title">Nhập tiêu đề</label>
+                                                                        <input class="form-control"name="{{$val->child_key}}_title_{{$j}}"  type="text" id="title" value="{{$detail->title}}">
+                                                                    </div>
+                                                                    <div class="w-100 input_wrap">
+                                                                        <label for="target">Chọn kiểu</label>
+                                                                        <select class="form-control"name="{{$val->child_key}}_target_{{$j}}"  type="text" id="target">
+                                                                            <option value="_blank" @if($detail->target == '_blank') selected @endif> Mở trong thẻ mới</option>
+                                                                            <option value="" @if($detail->target != '_blank') selected @endif>Mở trong thẻ hiện tại</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                            @break
-                                                        @case('link')
-                                                            @php $detail = $val->child_value @endphp
-                                                            <div class="link_wrap w-100 px-3">
-                                                                <h6 style="width: 100%">{{$val->child_label}}</h6>
-                                                                <div class="w-100 input_wrap">
-                                                                    <label for="title">Nhập link</label>
-                                                                    <input class="form-control" name="{{$val->child_key}}_url_{{$j}}" type="text" id="title" value="{{$detail->url}}">
+                                                                @break
+                                                            @case('text')
+                                                                <div class="text_wrap w-100 px-3">
+                                                                    <h6 style="width: 100%">{{$val->child_label}}</h6>
+                                                                    <label for="{{$val->child_key}}">{{$val->child_label}}</label>
+                                                                    <input type="text" class="w-100 form-control" name="{{$val->child_key}}_{{$j}}" id="{{$val->child_key}}" value="{{$val->child_value}}">
                                                                 </div>
-                                                                <div class="w-100 input_wrap">
-                                                                    <label for="title">Nhập tiêu đề</label>
-                                                                    <input class="form-control"name="{{$val->child_key}}_title_{{$j}}"  type="text" id="title" value="{{$detail->title}}">
-                                                                </div>
-                                                                <div class="w-100 input_wrap">
-                                                                    <label for="target">Chọn kiểu</label>
-                                                                    <select class="form-control"name="{{$val->child_key}}_target_{{$j}}"  type="text" id="target">
-                                                                        <option value="_blank">Mở trong thẻ mới</option>
-                                                                        <option value="">Mở trong thẻ hiện tại</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            @break
-                                                        @case('text')
-                                                            <div class="text_wrap w-100 px-3">
-                                                                <h6 style="width: 100%">{{$val->child_label}}</h6>
-                                                                <label for="{{$val->child_key}}">{{$val->child_label}}</label>
-                                                                <input type="text" class="w-100 form-control" name="{{$val->child_key}}" id="{{$val->child_key}}" value="{{$val->child_value}}">
-                                                            </div>
-                                                            @break
-                                                    @endswitch
-                                                @endforeach
-                                            </div>
-                                        @endforeach
+                                                                @break
+                                                        @endswitch
+                                                    @endforeach
+                                                </div>
+                                            @endforeach
+                                        </div>
+{{--                                        <div class="repeater_clone">--}}
+{{--                                            Thêm item--}}
+{{--                                        </div>--}}
                                         @break
                                 @endswitch
                             </div>

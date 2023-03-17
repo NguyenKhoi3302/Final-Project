@@ -1,6 +1,20 @@
 $(document).ready(function (){
     ChangeToSlug();
     repeater();
+    clone();
+    jQuery(".choose_img_btn").click(function (e){
+        e.preventDefault();
+        var url = jQuery(this).attr('href'),
+            input_name = jQuery(this).attr('data-key');
+        if (jQuery(this).hasClass('gallery_add')){
+            jQuery(".popup_full .choose_btn").addClass('add_to_gallery');
+        }
+
+        jQuery(".popup_full .choose_btn").attr('data-key', input_name);
+        jQuery(".popup_full").addClass('active');
+
+        jQuery('#popup_gallery').empty().load(url);
+    })
 
     jQuery("a.show_full").click(function (e){
         e.preventDefault();
@@ -12,14 +26,26 @@ $(document).ready(function (){
         jQuery('#img_info').empty().load(url);
     })
 
-    jQuery(".choose_img_btn").click(function (e){
+    jQuery(".delete_img").click(function(e){
         e.preventDefault();
-        var url = jQuery(this).attr('href');
-        jQuery(".popup_full").addClass('active');
-
-        jQuery('#popup_gallery').empty().load(url);
+        var id = jQuery(this).attr('data-id'),
+            data = jQuery(this).parents(".gallery_wrap").next().val();
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            var index = data.indexOf(id);
+            data.splice(index, 1);
+        }
+        jQuery(this).parents(".gallery_wrap").next().val(data);
+        jQuery(this).parent().remove();
     })
+
 })
+function clone(){
+    jQuery(".repeater_clone").click(function (e){
+        e.preventDefault()
+        var data = jQuery(this).prev().children().last().clone().appendTo(jQuery(this).prev());
+    })
+}
 function drag(){
     var dragging = null;
     document.addEventListener('dragstart', function(event) {

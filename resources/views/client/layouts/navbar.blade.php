@@ -1,7 +1,7 @@
 @foreach($footer['footer_meta'] as $item)
     @switch($item->meta_key)
         @case('logo_page')
-            @php $logo = json_decode($item->meta_value) @endphp
+            @php $logo = $item->meta_value @endphp
             @break
     @endswitch
 @endforeach
@@ -24,7 +24,7 @@
   </div>
   <div class="logo">
     <a href="{{url('/')}}">
-      <img src="{{asset($logo->url)}}" alt="">
+        {!! App\Http\Controllers\Controller::get_img_attachment($logo) !!}
     </a>
   </div>
   <div class="primary_menu">

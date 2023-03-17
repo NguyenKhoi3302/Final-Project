@@ -17,7 +17,7 @@
             @php $bg_title_sec_1 = $val->meta_value @endphp
             @break
         @case('bg_img_sec_1')
-            @php $bg_img_sec_1 = json_decode($val->meta_value) @endphp
+            @php $bg_img_sec_1 = $val->meta_value @endphp
             @break
         @case('title_sec_2')
             @php $title_sec_2 = $val->meta_value @endphp
@@ -41,7 +41,7 @@
             @php $des_sec_3 = $val->meta_value @endphp
             @break
         @case('bg_img_sec_3')
-            @php $bg_img_sec_3 = json_decode($val->meta_value) @endphp
+            @php $bg_img_sec_3 = $val->meta_value @endphp
             @break
         @case('icons_sec_3')
             @php $icons_sec_3 = json_decode($val->meta_value) @endphp
@@ -77,7 +77,7 @@
             @foreach($banner_img as $key => $img)
                 <div class="swiper-slide">
                     <div class="banner_img_wrap">
-                        <img src="{{$img->url}}" alt="{{$img->alt}}">
+                        {!! App\Http\Controllers\Controller::get_img_attachment($img)!!}
                     </div>
                 </div>
             @endforeach
@@ -85,7 +85,7 @@
         <div class="swiper-pagination"></div>
     </div>
 </section>
-<section class="section home_2" style="background-image: url('{{asset($bg_img_sec_1->url)}}')">
+<section class="section home_2" style="background-image: url('{{asset(App\Http\Controllers\Controller::get_img_url($bg_img_sec_1))}}')">
     <div class="grid-container">
         <div class="section_heading text_center" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
             <div class="title_group">
@@ -149,14 +149,15 @@
                         <div class="item_des">{{$item[1]->child_value}}</div>
                     </div>
                     <div class="item_img">
-                        <img src="{{$item[2]->child_value->url}}" alt="{{$item[2]->child_value->alt}}">
+                        {!! App\Http\Controllers\Controller::get_img_attachment($item[2]->child_value)!!}
+{{--                        <img src="{{$item[2]->child_value->url}}" alt="{{$item[2]->child_value->alt}}">--}}
                     </div>
                 </div>
             @endforeach
         </div>
     </div>
 </section>
-<section class="section home_4" style="background-image: url('{{asset($bg_img_sec_3->url)}}')">
+<section class="section home_4" style="background-image: url('{{asset(App\Http\Controllers\Controller::get_img_url($bg_img_sec_3))}}')">
     <div class="grid-container">
         <div class="grid-50" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
             <div class="content_wrap">
@@ -172,7 +173,7 @@
             <div class="list_bubble">
                 @foreach($icons_sec_3 as $icon)
                     <div class="item_bubble" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
-                        <img src="{{asset($icon->url)}}" alt="{{$icon->alt}}">
+                        {!! App\Http\Controllers\Controller::get_img_attachment($icon)!!}
                     </div>
                 @endforeach
             </div>

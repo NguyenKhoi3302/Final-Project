@@ -49,19 +49,10 @@ class PageController extends Controller
         $p->title = $_POST['title'];
         $p->description = $_POST['description'];
         $p->keywords = $_POST['keywords'];
-        $p->template_id = '1';
 
         $t = pageMeta::where('page_id', $id)->get();
         foreach ($t as $item){
             switch($item->meta_type){
-                case 'image':
-                    $key = $item->meta_key;
-                    $item->meta_value = json_encode([
-                        'url' => $_POST[$key.'_url'],
-                        'alt' => $_POST[$key.'_alt'],
-                    ]);
-                    $item->save();
-                    break;
                 case 'link':
                     $key = $item->meta_key;
                     $item->meta_value = json_encode([
@@ -71,6 +62,7 @@ class PageController extends Controller
                     ]);
                     $item->save();
                     break;
+                case 'image':
                 case 'text':
                 case 'textarea':
                 case 'editor':
@@ -83,6 +75,7 @@ class PageController extends Controller
                 case 'pd_cat':
                 case 'posts':
                 case 'products':
+                case 'gallery':
                     $key = $item->meta_key;
                     $item->meta_value = '['.str_replace('"', '', json_encode($_POST[$key])).']';
                     $item->save();
@@ -99,10 +92,7 @@ class PageController extends Controller
                                         'child_key' => $key,
                                         'child_label' => $val->child_label,
                                         'child_type' => 'image',
-                                        'child_value' => [
-                                            'url' => $_POST[$key.'_url_'.$j],
-                                            'alt' => $_POST[$key.'_alt_'.$j],
-                                        ]
+                                        'child_value' => $_POST[$key.'_'.$j]
                                     ];
                                     $arr_data[] = $val;
                                     break;
@@ -125,7 +115,7 @@ class PageController extends Controller
                                     $val = [
                                         'child_key' => $key,
                                         'child_label' => $val->child_label,
-                                        'child_type' => 'link',
+                                        'child_type' => 'text',
                                         'child_value' => $_POST[$key.'_'.$j],
                                     ];
                                     $arr_data[] = $val;
@@ -171,5 +161,86 @@ class PageController extends Controller
         }
         return view('admin.pages.options', $data);
     }
-    public function update_option(){}
+    public function update_option(){
+        $t = pageMeta::where('page_id', 999)->get();
+        foreach ($t as $item){
+            switch($item->meta_type){
+                case 'link':
+                    $key = $item->meta_key;
+                    $item->meta_value = json_encode([
+                        'url' => $_POST[$key.'_url'],
+                        'title' => $_POST[$key.'_title'],
+                        'target' => $_POST[$key.'_target'],
+                    ]);
+                    $item->save();
+                    break;
+                case 'image':
+                case 'text':
+                case 'textarea':
+                case 'editor':
+                    $key = $item->meta_key;
+                    $item->meta_value = $_POST[$key];
+                    $item->save();
+                    break;
+                case 'news_cat':
+                case 'brands':
+                case 'pd_cat':
+                case 'posts':
+                case 'products':
+                    $key = $item->meta_key;
+                    $item->meta_value = '['.str_replace('"', '', json_encode($_POST[$key])).']';
+                    $item->save();
+                    break;
+                case 'repeater':
+                    $arr_parent = [];
+                    foreach (json_decode($item->meta_value) as $j => $child){
+                        $arr_data = [];
+                        foreach ($child as $val){
+                            switch($val->child_type) {
+                                case 'image':
+                                    $key = $val->child_key;
+                                    $val = [
+                                        'child_key' => $key,
+                                        'child_label' => $val->child_label,
+                                        'child_type' => 'image',
+                                        'child_value' => $_POST[$key.'_'.$j]
+                                    ];
+                                    $arr_data[] = $val;
+                                    break;
+                                case 'link':
+                                    $key = $val->child_key;
+                                    $val = [
+                                        'child_key' => $key,
+                                        'child_label' => $val->child_label,
+                                        'child_type' => 'link',
+                                        'child_value' => [
+                                            'url' => $_POST[$key.'_url_'.$j],
+                                            'title' => $_POST[$key.'_title_'.$j],
+                                            'target' => $_POST[$key.'_target_'.$j],
+                                        ]
+                                    ];
+                                    $arr_data[] = $val;
+                                    break;
+                                case 'text':
+                                    $key = $val->child_key;
+                                    $val = [
+                                        'child_key' => $key,
+                                        'child_label' => $val->child_label,
+                                        'child_type' => 'text',
+                                        'child_value' => $_POST[$key.'_'.$j],
+                                    ];
+                                    $arr_data[] = $val;
+                                    break;
+                            }
+                        }
+                        $arr_parent[] = $arr_data;
+                    }
+                    $item->meta_value = json_encode($arr_parent);
+                    $item->save();
+                    break;
+//                case 'gallery':
+            }
+        }
+        return redirect($_SERVER['HTTP_REFERER']);
+    }
 }

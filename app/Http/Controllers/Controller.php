@@ -123,5 +123,10 @@ class Controller extends BaseController
 
         return $html;
     }
-//{!! App\Http\Controllers\Controller::get_img_attachment($id)!!}
+    public static function get_img_url($id){
+        $image = DB::table('media')->where('id', $id)->first();
+        return $image->url;
+    }
+// {!! App\Http\Controllers\Controller::get_img_attachment($id)!!}
+// {!! App\Http\Controllers\Controller::get_img_url($id)!!}
 }
