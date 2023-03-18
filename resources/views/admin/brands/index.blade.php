@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Danh sách thương hiệu
+@endsection
 @section('admin_content')
     <div class="row">
         <div class="col-12">
@@ -43,7 +46,7 @@
                                                 class="fa fa-trash" aria-hidden="true"></i>
                                         </button>
                                     </a>
-                                    <a onclick="update_brand({{$item->id}})" data-name="{{$item->name}}"
+                                    <a onclick="update_brand({{$item->id}}, this.dataset.title)" data-title="{{$item->name}}"
                                        id="update_brand" data-toggle="modal" data-target="#modal-update-brand">
                                         <button class="btn waves-effect waves-light btn-warning">
                                             <i class="fa fa-pencil"></i>

@@ -8,7 +8,44 @@ use DB;
 
 class NewsController extends Controller
 {
-    public function single_news($slug){
+    public function filter(Request $request){
+        $category_id = $request->input('category_id');
+        $search = $request->input('search');
+        $appear = $request->input('appear');
+        $hot = $request->input('hot');
+
+        $news_list = DB::table('news')
+            ->orderBy('id','desc')
+            ->when($category_id, function ($query) use ($category_id) {
+                return $query->where('category_id', $category_id);
+            })
+            ->when($appear != null, function ($query) use ($appear) {
+                return $query->where('appear', $appear);
+            })
+            ->when($hot != null, function ($query) use ($hot) {
+                return $query->where('hot', $hot);
+            })
+            ->when($search, function ($query) use ($search) {
+                return $query->where('title', 'like', "%$search%");
+            })
+            ->get();
+
+        $author = DB::table('users')->select('name', 'id')->get();
+        $cat_list = DB::table('news_categories')->select('name', 'id')->get();
+        $html = view('Modals.back_end.new_load')
+            ->with(['news_list'=>$news_list, 'author' => $author, 'cat_list' => $cat_list,])
+            ->render();
+        return response()->json(['BODY' => $html]);
+    }
+
+    public function index(){
+        $news = DB::table('news')->Paginate(12);
+        $cat = DB::table('news_categories')->get();
+        $data = ['cat'=>$cat, 'news' => $news];
+        return view('client.news', $data);
+    }
+
+    public function single_news($id){
         $kq = DB::table('news')->WHERE('slug', $slug)->first();
         $list = DB::table('news')->limit(5)->get();
         $footer = $this->footer();
@@ -19,9 +56,10 @@ class NewsController extends Controller
         $news_list = DB::table('news')
             ->orderBy('created_at','desc')
             ->Paginate(20);
+        $cata  = NewsCategories::all();
         $author = DB::table('users')->select('name', 'id')->get();
         $cat_list = DB::table('news_categories')->select('name', 'id')->get();
-        $data = ['news_list'=>$news_list, 'author' => $author, 'cat_list' => $cat_list];
+        $data = ['news_list'=>$news_list, 'author' => $author, 'cat_list' => $cat_list, 'cate_all' => $cat_list];
         return view("admin/news/index", $data);
     }
     function add(){

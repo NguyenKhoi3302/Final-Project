@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
-use App\Http\Controllers\OrderController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrdersController;
@@ -15,7 +14,6 @@ use App\Http\Controllers\BEProductAttributeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\BEUserController;
 use App\Http\Livewire\Admin\RoleComponent;
 use App\Http\Livewire\Admin\PermissionComponent;
@@ -81,7 +79,6 @@ Route::post('/passUpdate', [UserController::class, 'pass_update'])->name('pass.u
 
 // ------------ Admin ------------//
 
-
 Route::prefix('admin')->group(function (){
 // Dashboard
     Route::get('/', [AdminController::class, 'dashboard']);
@@ -143,6 +140,10 @@ Route::prefix('admin')->group(function (){
     Route::get('product/update/{id}', [BEProductController::class, 'update']);
     Route::post('product/update/save/{id}', [BEProductController::class, 'update_save']);
     Route::get('product/changeStatus/{id}', [BEProductController::class, 'change_status']);
+
+    //    filter product
+    Route::post('product/filter', [BEProductController::class, 'filter']);
+
 
     Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);

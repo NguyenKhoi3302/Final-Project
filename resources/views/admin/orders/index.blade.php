@@ -19,10 +19,45 @@ Danh sách đơn hàng
                 <div class="clearfix"></div>
             </div>
         </div>
+
     </div>
     <!-- end row -->
-
-
+    <div class="card">
+        <div class="card-header">
+            <strong>Tìm kiếm tin tức</strong>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <select id="status" name="status" class="form-control">
+                            <option value="">Tất Cả Trạng Thái</option>
+                            <option value="Đang Chờ Duyệt">Đang Chờ Duyệt</option>
+                            <option value="Đang giao hàng">Đang Giao Hàng</option>
+                            <option value="Giao thành công">Giao Thành Công</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <select id="arrange" name="arrange" class="form-control">
+                            <option value="">Tất cả thời gian đăt hàng</option>
+                            <option value="newest">Đơn Hàng Mới Nhất</option>
+                            <option value="oldest">Đơn Hàng Cũ Nhất</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" >
+                        <input style="text-align: center" type="text" id="code" class="form-control" placeholder="Nhập mã đơn hàng">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
             <table class="table table-bordered mb-0 news_table">
@@ -43,7 +78,7 @@ Danh sách đơn hàng
                         <th><span>Hành động</span></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id="body-load-order">
                     @foreach($list as $item)
                     <tr>
                         <th class="text-muted">{{$item->id}}</th>
@@ -146,3 +181,7 @@ Danh sách đơn hàng
 
 </div> <!-- container -->
 @endsection
+@push('js')
+    <script src="{{url('assets')}}/cutstom-js/order.js"></script>
+
+@endpush

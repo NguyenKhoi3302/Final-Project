@@ -21,8 +21,8 @@
                                 <div class="col">
                                     <fieldset class="form-group">
                                         <label style=" color: red;" for="exampleInputEmail1">* NHÓM SẢN PHẨM</label>
-                                        <select name="category_id" class="custom-select mb-3">
-                                            <option selected>chọn tại đây...</option>
+                                        <select name="pr_category_id" class="custom-select mb-3">
+                                            <option selected>Chọn Tại Đây...</option>
                                             @foreach($categorys as $category)
                                             <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
@@ -34,7 +34,7 @@
                                     <fieldset class="form-group">
                                         <label style=" color: red;" for="exampleInputEmail1">* THƯƠNG HIỆU</label>
                                         <select name="brand_id" class="custom-select mb-3">
-                                            <option selected>chọn tại đây...</option>
+                                            <option selected>Chọn Tại Đây...</option>
                                             @foreach($brands as $brand)
                                             <option value="{{$brand->id}}">{{$brand->name}}</option>
                                             @endforeach

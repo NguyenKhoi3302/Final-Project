@@ -9,8 +9,8 @@ class Products extends Model
 {
     protected $fillable = [
         'id',
-        'brand',
-        'product_category',
+        'brand_id',
+        'product_category_id',
         'name',
         'slug',
         'images',
@@ -23,7 +23,7 @@ class Products extends Model
         'sku',
         'sex',
         'appear',
-        
+
 
     ];
 

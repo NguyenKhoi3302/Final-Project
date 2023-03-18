@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('summary', 1000)->nullable();
             $table->text('content');
             $table->string('keywords', 500)->nullable(); // Từ khoá SEO
+//            $table->bigInteger('sort')->unsigned()->nullable();
             $table->integer('view')->default(0);
             $table->tinyInteger('hot')->default(0);
             $table->tinyInteger('appear')->default(1);

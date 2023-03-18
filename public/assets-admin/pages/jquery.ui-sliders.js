@@ -2,17 +2,17 @@
 * Theme: Uplon Admin Template
 * Author: Coderthemes
 * Component: Ion Slider
-* 
+*
 */
 $(document).ready(function () {
     $("#range_01").ionRangeSlider();
-    
+
     $("#range_02").ionRangeSlider({
         min: 100,
         max: 1000,
         from: 550
     });
-    
+
     $("#range_03").ionRangeSlider({
         type: "double",
         grid: true,
@@ -22,7 +22,7 @@ $(document).ready(function () {
         to: 800,
         prefix: "$"
     });
-   
+
     $("#range_04").ionRangeSlider({
         type: "double",
         grid: true,
@@ -31,7 +31,7 @@ $(document).ready(function () {
         from: -500,
         to: 500
     });
-    
+
     $("#range_05").ionRangeSlider({
         type: "double",
         grid: true,
@@ -41,22 +41,22 @@ $(document).ready(function () {
         to: 500,
         step: 250
     });
-    
+
     $("#range_06").ionRangeSlider({
         grid: true,
         from: 3,
         values: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
     });
-    
-    $("#range_07").ionRangeSlider({
+
+    $("#price_range").ionRangeSlider({
         grid: true,
-        min: 1000,
-        max: 1000000,
-        from: 200000,
-        step: 1000,
+        min: 500000,
+        max: 10000000,
+        from: 1500000,
+        step: 500000,
         prettify_enabled: true
     });
-    
+
     $("#range_08").ionRangeSlider({
         min: 100,
         max: 1000,

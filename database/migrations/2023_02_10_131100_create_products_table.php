@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->integer('id')->autoIncrement (); // ID Sản phẩm
             $table->integer('brand_id'); // ID thương hiệu
-            $table->integer('product_category_id'); // ID danh mục
+            $table->integer('pr_category_id'); // ID danh mục
             $table->string('name', 255); // Tên sản phẩm
             $table->string('slug', 255)->unique(); // Slug
             $table->string('images', 500); // Hình ảnh sản phẩm
             $table->integer('view')->default(0); // Lượt xem
             $table->integer('bought')->default(0); // Đã mua
             $table->string('description', 1000)->nullable(); // Mô tả
-            $table->text('content'); // Nội dung
+            $table->text('contents'); // Nội dung
             $table->string('keywords', 500)->nullable(); // Từ khoá SEO
             $table->integer('price'); // Giá sản phẩm
             $table->integer('discount'); // Giảm giá
