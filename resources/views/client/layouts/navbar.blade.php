@@ -27,8 +27,8 @@
   <div class="primary_menu">
     <ul>
       <li class="@if(Request::is('/')) active @endif"><a href="/">Trang chủ</a></li>
-      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'product') || str_contains($_SERVER['REQUEST_URI'], 'shop')) active @endif"><a href="{{url('/shop')}}">Sản phẩm</a></li>
-      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'about')) active @endif"><a href="{{url('/about')}}">Về chúng tôi</a></li>
+        <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'about')) active @endif"><a href="{{url('/about')}}">Về chúng tôi</a></li>
+        <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'product') || str_contains($_SERVER['REQUEST_URI'], 'shop')) active @endif"><a href="{{url('/shop')}}">Sản phẩm</a></li>
       <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'news')) active @endif"><a href="{{url('/news')}}">Tin tức</a></li>
       <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'contact')) active @endif"><a href="{{url('/contact')}}">Liên hệ</a></li>
     </ul>

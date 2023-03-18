@@ -99,9 +99,16 @@ Route::prefix('admin')->group(function (){
     Route::get('/category/delete/{id}', [CategoryController::class, 'delete_cat']);
     Route::get('/category/update/{id}', [CategoryController::class, 'update_cat']);
     Route::post('/category/update/{id}', [CategoryController::class, 'update_cat_']);
+// News comments
+    Route::get('/news/comment', [NewsController::class,'comment'])->name('admin.news.comment');
+    Route::post('/news/changeAppear',[NewsController::class,'change'])->name('admin.newsComment.changeAppear');
+    Route::post('/newsComment/destroy',[NewsController::class,'destroy'])->name('admin.newsComment.destroy');
+// News filter
+    Route::post('/news/filter',[NewsController::class, 'filter']);
 // Orders
     Route::get('/orders', [OrdersController::class, 'index']);
     Route::get('/order/detail/{id}', [OrdersController::class, 'detail']);
+    Route::post('/order/filter', [OrdersController::class, 'filter']);
 // Pages
     Route::get('/pages', [PageController::class, 'index']);
     Route::get('/page/update/{id}', [PageController::class, 'update_page']);
@@ -143,13 +150,11 @@ Route::prefix('admin')->group(function (){
     Route::post('product/update/save/{id}', [BEProductController::class, 'update_save']);
     Route::get('product/changeStatus/{id}', [BEProductController::class, 'change_status']);
 
-    //    filter product
+// filter product
     Route::post('product/filter', [BEProductController::class, 'filter']);
-
 
     Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);
-
     Route::get('/product/comments', [BEProductCommentController::class, 'index'])->name('product.comment');
     Route::post('/product/comments/changeAppear', [BEProductCommentController::class, 'changeAppear'])->name('product.comment.changeAppear');
     Route::post('/product/comments/delete', [BEProductCommentController::class, 'destroy'])->name('product.comment.destroy');

@@ -139,7 +139,7 @@
                         </ul>
                     </div>
                     <div class="comments">
-                        @livewire('news-comment-component', ['news_id'=> (int)$new->id])
+                        @livewire('news-comment-component', ['news_id'=> (int)$kq->id])
                     </div>
                 </div>
                 <div class="grid-25 tablet-grid-100 mobile-grid-100">

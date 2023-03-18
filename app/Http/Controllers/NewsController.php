@@ -47,7 +47,7 @@ class NewsController extends Controller
         return view('client.news', $data);
     }
 
-    public function single_news($id){
+    public function single_news($slug){
         $kq = DB::table('news')->WHERE('slug', $slug)->first();
         $list = DB::table('news')->limit(5)->get();
         $footer = $this->footer();

@@ -22,7 +22,7 @@ class BEProductController extends Controller
         $brand_id = $request->input('brand_id');
         $search = $request->input('search');
         $appear = $request->input('appear');
-        $data = Product::select('products.id', 'products.name as product_name', 'products.view', 'products.price_pay', 'products.images', 'products.bought', 'products.price', 'products.discount',
+        $data = Product::select('products.id', 'products.name as product_name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
             'products.sex', 'products.appear',
             'product_categories.name as cate_name', 'brands.name as brand_name')
             ->from('products')
@@ -56,8 +56,8 @@ class BEProductController extends Controller
     public function index()
     {
         $data = Product::query('products')
-//            ->select('products.id','products.name as name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
-            ->select('products.id', 'products.name as name', 'products.view', 'products.price_pay', 'products.images', 'products.bought', 'products.price', 'products.discount',
+            ->select('products.id','products.name as name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
+//            ->select('products.id', 'products.name as name', 'products.view', 'products.price_pay', 'products.images', 'products.bought', 'products.price', 'products.discount',
                 'products.sex', 'products.appear',
                 'product_categories.name as cate_name', 'brands.name as brand_name')
             ->join('product_categories', 'product_categories.id', '=', 'products.pr_category_id')
