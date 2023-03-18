@@ -11,7 +11,7 @@ class Product extends Model
     public $table = 'products';
 
     public $fillable = [
-       'name','brand_id', 'category_id','slug','images','view','bought','description','contents',
+       'name','brand_id', 'pr_category_id','slug','images','view','bought','description','contents',
         'price','price_pay','discount','sku','sex', 'appear', 'created_at','updated_at'
     ];
     public function brand(){

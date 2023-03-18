@@ -23,7 +23,7 @@ class Orders extends Seeder
         $status = ['Đang chờ duyệt', 'Đang giao hàng', 'Giao thành công'];
         $day = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28];
         $month = [2,3,4,5,6,7,8];
-        for($i = 0; $i < 500; $i++){
+        for($i = 0; $i < 50; $i++){
             $fullname = Arr::random($ho) . ' ' . Arr::random($dem) . ' ' . Arr::random($ten);
             DB::table('orders')->insert([
                 'user_id' => rand(5, 50),

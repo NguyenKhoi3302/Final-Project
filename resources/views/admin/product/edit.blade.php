@@ -21,10 +21,10 @@
                                     <div class="col">
                                         <fieldset class="form-group">
                                             <label style=" color: red;" for="exampleInputEmail1">* NHÓM SẢN PHẨM</label>
-                                            <select name="category_id" class="custom-select mb-3">
+                                            <select name="pr_category_id" class="custom-select mb-3">
                                                 <option selected>chọn tại đây...</option>
                                                 @foreach($categorys as $category)
-                                                    <option   {{$product->category_id == $category->id ? 'selected' : '' }} value="{{$category->id}}">{{$category->name}}</option>
+                                                    <option   {{$product->pr_category_id == $category->id ? 'selected' : '' }} value="{{$category->id}}">{{$category->name}}</option>
                                                 @endforeach
                                             </select>
                                         </fieldset>

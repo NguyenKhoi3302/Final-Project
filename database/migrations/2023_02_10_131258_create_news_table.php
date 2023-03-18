@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->text('summary')->nullable();
             $table->text('content');
+            $table->bigInteger('sort')->unsigned()->nullable();
             $table->integer('view')->default(0);
             $table->tinyInteger('hot')->default(0);
             $table->tinyInteger('appear')->default(1);

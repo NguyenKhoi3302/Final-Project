@@ -17,7 +17,7 @@ class BEProductController extends Controller
     public function filter(Request $request)
     {
 
-       $price_range = $request->input('price_range');
+        $price_range = $request->input('price_range');
         $category_id = $request->input('category_id');
         $brand_id = $request->input('brand_id');
         $search = $request->input('search');
@@ -34,9 +34,10 @@ class BEProductController extends Controller
             ->when($brand_id, function ($query) use ($brand_id) {
                 return $query->where('products.brand_id', $brand_id);
             })
-            ->when($appear, function ($query) use ($appear) {
+            ->when($appear != null, function ($query) use ($appear) {
                 return $query->where('products.appear', $appear);
             })
+
             ->when($search, function ($query) use ($search) {
                 return $query->where('products.name', 'like', "%$search%");
             })
@@ -98,18 +99,12 @@ class BEProductController extends Controller
         ]);
 
         if ($request->hasFile('images')) {
-            // Nếu trường avatar có file thì sẽ trả về true
-            // 3.1 Xử lý tên file
-            $avatar = $request->images;
-            $avatarName = $avatar->hashName();
-            $avatarName = $request->username . '_' . $avatarName;
-            // dd($avatar->storeAs('images/users', $avatarName));
-            // 3.2 Lưu file và gán đường dẫn cho $user->avatar
-            $products->images = $avatar->storeAs('image/products', $avatarName);
-            // storage/app/images/users
-            // Cấu hình config/filesystems.php để public/images ~ storage/app/images
-            // Chạy câu lệnh: php artisan storage:link
-        } else {
+            $image = $request->file('images');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/products'), $imageName);
+            $products->images = 'image/products/' . $imageName;
+            $products->save();
+        }else {
             $products->images = '';
         }
 
@@ -168,11 +163,13 @@ class BEProductController extends Controller
             'sex' => $request->sex,
         ]);
         if ($request->hasFile('images')) {
-            $avatar = $request->images;
-            $avatarName = $avatar->hashName();
-            $avatarName = $request->username . '_' . $avatarName;
-            // dd($avatar->storeAs('images/users', $avatarName));
-            $products->images = $avatar->storeAs('image/products', $avatarName);
+            $image = $request->file('images');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/products'), $imageName);
+            $products->images = 'image/products/' . $imageName;
+            $products->save();
+        }else {
+            $products->images = '';
         }
 
         $products->save();

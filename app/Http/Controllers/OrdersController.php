@@ -7,14 +7,49 @@ use DB;
 
 class OrdersController extends Controller
 {
-    function index(){
+    public function filter(Request $request)
+    {
+        $customers = DB::table('users')->select('name', 'id')->get();
+
+        $status = $request->input('status');
+        $arrange = $request->input('arrange');
+        $code = $request->input('code');
+
+        $query = DB::table('orders');
+
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+        if ($code) {
+            $query->where('code', $code);
+        }
+        if ($arrange == 'newest') {
+            $query->orderBy('created_at', 'desc');
+        } else if ($arrange == 'oldest') {
+            $query->orderBy('created_at', 'asc');
+        }
+
+        $list = $query->get();
+
+        $html = view('Modals.back_end.order_load')
+            ->with(['list' => $list,'customers' => $customers ])
+            ->render();
+        return response()->json(['BODY' => $html]);
+    }
+
+
+    function index()
+    {
         $list = DB::table('orders')->orderBy('created_at', 'desc')->Paginate(20);
         $customers = DB::table('users')->select('name', 'id')->get();
 
         $data = ['list' => $list, 'customers' => $customers];
         return view("admin/orders/index", $data);
     }
-    function detail($id){
+
+    function detail($id)
+    {
         $list = DB::table('order_detail')->where('order_id', $id)->get();
         $pd_list = DB::table('products')->select('name', 'id')->get();
         $data = ['list' => $list, 'pd_list' => $pd_list];

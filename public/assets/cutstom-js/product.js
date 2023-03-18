@@ -1,3 +1,34 @@
+$(document).ready(function() {
+
+    load_products();
+    $('#category, #brand, #search, #appear, #price_range').on('change keyup', function() {
+        load_products();
+    });
+});
+
+function load_products() {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    var category = $('#category').val();
+    var brand = $('#brand').val();
+    var search = $('#search').val();
+    var appear = $('#appear').val();
+    var price_range = $('#price_range').val();
+    $.ajax({
+        url: 'http://127.0.0.1:8000/admin/product/filter',
+        method: 'POST',
+        data: { category_id: category, brand_id: brand, search: search, appear: appear, price_range: price_range },
+        success: function(response) {
+            $('#body-load-product').empty().html(response.BODY);
+        }
+    });
+}
+
+
+
 function calculatePrice() {
     var frm = $('#frm-add-product');
 
@@ -21,3 +52,7 @@ function delete_product(id){
     var popup = jQuery('#modal-delete-product')
     popup.find('input[name=item_id]').val(id)
 }
+
+$('#changeStatus').on('click',  function () {
+      alert('ok')
+})

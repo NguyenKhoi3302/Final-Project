@@ -94,6 +94,9 @@ Route::get('/admin/news/appear/{id}', [NewsController::class, 'appear']);
 Route::get('/admin/news/update/{id}', [NewsController::class, 'update']);
 Route::post('/admin/news/update/{id}', [NewsController::class, 'update_']);
 Route::get('/admin/news/delete/{id}', [NewsController::class, 'delete']);
+
+
+Route::post('admin/admin/news/filter',[NewsController::class, 'filter']);
 // News categories
 Route::get('/admin/news/categories', [CategoryController::class, 'news_cat']);
 Route::post('/admin/category/add', [CategoryController::class, 'add_cat']);
@@ -103,6 +106,7 @@ Route::post('/admin/category/update/{id}', [CategoryController::class, 'update_c
 
 Route::get('/admin/orders', [OrdersController::class, 'index']);
 Route::get('/admin/order/detail/{id}', [OrdersController::class, 'detail']);
+Route::post('/admin/order/filter', [OrdersController::class, 'filter']);
 
 
 Route::prefix('admin')->group(function (){
@@ -112,6 +116,8 @@ Route::prefix('admin')->group(function (){
     Route::post('product_category/delete', [BECategoryCotroller::class, 'delete']);
     Route::post('product_category/update', [BECategoryCotroller::class, 'update']);
     Route::get('product_category/changeStatus/{id}', [BECategoryCotroller::class, 'change_status']);
+
+
 
 // brands
     Route::get('brands', [BEBrandsController::class, 'index']);
@@ -128,6 +134,10 @@ Route::prefix('admin')->group(function (){
     Route::get('product/update/{id}', [BEProductController::class, 'update']);
     Route::post('product/update/save/{id}', [BEProductController::class, 'update_save']);
     Route::get('product/changeStatus/{id}', [BEProductController::class, 'change_status']);
+
+    //    filter product
+    Route::post('product/filter', [BEProductController::class, 'filter']);
+
 
     Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);

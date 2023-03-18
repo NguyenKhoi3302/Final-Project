@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Danh sách danh mục sản <phẩm></phẩm>
+@endsection
 @section('admin_content')
     <div class="row">
         <div class="col-12">
@@ -42,11 +45,12 @@
                                             class="fa fa-trash" aria-hidden="true"></i>
                                     </button>
                                 </a>
-                                <a onclick="update_category({{$item->id}})" data-name="{{$item->name}}" id="update_cate" data-toggle="modal" data-target="#modal-update-category">
+                                <a onclick="update_category({{$item->id}}, this.dataset.title)" data-title="{{$item->name}}" id="update_cate" data-toggle="modal" data-target="#modal-update-category">
                                     <button class="btn waves-effect waves-light btn-warning">
                                         <i class="fa fa-pencil"></i>
                                     </button>
                                 </a>
+
 
                             </td>
                         </tr>

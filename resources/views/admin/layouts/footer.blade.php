@@ -69,4 +69,7 @@
 <script src="{{asset('assets-admin/plugins/fileuploads/js/dropify.min.js')}}"></script>
 
 <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/ckeditor.js"></script>
+
+<script src="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.min.js')}}"></script>
+<script src="{{asset('assets-admin/pages/jquery.ui-sliders.js')}}"></script>
 @livewireScripts
