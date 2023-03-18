@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="news_date">
                                     <span>{{$new->created_at}}</span>
-                                    <a href="{{url('/single-news/'.$new->slug)}}">Xem chi tiết</a>
+                                    <a class="btn_small btn_secondary" href="{{url('/single-news/'.$new->slug)}}">Xem chi tiết</a>
                                 </div>
                             </div>
                         </div>

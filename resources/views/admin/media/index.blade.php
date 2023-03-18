@@ -8,7 +8,7 @@
             @csrf
             <label class="block mb-4">
 {{--                <span class="file">Chọn tệp để tải lên</span>--}}
-                <input type="file" name="image[]" class="form-control"/>
+                <input type="file" name="image[]" multiple class="form-control"/>
 {{--                <input type="hidden">--}}
             </label>
             <button type="submit" class="btn btn-primary">Submit</button>

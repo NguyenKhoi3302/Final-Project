@@ -29,11 +29,11 @@
   </div>
   <div class="primary_menu">
     <ul>
-      <li class="active"><a href="/">Trang chủ</a></li>
-      <li><a href="{{url('/shop')}}">Sản phẩm</a></li>
-      <li><a href="{{url('/about')}}">Về chúng tôi</a></li>
-      <li><a href="{{url('/news')}}">Tin tức</a></li>
-      <li><a href="{{url('/contact')}}">Liên hệ</a></li>
+      <li class="@if(Request::is('/')) active @endif"><a href="/">Trang chủ</a></li>
+      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'product') || str_contains($_SERVER['REQUEST_URI'], 'shop')) active @endif"><a href="{{url('/shop')}}">Sản phẩm</a></li>
+      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'about')) active @endif"><a href="{{url('/about')}}">Về chúng tôi</a></li>
+      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'news')) active @endif"><a href="{{url('/news')}}">Tin tức</a></li>
+      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'contact')) active @endif"><a href="{{url('/contact')}}">Liên hệ</a></li>
     </ul>
   </div>
   <div class="header_actions">
@@ -66,7 +66,7 @@
     <h4>Đăng nhập</h4>
     <input type="email" placeholder="Enter mail" name="email" value="{{ old('email') }}">
     <input type="password" placeholder="Enter Password" name="password">
-    <input type="submit" value="Đăng nhập">
+    <input type="submit" class="btn_small btn_secondary" value="Đăng nhập">
     <a href="{{ route('register') }}">Tạo tài khoản</a>
   </form>
   @endif

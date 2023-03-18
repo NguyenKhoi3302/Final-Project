@@ -71,6 +71,11 @@
 @endforeach
 
 @section('content')
+    <style>
+        h3{
+            margin: 0;
+        }
+    </style>
 <section class="section home_1">
     <div class="swiper homeBannerSwiper">
         <div class="swiper-wrapper">
@@ -90,7 +95,7 @@
         <div class="section_heading text_center" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
             <div class="title_group">
                 <div class="bg_title">{{$bg_title_sec_1}}</div>
-                <div class="sec_title">{{$title_sec_1}}</div>
+                <h2 class="sec_title">{{$title_sec_1}}</h2>
             </div>
             <div class="sec_des">
                 {{$des_sec_1}}
@@ -135,7 +140,7 @@
         <div class="section_heading text_center" data-aos="fade-up">
             <div class="title_group">
                 <div class="bg_title">{{$bg_title_sec_2}}</div>
-                <div class="sec_title">{{$title_sec_2}}</div>
+                <h1 class="sec_title">{{$title_sec_2}}</h1>
             </div>
             <div class="sec_des">
                 {{$des_sec_2}}
@@ -146,7 +151,7 @@
                 <div class="item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
                     <div class="item_cont">
                         <div class="count">0{{$key + 1}}</div>
-                        <div class="item_title">{{$item[0]->child_value}}</div>
+                        <h3 class="item_title">{{$item[0]->child_value}}</h3>
                         <div class="item_des">{{$item[1]->child_value}}</div>
                     </div>
                     <div class="item_img">
@@ -161,7 +166,7 @@
     <div class="grid-container">
         <div class="grid-50" data-aos="fade-right" data-aos-duration="500" data-aos-delay="300">
             <div class="content_wrap">
-                <div class="sec_title">{{$title_sec_3}}</div>
+                <h2 class="sec_title">{{$title_sec_3}}</h2>
                 <div class="sec_sub_title">{{$sub_title_sec_3}}</div>
                 <div class="sec_cont">
                     {!!$des_sec_3!!}
@@ -185,7 +190,7 @@
         <div class="section_heading text_center" data-aos="fade-up">
             <div class="title_group">
                 <div class="bg_title">{{$bg_title_sec_4}}</div>
-                <div class="sec_title">{{$title_sec_4}}</div>
+                <h2 class="sec_title">{{$title_sec_4}}</h2>
             </div>
             <div class="sec_des">
                 {{$des_sec_4}}
@@ -202,7 +207,7 @@
                     </div>
                     <div class="item_cont">
                         <div class="title">
-                            <h3><a href="{{route('single-news',[$item->id])}}">{{$item->title}}</a></h3>
+                            <h4><a href="{{route('single-news',[$item->id])}}">{{$item->title}}</a></h4>
                         </div>
                         <div class="date">
                             <span>
@@ -220,7 +225,7 @@
         <div class="section_heading text_center">
             <div class="title_group">
                 <div class="bg_title">{{$bg_title_sec_5}}</div>
-                <div class="sec_title">{{$title_sec_5}}</div>
+                <h2 class="sec_title">{{$title_sec_5}}</h2>
             </div>
             <div class="sec_des">
                 {{$des_sec_5}}

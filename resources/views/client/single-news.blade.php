@@ -70,7 +70,20 @@
                         {{$kq->summary}}
                     </div>
                     <div class="mota wrap_content">
-                        {!! $kq->content !!}
+{{--                        {!! $kq->content !!}--}}
+                        <p>1. ĐẠT TIÊU CHUẨN TRƯNG BÀY CỦA CÁC HÃNG ĐỒNG HỒ CAO CẤP<br>
+                            Là một đại lý phân phối hàng loạt thương hiệu đồng hồ cao cấp đến từ Thụy Sỹ như Longines, Doxa, Tissot, Rado… Hải Triều hiểu rằng nhóm khách hàng của mình cần nhiều hơn một mẫu đồng hồ chất lượng.</p>
+                        <p>Tiêu chuẩn trưng bày của các hãng đồng hồ cao cấp yêu cầu rõ ràng về số lượng sản phẩm trên kệ, phương pháp đặt để sản phẩm, chất lượng tủ đạt thẩm mỹ..</p>
+                        <p><img decoding="async" loading="lazy" class="aligncenter wp-image-155 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/1-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p>2. BẢO QUẢN ĐỒNG HỒ TỐT HƠN<br>
+                            Một trong những tiêu chuẩn khác chính là tủ trưng bày là điều kiện cần cho việc bảo quản một chiếc đồng hồ giá trị.
+
+                            Trong quá trình đồng hồ về tay chủ nhân phù hợp, khách hàng hoàn toàn yên tâm rằng các sản phẩm luôn được bảo quản theo đúng tiêu chuẩn.</p>
+                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-157 size-full" src="hhttps://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/2-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-159 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/3-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p>Từng mẫu đều đặt để trên một giá đỡ đồng hồ tương ứng. Việc đặt trong tủ và kệ trưng bày này hạn chế tác nhân ảnh hưởng từ môi trường bên ngoài.</p>
+                        <p><img decoding="async" loading="lazy" class="alignnone wp-image-161 size-full" src="https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg" alt="" width="793" height="339" srcset="https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 793w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2022/12/4-tieu-chuan-tu-trung-bay-dong-ho-deo-tay-dep-tai-hai-trieu.jpg768w" sizes="(max-width: 793px) 100vw, 793px"></p>
+                        <p>&nbsp;</p>
                     </div>
                     <div class="tags">
                         <span>Thẻ:</span>

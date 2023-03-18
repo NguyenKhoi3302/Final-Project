@@ -30,6 +30,15 @@ $(document).ready(function (){
     profileTab();
 })
 function swiper(){
+    var about = new Swiper(".about_swiper",{
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        pagination:{
+            el: ".about_4 .swiper_pagination",
+            clickable: true,
+        }
+    })
     var swiper = new Swiper(".homeBannerSwiper", {
         loop: true,
         speed: 2000,

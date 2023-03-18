@@ -38,10 +38,13 @@
 
     p {
         font-family: 'Montserrat';
-        font-size: 14px;
+        font-size: 13px;
         line-height: 1.7;
         color: #666;
-        margin: 0
+        margin: 0;
+        position: absolute;
+        left: 15px;
+        color: red
     }
 
     ul,
@@ -143,44 +146,12 @@
         border: none !important
     }
 
-    .txt1 {
-        font-family: 'Montserrat';
-        font-size: 13px;
-        line-height: 1.5;
-        color: #999
-    }
-
     .txt2 {
         font-family: 'Montserrat';
         font-size: 13px;
         line-height: 1.5;
         color: #666
     }
-
-    .limiter {
-        width: 100%;
-        margin: 0 auto
-    }
-
-    .container-login100 {
-        width: 100%;
-        min-height: 100vh;
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 15px;
-        background: #9053c7;
-        background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-        background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-        background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-        background: linear-gradient(-135deg, #c850c0, #4158d0)
-    }
-
     .wrap-login100 {
         margin: 0 auto;
         width: 960px;
@@ -194,16 +165,13 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        padding: 177px 130px 33px 95px;
-        background: #9053c7;
-        background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-        background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-        background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-        background: linear-gradient(-135deg, #c850c0, #4158d0)
+        padding: 80px 70px;
+        position: relative;
+        z-index: 10;
     }
 
     .login100-pic {
-        width: 316px
+        width: 50%
     }
 
     .login100-pic img {
@@ -211,40 +179,53 @@
     }
 
     .login100-form {
-        width: 290px
+        width: 40%
     }
 
     .login100-form-title {
-        font-family: Poppins-Bold;
         font-size: 24px;
-        color: #333;
+        color: #3155A6;
         line-height: 1.2;
         text-align: center;
         width: 100%;
         display: block;
-        padding-bottom: 54px
+        padding-bottom: 54px;
+        font-weight: 700;
     }
 
     .wrap-input100 {
         position: relative;
         width: 100%;
         z-index: 1;
-        margin-bottom: 10px
+        margin-bottom: 25px;
     }
 
     .input100 {
-        font-family: Poppins-Medium;
         font-size: 15px;
         line-height: 1.5;
-        color: #666;
+        color: #333333;
         display: block;
         width: 100%;
-        background: #e6e6e6;
+        background: rgb(139, 207, 236);
         height: 50px;
         border-radius: 25px;
-        padding: 0 30px 0 68px
+        padding: 0 30px 0 68px;
+        border: 1px solid rgb(139, 207, 236);
+        transition: 0.3s ease-in-out;
     }
 
+    .input100::placeholder{
+        color: #FFF;
+    }
+    .input100:focus,
+    .input100:focus-visible{
+        background-color: #fff;
+        border: 1px solid rgb(139, 207, 236) !important;
+    }
+    .input100:focus+p+span+span,
+    .input100:focus-visible+p+span+span{
+        color: #333333
+    }
     .focus-input100 {
         display: block;
         position: absolute;
@@ -293,7 +274,7 @@
         height: 100%;
         padding-left: 35px;
         pointer-events: none;
-        color: #666;
+        color: #FFF;
         -webkit-transition: all .4s;
         -o-transition: all .4s;
         -moz-transition: all .4s;
@@ -318,7 +299,6 @@
     }
 
     .login100-form-btn {
-        font-family: Montserrat-Bold;
         font-size: 15px;
         line-height: 1.5;
         color: #fff;
@@ -326,7 +306,8 @@
         width: 100%;
         height: 50px;
         border-radius: 25px;
-        background: #57b846;
+        background: #3155A6;
+        border: 1px solid #3155A6;
         display: -webkit-box;
         display: -webkit-flex;
         display: -moz-box;
@@ -338,11 +319,13 @@
         -webkit-transition: all .4s;
         -o-transition: all .4s;
         -moz-transition: all .4s;
-        transition: all .4s
+        transition: all .4s;
+        font-weight: 500;
     }
 
     .login100-form-btn:hover {
-        background: #333
+        background: transparent;
+        color: #3155A6;
     }
 
     @media(max-width: 992px) {
@@ -391,17 +374,49 @@
     }
 
     section.login_page {
-        padding-top: 100px;
-        padding-bottom: 100px;
+        height: 100vh;
+        background-image: url({!! App\Http\Controllers\Controller::get_img_url(29)!!});
+        display: flex;
+        align-items: center;
+    }
+    section.login_page:before{
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        content: '';
+        left: 0;
+        top: 0;
     }
 
     .text-center a {
-        color: #FFF
+        color: #333333;
+        margin-bottom: 5px;
+        margin-top: 3px;
+        display: block;
+        font-size: 14px;
+    }
+    .text-center a:hover{
+        text-decoration: underline;
     }
 
     .text-center {
         text-align: center;
 
+    }
+    .banner_img,
+    footer,
+    header{
+        display: none;
+    }
+    .wrap-input100.save_pass{
+        font-size: 13px;
+        display: flex;
+        padding-left: 15px;
+    }
+    .wrap-input100.save_pass input{
+        -webkit-appearance: button;
+        margin-right: 10px;
     }
 </style>
 </head>
@@ -410,14 +425,13 @@
     <section class="section login_page">
         <div class="grid-container">
             <div class="wrap-login100">
-                <div class="login100-pic js-tilt" data-tilt=""
-                    style="will-change: transform; transform: perspective(300px) rotateX(-5.73deg) rotateY(2.09deg) scale3d(1.1, 1.1, 1.1); transition: all 400ms cubic-bezier(0.03, 0.98, 0.52, 0.99) 0s;">
+                <div class="login100-pic js-tilt" style="display: flex; align-items: center; justify-content: center">
                     <img src="{{asset('/images/img-01.webp')}}" alt="IMG">
                 </div>
                 <form class="login100-form validate-form" action="{{ route('login.action') }}" method="post">
                     @csrf
                     <span class="login100-form-title">
-                        Đăng nhập
+                        Chào mừng đến với <br> S - Watch
                     </span>
                     <div class="wrap-input100 validate-input">
                         <input type="email" placeholder="Nhập email" class="input100" name="email"
@@ -436,8 +450,8 @@
                             <i class="fa fa-lock" aria-hidden="true"></i>
                         </span>
                     </div>
-                    <div class="wrap-input100">
-                        <input type="checkbox" name="remember">Nhớ mật khẩu
+                    <div class="wrap-input100 save_pass">
+                        <input type="checkbox" name="remember" id="remember"><label for="remember">Nhớ mật khẩu</label>
                         @if(Session::has('fail')) <h3>{{ session::get('fail') }}</h3> @endif
                     </div>
                     <div class="container-login100-form-btn">

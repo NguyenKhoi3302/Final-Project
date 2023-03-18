@@ -19,6 +19,12 @@
         @case('img_contact')
             @php $img_contact = $val->meta_value @endphp
             @break
+        @case('site_title')
+            @php $site_title = $val->meta_value @endphp
+            @break
+        @case('site_des')
+            @php $site_des = $val->meta_value @endphp
+            @break
     @endswitch
 @endforeach
 @section('content')
@@ -27,12 +33,12 @@
     <section class="contact section">
             <div class="grid-container">
                 <div class="grid-40">
-                    <div class="section_heading">
-                        <h1 class="sec_title">Liên hệ</h1>
+                    <div class="section_heading" style="margin-bottom: 0;">
+                        <h1 class="sec_title" style="margin-bottom: 0;">{{$site_title}}</h1>
                     </div>
                     <div class="contact_info">
                         <div class="item">
-                            <h2 class="title">Kết nối với chúng tôi</h2>
+                            <h2 class="title">{{$site_des}}</h2>
                             <ul>
                                 @foreach($social_icon as $social)
                                     <li>

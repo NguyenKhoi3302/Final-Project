@@ -109,7 +109,7 @@
                     <img src="{{ asset('/images/prod_img.png') }}" alt="example-image">
                     <figcaption>
                         <div class="icon_wrap">
-                            <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart"
+                            <a title="Thêm vào giỏ hàng" href="#" class=" add_cart"
                                 data-url="{{ route('addCart', ['id' => $product->id]) }}">
                                 <i class="fas fa-cart-plus"></i>
                             </a>
