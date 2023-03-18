@@ -2633,7 +2633,6 @@ input:focus-visible{
     color: #FFF;
 }
 input[name='gender']{
-
     -webkit-appearance: auto;
 }
 .login_form_wrap button{
@@ -3382,4 +3381,103 @@ span.unvalid{
 .about_4_content .swiper_pagination .swiper-pagination-bullet-active{
     height: 4px;
     background-color: #F7941D;
+.single_product_2 .comment_wrap ul.comment-list{
+    width: 100%;
+}
+.single_product_2 .comment_wrap   li{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin: 0;
+    padding: 20px 0;
+}
+.single_product_2 .comment_wrap .comment-item__content--title{
+    display: flex;
+    margin-bottom: 10px;
+}
+.single_product_2 .comment_wrap li h5.comment-item__name{
+    margin-top: 0;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-bottom: 0;
+}
+.single_product_2 .comment_wrap li span.comment-item__date{
+    display: block;
+    font-size: 12px;
+}
+.single_product_2 .comment_wrap li span.comment-item__date i{
+    margin-right: 3px;
+}
+p.comment-item__message {
+    padding: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    margin: 0 0 0 25px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.form-comment label{
+    display: block;
+    margin-bottom: 5px;
+}
+.form-comment textarea{
+    width: 100%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #c0c0c0;
+    outline: none !important;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.form-comment textarea:focus,
+.form-comment textarea:focus-visible{
+    border-color: deepskyblue;
+}
+.form-comment button{
+    border: none;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: #FFF;
+    background-color: deepskyblue;
+    padding: 10px 40px;
+    cursor: pointer;
+}
+.form-comment button svg{
+    margin-left: 10px;
+}
+.wrap_search_popup.show .inner .button_close+div{
+    position: relative;
+}
+.result-search{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 210px);
+    background: #fafafa !important;
+    padding: 10px;
+}
+.result-search .result-item{
+    padding: 5px 0;
+    margin: 0 20px 5px 20px;
+    text-align: left;
+}
+.result-search .result-item:not(:last-child){
+    border-bottom: 1px solid #666666;
+}
+.result-search .result-item h3{
+    margin: 0 0 10px 0;
+}
+.result-search .result-item h3 a{
+    color: #000;
+}
+.result-search .search_price strong{
+    font-weight: 700;
+    color: #FBB116;
+}
+.result-search .search_price{
+    padding-left: 20px;
 }

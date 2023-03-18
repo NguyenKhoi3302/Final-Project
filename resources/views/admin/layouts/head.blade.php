@@ -4,6 +4,7 @@
 <meta name="author" content="Coderthemes"><!-- App Favicon -->
 <link rel="shortcut icon" href="{{asset('assets-admin/images/favicon.ico')}}">
 
+<meta name="author" content="Coderthemes">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- App title -->
 <title>Uplon - Responsive Admin Dashboard Template</title>
@@ -49,3 +50,4 @@
 @stack('styles')
 
 @livewireStyles
+{{--@livewireStyles--}}

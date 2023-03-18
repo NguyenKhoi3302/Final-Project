@@ -18,6 +18,8 @@
 <meta property="og:site_name" content="S - WATCH">
 {{--<meta property="og:type" content="">--}}{{--Loại trang: website/article--}}
 {{--<meta property="og:image" content="">--}}
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
 <link rel="icon" href="{{asset(App\Http\Controllers\Controller::get_img_url($favicon))}}">
@@ -40,3 +42,4 @@
 
 {{--    gtag('config', 'G-XM292M7CY4');--}}
 {{--</script>--}}
+@livewireStyles

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  @include('client.layouts.head')
+    @include('client.layouts.head')
 </head>
 
 <body>
@@ -31,5 +31,6 @@
 <script src="{{asset('assets/js/counterUp.js')}}"></script>
 <script src="{{asset('assets/js/swiper.js')}}"></script>
 <script src="{{asset('assets/js/frontend.js')}}"></script>
+@livewireScripts
 
 </html>

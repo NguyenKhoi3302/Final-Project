@@ -2,6 +2,46 @@
 @section('description'){{$kq->summary}}@endsection
 @section('title'){{$kq->title}}@endsection
 @section('keywords'){{$kq->keywords}}@endsection
+@push('styles')
+    <style>
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comment-item {
+            /* max-width: 75%;
+            display: flex;
+            row-gap: 6px;
+            align-items: center; */
+        }
+
+        .comment-item__avatar {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .comment-item__content {}
+
+        .comment-item__content--title {
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-item__name {}
+
+        .comment-item__date {
+            margin-left: 6px;
+        }
+
+        .comment-item__message {
+            margin: 0;
+        }
+    </style>
+@endpush
 @section('content')
         <section class="section post_detail">
             <div class="grid-container">
@@ -10,17 +50,23 @@
                         <h2 class="title_news">
                             {{$kq->title}}
                         </h2>
-                    </div>
+            </div>
 
-                    <div class="nav">
-                        <div class="day-view">
-                            <div class="day">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M13.75 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M6.25 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M3.125 6.875H16.875" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
+            <div class="nav">
+                <div class="day-view">
+                    <div class="day">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path
+                                d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z"
+                                stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M13.75 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M6.25 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M3.125 6.875H16.875" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
                                 <p class="day">
                                     <?=date('d - m - Y' , strtotime($kq->created_at)) ?>
                                 </p>
@@ -92,7 +138,9 @@
                             <li class="tag"><a href="http://127.0.0.1:8000/shop">LONGINES L2.673.4.78.6</a></li>
                         </ul>
                     </div>
-
+                    <div class="comments">
+                        @livewire('news-comment-component', ['news_id'=> (int)$new->id])
+                    </div>
                 </div>
                 <div class="grid-25 tablet-grid-100 mobile-grid-100">
                     <div class="cat_td more_post">
@@ -168,9 +216,9 @@
                         <svg width="25" height="48" viewBox="0 0 25 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.75 0.875L23.875 24L0.75 47.125" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
 
-        </section>
+</section>
 @endsection

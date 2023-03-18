@@ -46,7 +46,7 @@ Route::get('/news-category/{slug}', [CategoryController::class, 'category'])->na
     //Route::get('/account-profile', [MainController::class, 'account_profile']);
 // Products
 Route::get('/shop', [ProductController::class, 'shop']);
-Route::get('/single-product/{id}', [ProductController::class, 'single_product']);
+Route::get('/single-product/{id}', [ProductController::class, 'single_product'])->name('single-product');
 // Cart
 Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
 Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
@@ -55,6 +55,8 @@ Route::get('delete-cart', [CartController::class, 'delete_cart'])->name('deleteC
 // Order
 Route::get('order', [CartController::class, 'order'])->name('order');
 Route::get('save', [CartController::class, 'save_order'])->name('saveOrder');
+// Search
+Route::get('/search', [ProductController::class, 'search'])->name('search');
 //commmetntt
     // Route::get('/single-product/{id}', 'HomeController@index');
     // Route::post('home/comment','HomeController@storecomment');
@@ -149,6 +151,7 @@ Route::prefix('admin')->group(function (){
     Route::post('product/attributes/save', [BEProductAttributeController::class, 'save']);
 
     Route::get('/product/comments', [BEProductCommentController::class, 'index'])->name('product.comment');
+    Route::post('/product/comments/changeAppear', [BEProductCommentController::class, 'changeAppear'])->name('product.comment.changeAppear');
     Route::post('/product/comments/delete', [BEProductCommentController::class, 'destroy'])->name('product.comment.destroy');
 
 // User
