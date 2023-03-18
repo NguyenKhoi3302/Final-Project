@@ -21,7 +21,6 @@ class AdminController extends Controller
         // Đếm đơn hàng
         $orders = DB::table('orders')->whereYear('created_at', date('Y'))->get();
         $order_details = DB::table('order_detail')->whereYear('created_at', date('Y'))->get();
-        $data = ['pd_list'=>$pd_list, 'pd_details'=>$pd_details, 'user_list' => $user_list, 'orders' => $orders, 'order_details' => $order_details];
         // Đếm email
         $mail = DB::table('email')->whereYear('created_at', date('Y'))->get();
         // Đếm bình luận
