@@ -2124,16 +2124,29 @@ section.contact .grid-55 select{
     height: 60px;
 }
 section.contact .grid-55 input,
-section.contact .grid-55 select,
 section.contact .grid-55 textarea{
     width: 100%;
     background: #FFFFFF;
     border: 1px solid rgba(73, 73, 73, 0.2);
     padding-left: 24px;
+    border-radius: 5px;
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -ms-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+section.contact .grid-55 input:focus,
+section.contact .grid-55 textarea:focus,
+section.contact .grid-55 input:focus-visible,
+section.contact .grid-55 textarea:focus-visible{
+    border-color: #3155A6;
+    box-shadow: 0px 0px 0px 3px rgba(49, 85, 166, 0.3);
 }
 section.contact .grid-55 textarea{
     min-width: 100% !important;
     height: 120px;
+    padding-top: 20px;
 }
 
 section.contact .grid-55 .form_group > .wpcf7-form-control-wrap > *,
@@ -2149,7 +2162,7 @@ section.contact .grid-55 .form_group > .wpcf7-form-control-wrap > *::placeholder
     opacity: 0.5;
 }
 section.contact .grid-55 .form_group{
-    margin: 20px 0;
+    margin-bottom: 25px;
     position: relative;
 }
 section.contact .grid-55 .form_group svg{
@@ -2186,7 +2199,7 @@ section.contact .grid-55 .form_title:before{
     content: '';
     height: 3px;
     width: 10%;
-    background: #B6142C;
+    background: #3155A6;
     left: 0;
     bottom: -10px;
 }
@@ -2205,8 +2218,8 @@ section.contact .grid-55 input[type="submit"]{
     align-items: center;
     text-align: center;
     text-transform: uppercase;
-    color: #E31937;
-    border: 1px solid #B6142C;
+    color: #3155A6;
+    border: 1px solid #3155A6;
     border-radius: 100px;
     margin-left: auto;
     float: right;
@@ -2215,7 +2228,7 @@ section.contact .grid-55 input[type="submit"]{
     cursor: pointer;
 }
 section.contact .grid-55 input[type="submit"]:hover{
-    background: #B6142C;
+    background: #3155A6;
     color: #FFF;
 }
 section.contact .section_heading{
@@ -2403,7 +2416,7 @@ input, textarea, select{
     grid-row-gap: 25px;
 }
 section.news_sec .news_item:hover .title{
-    color: #B6142C;
+    color: #3155A6;
 }
 section.news_sec .news_item .img_wrap{
     height: 230px;
@@ -3087,4 +3100,14 @@ input[name='gender']{
 }
 img{
     max-width: 100%;
+}
+textarea{
+    outline: none !important;
+}
+span.unvalid{
+    position: absolute;
+    color: red;
+    font-size: 13px;
+    left: 5px;
+    bottom: -17px;
 }

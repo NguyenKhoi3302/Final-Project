@@ -29,8 +29,9 @@
                 <hr>
                 <form action="/admin/category/add" method="post" class="m-auto">
                     <div class="form_group mb-3">
-                        <label for="name">Tên danh mục</label>
+                        <label for="name">Tên danh mục <span class="required">*</span></label>
                         <input name="name" id="name" class="form-control title_input">
+                        <span class="unvalid">@error('name') {{$message}} @enderror</span>
                     </div>
                     <div class="form_group mb-3">
                         <label for="slug">Liên kết</label>

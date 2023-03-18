@@ -37,10 +37,10 @@ class MainController extends Controller
                 case 'brands_sec_5':
                     if(!empty($val->meta_value)) {
                         $brand_arr = json_decode($val->meta_value);
-                        $brands = DB::table('brands')->select('image')->whereIn('id', $brand_arr)->get();
+                        $brands = DB::table('brands')->select('image', 'slug')->whereIn('id', $brand_arr)->get();
                     }
                     else{
-                        $brands = DB::table('brands')->select('image')->get();
+                        $brands = DB::table('brands')->select('image', 'slug')->get();
                     }
                     break;
             }

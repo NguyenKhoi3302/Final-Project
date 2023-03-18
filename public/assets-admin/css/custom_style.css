@@ -283,7 +283,7 @@ button{
 .popup_form_wrap input{
     position: relative;
     z-index: 4;
-    opacity: 0;
+    /*opacity: 0;*/
     cursor: pointer;
 }
 .popup_form_wrap label{
@@ -351,4 +351,16 @@ button{
 .gallery_wrap .img_gallery_wrap:hover .delete_img{
     opacity: 1;
     pointer-events: unset;
+}
+.form_group{
+    position: relative;
+}
+span.unvalid{
+    color: red;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+span.required{
+    color: red !important;
 }

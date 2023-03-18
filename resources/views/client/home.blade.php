@@ -196,10 +196,8 @@
             @foreach($news as $j => $item)
                 <div class="item">
                     <div class="img_wrap">
-                        <a href="{{route('single-news',[$item->id])}}">
-                            <img src="{{$item->image}}" alt="">
-{{--                            {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}--}}
-
+                        <a href="{{route('single-news',[$item->slug])}}">
+                            {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}
                         </a>
                     </div>
                     <div class="item_cont">
@@ -232,8 +230,10 @@
             <div class="swiper-wrapper">
                 @foreach($brands as $item)
                     <div class="swiper-slide">
-{{--                        {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}--}}
-                        <img src="{{asset($item->image)}}" alt="">
+                        <a href="{{url('/brand/'.$item->slug)}}">
+                            {{--                        {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}--}}
+                            <img src="{{asset($item->image)}}" alt="">
+                        </a>
                     </div>
                 @endforeach
             </div>

@@ -15,10 +15,23 @@ class CategoryController extends Controller
         $news_list = DB::table('news')->get();
         return view('admin/news/categories', ['cat_list'=>$cat_list, 'news'=>$news_list]);
     }
-    function add_cat(){
+    function add_cat(Request $request){
+        $request->validate(
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'Vui lòng nhập tên danh mục',
+            ]
+        );
         $c = new NewsCategories;
         $c->name = $_POST['name'];
-        $c->slug = $this->slugConvert($_POST['slug']);
+        if(empty($_POST['slug'])){
+            $c->slug = $this->slugConvert($_POST['name']);
+        }
+        else{
+            $c->slug = $this->slugConvert($_POST['slug']);
+        }
         $c->description = $_POST['description'];
         $c->keywords = $_POST['keywords'];
         $c->image = $_POST['image'];
@@ -32,10 +45,23 @@ class CategoryController extends Controller
         $cat = NewsCategories::find($id);
         return view('admin/news/update_category', ['cat'=> $cat]);
     }
-    function update_cat_($id){
+    function update_cat_($id, Request $request){
+        $request->validate(
+            [
+                'name' => 'required',
+            ],
+            [
+                'name.required' => 'Vui lòng nhập tên danh mục',
+            ]
+        );
         $c = NewsCategories::find($id);
         $c->name = $_POST['name'];
-        $c->slug = $this->slugConvert($_POST['slug']);
+        if(empty($_POST['slug'])){
+            $c->slug = $this->slugConvert($_POST['name']);
+        }
+        else{
+            $c->slug = $this->slugConvert($_POST['slug']);
+        }
         $c->description = $_POST['description'];
         $c->keywords = $_POST['keywords'];
         $c->image = $_POST['image'];

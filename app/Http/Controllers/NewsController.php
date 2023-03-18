@@ -28,14 +28,31 @@ class NewsController extends Controller
         $cat = DB::table('news_categories')->get();
         return view("admin/news/add", ['cat'=> $cat]);
     }
-    function add_(){
+    function add_(Request $request){
+        $request->validate(
+            [
+                'title' => 'required',
+                'image' => 'required',
+                'content' => 'required',
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề tin',
+                'image.required' => 'Vui lòng chọn hình ảnh',
+                'content.required' => 'Vui lòng nhập nội dung bài viết',
+            ]
+        );
         $n = new News;
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
         $n->user_id = 1;
         $n->image = $_POST['image'];
         $n->title = $_POST['title'];
-        $n->slug = $this->slugConvert($_POST['slug']);
+        if(empty($_POST['slug'])){
+            $n->slug = $this->slugConvert($_POST['title']);
+        }
+        else{
+            $n->slug = $this->slugConvert($_POST['slug']);
+        }
         $n->keywords = $_POST['keywords'];
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
@@ -73,7 +90,19 @@ class NewsController extends Controller
         $cat = DB::table('news_categories')->get();
         return view('admin/news/update', ['news'=>$n, 'cat'=> $cat]);
     }
-    function update_($id){
+    function update_($id, Request $request){
+        $request->validate(
+            [
+                'title' => 'required',
+                'image' => 'required',
+                'content' => 'required',
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề tin',
+                'image.required' => 'Vui lòng chọn hình ảnh',
+                'content.required' => 'Vui lòng nhập nội dung bài viết',
+            ]
+        );
         $n = News::find($id);
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
@@ -83,7 +112,12 @@ class NewsController extends Controller
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
-        $n->slug = $this->slugConvert($_POST['slug']);
+        if(empty($_POST['slug'])){
+            $n->slug = $this->slugConvert($_POST['title']);
+        }
+        else{
+            $n->slug = $this->slugConvert($_POST['slug']);
+        }
         $n->keywords = $_POST['keywords'];
         $n->updated_at = now();
         $n->save();

@@ -7,13 +7,17 @@
         <form action="{{ route('admin.media.upload') }}" method="POST" class="shadow p-12" enctype="multipart/form-data">
             @csrf
             <label class="block mb-4">
-                <span class="file">Chọn tệp để tải lên</span>
-                <input type="file" name="image[]" class="form-control" multiple/>
-                @error('image')
-                <span class="text-red-600 text-sm">{{ $message }}</span>
-                @enderror
+{{--                <span class="file">Chọn tệp để tải lên</span>--}}
+                <input type="file" name="image[]" class="form-control"/>
+{{--                <input type="hidden">--}}
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            @error('image')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
+            @error('image.*')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </form>
     </div>
     <div class="media_gallery">

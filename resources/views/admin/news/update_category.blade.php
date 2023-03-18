@@ -25,11 +25,12 @@
 
         <div class="row">
             <div class="col-xl-8 m-auto">
-                <h1 class="text-center">Thêm danh mục mới</h1>
+                <h1 class="text-center">Cập nhật danh mục {{$cat->name}}</h1>
                 <form action="/admin/category/update/{{$cat->id}}" method="post" class="m-auto">
                     <div class="form_group mb-3">
-                        <label for="name">Tên danh mục</label>
+                        <label for="name">Tên danh mục <span class="required">*</span></label>
                         <input name="name" id="name" class="form-control title_input" value="{{$cat->name}}">
+                        <span class="unvalid">@error('name') {{$message}} @enderror</span>
                     </div>
                     <div class="form_group mb-3">
                         <label for="slug">Liên kết</label>

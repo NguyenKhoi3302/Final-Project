@@ -71,7 +71,7 @@
                             <div class="grid-60">
                                 <div class="title_gr">
                                     <a href="#">{{$product->name}}</a>
-                                    <p>Loại sản phẩm: <a href="#">{{$product->brand}}</a></p>
+                                    <p>Loại sản phẩm: <a href="#">{{$product->brand_id}}</a></p>
                                 </div>
                                 <div class="price_gr">
                                     <h3>{{number_format($product->price, 0, ",", ".")}} vnđ

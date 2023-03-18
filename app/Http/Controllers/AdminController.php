@@ -13,12 +13,21 @@ use App\Models\coupon;
 class AdminController extends Controller
 {
     function dashboard(){
+        // Đếm sản phẩm
         $pd_list = DB::table('products')->whereYear('created_at', date('Y'))->get();
         $pd_details = DB::table('product_details')->get();
+        // Đếm use
         $user_list = DB::table('users')->get();
+        // Đếm đơn hàng
         $orders = DB::table('orders')->whereYear('created_at', date('Y'))->get();
         $order_details = DB::table('order_detail')->whereYear('created_at', date('Y'))->get();
         $data = ['pd_list'=>$pd_list, 'pd_details'=>$pd_details, 'user_list' => $user_list, 'orders' => $orders, 'order_details' => $order_details];
+        // Đếm email
+        $mail = DB::table('email')->whereYear('created_at', date('Y'))->get();
+        // Đếm bình luận
+        $n_cmt = DB::table('news_comments')->whereYear('created_at', date('Y'))->get(); // Tin tức
+        $pd_cmt = DB::table('product_comments')->whereYear('created_at', date('Y'))->get(); // Sản phẩm
+        $data = ['mail' => $mail, 'n_cmt' => $n_cmt, 'pd_cmt' => $pd_cmt, 'pd_list'=>$pd_list, 'pd_details'=>$pd_details, 'user_list' => $user_list, 'orders' => $orders, 'order_details' => $order_details];
         return view("admin/dashboard", $data);
     }
     function contact(){
@@ -41,7 +50,30 @@ class AdminController extends Controller
     function add_coupon(){
         return view("admin/coupon/add");
     }
-    function add_coupon_(){
+    function add_coupon_(Request $request){
+        $request->validate([
+            'coupon_code' => 'required',
+            'discount' => 'required|min:0',
+            'min_total' => 'required|min:0',
+            'quantity' => 'required|min:1',
+            'max_discount' => 'required',
+            'date_start' => 'required|date|after:today',
+            'date_expire' => 'required|date|after:today',
+        ],
+        [
+            'coupon_code.required' => 'Vui lòng nhập mã giảm giá',
+            'discount.required' => 'Vui lòng nhập số tiền được giảm',
+            'min_total.required' => 'Vui lòng nhập giá trị đơn hàng tối thiểu',
+            'quantity.required' => 'Vui lòng nhập số lượng mã',
+            'max_discount.required' => 'Vui lòng nhập số tiền tối đa được giảm',
+            'date_start.required' => 'Vui lòng chọn ngày bắt đầu áp dụng',
+            'date_expire.required' => 'Vui lòng chọn ngày hết hạn',
+            'date_expire.after' => 'Vui lòng chọn ngày sau hôm nay',
+            'date_start.after' => 'Vui lòng chọn ngày sau hôm nay',
+            'quantity.min' => 'Vui lòng nhập số lượng lớn hơn 0',
+            'min_total.min' => 'Giá trị hoá đơn không được âm',
+            'discount.min' => 'Số tiền giảm giá không được âm',
+        ]);
         $c = new coupon;
         $c->coupon_code = $_POST['coupon_code'];
         $c->coupon_type = $_POST['coupon_type'];
@@ -61,7 +93,30 @@ class AdminController extends Controller
         $coupon = DB::table('coupon')->where('id', $id)->first();
         return view("admin/coupon/update", compact('coupon'));
     }
-    function update_coupon_($id){
+    function update_coupon_($id, Request $request){
+        $request->validate([
+            'coupon_code' => 'required',
+            'discount' => 'required|min:0',
+            'min_total' => 'required|min:0',
+            'quantity' => 'required|min:1',
+            'max_discount' => 'required',
+            'date_start' => 'required|date|after:today',
+            'date_expire' => 'required|date|after:today',
+        ],
+        [
+            'coupon_code.required' => 'Vui lòng nhập mã giảm giá',
+            'discount.required' => 'Vui lòng nhập số tiền được giảm',
+            'min_total.required' => 'Vui lòng nhập giá trị đơn hàng tối thiểu',
+            'quantity.required' => 'Vui lòng nhập số lượng mã',
+            'max_discount.required' => 'Vui lòng nhập số tiền tối đa được giảm',
+            'date_start.required' => 'Vui lòng chọn ngày bắt đầu áp dụng',
+            'date_expire.required' => 'Vui lòng chọn ngày hết hạn',
+            'date_expire.after' => 'Vui lòng chọn ngày sau hôm nay',
+            'date_start.after' => 'Vui lòng chọn ngày sau hôm nay',
+            'quantity.min' => 'Vui lòng nhập số lượng lớn hơn 0',
+            'min_total.min' => 'Giá trị hoá đơn không được âm',
+            'discount.min' => 'Số tiền giảm giá không được âm',
+        ]);
         $c = coupon::find($id);
         $c->coupon_code = $_POST['coupon_code'];
         $c->coupon_type = $_POST['coupon_type'];
@@ -89,6 +144,17 @@ class AdminController extends Controller
     }
     function upload(Request $request){
         $array = [];
+        $request->validate(
+            [
+                'image' => 'required',
+                'image.*' => 'max:2048|mimes:jpg,jpeg,png,webp,gif'
+            ],
+            [
+                'image.required' => 'Vui lòng chọn file',
+                'image.*.max' => 'Chọn file tối đa 2MB',
+                'image.*.mimes' => 'Vui lòng chọn hình ảnh có định dạng: .jpg, .jpeg, .png, .webp, .gif',
+            ]
+        );
         foreach ($request->file('image') as $key => $img){
             $imageName = str_replace(" ","-" ,$img->getClientOriginalName());
             $img->move(public_path('images'), $imageName);

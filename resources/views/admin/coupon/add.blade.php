@@ -25,8 +25,9 @@
                 <form action="/admin/coupon/add" method="post" class="m-auto">
                     <div class="inner_form_wrap" style="display:flex; flex-wrap: wrap">
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="coupon_code">Mã giảm giá</label>
+                            <label for="coupon_code">Mã giảm giá <span class="required">*</span></label>
                             <input type="text" name="coupon_code" id="coupon_code" class="form-control">
+                            <span class="unvalid">@error('coupon_code') {{$message}} @enderror</span>
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
                             <label for="coupon_type">Loại giảm giá</label>
@@ -40,28 +41,34 @@
                             <input type="text" name="description" id="description" class="form-control">
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="discount">Số tiền giảm</label>
+                            <label for="discount">Số tiền giảm <span class="required">*</span></label>
                             <input type="number" name="discount" id="discount" class="form-control">
+                            <span class="unvalid">@error('discount') {{$message}} @enderror</span>
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="min_total">Đơn hàng tối thiểu</label>
+                            <label for="min_total">Đơn hàng tối thiểu <span class="required">*</span></label>
                             <input type="number" name="min_total" id="min_total" class="form-control">
+                            <span class="unvalid">@error('min_total') {{$message}} @enderror</span>
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="max_discount">Số tiền tối đa</label>
+                            <label for="max_discount">Số tiền tối đa <span class="required">*</span></label>
                             <input type="number" name="max_discount" id="max_discount" class="form-control">
+                            <span class="unvalid">@error('max_discount') {{$message}} @enderror</span>
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="quantity">Số lượng</label>
+                            <label for="quantity">Số lượng <span class="required">*</span></label>
                             <input type="number" name="quantity" id="quantity" class="form-control">
+                            <span class="unvalid">@error('quantity') {{$message}} @enderror</span>
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="date_start">Ngày bắt đầu</label>
+                            <label for="date_start">Ngày bắt đầu <span class="required">*</span></label>
                             <input type="date" name="date_start" id="date_start" class="form-control">
+                            <span class="unvalid">@error('date_start') {{$message}} @enderror</span>
                         </div>
                         <div class="form_group mb-3 w-50 px-3">
-                            <label for="date_expire">Ngày kết thúc</label>
+                            <label for="date_expire">Ngày kết thúc <span class="required">*</span></label>
                             <input type="date" name="date_expire" id="date_expire" class="form-control">
+                            <span class="unvalid">@error('date_expire') {{$message}} @enderror</span>
                         </div>
                     </div>
 
