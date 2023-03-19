@@ -24,20 +24,33 @@
                 <h1 style="text-align: center; margin: 20px 0">Thêm tin tức</h1>
                 <form action="/admin/news/add" method="post" class="m-auto">
                     <div class="form_group mb-3">
-                        <label for="title">Tiêu đề tin</label>
-                        <input name="title" id="title" class="form-control">
+                        <label for="title">Tiêu đề tin <span class="required">*</span></label>
+                        <input name="title" id="title" class="form-control title_input">
+                        <span class="unvalid">@error('title') {{$message}} @enderror</span>
                     </div>
                     <div class="form_group mb-3">
-                        <label for="image">Link hình ảnh</label>
-                        <input name="image" id="image" class="form-control">
+                        <label for="slug">Slug</label>
+                        <input name="slug" id="slug" class="form-control slug_output">
+                    </div>
+                    <div class="form_group mb-3 image_input">
+                        <label for="image">Chọn ảnh <span class="required">*</span></label>
+                        <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn" data-key="image">Chọn hình ảnh</a>
+                        <img src="" class="image img_result">
+                        <input type="hidden" name="image" value="">
+                        <span class="unvalid">@error('image') {{$message}} @enderror</span>
                     </div>
                     <div class="form_group mb-3">
                         <label for="summary">Tóm tắt</label>
                         <textarea name="summary" id="summary" class="form-control"></textarea>
                     </div>
                     <div class="form_group mb-3">
-                        <label for="content">Nội dung tin</label>
+                        <label for="content">Nội dung tin <span class="required">*</span></label>
                         <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+                        <span class="unvalid">@error('content') {{$message}} @enderror</span>
+                    </div>
+                    <div class="form_group mb-3">
+                        <label for="keywords">Từ khoá SEO</label>
+                        <textarea name="keywords" id="keywords" class="form-control"></textarea>
                     </div>
                     <div class="form_group mb-3">
                         <label for="category_id">Loại tin</label>

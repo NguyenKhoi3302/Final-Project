@@ -7,16 +7,40 @@
             <ul>
 
                 <li class="has_sub">
-                    <a href="/admin" class="waves-effect"><span
-                            class="label label-pill label-primary float-right">1</span><i
-                            class="zmdi zmdi-view-dashboard"></i><span> Dashboard </span> </a>
-
+                    <a href="/admin" class="waves-effect">
+                        <span class="label label-pill label-primary float-right">1</span>
+                        <i class="zmdi zmdi-view-dashboard"></i>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <span class="menu-arrow"></span>
+                        <i class="zmdi zmdi-collection-item"></i>
+                        <span> Trang </span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li><a href="/admin/pages">Danh sách trang</a></li>
+                        <li><a href="/admin/option">Cài đặt chung</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/admin/contact" class="waves-effect">
+                        <i class="zmdi zmdi-email"></i>
+                        <span> Form liên hệ </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/media" class="waves-effect">
+                        <i class="zmdi zmdi-collection-image"></i>
+                        <span> Hình ảnh </span>
+                    </a>
                 </li>
 
-                <li class="text-muted menu-title">Tin Tức</li>
+{{--                <li class="text-muted menu-title">Tin Tức</li>--}}
 
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect active subdrop">
+                    <a href="javascript:void(0);" class="waves-effect">
                         {{-- <span class="label label-pill label-warning float-right">8</span>--}}
                         <span class="menu-arrow"></span>
                         <i class="zmdi zmdi-collection-text"></i>
@@ -26,11 +50,12 @@
                         <li><a href="/admin/news">Danh sách</a></li>
                         <li><a href="/admin/news/add">Thêm tin tức mới</a></li>
                         <li><a href="/admin/news/categories">Danh mục tin tức</a></li>
+                        <li><a href="{{route('admin.news.comment')}}">Bình luận tin tức</a></li>
                     </ul>
                 </li>
 
 
-                <li class="text-muted menu-title">Sản phẩm</li>
+{{--                <li class="text-muted menu-title">Sản phẩm</li>--}}
 
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="">
@@ -48,13 +73,13 @@
                     </ul>
                 </li>
 
-                <li class="text-muted menu-title">Đơn hàng</li>
+{{--                <li class="text-muted menu-title">Đơn hàng</li>--}}
 
                 <li>
                     <a href="/admin/orders" class="waves-effect">
                         {{-- <span class="label label-pill label-warning float-right">8</span>--}}
                         {{-- <span class="menu-arrow"></span>--}}
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="zmdi zmdi-shopping-basket"></i>
                         <span> Đơn hàng </span>
                     </a>
                     {{-- <ul class="list-unstyled">--}}
@@ -62,8 +87,19 @@
                         {{-- <li><a href="/admin/users/add">Thêm người dùng mới</a></li>--}}
                         {{-- </ul>--}}
                 </li>
-                <li class="text-muted menu-title">Người dùng</li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <span class="menu-arrow"></span>
+                        <i class="zmdi zmdi-ticket-star"></i>
 
+                        <span> Mã giảm giá </span>
+                    </a>
+                    <ul class="list-unstyled">
+                        <li><a href="/admin/coupon">Danh sách mã</a></li>
+                        <li><a href="/admin/coupon/add">Thêm mã mới</a></li>
+                    </ul>
+                </li>
+{{--                <li class="text-muted menu-title">Người dùng</li>--}}
                 <li class="has_sub">
                     <a href="javascript:void(0);" class="waves-effect">
                         {{-- <span class="label label-pill label-warning float-right">8</span>--}}
@@ -75,21 +111,6 @@
                         <li><a href="{{route('admin.user')}}">Danh sách </a></li>
                         <li><a href="{{route('admin.user.role')}}">Vai trò </a></li>
                         <li><a href="{{route('admin.user.permission')}}">Quyền </a></li>
-                    </ul>
-                </li>
-                <li class="text-muted menu-title">More</li>
-
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect">
-                        <span class="menu-arrow"></span>
-                        <i class="zmdi zmdi-collection-item"></i>
-                        <span> Trang </span>
-                    </a>
-                    <ul class="list-unstyled">
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
-                        <li><a href="javascript:void(0);">Trang chủ</a></li>
                     </ul>
                 </li>
 

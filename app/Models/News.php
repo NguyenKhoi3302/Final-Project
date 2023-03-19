@@ -21,6 +21,8 @@ class News extends Model
         'view',
         'hot',
         'appear',
-        'updated_at'
+        'updated_at',
+        'slug',
+        'keywords'
     ];
 }

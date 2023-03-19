@@ -14,6 +14,10 @@ class NewsCategories extends Model
     protected $fillable =[
         'name',
         'slug',
+        'sort',
+        'description',
+        'keywords',
+        'image',
         'appear',
         'updated_at'
     ];

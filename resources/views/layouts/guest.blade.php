@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  @include('client.layouts.head')
+    @include('client.layouts.head')
 </head>
 
 <body>
@@ -11,7 +11,7 @@
     </header>
     <div class="site_body grid-container">
         <div class="site_content">
-            @if(!Request::is('/'))
+            @if(!Request::is('/') && !Request::is('contact'))
                 <section class="section banner_img">
                     <img src="{{asset('images/banner/banner_1.jpg')}}" alt="">
                 </section>
@@ -31,5 +31,6 @@
 <script src="{{asset('assets/js/counterUp.js')}}"></script>
 <script src="{{asset('assets/js/swiper.js')}}"></script>
 <script src="{{asset('assets/js/frontend.js')}}"></script>
+@livewireScripts
 
 </html>

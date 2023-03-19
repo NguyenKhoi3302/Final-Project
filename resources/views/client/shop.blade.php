@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('description'){{$page->description}}@endsection
+@section('title'){{$page->title}}@endsection
+@section('keywords'){{$page->keywords}}@endsection
 @section('content')
 <section class="shop_container grid-container">
     <div class="shop_aside grid-25">
@@ -28,27 +31,6 @@
         </div>
     </div>
     <div class="shop_main grid-75">
-        {{-- <div class="box_slider">--}}
-            {{-- <div class="swiper shopSwiper">--}}
-                {{-- <div class="swiper-wrapper">--}}
-                    {{-- <div class="swiper-slide">--}}
-                        {{-- <img src="images/banner/home_banner.png" alt="">--}}
-                        {{-- </div>--}}
-                    {{-- <div class="swiper-slide">--}}
-                        {{-- <img src="images/banner/home_banner_2.jpg" alt="">--}}
-                        {{-- </div>--}}
-                    {{-- <div class="swiper-slide">--}}
-                        {{-- <img src="images/banner/home_banner_3.png" alt="">--}}
-                        {{-- </div>--}}
-                    {{-- </div>--}}
-                {{-- <div class="swiper-btn next">--}}
-                    {{-- <i class="fas fa-chevron-right"></i>--}}
-                    {{-- </div>--}}
-                {{-- <div class="swiper-btn prev">--}}
-                    {{-- <i class="fas fa-chevron-left"></i>--}}
-                    {{-- </div>--}}
-                {{-- </div>--}}
-            {{-- </div>--}}
         <div class="shop_nav">
             <div class="prod_count">
                 <strong>12</strong>
@@ -89,7 +71,7 @@
                             <div class="grid-60">
                                 <div class="title_gr">
                                     <a href="#">{{$product->name}}</a>
-                                    <p>Loại sản phẩm: <a href="#">{{$product->brand}}</a></p>
+                                    <p>Loại sản phẩm: <a href="#">{{$product->brand_id}}</a></p>
                                 </div>
                                 <div class="price_gr">
                                     <h3>{{number_format($product->price, 0, ",", ".")}} vnđ
@@ -127,7 +109,7 @@
                     <img src="{{ asset('/images/prod_img.png') }}" alt="example-image">
                     <figcaption>
                         <div class="icon_wrap">
-                            <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart"
+                            <a title="Thêm vào giỏ hàng" href="#" class=" add_cart"
                                 data-url="{{ route('addCart', ['id' => $product->id]) }}">
                                 <i class="fas fa-cart-plus"></i>
                             </a>

@@ -14,26 +14,24 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->integer('brand_id')->unsigned();
-            $table->integer('pr_category_id')->unsigned();
-            $table->string('name', 255);
-            $table->string('slug', 255);
-            $table->string('images', 255);
-            $table->integer('view')->default(0);
-            $table->integer('bought')->default(0);
-            $table->longText('description');
-            $table->longText('contents');
-            $table->bigInteger('price');
-            $table->bigInteger('price_pay')->nullable();
-            $table->bigInteger('discount');
-            $table->string('sku', 100);
-            $table->tinyInteger('sex',)->default(0);
-            $table->tinyInteger('deleted')->default(0);
-            $table->tinyInteger('appear')->default(1);
+            $table->integer('id')->autoIncrement (); // ID Sản phẩm
+            $table->integer('brand_id'); // ID thương hiệu
+            $table->integer('pr_category_id'); // ID danh mục
+            $table->string('name', 255); // Tên sản phẩm
+            $table->string('slug', 255)->unique(); // Slug
+            $table->string('images', 500); // Hình ảnh sản phẩm
+            $table->integer('view')->default(0); // Lượt xem
+            $table->integer('bought')->default(0); // Đã mua
+            $table->string('description', 1000)->nullable(); // Mô tả
+            $table->text('contents'); // Nội dung
+            $table->string('keywords', 500)->nullable(); // Từ khoá SEO
+            $table->integer('price'); // Giá sản phẩm
+            $table->integer('discount'); // Giảm giá
+            $table->string('sku', 100); //
+            $table->tinyInteger('appear')->default(1); // Ẩn hiện
             $table->timestamps();
-            // $table->foreign('product_category')->references('id')->on('product_categories');
-            // $table->foreign('brand')->references('id')->on('brands');
+             $table->foreign('product_category_id')->references('id')->on('product_categories');
+             $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

@@ -1,7 +1,119 @@
 $(document).ready(function (){
-    ChangeToSlug()
-})
+    ChangeToSlug();
+    repeater();
+    clone();
+    jQuery(".choose_img_btn").click(function (e){
+        e.preventDefault();
+        var url = jQuery(this).attr('href'),
+            input_name = jQuery(this).attr('data-key');
+        if (jQuery(this).hasClass('gallery_add')){
+            jQuery(".popup_full .choose_btn").addClass('add_to_gallery');
+        }
 
+        jQuery(".popup_full .choose_btn").attr('data-key', input_name);
+        jQuery(".popup_full").addClass('active');
+
+        jQuery('#popup_gallery').empty().load(url);
+    })
+
+    jQuery("a.show_full").click(function (e){
+        e.preventDefault();
+        var url = jQuery(this).attr('href'),
+            img_src = jQuery(this).children().attr('src');
+
+        jQuery("#popup_fullsize").addClass('active');
+        jQuery(".image_full").attr('src', img_src);
+        jQuery('#img_info').empty().load(url);
+    })
+
+    jQuery(".delete_img").click(function(e){
+        e.preventDefault();
+        var id = jQuery(this).attr('data-id'),
+            data = jQuery(this).parents(".gallery_wrap").next().val();
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            var index = data.indexOf(id);
+            data.splice(index, 1);
+        }
+        jQuery(this).parents(".gallery_wrap").next().val(data);
+        jQuery(this).parent().remove();
+    })
+
+})
+function clone(){
+    jQuery(".repeater_clone").click(function (e){
+        e.preventDefault()
+        var data = jQuery(this).prev().children().last().clone().appendTo(jQuery(this).prev());
+    })
+}
+function drag(){
+    var dragging = null;
+    document.addEventListener('dragstart', function(event) {
+        dragging = event.target;
+        var id = event.target.getAttribute('data-id');
+
+        event.dataTransfer.setData('text/html', dragging);
+    });
+
+    document.addEventListener('dragover', function(event) {
+        event.preventDefault();
+    });
+
+    document.addEventListener('dragenter', function(event) {
+        event.target.style['border-bottom'] = 'solid 2px #93ddf5';
+    });
+
+    document.addEventListener('dragleave', function(event) {
+        event.target.style['border-bottom'] = '';
+    });
+
+    document.addEventListener('drop', function(event) {
+        event.preventDefault();
+        event.target.style['border-bottom'] = '';
+        var id = event.target.getAttribute('data-id');
+        event.target.parentNode.insertBefore(dragging, event.target.nextSibling);
+    });
+}
+function repeater(){
+
+    $(document).delegate(".relationship > .list_block > ul > li","click",function(e){
+        e.preventDefault()
+        //code lấy dữ liệu khi click
+        var value = $(this);
+        var id = $(this).attr('data-id');
+        var data = $(this).parents(".relationship").next().val();
+        //code xử lý dữ liệu
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            data.push(id);
+        }
+        else{
+            var data = []
+        }
+        //code xuất dữ liệu
+        $(this).parents(".relationship").next().val(data);
+        $(this).parents(".list_block").next().children().append(value);
+    })
+    $(document).delegate(".relationship > .chose > ul > li","click",function(e){
+        e.preventDefault()
+        //code lấy dữ liệu khi click
+        var value = $(this);
+        var id = $(this).attr('data-id');
+        var data = $(this).parents(".relationship").next().val();
+        //code xử lý dữ liệu
+        if(data != '' && data != null && data != undefined){
+            var data = data.trim().split(',');
+            var index = data.indexOf(id);
+            data.splice(index, 1);
+        }
+        //code xuất dữ liệu
+        $(this).parents(".relationship").next().val(data);
+        $(this).parents(".chose").prev().children().append(value);
+    })
+}
+function onlyUnique(value, index, self) {
+    return self.indexOf(value) === index;
+}
 function ChangeToSlug() {
     $("input.title_input").keyup(function (e) {
         e.preventDefault();

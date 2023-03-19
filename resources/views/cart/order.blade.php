@@ -121,7 +121,10 @@
                         <div class="form_group w-100">
                             <label for="lname">Địa chỉ</label>
                             <textarea name="address" id="lname" rows="5">{{  Auth::user()->address }}</textarea>
-                            {{-- <input type="text" id="lname" name="address" value="">--}}
+                        </div>
+                        <div class="form_group w-100">
+                            <label for="note">Ghi chú</label>
+                            <textarea name="note" id="note" rows="5"></textarea>
                         </div>
                     </div>
 

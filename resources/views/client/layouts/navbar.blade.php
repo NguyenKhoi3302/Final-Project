@@ -1,3 +1,10 @@
+@foreach($footer['footer_meta'] as $item)
+    @switch($item->meta_key)
+        @case('logo_page')
+            @php $logo = $item->meta_value @endphp
+            @break
+    @endswitch
+@endforeach
 <div class="inside_header grid-container">
   <div class="wrap_search_popup text_center">
     <div class="bg_close"></div>
@@ -9,24 +16,21 @@
           </path>
         </svg>
       </div>
-      <form role="search" method="get" id="searchform" class="searchform" action="">
-        <input type="text" value="" name="s" id="s" placeholder="Nhập ở đây">
-        <input type="submit" id="searchsubmit" value="Tìm kiếm">
-      </form>
+      @livewire('nav-search-component')
     </div>
   </div>
   <div class="logo">
     <a href="{{url('/')}}">
-      <img src="{{asset('images/logo/page_logo_2.png')}}" alt="">
+        {!! App\Http\Controllers\Controller::get_img_attachment($logo) !!}
     </a>
   </div>
   <div class="primary_menu">
     <ul>
-      <li class="active"><a href="/">Trang chủ</a></li>
-      <li><a href="{{url('/shop')}}">Sản phẩm</a></li>
-      <li><a href="{{url('/about')}}">Về chúng tôi</a></li>
-      <li><a href="{{url('/news')}}">Tin tức</a></li>
-      <li><a href="{{url('/contact')}}">Liên hệ</a></li>
+      <li class="@if(Request::is('/')) active @endif"><a href="/">Trang chủ</a></li>
+        <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'about')) active @endif"><a href="{{url('/about')}}">Về chúng tôi</a></li>
+        <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'product') || str_contains($_SERVER['REQUEST_URI'], 'shop')) active @endif"><a href="{{url('/shop')}}">Sản phẩm</a></li>
+      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'news')) active @endif"><a href="{{url('/news')}}">Tin tức</a></li>
+      <li class="@if(str_contains($_SERVER['REQUEST_URI'], 'contact')) active @endif"><a href="{{url('/contact')}}">Liên hệ</a></li>
     </ul>
   </div>
   <div class="header_actions">
@@ -59,7 +63,7 @@
     <h4>Đăng nhập</h4>
     <input type="email" placeholder="Enter mail" name="email" value="{{ old('email') }}">
     <input type="password" placeholder="Enter Password" name="password">
-    <input type="submit" value="Đăng nhập">
+    <input type="submit" class="btn_small btn_secondary" value="Đăng nhập">
     <a href="{{ route('register') }}">Tạo tài khoản</a>
   </form>
   @endif

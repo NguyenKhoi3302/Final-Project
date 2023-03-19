@@ -20,8 +20,8 @@ class UserController extends Controller
 // Đăng nhập
     public function login()
     {
-
-        return view('auth.login');
+        $footer = $this->footer();
+        return view('auth.login', compact('footer'));
     }
 
     public function  login_action(Request $request)
@@ -51,7 +51,8 @@ class UserController extends Controller
 // Đăng  ký thành  viên
     public function register()
     {
-        return view('auth.register');
+        $footer = $this->footer();
+        return view('auth.register', compact('footer'));
     }
 
     public function register_action(Request $request)
@@ -103,13 +104,16 @@ class UserController extends Controller
 // thông  tin  cá  nhân
     public function  profile()
     {
-        return view("auth/profile")->with('user', auth()->user());
+        $footer = $this->footer();
+        return view("auth/profile", compact('footer'))->with('user', auth()->user());
     }
 
     public function  profile_edit($id)
     {
         $user = user::find($id);
-        return view('auth/profileEdit', compact('user'));
+        $footer = $this->footer();
+        $data = ['user' => $user, 'footer' => $footer];
+        return view('auth/profileEdit', $data);
     }
 
     public function profile_update(Request $request, $id){
@@ -167,7 +171,8 @@ class UserController extends Controller
 // quên mật  khẩu
     public function showForgetPasswordForm()
     {
-        return view('auth.forgetPassword');
+        $footer = $this->footer();
+        return view('auth.forgetPassword', compact('footer'));
     }
 
     public function submitForgetPasswordForm(Request $request)
@@ -201,7 +206,9 @@ class UserController extends Controller
 
     public function showResetPasswordForm($token)
     {
-        return view('auth.forgetPasswordLink', ['token' => $token]);
+        $footer = $this->footer();
+        $data = ['token'=> $token, 'footer'=> $footer];
+        return view('auth.forgetPasswordLink', $data);
     }
 
     public function submitResetPasswordForm(Request $request)
@@ -215,10 +222,10 @@ class UserController extends Controller
             'email.email'=>'Định  dạng  không  đúng, vui lòng  nhập  lại !!',
             'email.exists'=>'Email không tồn tại !!',
             'password.required'=>'Vui lòng nhập mật khẩu !',
-            'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',  
-            'password.confirmed'=>'Mật khẩu xác nhận không đúng !',          
+            'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',
+            'password.confirmed'=>'Mật khẩu xác nhận không đúng !',
             'password_confrim.required'=>'Vui lòng xác nhận lại mật khẩu !',
-            
+
         ]);
 
 

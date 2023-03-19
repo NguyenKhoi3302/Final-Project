@@ -1,30 +1,75 @@
 @extends('layouts.guest')
+@section('description'){{$kq->summary}}@endsection
+@section('title'){{$kq->title}}@endsection
+@section('keywords'){{$kq->keywords}}@endsection
+@push('styles')
+    <style>
+        .comment-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comment-item {
+            /* max-width: 75%;
+            display: flex;
+            row-gap: 6px;
+            align-items: center; */
+        }
+
+        .comment-item__avatar {
+            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            background: #000;
+        }
+
+        .comment-item__content {}
+
+        .comment-item__content--title {
+            display: flex;
+            align-items: center;
+        }
+
+        .comment-item__name {}
+
+        .comment-item__date {
+            margin-left: 6px;
+        }
+
+        .comment-item__message {
+            margin: 0;
+        }
+    </style>
+@endpush
 @section('content')
         <section class="section post_detail">
             <div class="grid-container">
                 <div class="grid-66 tablet-grid-100 mobile-grid-100">
                     <div class="title_group">
-
-                        <!--                    <h4 class="sub_title_news">-->
-                        <!--                    -->
-                        <!--                        Cơ hội việc làm-->
-                        <!--                    </h4>-->
-
                         <h2 class="title_news">
-                            S_Watch và những dự định đổi mới					</h2>
-                    </div>
+                            {{$kq->title}}
+                        </h2>
+            </div>
 
-                    <div class="nav">
-                        <div class="day-view">
-                            <div class="day">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                    <path d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M13.75 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M6.25 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M3.125 6.875H16.875" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
+            <div class="nav">
+                <div class="day-view">
+                    <div class="day">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path
+                                d="M16.25 3.125H3.75C3.40482 3.125 3.125 3.40482 3.125 3.75V16.25C3.125 16.5952 3.40482 16.875 3.75 16.875H16.25C16.5952 16.875 16.875 16.5952 16.875 16.25V3.75C16.875 3.40482 16.5952 3.125 16.25 3.125Z"
+                                stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            </path>
+                            <path d="M13.75 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M6.25 1.875V4.375" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M3.125 6.875H16.875" stroke="#666666" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </svg>
                                 <p class="day">
-                                    19 - 11 - 2022							</p>
+                                    <?=date('d - m - Y' , strtotime($kq->created_at)) ?>
+                                </p>
                             </div>
 
                         </div>
@@ -35,7 +80,7 @@
 						</span>
                             <ul>
                                 <li>
-                                    <a href="http://www.facebook.com/sharer.php?u=https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-12/" target="_blank">
+                                    <a href="http://www.facebook.com/sharer.php?u={{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}" target="_blank">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                             <path d="M15.75 8.25H14.25C13.6533 8.25 13.081 8.48705 12.659 8.90901C12.2371 9.33097 12 9.90326 12 10.5V21" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -44,17 +89,15 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="http://twitter.com/share?text=Royal Group và những dự định đổi mới&amp;url=https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-12/&amp;hashtags=[HASTAG]" target="_blank">
-
+                                    <a href="http://twitter.com/share?text={{$kq->title}}url={{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}" target="_blank">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M22.5006 5.68726C21.6841 6.85618 20.6655 7.8699 19.4926 8.68066L19.4926 8.68065C19.4183 10.731 18.8198 12.7282 17.7541 14.4814C16.6884 16.2347 15.1911 17.6855 13.4052 18.6955C11.6192 19.7054 9.60418 20.2407 7.55247 20.2502C5.50076 20.2598 3.48084 19.7433 1.68555 18.75L1.68616 18.7489C4.03051 18.7165 6.31343 17.9946 8.25024 16.6732L8.25016 16.6734C6.17689 15.2603 4.59782 13.2338 3.73433 10.878C2.87084 8.52226 2.76623 5.95533 3.43517 3.53711L3.43513 3.53713C4.39323 5.01262 5.66407 6.25938 7.15762 7.18907C8.65117 8.11876 10.3309 8.70864 12.0778 8.91693L12.0775 8.91698C11.8936 8.04005 12.0296 7.12624 12.461 6.34092C12.8924 5.5556 13.5907 4.95066 14.4295 4.63559C15.2683 4.32052 16.1922 4.31613 17.034 4.62322C17.8757 4.93031 18.5797 5.52858 19.0186 6.30976L19.0186 6.31018C20.2036 6.27481 21.3769 6.06492 22.5006 5.68726" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         </svg>
-
                                     </a>
                                 </li>
 
                                 <li>
-                                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://royal.canhcam.asia/gach-van-da-marble-dan-dau-xu-huong-gach-op-lat-12/&amp;title=Royal Group và những dự định đổi mới&amp;source=[SITE_NAME]" target="_blank">
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&amp;url={{$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']}}title={{$kq->title}}source=S_WATCH" target="_blank">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M19.5 3.75H4.5C4.08579 3.75 3.75 4.08579 3.75 4.5V19.5C3.75 19.9142 4.08579 20.25 4.5 20.25H19.5C19.9142 20.25 20.25 19.9142 20.25 19.5V4.5C20.25 4.08579 19.9142 3.75 19.5 3.75Z" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                             <path d="M11.25 10.5V16.5" stroke="#272D35" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -70,8 +113,10 @@
 
                     </div>
                     <div class="single_post_excerpt">
-                        Không chỉ tuân thủ hai nguyên tắc trưng bày “phù hợp” và “đúng kỹ thuật”, tủ trưng bày tại Đồng Hồ S_Watch còn vượt qua nhiều tiêu chuẩn khác, đáp ứng và hoàn thiện điều kiện showroom đạt chuẩn Thụy Sỹ.			</div>
+                        {{$kq->summary}}
+                    </div>
                     <div class="mota wrap_content">
+{{--                        {!! $kq->content !!}--}}
                         <p>1. ĐẠT TIÊU CHUẨN TRƯNG BÀY CỦA CÁC HÃNG ĐỒNG HỒ CAO CẤP<br>
                             Là một đại lý phân phối hàng loạt thương hiệu đồng hồ cao cấp đến từ Thụy Sỹ như Longines, Doxa, Tissot, Rado… Hải Triều hiểu rằng nhóm khách hàng của mình cần nhiều hơn một mẫu đồng hồ chất lượng.</p>
                         <p>Tiêu chuẩn trưng bày của các hãng đồng hồ cao cấp yêu cầu rõ ràng về số lượng sản phẩm trên kệ, phương pháp đặt để sản phẩm, chất lượng tủ đạt thẩm mỹ..</p>
@@ -93,7 +138,9 @@
                             <li class="tag"><a href="http://127.0.0.1:8000/shop">LONGINES L2.673.4.78.6</a></li>
                         </ul>
                     </div>
-
+                    <div class="comments">
+                        @livewire('news-comment-component', ['news_id'=> (int)$kq->id])
+                    </div>
                 </div>
                 <div class="grid-25 tablet-grid-100 mobile-grid-100">
                     <div class="cat_td more_post">
@@ -102,97 +149,25 @@
                         </h3>
                         <div class="wrap">
                             @foreach($list as $new)
-                            <div class="item">
-
-                                <a href="" class="style_center max">
-                                    <div class="item_img">
-                                        <img width="380" height="380" src="{{asset($new->image)}}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">										</div>
-
+                                <div class="item">
+                                    <a href="{{url('single-news/'.$new->slug)}}" class="style_center max">
+                                        <div class="item_img">
+                                            {!! App\Http\Controllers\Controller::get_img_attachment($new->image)!!}
+{{--                                            <img width="380" height="380" src="{{asset($new->image)}}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image">--}}
+                                        </div>
                                         <div class="item_cont">
-                                        <h3>{{$new->title}}</h3>
-                                        <div class="date_line">
-                                            <span><?=date('d/m/Y' , strtotime($new->created_at)) ?></span>
-                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org 000/svg">
-                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            </svg>
+                                            <h3>{{$new->title}}</h3>
+                                            <div class="date_line">
+                                                <span><?=date('d - m - Y' , strtotime($new->created_at)) ?></span>
+                                                <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org 000/svg">
+                                                    <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                    <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                                </svg>
+                                            </div>
                                         </div>
-
-                                    </div>
-                                </a>
-                            </div>
+                                    </a>
+                                </div>
                             @endforeach
-                            {{--<div class="item">
-
-                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg" class="style_center max">
-                                    <div class="item_img">
-                                        <img width="387" height="330" src="https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg 387w, https://cdn3.dhht.vn/wp-content/uploads/2020/02/69_T101.410.44.031.00-699x699.jpg 300w" sizes="(max-width: 387px) 100vw, 387px">										</div>
-                                    <div class="item_cont">
-                                        <h3>TISSOT PR 100</h3>
-                                        <div class="date_line">
-                                            <span>19 - 11 - 2022</span>
-                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                            <div class="item">
-
-                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg" class="style_center max">
-                                    <div class="item_img">
-                                        <img width="750" height="500" src="https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg 750w, https://cdn3.dhht.vn/wp-content/uploads/2015/11/5_DW00100007-699x699.jpg 300w" sizes="(max-width: 750px) 100vw, 750px">										</div>
-                                    <div class="item_cont">
-                                        <h3>DANIEL WELLINGTON DW00100007</h3>
-                                        <div class="date_line">
-                                            <span>19 - 11 - 2022</span>
-                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                            <div class="item">
-
-                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg" class="style_center max">
-                                    <div class="item_img">
-                                        <img width="1450" height="967" src="https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 1450w, https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 300w, https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 1024w, https://cdn3.dhht.vn/wp-content/uploads/2017/07/9_DW00100161-699x699.jpg 768w" sizes="(max-width: 1450px) 100vw, 1450px">										</div>
-                                    <div class="item_cont">
-                                        <h3>DANIEL WELLINGTON DW00100161</h3>
-                                        <div class="date_line">
-                                            <span>19 - 11 - 2022</span>
-                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>
-                            <div class="item">
-                                <a href="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg" class="style_center max">
-                                    <div class="item_img">
-                                        <img width="380" height="380" src="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" decoding="async" loading="lazy" srcset="https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg 380w, https://cdn3.dhht.vn/wp-content/uploads/2021/03/DW00100319-699x699.jpg 300w,  150w" sizes="(max-width: 380px) 100vw, 380px">										</div>
-
-                                        <h3>DANIEL WELLINGTON DW00100319</h3>
-                                        <div class="date_line">
-                                            <span>19 - 11 - 2022</span>
-                                            <svg width="26" height="25" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M7.30469 22.5H37.2075" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                                <path d="M24.9746 9.84375L37.2076 22.5L24.9746 35.1562" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </a>
-
-                            </div>--}}
                         </div>
                     </div>
                 </div>
@@ -208,115 +183,42 @@
                 <div class="box_swiper">
                     <div class="swiper postDetailSwiper">
                         <div class="swiper-wrapper">
-                    @foreach($list as $kq)
-                            <div class="swiper-slide">
-                            <a href="#">
-                                <div class="home_swiper_img">
-                                    <img src="{{asset($kq->image)}}">
-                                </div>
-                                <div class="item_cont">
-                                    <div class="date">
-                                        <div class="day">
-                                            <span><?=date('d' , strtotime($new->created_at)) ?></span>										</div>
-                                        <div class="mY">
-                                            <span><?=date('m/Y' , strtotime($new->created_at)) ?></span>								</div>
-                                    </div>
-                                    <div class="name" href="#">
-                                        {{$kq->title}}
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                            {{--<div class="swiper-slide">
-                            <a href="#">
-                                <div class="home_swiper_img">
-                                    <img src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg"/>
-                                </div>
-                                <div class="item_cont">
-                                    <div class="date">
-                                        <div class="day">
-                                            19										</div>
-                                        <div class="mY">
-                                            11 - 2022										</div>
-                                    </div>
-                                    <div class="name" href="#">
-                                        Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                            <div class="swiper-slide">
-                            <a href="#">
-                                <div class="home_swiper_img">
-                                    <img src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg"/>
-                                </div>
-                                <div class="item_cont">
-                                    <div class="date">
-                                        <div class="day">
-                                            19										</div>
-                                        <div class="mY">
-                                            11 - 2022										</div>
-                                    </div>
-                                    <div class="name" href="#">
-                                        Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                            <div class="swiper-slide">
-                            <a href="#">
-                                <div class="home_swiper_img">
-                                    <img src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg"/>
-                                </div>
-                                <div class="item_cont">
-                                    <div class="date">
-                                        <div class="day">
-                                            19										</div>
-                                        <div class="mY">
-                                            11 - 2022										</div>
-                                    </div>
-                                    <div class="name" href="#">
-                                        Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                            <div class="swiper-slide">
-                            <a href="#">
-                                <div class="home_swiper_img">
-                                    <img src="https://royal.canhcam.asia/wp-content/uploads/2022/11/3-2.jpg"/>
-                                </div>
-                                <div class="item_cont">
-                                    <div class="date">
-                                        <div class="day">
-                                            19
+                            @foreach($list as $kq)
+                                <div class="swiper-slide">
+                                    <a href="{{url('single-news/'.$kq->slug)}}">
+                                        <div class="home_swiper_img">
+                                            {!! App\Http\Controllers\Controller::get_img_attachment($kq->image)!!}
+{{--                                            <img src="{{asset($kq->image)}}">--}}
                                         </div>
-                                        <div class="mY">
-                                            11 - 2022
+                                        <div class="item_cont">
+                                            <div class="date">
+                                                <div class="day">
+                                                    <span><?=date('d' , strtotime($kq->created_at)) ?></span>
+                                                </div>
+                                                <div class="mY">
+                                                    <span><?=date('m/Y' , strtotime($kq->created_at)) ?></span>
+                                                </div>
+                                            </div>
+                                            <div class="name" href="#">
+                                                {{$kq->title}}
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="name" href="#">
-                                        Gạch vân đá MARBLE – Dẫn đầu xu hướng gạch ốp lát
-                                    </div>
+                                    </a>
                                 </div>
-                            </a>
+                            @endforeach
                         </div>
-
-                        </div>--}}
-                        <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-                    <div class="outside-btn prev" tabindex="0" role="button" aria-label="Previous slide" aria-controls="swiper-wrapper-2bd6af7db48b072c">
+                    <div class="outside-btn prev">
                         <svg width="25" height="48" viewBox="0 0 25 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M24.25 47.125L1.125 24L24.25 0.875" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
                     </div>
-                    <div class="outside-btn next" tabindex="0" role="button" aria-label="Next slide" aria-controls="swiper-wrapper-2bd6af7db48b072c">
+                    <div class="outside-btn next">
                         <svg width="25" height="48" viewBox="0 0 25 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.75 0.875L23.875 24L0.75 47.125" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
 
-        </section>
+</section>
 @endsection

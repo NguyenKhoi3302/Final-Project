@@ -42,7 +42,9 @@ class CartController extends Controller
     public function show_cart()
     {
         $cart = session()->get('cart');
-        return view('cart.view', compact('cart'));
+        $footer = $this->footer();
+        $data =['footer' => $footer, 'cart' => $cart];
+        return view('cart.view', $data);
     }
 
     public function delete_cart(Request $request)
@@ -71,7 +73,9 @@ class CartController extends Controller
 
     public function  order(){
         $cart = session()->get('cart');
-        return view('cart.order', compact('cart'));
+        $footer = $this->footer();
+        $data =['footer' => $footer, 'cart' => $cart];
+        return view('cart.order', $data);
     }
 
     public function save_order(Request $request){

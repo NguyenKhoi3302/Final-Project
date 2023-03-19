@@ -14,7 +14,6 @@
                     {{--                        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>--}}
                     {{--                        <li class="breadcrumb-item active">Dashboard</li>--}}
                     {{--                    </ol>--}}
-
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -88,16 +87,15 @@
                 @foreach($news_list as $news)
                     <tr>
                         <th class="text-muted">{{$news->id}}</th>
-                        <td>{{$news->title}}</td>
+                        <td><a href="{{url('/single-news/'.$news->slug)}}" target="_blank">{{$news->title}}</a></td>
                         <td>
-                                    <span class="w_content">
-                                        @foreach($author as $aut)
-                                            @if($aut->id == $news->user_id)
-                                                {{$aut->name}}
-                                            @endif
-                                        @endforeach
-                                    </span>
-
+                            <span class="w_content">
+                                @foreach($author as $aut)
+                                    @if($aut->id == $news->user_id)
+                                        {{$aut->name}}
+                                    @endif
+                                @endforeach
+                            </span>
                         </td>
                         <td>
                             @foreach($cat_list as $cat)

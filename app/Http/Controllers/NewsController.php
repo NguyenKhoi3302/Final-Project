@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB;
 use App\Models\News;
+use Illuminate\Http\Request;
 use App\Models\NewsCategories;
+use App\Models\NewsComment;
+use DB;
 
 class NewsController extends Controller
 {
@@ -46,25 +47,16 @@ class NewsController extends Controller
         return view('client.news', $data);
     }
 
-    public function single_news($id){
-        $kq = DB::table('news')->WHERE('id', $id)->first();
+    public function single_news($slug){
+        $kq = DB::table('news')->WHERE('slug', $slug)->first();
         $list = DB::table('news')->limit(5)->get();
-        $data = ['list'=>$list, 'kq' => $kq];
+        $footer = $this->footer();
+        $data = ['footer'=>$footer, 'list'=>$list, 'kq' => $kq];
         return view("client.single-news", $data);
-    }
-
-    public function home(){
-        $home = DB::table('news')->get();
-        $nha = DB::table('news')->limit(5)->get();
-        // dd($nha);
-        $sp = DB::table('products')->get();
-        $new =  DB::table('products')->limit(9)->get();
-        $data = ['nha'=>$nha, 'home' => $home, 'sp'=>$sp, 'new'=>$new ];
-        return view("client.home", $data);
     }
     function news_list(){
         $news_list = DB::table('news')
-            ->orderBy('id','desc')
+            ->orderBy('created_at','desc')
             ->Paginate(20);
         $cata  = NewsCategories::all();
         $author = DB::table('users')->select('name', 'id')->get();
@@ -76,16 +68,36 @@ class NewsController extends Controller
         $cat = DB::table('news_categories')->get();
         return view("admin/news/add", ['cat'=> $cat]);
     }
-    function add_(){
+    function add_(Request $request){
+        $request->validate(
+            [
+                'title' => 'required',
+                'image' => 'required',
+                'content' => 'required',
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề tin',
+                'image.required' => 'Vui lòng chọn hình ảnh',
+                'content.required' => 'Vui lòng nhập nội dung bài viết',
+            ]
+        );
         $n = new News;
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
         $n->user_id = 1;
         $n->image = $_POST['image'];
         $n->title = $_POST['title'];
+        if(empty($_POST['slug'])){
+            $n->slug = $this->slugConvert($_POST['title']);
+        }
+        else{
+            $n->slug = $this->slugConvert($_POST['slug']);
+        }
+        $n->keywords = $_POST['keywords'];
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
+        $n->created_at = now();
         $n->save();
         return redirect('admin/news');
     }
@@ -97,6 +109,7 @@ class NewsController extends Controller
         else{
             $news->hot = 0;
         }
+        $news->updated_at = now();
         $news->save();
         return redirect('admin/news');
     }
@@ -108,6 +121,7 @@ class NewsController extends Controller
         else{
             $news->appear = 0;
         }
+        $news->updated_at = now();
         $news->save();
         return redirect('admin/news');
     }
@@ -116,7 +130,19 @@ class NewsController extends Controller
         $cat = DB::table('news_categories')->get();
         return view('admin/news/update', ['news'=>$n, 'cat'=> $cat]);
     }
-    function update_($id){
+    function update_($id, Request $request){
+        $request->validate(
+            [
+                'title' => 'required',
+                'image' => 'required',
+                'content' => 'required',
+            ],
+            [
+                'title.required' => 'Vui lòng nhập tiêu đề tin',
+                'image.required' => 'Vui lòng chọn hình ảnh',
+                'content.required' => 'Vui lòng nhập nội dung bài viết',
+            ]
+        );
         $n = News::find($id);
         $n->hot = $_POST['hot'];
         $n->category_id = $_POST['category_id'];
@@ -126,6 +152,14 @@ class NewsController extends Controller
         $n->summary = $_POST['summary'];
         $n->content = $_POST['content'];
         $n->appear = $_POST['appear'];
+        if(empty($_POST['slug'])){
+            $n->slug = $this->slugConvert($_POST['title']);
+        }
+        else{
+            $n->slug = $this->slugConvert($_POST['slug']);
+        }
+        $n->keywords = $_POST['keywords'];
+        $n->updated_at = now();
         $n->save();
         return redirect('admin/news');
     }
@@ -138,5 +172,23 @@ class NewsController extends Controller
         $t->delete();
 //        }
         return redirect('admin/news');
+    }
+    //comment
+    public function comment(){
+        $newsComments = NewsComment::with('user','news')->paginate();
+        return view('admin.news.comment', compact('newsComments'));
+    }
+    public function change(Request $request){
+        $id = $request->input('id');
+        $appear = $request->input('appear');
+        $newsComment = NewsComment::find($id);
+        $newsComment->appear = $appear;
+        $newsComment->save();
+        return response()->json(['success' => true, 'status' => 'OK']);
+    }
+    public function destroy(Request $request){
+        $newsCommentDelete = NewsComment::findOrFail($request->id);
+        $newsCommentDelete->delete();
+        return response()->json(['success' => true]);
     }
 }

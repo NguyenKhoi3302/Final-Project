@@ -14,20 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('news', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('category_id')->unsigned();
+            $table->integer('id')->autoIncrement();
+            $table->integer('user_id'); //Người đăng
+            $table->integer('category_id');
             $table->string('image', 100);
-            $table->string('title', 100);
-            $table->text('summary')->nullable();
+            $table->string('title', 255);
+            $table->string('slug', 255)->unique();
+            $table->string('summary', 1000)->nullable();
             $table->text('content');
-            $table->bigInteger('sort')->unsigned()->nullable();
+            $table->string('keywords', 500)->nullable(); // Từ khoá SEO
+//            $table->bigInteger('sort')->unsigned()->nullable();
             $table->integer('view')->default(0);
             $table->tinyInteger('hot')->default(0);
             $table->tinyInteger('appear')->default(1);
             $table->timestamps();
-            // $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('category_id')->references('id')->on('news_categories');
+             $table->foreign('user_id')->references('id')->on('users');
+             $table->foreign('category_id')->references('id')->on('news_categories');
         });
     }
 
