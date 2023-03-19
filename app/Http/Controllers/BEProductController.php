@@ -109,7 +109,7 @@ class BEProductController extends Controller
         }
 
         $products->save();
-        return redirect(url('admin/products'))->with('msg', 'Thay đổi trạng thái thành công');
+        return redirect(url('admin/products'))->with('msg', 'Thêm thành công');
 
     }
 
@@ -168,8 +168,6 @@ class BEProductController extends Controller
             $image->move(public_path('image/products'), $imageName);
             $products->images = 'image/products/' . $imageName;
             $products->save();
-        }else {
-            $products->images = '';
         }
 
         $products->save();
