@@ -37,10 +37,10 @@
                 <div class="prod_soft">
                     <span>Sắp xếp theo mặc định</span>
                     <ul>
-                        <li value=""><a href="{{ url('/shop') }}">Sắp xếp theo mặc định</a></li>
-                        <li value=""><a href="{{ url('/shop/ascending') }}">Sắp xếp theo giá tăng dần<a></li>
-                        <li value=""><a href="{{ url('/shop/decrease') }}">Sắp xếp theo giá giảm dần</a></li>
-                        <li value=""><a href="{{ url('/shop/view') }}">Sắp xếp theo lượt xem</a></li>
+                        <li><a href="{{ url('/shop') }}">Sắp xếp theo mặc định</a></li>
+                        <li><a href="{{ url('/shop/ascending') }}">Sắp xếp theo giá tăng dần<a></li>
+                        <li><a href="{{ url('/shop/decrease') }}">Sắp xếp theo giá giảm dần</a></li>
+                        <li><a href="{{ url('/shop/view') }}">Sắp xếp theo lượt xem</a></li>
                     </ul>
                 </div>
                 <div id="prod_view" class="prod_view">
@@ -128,7 +128,7 @@
                         @if( (isset($product->discount)) && ($product->discount > 0)  )
                             <div class="prod_price">
                                 <span class="discount">
-                                    {{ number_format($price = ($product->price*(100 - $product->discount)/100), 0, ",", ".")}} vnđ
+                                    {{ number_format($product->price*(100 - $product->discount)/100, 0, ",", ".")}} vnđ
                                 </span>
                                 <del>
                                     {{ number_format($product->price, 0, ",", ".")}} vnđ

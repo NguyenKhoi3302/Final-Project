@@ -9,6 +9,7 @@ use App\Models\order_details;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Cart;
+use DB;
 
 
 
@@ -71,6 +72,24 @@ class CartController extends Controller
         }
     }
 
+    public function apply_coupon(Request $request)
+    {
+        // $request->session()->flush();
+        $coupon = DB::table('coupon')->where('coupon_code', '=', $request->input('coupon'))->first();
+        if($coupon){
+            $message = "Áp dụng thành công";
+            Session::put('id', $coupon->id);
+            Session::put('coupon_code', $coupon->coupon_code);
+            Session::put('discount', $coupon->discount);
+            Session::put('min_total', $coupon->min_total);
+            Session::put('max_discount', $coupon->max_discount);
+        }else{
+            session::forget(['carcoupon_codet','discount']);
+            $message = "Mã không tồn tại";
+        }
+        return redirect()->route('showCart');
+    }
+
     public function  order(){
         $cart = session()->get('cart');
         $footer = $this->footer();
@@ -87,18 +106,22 @@ class CartController extends Controller
         $order->name = $request->name;
         $order->phone = $request->phone;
         $order->address = $request->address;
-        $order->total = $request->total;
+        $order->note = $request->note;
+        $order->total = $total ?? $request->total;
         $order->save();
 
-        // foreach ($cart as $key => $value) {
-        //     $order_details = new order_details;
-        //     $order_details->order_id = $order->id;
-        //     $order_details->product_id = $key;
-        //     $order_details->quantily = $value['quantity'];
-        //     $order_details->price = ($value['quantity']*$value['price']);
-        //     $order_details->save();
-        // }
-        // session()->forget('cart');
+        foreach ($cart as $key => $value) {
+            $order_details = new order_details;
+            $order_details->order_id = $order->id;
+            $order_details->product_id = $key;
+            $order_details->product_name = $value['name'];
+            $order_details->quantity = $value['quantity'];
+            $order_details->price = ($value['quantity']*$value['price']);
+            $order_details->save();
+        }
+        $request->session()->forget(['cart','carcoupon_codet','discount']);
+        // session()->forget('cart','carcoupon_codet','discount');
 
-    }
+        return redirect()->route('shop');
+ }
 }

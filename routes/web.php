@@ -45,14 +45,22 @@ Route::get('/news-category/{slug}', [CategoryController::class, 'category'])->na
 //Route::get('/checkout', [MainController::class, 'checkout']);
     //Route::get('/account-profile', [MainController::class, 'account_profile']);
 // Products
-Route::get('/shop', [ProductController::class, 'shop']);
-Route::get('/single-product/{id}', [ProductController::class, 'single_product'])->name('single-product');
+    Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
+    Route::get('/single-product/{id}', [ProductController::class, 'single_product'])->name('single-product');
+//fillter
+    Route::get('/shop/brand/{id}', [ProductController::class, 'fillter_brand']);//theo thuơng hiệu``
+    Route::get('/shop/category/{id}', [ProductController::class, 'fillter_category']);//theo loại
+    Route::get('/shop/ascending', [ProductController::class, 'fillter_ascending']);//tăng dần
+    Route::get('/shop/decrease', [ProductController::class, 'fillter_decrease']);//giảm dần
+    Route::get('/shop/view', [ProductController::class, 'fillter_view']);//lượt xem
+//end fillter
 // Cart
 Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
 Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
 Route::get('/update-cart', [CartController::class, 'update_cart'])->name('updateCart');
 Route::get('delete-cart', [CartController::class, 'delete_cart'])->name('deleteCart');
 // Order
+Route::post('apply', [CartController::class, 'apply_coupon'])->name('apply');
 Route::get('order', [CartController::class, 'order'])->name('order');
 Route::get('save', [CartController::class, 'save_order'])->name('saveOrder');
 // Search

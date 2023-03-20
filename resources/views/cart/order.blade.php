@@ -150,7 +150,14 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Tổng phụ</th>
+                                <th>Thành  tiền</th>
+                                <?php
+                                    if($total > Session::get('min_total')){
+                                        $total =$total - ($total * Session::get('discount') /100);
+                                    }else{
+                                        $total = $total - 0;
+                                    }
+                                ?>
                                 <td>{{ number_format($total, 0 ,',' ,'.') }} vnđ</td>
                             </tr>
                             <tr>

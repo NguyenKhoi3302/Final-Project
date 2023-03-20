@@ -130,6 +130,7 @@
     }
 </style>
 <section class="section cart_page">
+
 <div class="grid-container">
     <div class="cart" data-url="{{ route('deleteCart') }}">
         <div class="container">
@@ -169,6 +170,7 @@
                         @endforeach
                     </tbody>
                 </table>
+                
                 <div class="right_block">
                     <ul>
                         <li>
@@ -180,8 +182,28 @@
                             <span>Miễn phí vận chuyển</span>
                         </li>
                         <li>
+                            <form action="{{ route('apply') }}" method="post" >
+                                @csrf
+                                <strong>MÃ GIẢM GIÁ:</strong>
+                                <input type="text" name="coupon" value="{{ Session::get('coupon_code')}}">
+                                <div><button>APPLY</button></div>
+                            </form>
+                        </li>
+
+                        <li>
                             <strong>TỔNG:</strong>
-                            <span>{{ number_format($total, 0, ',', '.') }} vnđ</span>
+                            <?php
+                                    if($total > Session::get('min_total')){
+                                        if(($total * Session::get('discount') /100) > (Session::get('max_discount'))){
+                                            $total =$total - Session::get('max_discount');
+                                        }else{
+                                            $total =$total - ($total * Session::get('discount') /100);
+                                        }
+                                    }else{
+                                        $total = $total - 0;
+                                    }
+                            ?>
+                            <h1>{{ number_format($total, 0, ',', '.') }}</h1>
                         </li>
                         <li class="checkout">
                             @if(Auth::user())
@@ -191,7 +213,6 @@
                             @endif
                         </li>
                     </ul>
-
                 </div>
 
             </div>
