@@ -28,8 +28,8 @@ return new class extends Migration
             $table->tinyInteger('hot')->default(0);
             $table->tinyInteger('appear')->default(1);
             $table->timestamps();
-             $table->foreign('user_id')->references('id')->on('users');
-             $table->foreign('category_id')->references('id')->on('news_categories');
+//             $table->foreign('user_id')->references('id')->on('users');
+//             $table->foreign('category_id')->references('id')->on('news_categories');
         });
     }
 

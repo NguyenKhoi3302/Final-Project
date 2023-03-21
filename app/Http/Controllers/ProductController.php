@@ -18,9 +18,9 @@ class ProductController extends Controller
         return view('client.shop', $data);
     }
     function single_product($id){
-        $products = Products::find($id);
+        $products = Product::find($id);
         $footer = $this->footer();
-        $data = ['footer'=> $footer, 'products' => $products];
+        $data = ['footer'=> $footer, 'product' => $products];
         return view("client.single-product", $data);
     }
     public function search(Request $request){

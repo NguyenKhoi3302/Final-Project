@@ -88,7 +88,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="mySmallModalLabel">THÊM DANH MỤC SẢN PHẨM</h5>
                 </div>
-                <form action="{{url('admin/category/save')}}" method="post">
+                <form action="{{url('admin/product_category/save')}}" method="post">
                     @csrf
                     <div class="modal-body">
                         <fieldset class="form-group">
@@ -114,7 +114,7 @@
                     <h5 class="modal-title" id="mySmallModalLabel">XÁC NHẬN</h5>
                 </div>
                 <div class="modal-body">
-                    <form  action="{{url('admin/category/delete')}}" method="post">
+                    <form  action="{{url('admin/product_category/delete')}}" method="post">
                         @csrf
                         <input type="hidden" name="item_id" class="item_id">
                         <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
@@ -136,7 +136,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="mySmallModalLabel">CẬP NHẬT DANH MỤC</h5>
                 </div>
-                <form action="{{url('admin/category/update')}}" method="post">
+                <form action="{{url('admin/product_category/update')}}" method="post">
                     @csrf
                     <div class="modal-body">
                         <fieldset class="form-group">
