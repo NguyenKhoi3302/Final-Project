@@ -60,33 +60,37 @@ Danh sách đơn hàng
     <hr>
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <table class="table table-bordered mb-0 news_table">
+            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
-                    <tr>
-                        <th><span>ID</span></th>
-                        <th><span>ID người mua</span></th>
-                        <th><span>Tên</span></th>
-                        <th><span>Số điện thoại</span></th>
-                        <th><span>Địa chỉ</span></th>
+                    <tr style="text-align: center">
+                        <th  style="text-align: center"><span>ID</span></th>
+
+                        <th  style="text-align: center"><span>Tên</span></th>
+                        <th  style="text-align: center"><span>Số điện thoại</span></th>
+                        <th  style="text-align: center"><span>Địa chỉ</span></th>
                         {{-- <th><span>Tóm tắt</span></th>--}}
-                        <th><span>Mã đơn hàng</span></th>
-                        <th><span>Trạng thái</span></th>
-                        <th><span>Ghi chú khách</span></th>
-                        <th><span>Ghi chú admin</span></th>
-                        <th><span>Tổng</span></th>
-                        <th><span>Ngày tạo</span></th>
-                        <th><span>Hành động</span></th>
+                        <th  style="text-align: center"><span>Mã đơn hàng</span></th>
+                        <th  style="text-align: center"><span>Trạng thái</span></th>
+                        <th  style="text-align: center"><span>Tổng</span></th>
+                        <th  style="text-align: center"><span>Ngày tạo</span></th>
+                        <th  style="text-align: center"><span>Hành động</span></th>
                     </tr>
                 </thead>
                 <tbody id="body-load-order">
                     @foreach($list as $item)
-                    <tr>
+                    <tr style="text-align: center">
                         <th class="text-muted">{{$item->id}}</th>
-                        <td>{{$item->user_id}}</td>
                         <td>{{$item->name}}</td>
                         <td>{{$item->phone}}</td>
                         <td>{{$item->address}}</td>
                         <td>{{$item->code}}</td>
+                        <td>
+                            <select data-id="{{$item->id}}" onchange="update_status({{$item->id}})" id="status" name="status" class="form-control status-change">
+                                <option <?php if($item->status == "Đang Chờ Duyệt" ) { echo "selected"; } ?>value="Đang Chờ Duyệt">Đang Chờ Duyệt</option>
+                                <option <?php if($item->status == "Đang giao hàng" ) { echo "selected"; } ?> value="Đang giao hàng">Đang Giao Hàng</option>
+                                <option <?php if($item->status == "Giao thành công" ) { echo "selected"; } ?> value="Giao thành công">Giao Thành Công</option>
+                            </select>
+                        </td>
                         <td>{{$item->status}}</td>
                         <td>{{$item->note}}</td>
                         <td>{{$item->admin_note}}</td>
@@ -183,5 +187,4 @@ Danh sách đơn hàng
 @endsection
 @push('js')
     <script src="{{url('assets')}}/cutstom-js/order.js"></script>
-
 @endpush

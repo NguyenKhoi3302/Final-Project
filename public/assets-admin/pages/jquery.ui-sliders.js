@@ -52,7 +52,7 @@ $(document).ready(function () {
         grid: true,
         min: 500000,
         max: 10000000,
-        from: 1500000,
+        from: 9500000,
         step: 500000,
         prettify_enabled: true
     });

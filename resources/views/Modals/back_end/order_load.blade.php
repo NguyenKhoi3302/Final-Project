@@ -1,14 +1,18 @@
 @foreach($list as $item)
-    <tr>
+    <tr style="text-align: center">
         <th class="text-muted">{{$item->id}}</th>
-        <td>{{$item->user_id}}</td>
         <td>{{$item->name}}</td>
         <td>{{$item->phone}}</td>
         <td>{{$item->address}}</td>
         <td>{{$item->code}}</td>
-        <td>{{$item->status}}</td>
-        <td>{{$item->note}}</td>
-        <td>{{$item->admin_note}}</td>
+        <td>
+            <select data-id="{{$item->id}}" onchange="update_status(event)" id="status" name="status" class="form-control status-change">
+                <option <?php if($item->status == "Đang Chờ Duyệt" ) { echo "selected"; } ?>value="Đang Chờ Duyệt">Đang Chờ Duyệt</option>
+                <option <?php if($item->status == "Đang giao hàng" ) { echo "selected"; } ?> value="Đang giao hàng">Đang Giao Hàng</option>
+                <option <?php if($item->status == "Giao thành công" ) { echo "selected"; } ?> value="Giao thành công">Giao Thành Công</option>
+            </select>
+
+        </td>
         <td>{{$item->total}}</td>
         <td>
                             <span class="w_content">

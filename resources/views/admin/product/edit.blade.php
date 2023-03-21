@@ -92,43 +92,14 @@
                                     </div>
                                     <div class="col">
                                         <fieldset class="form-group">
-                                            <label for="exampleInputEmail1">* SẢN PHẨM DÀNH CHO</label>
-                                            <div style="padding-top: 10px" class="row">
-                                                <div class="col-md-2">
-                                                    <div class="form-check">
-                                                        <input {{ $product->sex == 1 ? 'checked' : '' }} class="form-check-input" type="radio" name="sex"
-                                                               id="gender_1" value="1">
-                                                        <label class="form-check-label" for="gender_1">
-                                                            Nam
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2">
-                                                    <div class="form-check">
-                                                        <input {{ $product->sex == 2 ? 'checked' : '' }} class="form-check-input" type="radio" name="sex"
-                                                               id="gender_2" value="2">
-                                                        <label class="form-check-label" for="gender_2">
-                                                            Nữ
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-3">
-                                                    <div class="form-check">
-                                                        <input {{ $product->sex == 0 ? 'checked' : '' }} class="form-check-input" type="radio" name="sex"
-                                                               id="gender_0" value="0" >
-                                                        <label class="form-check-label" for="gender_0">
-                                                            Nam và Nữ
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <label for="exampleInputEmail1">* TỪ KHÓA SEO</label>
+                                            <input type="text" name="keywords" value="{{$product->keywords}}" class="form-control">
                                         </fieldset>
                                     </div>
                                 </div>
                                 <hr>
                                 <button type="reset" class="btn btn-danger waves-effect waves-light">Resets</button>
                                 <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
-
                             </div>
                         </form>
                     </div><!-- end col -->
@@ -149,6 +120,7 @@
             toastr.error('{{ Session::get('success') }}');
             @endif
         });
+
         tinymce.init({
             selector: 'textarea.c-tinymce',
             plugins: 'code print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help',

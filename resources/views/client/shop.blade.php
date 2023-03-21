@@ -209,6 +209,5 @@
         $(function(){
             $('.add_cart').on('click', addcart)
         });
-    </script>
+</script>
 @endsection
-

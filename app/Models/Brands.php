@@ -11,6 +11,6 @@ class Brands extends Model
     public $table = 'brands';
 
     public $fillable = [
-        'name', 'slug', 'appear', 'created_at','updated_at'
+        'name', 'slug', 'appear','description','keywords','sort', 'created_at','updated_at'
     ];
 }

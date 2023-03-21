@@ -22,16 +22,17 @@ return new class extends Migration
             $table->string('images', 500); // Hình ảnh sản phẩm
             $table->integer('view')->default(0); // Lượt xem
             $table->integer('bought')->default(0); // Đã mua
-            $table->string('description', 1000)->nullable(); // Mô tả
+            $table->text('description')->nullable(); // Mô tả
             $table->text('contents'); // Nội dung
             $table->string('keywords', 500)->nullable(); // Từ khoá SEO
             $table->integer('price'); // Giá sản phẩm
+            $table->integer('price_pay'); // Phần trăm giảm
             $table->integer('discount'); // Giảm giá
             $table->string('sku', 100); //
             $table->tinyInteger('appear')->default(1); // Ẩn hiện
             $table->timestamps();
-             $table->foreign('product_category_id')->references('id')->on('product_categories');
-             $table->foreign('brand_id')->references('id')->on('brands');
+//             $table->foreign('pr_category_id')->references('id')->on('product_categories');
+//             $table->foreign('brand_id')->references('id')->on('brands');
         });
     }
 

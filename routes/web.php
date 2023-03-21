@@ -63,6 +63,8 @@ Route::get('delete-cart', [CartController::class, 'delete_cart'])->name('deleteC
 Route::post('apply', [CartController::class, 'apply_coupon'])->name('apply');
 Route::get('order', [CartController::class, 'order'])->name('order');
 Route::get('save', [CartController::class, 'save_order'])->name('saveOrder');
+
+
 // Search
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 //commmetntt
@@ -117,6 +119,7 @@ Route::prefix('admin')->group(function (){
     Route::get('/orders', [OrdersController::class, 'index']);
     Route::get('/order/detail/{id}', [OrdersController::class, 'detail']);
     Route::post('/order/filter', [OrdersController::class, 'filter']);
+    Route::post('/order/update-status/{id}', [OrdersController::class, 'update_status']);
 // Pages
     Route::get('/pages', [PageController::class, 'index']);
     Route::get('/page/update/{id}', [PageController::class, 'update_page']);
@@ -150,7 +153,7 @@ Route::prefix('admin')->group(function (){
     Route::get('brand/changeStatus/{id}', [BEBrandsController::class, 'change_status']);
 
 // Products
-    Route::get('products', [BEProductController::class, 'index']);
+    Route::get('products', [BEProductController::class, 'index'])->name('admin/products');
     Route::get('product/add', [BEProductController::class, 'add']);
     Route::post('product/save', [BEProductController::class, 'save']);
     Route::post('product/delete', [BEProductController::class, 'delete']);

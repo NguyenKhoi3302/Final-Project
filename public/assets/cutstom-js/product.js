@@ -53,6 +53,3 @@ function delete_product(id){
     popup.find('input[name=item_id]').val(id)
 }
 
-$('#changeStatus').on('click',  function () {
-      alert('ok')
-})

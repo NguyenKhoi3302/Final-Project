@@ -26,7 +26,6 @@
                                             @foreach($categorys as $category)
                                             <option value="{{$category->id}}">{{$category->name}}</option>
                                             @endforeach
-
                                         </select>
                                     </fieldset>
                                 </div>
@@ -69,7 +68,7 @@
                                 <div class="col">
                                     <fieldset class="form-group">
                                         <label for="exampleInputEmail1">* MÔ TẢ SẢN PHẨM</label>
-                                        <textarea class="c-tinymce" name="description" rows="5"></textarea>
+                                        <textarea class="c-tinymce" id="content" name="description" rows="10"></textarea>
                                     </fieldset>
                                 </div>
                             </div>
@@ -77,7 +76,7 @@
                                 <div class="col">
                                     <fieldset class="form-group">
                                         <label for="exampleInputEmail1">* NỘI DUNG SẢN PHẨM</label>
-                                        <textarea class="c-tinymce" name="contents" rows="5"></textarea>
+                                        <textarea name="contents" id="content" rows="10" class="form-control"></textarea>
                                     </fieldset>
                                 </div>
                             </div>
@@ -91,36 +90,8 @@
                                 </div>
                                 <div class="col">
                                     <fieldset class="form-group">
-                                        <label for="exampleInputEmail1">* SẢN PHẨM DÀNH CHO</label>
-                                        <div style="padding-top: 10px" class="row">
-                                            <div class="col-md-2">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="sex"
-                                                        id="gender_1" value="1">
-                                                    <label class="form-check-label" for="gender_1">
-                                                        Nam
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="sex"
-                                                        id="gender_2" value="2">
-                                                    <label class="form-check-label" for="gender_2">
-                                                        Nữ
-                                                    </label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-3">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="radio" name="sex"
-                                                        id="gender_0" value="0" checked>
-                                                    <label class="form-check-label" for="gender_0">
-                                                        Nam và Nữ
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <label for="exampleInputEmail1">* TỪ KHÓA SEO</label>
+                                        <input type="text" name="keywords" class="form-control">
                                     </fieldset>
                                 </div>
                             </div>
@@ -149,44 +120,44 @@
             toastr.error('{{ Session::get('success') }}');
             @endif
         });
-        tinymce.init({
-            selector: 'textarea.c-tinymce',
-            plugins: 'code print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help',
-            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen | link image media | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment',
-            image_advtab: true,
-            height: 400,
-            //local upload
-            images_upload_handler: function (blobInfo, success, failure) {
-                var xhr, formData;
+        {{--tinymce.init({--}}
+        {{--    selector: 'textarea.c-tinymce',--}}
+        {{--    plugins: 'code print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help',--}}
+        {{--    toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen | link image media | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment',--}}
+        {{--    image_advtab: true,--}}
+        {{--    height: 400,--}}
+        {{--    //local upload--}}
+        {{--    images_upload_handler: function (blobInfo, success, failure) {--}}
+        {{--        var xhr, formData;--}}
 
-                xhr = new XMLHttpRequest();
-                xhr.withCredentials = true;
-                xhr.open('POST', '{{url('admin/tinymce/upload')}}');
+        {{--        xhr = new XMLHttpRequest();--}}
+        {{--        xhr.withCredentials = true;--}}
+        {{--        xhr.open('POST', '{{url('admin/tinymce/upload')}}');--}}
 
-                xhr.onload = function() {
-                    var json;
+        {{--        xhr.onload = function() {--}}
+        {{--            var json;--}}
 
-                    if (xhr.status != 200) {
-                        failure('HTTP Error: ' + xhr.status);
-                        return;
-                    }
+        {{--            if (xhr.status != 200) {--}}
+        {{--                failure('HTTP Error: ' + xhr.status);--}}
+        {{--                return;--}}
+        {{--            }--}}
 
-                    json = JSON.parse(xhr.responseText);
+        {{--            json = JSON.parse(xhr.responseText);--}}
 
-                    if (!json || typeof json.location != 'string') {
-                        failure('Invalid JSON: ' + xhr.responseText);
-                        return;
-                    }
+        {{--            if (!json || typeof json.location != 'string') {--}}
+        {{--                failure('Invalid JSON: ' + xhr.responseText);--}}
+        {{--                return;--}}
+        {{--            }--}}
 
-                    success(json.location);
-                };
+        {{--            success(json.location);--}}
+        {{--        };--}}
 
-                formData = new FormData();
-                formData.append('_token', '{{csrf_token()}}');
-                formData.append('file', blobInfo.blob(), blobInfo.filename());
+        {{--        formData = new FormData();--}}
+        {{--        formData.append('_token', '{{csrf_token()}}');--}}
+        {{--        formData.append('file', blobInfo.blob(), blobInfo.filename());--}}
 
-                xhr.send(formData);
-            },
-        });
+        {{--        xhr.send(formData);--}}
+        {{--    },--}}
+        {{--});--}}
 </script>
 @endpush
