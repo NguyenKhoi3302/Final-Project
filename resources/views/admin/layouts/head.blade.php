@@ -46,8 +46,21 @@
 
 <link href="{{asset('assets-admin/plugins/fileuploads/css/dropify.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
-<link href="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.skinModern.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.skinModern.css')}}" rel="stylesheet"
+  type="text/css">
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+<style>
+  .d-block {
+    display: block;
+  }
+
+  d-none {
+    display: none;
+  }
+</style>
+
 @stack('styles')
 
 @livewireStyles
-{{--@livewireStyles--}}

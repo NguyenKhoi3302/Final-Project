@@ -12,9 +12,9 @@
     <div class="site_body grid-container">
         <div class="site_content">
             @if(!Request::is('/') && !Request::is('contact'))
-                <section class="section banner_img">
-                    <img src="{{asset('images/banner/banner_1.jpg')}}" alt="">
-                </section>
+            <section class="section banner_img">
+                <img src="{{asset('images/banner/banner_1.jpg')}}" alt="">
+            </section>
             @endif
             @yield('content')
         </div>

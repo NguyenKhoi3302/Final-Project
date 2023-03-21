@@ -23,7 +23,7 @@ class pagesSeeder extends Seeder
                 'title' => $title[$i],
                 'description' => 'Mua online đồng hồ nam, nữ, trẻ em, cặp đôi chính hãng. Giá tốt nhất, có trả góp 0%. Giao nhanh chóng, xem hàng không mua không sao.',
                 'keywords' => 'đồng hồ thời trang, đồng hồ đeo tay, đồng hồ nam, đồng hồ nữ, đồng hồ trẻ em, đồng hồ đôi, đồng hồ cặp',
-                'template_id' => '1',
+                // 'template_id' => '1',
                 'created_at' => now(),
             ]);
         }

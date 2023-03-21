@@ -53,8 +53,8 @@
                                 <div class="col">
                                     <fieldset class="form-group">
                                         <label for="exampleInputEmail1">* GIẢM GIA (%)</label>
-                                        <input required type="number" name="discount" onkeyup="calculatePrice()"
-                                            class="form-control number_format">
+                                        <input type="number" name="discount" onkeyup="calculatePrice()"
+                                            placeholder="Không giảm" class="form-control number_format">
                                     </fieldset>
                                 </div>
                                 <div class="col">

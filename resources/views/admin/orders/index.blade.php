@@ -10,11 +10,12 @@ Danh sách đơn hàng
             <div class="page-title-box">
                 <h4 class="page-title float-left">Danh sách đơn hàng</h4>
 
-                {{-- <ol class="breadcrumb float-right">--}}
-                    {{-- <li class="breadcrumb-item"><a href="#">Uplon</a></li>--}}
-                    {{-- <li class="breadcrumb-item"><a href="#">Dashboard</a></li>--}}
-                    {{-- <li class="breadcrumb-item active">Dashboard</li>--}}
-                    {{-- </ol>--}}
+                <ol class="breadcrumb float-right">
+                    <li class="breadcrumb-item"><button class="btn-toggle">Toggle</button></li>
+                    {{-- <li class="breadcrumb-item"><a href="#">Uplon</a></li> --}}
+                    {{-- <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Dashboard</li> --}}
+                </ol>
 
                 <div class="clearfix"></div>
             </div>
@@ -22,9 +23,9 @@ Danh sách đơn hàng
 
     </div>
     <!-- end row -->
-    <div class="card">
+    <div class="card d-none">
         <div class="card-header">
-            <strong>Tìm kiếm tin tức</strong>
+            <strong>Tìm kiếm đơn hàng</strong>
         </div>
         <div class="card-body">
             <div class="row">
@@ -50,14 +51,16 @@ Danh sách đơn hàng
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <div class="form-group" >
-                        <input style="text-align: center" type="text" id="code" class="form-control" placeholder="Nhập mã đơn hàng">
+                    <div class="form-group">
+                        <input style="text-align: center" type="text" id="code" class="form-control"
+                            placeholder="Nhập mã đơn hàng">
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <hr>
+    {{--
+    <hr> --}}
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
             <table class="table table-bordered mb-0 news_table">
@@ -182,6 +185,6 @@ Danh sách đơn hàng
 </div> <!-- container -->
 @endsection
 @push('js')
-    <script src="{{url('assets')}}/cutstom-js/order.js"></script>
+<script src="{{url('assets')}}/cutstom-js/order.js"></script>
 
 @endpush
