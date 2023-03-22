@@ -46,7 +46,7 @@ class PermissionComponent extends Component
                 }
             })
             ->get();
-        }else $this->roless = Role::whereNotIn('name', ['Super-Admin'])->get();
+        }else $this->roless = Role::whereNotIn('name', ['super-admin'])->get();
     }
     public function removeRole(Permission $permission, Role $role){
         $permission->removeRole($role);

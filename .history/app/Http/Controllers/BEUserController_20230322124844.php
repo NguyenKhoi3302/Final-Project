@@ -17,7 +17,7 @@ class BEUserController extends Controller
     public function permission($id){
         session()->put('user_id', $id);
         $user = User::findOrFail($id);
-        $roles = Role::where('name','!=','Super-Admin')->get();
+        $roles = Role::where('name','!=','Super Admin')->get();
         $permissions = Permission::all();
         return view('admin.user.permission', compact('user','roles','permissions'));
     }

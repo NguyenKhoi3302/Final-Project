@@ -28,10 +28,8 @@
                             @if(count($permission->roles) > 0)
                             <td>
                                 @foreach($permission->roles as $permission_role)
-                                @if($permission_role->name != 'Super-Admin')
                                 <a href="#" class="bg-danger p-2 rounded text-white"
                                     wire:click="removeRole({{$permission->id}},{{$permission_role->id}})">{{$permission_role->name}}</a>
-                                @endif
                                 @endforeach
                             </td>
                             @else
