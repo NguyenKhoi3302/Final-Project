@@ -10,7 +10,8 @@ use Illuminate\Support\Str;
 
 class BEBrandsController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $brands = Brands::all();
 
         return view('admin.brands.index', [
@@ -18,22 +19,35 @@ class BEBrandsController extends Controller
         ]);
     }
 
-    public function save(Request $request){
-        $category = new  Brands();
+    public function save(Request $request)
+    {
+        $Brand = new  Brands();
 
         $slug = Str::slug($request->name);
 
-        $category->fill([
+        $Brand->fill([
             'name' => $request->name,
+            'description' => $request->description,
+            'keywords' => $request->keywords,
+            'sort' => Brands::max('sort') + 1,
             'slug' => $slug
         ]);
-
-        $category->save();
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/brands/'), $imageName);
+            $Brand->images = 'image/brands/' . $imageName;
+            $Brand->save();
+        } else {
+            $Brand->image = '';
+        }
+        $Brand->save();
 
         return redirect()->back()->with('msg', 'Thêm danh mục thành công');
     }
 
-    public function change_status($id){
+    public function change_status($id)
+    {
         $brands = Brands::select('appear')->where('id', $id)->first();
 
         if ($brands->appear === 1) {
@@ -46,14 +60,16 @@ class BEBrandsController extends Controller
 
     }
 
-    public function delete(Request $request){
-        $brands = Brands::where('id' , $request->item_id)->first();
+    public function delete(Request $request)
+    {
+        $brands = Brands::where('id', $request->item_id)->first();
         $brands->delete();
         return redirect()->back()->with('msg', 'Xóa thành công');
     }
 
-    public function update(Request $request){
-        $brands = Brands::where('id' , $request->item_id)->first();
+    public function update(Request $request)
+    {
+        $brands = Brands::where('id', $request->item_id)->first();
         $slug = Str::slug($request->name);
         $brands->fill([
             'name' => $request->name,

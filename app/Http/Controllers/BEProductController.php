@@ -22,8 +22,8 @@ class BEProductController extends Controller
         $brand_id = $request->input('brand_id');
         $search = $request->input('search');
         $appear = $request->input('appear');
-        $data = Product::select('products.id', 'products.name as product_name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
-            'products.sex', 'products.appear',
+        $data = Product::select('products.id', 'products.name as product_name', 'products.view', 'products.images', 'products.bought', 'products.price_pay', 'products.price', 'products.discount',
+            'products.appear',
             'product_categories.name as cate_name', 'brands.name as brand_name')
             ->from('products')
             ->join('product_categories', 'product_categories.id', '=', 'products.pr_category_id')
@@ -37,11 +37,10 @@ class BEProductController extends Controller
             ->when($appear != null, function ($query) use ($appear) {
                 return $query->where('products.appear', $appear);
             })
-
             ->when($search, function ($query) use ($search) {
                 return $query->where('products.name', 'like', "%$search%");
             })
-            ->when($price_range , function ($query) use ($price_range) {
+            ->when($price_range, function ($query) use ($price_range) {
                 return $query->where('price', '<=', $price_range);
             })
             ->get();
@@ -56,9 +55,9 @@ class BEProductController extends Controller
     public function index()
     {
         $data = Product::query('products')
-            ->select('products.id','products.name as name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
+            ->select('products.id', 'products.name as name', 'products.view', 'products.images', 'products.bought', 'products.price', 'products.discount',
 //            ->select('products.id', 'products.name as name', 'products.view', 'products.price_pay', 'products.images', 'products.bought', 'products.price', 'products.discount',
-                'products.sex', 'products.appear',
+                'products.appear',
                 'product_categories.name as cate_name', 'brands.name as brand_name')
             ->join('product_categories', 'product_categories.id', '=', 'products.pr_category_id')
             ->join('brands', 'brands.id', '=', 'products.brand_id')
@@ -93,8 +92,8 @@ class BEProductController extends Controller
             'price' => $request->price,
             'price_pay' => $request->price_pay,
             'discount' => $request->discount,
+            'keywords' => $request->keywords,
             'sku' => $sku,
-            'sex' => $request->sex,
         ]);
 
         if ($request->hasFile('images')) {
@@ -103,12 +102,12 @@ class BEProductController extends Controller
             $image->move(public_path('image/products'), $imageName);
             $products->images = 'image/products/' . $imageName;
             $products->save();
-        }else {
+        } else {
             $products->images = '';
         }
 
         $products->save();
-        return redirect(url('admin/products'))->with('msg', 'Thêm thành công');
+        return redirect(route('admin/products'))->with('msg', 'Thêm thành công');
 
     }
 
@@ -158,8 +157,8 @@ class BEProductController extends Controller
             'price' => $request->price,
             'price_pay' => $request->price_pay,
             'discount' => $request->discount,
+            'keywords' => $request->keywords,
             'sku' => $sku,
-            'sex' => $request->sex,
         ]);
         if ($request->hasFile('images')) {
             $image = $request->file('images');
@@ -170,7 +169,7 @@ class BEProductController extends Controller
         }
 
         $products->save();
-        return redirect(url('admin/products'))->with('msg', 'Cập nhật sản phẩm thành công');
+        return redirect(route('admin/products'))->with('msg', 'Cập nhật sản phẩm thành công');
     }
 
 

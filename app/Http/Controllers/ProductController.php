@@ -17,14 +17,16 @@ class ProductController extends Controller
         $data = ['footer'=> $footer, 'products'=>$products, 'cats' => $cats, 'brands' => $brands, 'page'=>$page];
         return view('client.shop', $data);
     }
-    function single_product($id){
-        $products = Product::find($id);
-        $productLimit  = DB::table('products')->where('id', '=', $products->pr_category_id)->limit(4)->get();
-        $productsDetail  = DB::table('product_details')->where('product_id', '=', $id)->get();
-        $brands = DB::table('brands')->where('id', '=', $products->brand_id)->get();
-        $cats = DB::table('product_categories')->where('id', '=', $products->pr_category_id)->get();
-        $footer = $this->footer();
-        $data = ['footer'=> $footer, 'products' => $products, 'productsDetail'=>$productsDetail, 'brands'=>$brands, 'cats'=>$cats,'productLimit'=>$productLimit];
+    function single_product($slug){
+        $products = Product::where('slug',$slug)->first();
+        $id = $products->id;
+       $productLimit  = DB::table('products')->where('id', '=', $products->pr_category_id)->limit(4)->get();
+       $productsDetail  = DB::table('product_details')->where('product_id', '=', $id)->get();
+       $brands = DB::table('brands')->where('id', '=', $products->brand_id)->get();
+       $cats = DB::table('product_categories')->where('id', '=', $products->pr_category_id)->get();
+       $footer = $this->footer();
+       $data = ['footer'=> $footer, 'products' => $products, 'productsDetail'=>$productsDetail, 'brands'=>$brands, 'cats'=>$cats,'productLimit'=>$productLimit];
+        // $data = ['footer'=> $footer, 'products' => $products];
         return view("client.single-product", $data);
     }
     public function search(Request $request){
@@ -33,7 +35,7 @@ class ProductController extends Controller
         return view('client.search',compact('products'));
     }
 
-    //ssắp xếp theo thường hiệu 
+    //ssắp xếp theo thường hiệu
     function fillter_brand(Request $request){
         $products = DB::table('products')->where('pr_category_id', '=', $request->id )->orderBy('created_at', 'desc')->Paginate(12);
         $cats = DB::table('product_categories')->get();

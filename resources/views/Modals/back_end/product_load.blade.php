@@ -14,12 +14,12 @@ if (!isset($products_load) || !count($products_load)) {
         <td style="text-align: center ">{{$item->cate_name}}</td>
         <td style="text-align: center ">
             <div class="row">
-                            <span class="col">
+                            <span style=" text-decoration: line-through;" class="col">
                                 <?= number_format($item->price, 0, ',', '.') . "đ"; ?>
                             </span>
             </div>
             <div class="row">
-                            <span style=" text-decoration: line-through;" class="col">
+                            <span  class="col">
                                 <?= number_format($item->price_pay, 0, ',', '.') . "đ"; ?>
                             </span>
             </div>

@@ -51,26 +51,27 @@
             <div class="single_product_cont text_over">
                 <div class="nav_bar">
                     <ul>
-                        <li>Loại sản phẩm: <a href="">@foreach($brands as  $data){{ $data->name }} @endforeach</a></li>
+                        <li>Loại sản phẩm: <a href="">@foreach($brands as $data){{ $data->name }} @endforeach</a></li>
                     </ul>
                 </div>
                 <div class="single_product_price">
-                    @if( (isset($products->discount)) && ($products->discount > 0)  )
+                    @if( (isset($products->discount)) && ($products->discount > 0) )
                     <div class="prod_price">
                         <h3 class="discount">
-                            {{ number_format($price = ($products->price*(100 - $products->discount)/100), 0, ",", ".")}} vnđ
+                            {{ number_format($price = ($products->price*(100 - $products->discount)/100), 0, ",", ".")}}
+                            vnđ
                         </h3>
                         <del>
                             {{ number_format( $price = $products->price, 0, ",", ".")}} vnđ
                         </del>
                     </div>
-                @else
+                    @else
                     <div class="prod_price">
                         <h3 class="discount">
                             {{ number_format($products->price*(100 - $products->discount)/100, 0, ",", ".")}} vnđ
                         </h3>
                     </div>
-                @endif
+                    @endif
                 </div>
                 <div class="description">
                     {{ $products->description}}
@@ -116,10 +117,10 @@
                         <td>Kích thuóc: </td>
                         <td>{{$data->size}}</td>
                     </tr>
-                    <tr>
+                    {{-- <tr>
                         <td>Giới: </td>
                         <td>{{$data->sex}}</td>
-                    </tr>
+                    </tr> --}}
                     <tr>
                         <td>Loại giây: </td>
                         <td>{{$data->color}}</td>
@@ -127,11 +128,11 @@
                     @endforeach
                     <tr>
                         <td>Thương hiệu: </td>
-                        <td>@foreach($brands as  $data){{ $data->name }} @endforeach</td>
+                        <td>@foreach($brands as $data){{ $data->name }} @endforeach</td>
                     </tr>
                     <tr>
-                        <td>Danh  mục: </td>
-                        <td>@foreach($cats as  $data){{ $data->name }} @endforeach</td>
+                        <td>Danh mục: </td>
+                        <td>@foreach($cats as $data){{ $data->name }} @endforeach</td>
                     </tr>
                 </tbody>
             </table>
@@ -153,7 +154,7 @@
     <div class="box_swiper">
         <div class="swiper relatedProd">
             <div class="swiper-wrapper">
-                @foreach($productLimit as  $data)
+                @foreach($productLimit as $data)
                 <div class="swiper-slide shop_item_wrap grid">
                     <div class="item">
                         <div class="prod-popup" id="prod-1">

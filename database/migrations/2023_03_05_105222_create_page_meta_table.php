@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('meta_type', 50);
             $table->longText('meta_value')->nullable();
             $table->timestamps();
-            $table->foreign('page_id')->references('id')->on('pages');
+//            $table->foreign('page_id')->references('id')->on('pages');
         });
     }
 

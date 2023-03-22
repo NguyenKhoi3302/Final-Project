@@ -32,6 +32,11 @@
               <?= date("H:i d-m-Y", strtotime($user->created_at)) ?>
             </td>
             <td style="text-align: right">
+              <a href="{{route('impersonate', [$user->id])}}">
+                <button class="btn waves-effect waves-light btn-primary disabled">
+                  <i class="ion-person-stalker"></i>
+                </button>
+              </a>
               <a href="{{route('user.permission', [$user->id])}}">
                 <button class="btn waves-effect waves-light btn-primary disabled">
                   <i class="ion-key"></i>

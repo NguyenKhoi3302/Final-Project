@@ -107,24 +107,37 @@
     <div class="grid-container">
         <div>
             <h1>Thông tin đặt hàng</h1>
-            <form action="{{ route('saveOrder') }}" method="" id="checkout_form">
+            <form action="{{ route('saveOrder') }}" method="POST" id="checkout_form">
+                @csrf
                 <div class="customer_info">
                     <div class="info_wrap">
                         <div class="form_group w-50">
                             <label for="fname">Tên người mua</label>
                             <input type="text" id="fname" name="name" value="{{  Auth::user()->name }}">
+                            @error('name')
+                            <small style="color: red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form_group w-50">
                             <label for="lname">Số điện thoại</label>
                             <input type="text" id="lname" name="phone" value="{{  Auth::user()->phone }}">
+                            @error('phone')
+                            <small style="color: red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form_group w-100">
                             <label for="lname">Địa chỉ</label>
-                            <textarea name="address" id="lname" rows="5">{{  Auth::user()->address }}</textarea>
+                            <textarea name="address" id="lname" rows="3">{{  Auth::user()->address }}</textarea>
+                            @error('address')
+                            <small style="color: red">{{$message}}</small>
+                            @enderror
                         </div>
                         <div class="form_group w-100">
                             <label for="note">Ghi chú</label>
                             <textarea name="note" id="note" rows="5"></textarea>
+                            @error('note')
+                            <small style="color: red">{{$message}}</small>
+                            @enderror
                         </div>
                     </div>
 
@@ -150,7 +163,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th>Thành  tiền</th>
+                                <th>Thành tiền</th>
                                 <?php
                                     if($total > Session::get('min_total')){
                                         $total =$total - ($total * Session::get('discount') /100);
@@ -163,6 +176,10 @@
                             <tr>
                                 <th>Giao hàng</th>
                                 <td>Miễn phí vận chuyển</td>
+                            </tr>
+                            <tr>
+                                <th>Phương thức thanh toán</th>
+                                <td>{{\Str::upper(session()->get('payment_method'))}}</td>
                             </tr>
                             <tr>
                                 <th>Tổng </th>

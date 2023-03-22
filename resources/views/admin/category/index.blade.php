@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Danh sách danh mục sản <phẩm></phẩm>
+Danh sách danh mục sản phẩm
 @endsection
 @section('admin_content')
 <div class="row">
@@ -15,7 +15,7 @@ Danh sách danh mục sản <phẩm></phẩm>
                     danh mục
                 </button>
             </div>
-            @if(count($data) > 0)
+            @if($data->count() > 0)
             <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
@@ -34,7 +34,8 @@ Danh sách danh mục sản <phẩm></phẩm>
                                 href="{{url('admin/product_category/changeStatus',$item->id)}}"><span
                                     class="label label-success">active</span></a></td>
                         @elseif($item->appear === 0)
-                        <td style="text-align: center"><a href="{{url('admin/product_category/changeStatus',$item->id)}}"><span
+                        <td style="text-align: center"><a
+                                href="{{url('admin/product_category/changeStatus',$item->id)}}"><span
                                     class="label label-danger">inactive</span></a></td>
                         @endif
                         <td style="text-align: center">
@@ -60,10 +61,6 @@ Danh sách danh mục sản <phẩm></phẩm>
                     @endforeach
                 </tbody>
             </table>
-            @else
-            <div class="alert alert-warning" role="alert">
-                Chưa có dữ liệu phù hợp
-            </div>
             @endif
 
         </div>
@@ -84,78 +81,132 @@ Danh sách danh mục sản <phẩm></phẩm>
 
 @endpush
 @push('modal')
-<div id="modal-add-category" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+{{-- <<<<<<< HEAD --}} <div id="modal-add-category" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
     aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="mySmallModalLabel">THÊM DANH MỤC SẢN PHẨM</h5>
-            </div>
-            <form action="{{url('admin/product_category/save')}}" method="post">
-                @csrf
-                <div class="modal-body">
-                    <fieldset class="form-group">
-                        <label for="exampleInputPassword1">Tiêu đề</label>
-                        <input type="text" name="name" class="form-control" autofocus required />
-                    </fieldset>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-                    <button type="submit" class="btn btn-primary">Xác nhận</button>
-                </div>
-            </form>
+                {{-- ======= --}}
+                <div id="modal-add-category" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="mySmallModalLabel">THÊM DANH MỤC SẢN PHẨM</h5>
+                            </div>
+                            <form action="{{url('admin/product_category/save')}}" method="post">
+                                @csrf
+                                <div class="modal-body">
+                                    <fieldset class="form-group">
+                                        <label for="exampleInputPassword1">Tiêu đề</label>
+                                        <input type="text" name="name" class="form-control" autofocus required />
+                                    </fieldset>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                </div>
+                            </form>
 
-        </div>
-    </div>
-</div>
-{{-- popup add category --}}
-<div id="modal-delete-category" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
-    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mySmallModalLabel">XÁC NHẬN</h5>
-            </div>
-            <div class="modal-body">
-                <form action="{{url('admin/product_category/delete')}}" method="post">
-                    @csrf
-                    <input type="hidden" name="item_id" class="item_id">
-                    <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-                        <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            {{-- >>>>>>> 700d813472e23e95495daf3ac90f75f4a3751d03 --}}
+                        </div>
+                        <form action="{{url('admin/product_category/save')}}" method="post">
+                            @csrf
+                            <div class="modal-body">
+                                {{-- <<<<<<< HEAD --}} <fieldset class="form-group">
+                                    <label for="exampleInputPassword1">Tiêu đề</label>
+                                    <input type="text" name="name" class="form-control" autofocus required />
+                                    </fieldset>
+                                    {{-- ======= --}}
+                                    <form action="{{url('admin/product_category/delete')}}" method="post">
+                                        @csrf
+                                        <input type="hidden" name="item_id" class="item_id">
+                                        <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-dismiss="modal">Không</button>
+                                            <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                        </div>
+                                    </form>
+                                    {{-- >>>>>>> 700d813472e23e95495daf3ac90f75f4a3751d03 --}}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </form>
+
                     </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-{{-- popup add category --}}
-
-<div id="modal-update-category" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
-    aria-labelledby="mySmallModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="mySmallModalLabel">CẬP NHẬT DANH MỤC</h5>
-            </div>
-            <form action="{{url('admin/product_category/update')}}" method="post">
-                @csrf
-                <div class="modal-body">
-                    <fieldset class="form-group">
-                        <input type="hidden" name="item_id" class="item_id">
-                        <label for="exampleInputPassword1">Tiêu đề</label>
-                        <input type="text" name="name" class="form-control" autofocus required />
-                    </fieldset>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
-                    <button type="submit" class="btn btn-primary">Xác nhận</button>
-                </div>
-            </form>
+                {{-- <<<<<<< HEAD --}} </div>
+                    {{-- popup add category --}}
+                    <div id="modal-delete-category" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog"
+                        aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="mySmallModalLabel">XÁC NHẬN</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="{{url('admin/product_category/delete')}}" method="post">
+                                        {{-- ======= --}}
+                                        {{-- popup add category --}}
 
-        </div>
-    </div>
-</div>
-{{-- popup add category --}}
-@endpush
+                                        <div id="modal-update-category" class="modal fade bs-example-modal-sm"
+                                            tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="mySmallModalLabel">CẬP NHẬT DANH MỤC
+                                                        </h5>
+                                                    </div>
+                                                    <form action="{{url('admin/product_category/update')}}"
+                                                        method="post">
+                                                        {{-- >>>>>>> 700d813472e23e95495daf3ac90f75f4a3751d03 --}}
+                                                        @csrf
+                                                        <input type="hidden" name="item_id" class="item_id">
+                                                        <P>Bạn có xác nhân muốn xóa danh mục này không? </P>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Không</button>
+                                                            <button type="submit" class="btn btn-primary">Xác
+                                                                nhận</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                </div>
+                                {{-- popup add category --}}
+
+                                <div id="modal-update-category" class="modal fade bs-example-modal-sm" tabindex="-1"
+                                    role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="mySmallModalLabel">CẬP NHẬT DANH MỤC</h5>
+                                            </div>
+                                            <form action="{{url('admin/product_category/update')}}" method="post">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <fieldset class="form-group">
+                                                        <input type="hidden" name="item_id" class="item_id">
+                                                        <label for="exampleInputPassword1">Tiêu đề</label>
+                                                        <input type="text" name="name" class="form-control" autofocus
+                                                            required />
+                                                    </fieldset>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Không</button>
+                                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- popup add category --}}
+                                @endpush

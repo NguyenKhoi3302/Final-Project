@@ -3,13 +3,7 @@
 <div class="row">
     <div class="col-12">
         <div class="card-box table-responsive">
-            <h4 class="m-t-0 header-title">DANH SÁCH SẢN PHẨM</h4>
-            <ol class="breadcrumb float-right">
-                <li class="breadcrumb-item"><button class="btn-toggle">Toggle</button></li>
-                {{-- <li class="breadcrumb-item"><a href="#">Uplon</a></li> --}}
-                {{-- <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                <li class="breadcrumb-item active">Dashboard</li> --}}
-            </ol>
+            <h4 class="m-t-0 header-title" style="text-align: center">DANH SÁCH SẢN PHẨM</h4>
             <hr>
             <div style="padding-bottom: 10px">
                 <a href="{{url('admin/product/add')}}">
@@ -20,7 +14,7 @@
                 </a>
             </div>
         </div>
-        <div class="card d-none">
+        <div class="card">
             <div class="card-header">
                 <strong>Tìm Kiếm Sản Phẩm</strong>
             </div>
@@ -130,12 +124,12 @@
                     <td style="text-align: center ">{{$item->cate_name}}</td>
                     <td style="text-align: center ">
                         <div class="row">
-                            <span class="col">
+                            <span style=" text-decoration: line-through;" class="col">
                                 <?= number_format($item->price, 0, ',', '.') . "đ"; ?>
                             </span>
                         </div>
                         <div class="row">
-                            <span style=" text-decoration: line-through;" class="col">
+                            <span class="col">
                                 <?= number_format($item->price_pay, 0, ',', '.') . "đ"; ?>
                             </span>
                         </div>

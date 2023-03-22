@@ -9,8 +9,14 @@
     </div>
 
     <nav class="navbar-custom">
-
         <ul class="list-inline float-right mb-0">
+            @if(session()->get('impersonated_by'))
+            <li class="list-inline-item dropdown notification-list">
+                <a href="{{route('impersonate_leave')}}">
+                    <i class="zmdi zmdi-long-arrow-return" style="font-size:20px;color:white"></i>
+                </a>
+            </li>
+            @endif
             <li class="list-inline-item dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none waves-light waves-effect" data-toggle="dropdown" href="#"
                     role="button" aria-haspopup="false" aria-expanded="false">

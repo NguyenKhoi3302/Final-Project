@@ -91,10 +91,26 @@
                 <form action="{{url('admin/brand/save')}}" method="post">
                     @csrf
                     <div class="modal-body">
-                        <fieldset class="form-group">
+                        <div class="form-group">
                             <label for="exampleInputPassword1">Tiêu đề</label>
                             <input type="text" name="name" class="form-control" autofocus required/>
-                        </fieldset>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Từ khóa SEO</label>
+                            <input type="text" name="keywords" class="form-control" autofocus required/>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Mô tả ngắn</label>
+                            <textarea class="form-control" name="description"></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Ảnh đại diện</label>
+                            <input type="file" name="image" class="form-control" autofocus required/>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>

@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('admin_note', 255)->nullable();
             $table->integer('total');
             $table->timestamps();
-             $table->foreign('user_id')->references('id')->on('users');
+//             $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

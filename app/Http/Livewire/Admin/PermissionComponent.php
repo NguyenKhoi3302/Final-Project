@@ -22,9 +22,11 @@ class PermissionComponent extends Component
     }
     public function storePermissionAdd(){
         $this->validate();
-        Permission::create([
+        $permission = Permission::create([
             'name' => $this->name
         ]);
+        $superAdmin = Role::findByName('Super-Admin');
+        $superAdmin->givePermissionTo($permission->name);
         session()->flash('message','Tạo quyền thành công');
         $this->dispatchBrowserEvent('hide-form');
         $this->reset();
