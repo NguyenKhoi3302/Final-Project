@@ -24,7 +24,6 @@
                         <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
                         <canvas  id="cvas1" style="width:100%; height:90%;"></canvas>
                         <input name="avatar" type="file" id="image" multiple="false" accept="image/*" onchange="uploadIm()"/><br>
-
                     </div>
                 </div>
                 <div class="right_account">
@@ -52,11 +51,11 @@
         window.CP.PenTimer.MAX_TIME_IN_LOOP_WO_EXIT = 6000;
         var drawGray = null;
         function uploadIm(){
-        var canvas = document.getElementById("cvas1");
-        var image = document.getElementById("image");
-        var draw = new SimpleImage(image);
-        drawGray = new SimpleImage(image);
-        draw.drawTo(canvas);
+            var canvas = document.getElementById("cvas1");
+            var image = document.getElementById("image");
+            var draw = new SimpleImage(image);
+            drawGray = new SimpleImage(image);
+            draw.drawTo(canvas);
         }
         </script>
 @endsection

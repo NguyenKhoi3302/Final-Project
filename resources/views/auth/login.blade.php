@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('title')
+    Đăng nhập S - Watch
+@endsection
 @section('content')
 <style>
     * {
@@ -375,7 +378,7 @@
 
     section.login_page {
         height: 100vh;
-        background-image: url({!! App\Http\Controllers\Controller::get_img_url(29)!!});
+        background-image: url({{asset(App\Http\Controllers\Controller::get_img_url(29))}});
         display: flex;
         align-items: center;
     }
@@ -418,6 +421,14 @@
         -webkit-appearance: button;
         margin-right: 10px;
     }
+    .respon_invalid{
+        font-weight: 600;
+        font-size: 15px;
+        color: red;
+        margin-top: -15px;
+        width: max-content;
+        margin-left: 10px;
+    }
 </style>
 </head>
 
@@ -452,8 +463,8 @@
                     </div>
                     <div class="wrap-input100 save_pass">
                         <input type="checkbox" name="remember" id="remember"><label for="remember">Nhớ mật khẩu</label>
-                        @if(Session::has('fail')) <h3>{{ session::get('fail') }}</h3> @endif
                     </div>
+                    @if(Session::has('fail')) <div class="respon_invalid">{{ session::get('fail') }}</div> @endif
                     <div class="container-login100-form-btn">
                         <button type="submit" class="login100-form-btn">
                             Đăng nhập

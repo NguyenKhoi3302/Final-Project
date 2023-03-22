@@ -201,7 +201,7 @@ class UserController extends Controller
 
         // Cookie::queue('email', $request->email, 0,5);
 
-        return back()->with('message', 'Chúng tôi đã đặt email liên kêt đặt lại mật khẩu của bạn !');
+        return back()->with('message', 'Vui lòng kiểm tra email của bạn!');
     }
 
     public function showResetPasswordForm($token)
@@ -215,16 +215,16 @@ class UserController extends Controller
     {
         $request->validate([
             'email' => 'required|email|exists:users',
-            'password' => 'required|string|min:8|confirmed',
-            'password_confirmation' => 'required'
+            'password' => 'required|string|min:8',
+            'password_confirmation' => 'required|confirmed'
         ],[
-            'email.required'=>'Vui lòng  nhập  email  quên  mật  khẩu !!',
-            'email.email'=>'Định  dạng  không  đúng, vui lòng  nhập  lại !!',
-            'email.exists'=>'Email không tồn tại !!',
-            'password.required'=>'Vui lòng nhập mật khẩu !',
-            'password.min'=>'Mật khẩu phải bằng hoặc hơn 8 ký tự !',
-            'password.confirmed'=>'Mật khẩu xác nhận không đúng !',
-            'password_confrim.required'=>'Vui lòng xác nhận lại mật khẩu !',
+            'email.required'=>'Vui lòng  nhập  email  quên  mật  khẩu!',
+            'email.email'=>'Định  dạng  không  đúng, vui lòng  nhập  lại!',
+            'email.exists'=>'Email không tồn tại!',
+            'password.required'=>'Vui lòng nhập mật khẩu!',
+            'password.min'=>'Mật khẩu chứa ít nhất 8 ký tự!',
+            'password_confirmation.confirmed'=>'Mật khẩu xác nhận không đúng!',
+            'password_confirmation.required'=>'Vui lòng xác nhận lại mật khẩu !',
 
         ]);
 

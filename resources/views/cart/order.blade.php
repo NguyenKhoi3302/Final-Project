@@ -1,140 +1,41 @@
 @extends('layouts.guest')
 @section('content')
 <style>
-    .form_group.w-100 {
-        width: 100%;
-    }
 
-    .form_group.w-50 {
-        width: calc(50% - 10px);
-    }
-
-    .customer_info {
-        width: 65%;
-    }
-
-    .info_wrap {
-        display: flex;
-        flex-wrap: wrap;
-
-        justify-content: space-between;
-    }
-
-    form#checkout_form {
-        display: flex;
-        grid-column-gap: 30px;
-    }
-
-    form#checkout_form>.order_reviews {
-        padding: 20px;
-        border: 1px solid #ced4da;
-        width: 35%;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 8px;
-        margin-top: 15px;
-    }
-
-    input,
-    textarea {
-        width: 100%;
-        padding: 10px 20px;
-        border: 1px solid #ced4da;
-        font-size: 17px;
-        transition: 0.3s ease-in-out;
-    }
-
-    input:focus,
-    input:focus-visible,
-    textarea:focus,
-    textarea:focus-visible {
-        border: 1px solid #6c6c6c;
-        outline: none;
-    }
-
-    section.checkout_page {
-        padding: 70px 0;
-    }
-
-    th {
-        text-align: left;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 18px;
-        margin-left: 10px;
-    }
-
-    td {
-        font-size: 15px;
-        padding: 10px 0 20px;
-    }
-
-    tr {
-        border-bottom: 1px solid #ced4da;
-    }
-
-    tr>*:first-child {
-        width: 60%;
-    }
-
-    tr>*:last-child {
-        width: 40%;
-    }
-
-    button {
-        padding: 7px 40px;
-        background-color: #000000;
-        border: 1px solid #000000;
-        color: #FFF;
-        font-weight: 700;
-        text-transform: uppercase;
-        cursor: pointer;
-        -webkit-transition: 0.3s ease-in-out;
-        -moz-transition: 0.3s ease-in-out;
-        -ms-transition: 0.3s ease-in-out;
-        -o-transition: 0.3s ease-in-out;
-        transition: 0.3s ease-in-out;
-    }
-
-    button:hover {
-        background-color: transparent;
-        color: #000000
-    }
 </style>
-<section class="section checkout_page">
+<section class="section checkout_page cart_page">
     <div class="grid-container">
-        <div>
-            <h1>Thông tin đặt hàng</h1>
+        <div class="checkout">
+            <h1 class="sec_title text_center">Tiến hành thanh toán</h1>
             <form action="{{ route('saveOrder') }}" method="POST" id="checkout_form">
                 @csrf
                 <div class="customer_info">
                     <div class="info_wrap">
+                        <h2 class="w-100 text_center">Thông tin người nhận</h2>
                         <div class="form_group w-50">
-                            <label for="fname">Tên người mua</label>
+                            <label for="fname">Tên người mua <span class="required">*</span></label>
                             <input type="text" id="fname" name="name" value="{{  Auth::user()->name }}">
                             @error('name')
                             <small style="color: red">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form_group w-50">
-                            <label for="lname">Số điện thoại</label>
+                            <label for="lname">Số điện thoại <span class="required">*</span></label>
                             <input type="text" id="lname" name="phone" value="{{  Auth::user()->phone }}">
                             @error('phone')
                             <small style="color: red">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form_group w-100">
-                            <label for="lname">Địa chỉ</label>
-                            <textarea name="address" id="lname" rows="3">{{  Auth::user()->address }}</textarea>
+                            <label for="lname">Địa chỉ <span class="required">*</span></label>
+                            <textarea name="address" id="lname" rows="2">{{  Auth::user()->address }}</textarea>
                             @error('address')
                             <small style="color: red">{{$message}}</small>
                             @enderror
                         </div>
                         <div class="form_group w-100">
                             <label for="note">Ghi chú</label>
-                            <textarea name="note" id="note" rows="5"></textarea>
+                            <textarea name="note" id="note" rows="4"></textarea>
                             @error('note')
                             <small style="color: red">{{$message}}</small>
                             @enderror
@@ -143,54 +44,95 @@
 
                 </div>
                 <div class="order_reviews">
-                    <table class="table update_cart_url" data-url="{{ route('updateCart') }}">
-                        <thead>
-                            <tr>
-                                <th scope="col">Tên Sản Phẩm</th>
-                                <th scope="col">Thành tiền</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                    <div class="update_cart_url" data-url="{{ route('updateCart') }}">
+                        <div class="confirm_cart">
                             @php $i=1; $total = 0; @endphp
                             @foreach($cart as $id => $item)
-                            @php $total += $item['price']*$item['quantity']; @endphp
-                            <tr>
-                                <td>{{ $item['name'] }} <strong>x{{ $item['quantity'] }}</strong></td>
-                                <td>{{ number_format($item['price']*$item['quantity'], 0 ,',' ,'.') }} vnđ</td>
-                            </tr>
-                            @php $i++; @endphp
+                                @php $total += $item['price']*$item['quantity']; @endphp
+                            <div class="item">
+                                <span>{{ $item['name'] }} <strong>x{{ $item['quantity'] }}</strong></span>
+                                <strong>{{ number_format($item['price']*$item['quantity'], 0 ,',' ,'.') }}đ</strong>
+                            </div>
+                                @php $i++; @endphp
                             @endforeach
-                        </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Thành tiền</th>
-                                <?php
+                        </div>
+                        <div class="confirm_calculate">
+                            <div class="item">
+                                <span>Thành tiền</span>
+                                    <?php
                                     if($total > Session::get('min_total')){
                                         $total =$total - ($total * Session::get('discount') /100);
                                     }else{
                                         $total = $total - 0;
                                     }
-                                ?>
-                                <td>{{ number_format($total, 0 ,',' ,'.') }} vnđ</td>
-                            </tr>
-                            <tr>
-                                <th>Giao hàng</th>
-                                <td>Miễn phí vận chuyển</td>
-                            </tr>
-                            <tr>
-                                <th>Phương thức thanh toán</th>
-                                <td>{{\Str::upper(session()->get('payment_method'))}}</td>
-                            </tr>
-                            <tr>
-                                <th>Tổng </th>
-                                <td>{{ number_format($total, 0 ,',' ,'.') }} vnđ</td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                                    ?>
+                                <strong>{{ number_format($total, 0 ,',' ,'.') }}đ</strong>
+                            </div>
+                            <div class="item">
+                                <span>Giảm giá</span>
+                                <strong>{{number_format($total * Session::get('discount') /100, 0, ',', '.') }}đ</strong>
+                            </div>
+                            <div class="item">
+                                <span>Giao hàng</span>
+                                <strong>Miễn phí</strong>
+                            </div>
+                            <div class="item">
+                                <span>Phương thức thanh toán</span>
+                                <strong>{{\Str::upper(session()->get('payment_method'))}}</strong>
+                            </div>
+                        </div>
+                        <div class="total_pay">
+                            <span>Thành tiền</span>
+                            <strong>{{ number_format($total, 0 ,',' ,'.') }}đ</strong>
+                        </div>
+                    </div>
+{{--                    <table class="table update_cart_url" data-url="{{ route('updateCart') }}">--}}
+{{--                        <thead>--}}
+{{--                            <tr>--}}
+{{--                                <th scope="col">Tên Sản Phẩm</th>--}}
+{{--                                <th scope="col">Thành tiền</th>--}}
+{{--                            </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody>--}}
+{{--                            @php $i=1; $total = 0; @endphp--}}
+{{--                            @foreach($cart as $id => $item)--}}
+{{--                            @php $total += $item['price']*$item['quantity']; @endphp--}}
+{{--                            <tr>--}}
+{{--                                <td>{{ $item['name'] }} <strong>x{{ $item['quantity'] }}</strong></td>--}}
+{{--                                <td>{{ number_format($item['price']*$item['quantity'], 0 ,',' ,'.') }} vnđ</td>--}}
+{{--                            </tr>--}}
+{{--                            @php $i++; @endphp--}}
+{{--                            @endforeach--}}
+{{--                        </tbody>--}}
+{{--                        <tfoot>--}}
+{{--                            <tr>--}}
+{{--                                <td>Thành tiền</td>--}}
+{{--                                <?php--}}
+{{--                                    if($total > Session::get('min_total')){--}}
+{{--                                        $total =$total - ($total * Session::get('discount') /100);--}}
+{{--                                    }else{--}}
+{{--                                        $total = $total - 0;--}}
+{{--                                    }--}}
+{{--                                ?>--}}
+{{--                                <th>{{ number_format($total, 0 ,',' ,'.') }} vnđ</th>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td>Giao hàng</td>--}}
+{{--                                <th>Miễn phí</th>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td>Phương thức thanh toán</td>--}}
+{{--                                <th>{{\Str::upper(session()->get('payment_method'))}}</th>--}}
+{{--                            </tr>--}}
+{{--                            <tr>--}}
+{{--                                <td>Tổng </td>--}}
+{{--                                <th class="total">{{ number_format($total, 0 ,',' ,'.') }} vnđ</th>--}}
+{{--                            </tr>--}}
+{{--                        </tfoot>--}}
+{{--                    </table>--}}
                     <input type="hidden" id="total" name="total" value="{{ $total }}">
-                    <button type="submit">đặt hàng</button>
+                    <button type="submit" class="btn btn_primary"><strong>Đặt hàng</strong></button>
                 </div>
-
             </form>
         </div>
     </div>

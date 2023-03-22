@@ -1,4 +1,7 @@
 @extends('layouts.guest')
+@section('title')
+    Đăng ký tài khoản S - Watch
+@endsection
 @section('content')
 
 <style>
