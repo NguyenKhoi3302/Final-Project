@@ -25,7 +25,7 @@ Danh sách tin tức
 
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <table class="table table-bordered mb-0 news_table">
+            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th><span>ID</span></th>

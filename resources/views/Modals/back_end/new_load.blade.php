@@ -53,10 +53,10 @@
             </a>
         </td>
         <td class="text-center">
-            <a class="mr-3" href="{{url('admin/news/update/'.$news->id)}}">
+            <a  class="btn waves-effect waves-light btn-warning" href="{{url('admin/news/update/'.$news->id)}}">
                 <i class="zmdi zmdi-edit" style="font-size: 20px"></i>
             </a>
-            <a onclick="return confirm('Bạn có chắc chắn muốn xoá?')"
+            <a    class="btn waves-effect waves-light btn-danger disabled" onclick="return confirm('Bạn có chắc chắn muốn xoá?')"
                href="{{url('admin/news/delete/'.$news->id)}}">
                 <i class="zmdi zmdi-delete" style="font-size: 20px"></i>
             </a>

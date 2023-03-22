@@ -58,7 +58,7 @@
                         <input type="radio" name="appear" id="appear" value="0">
                     </div>
                     <div class="form_group">
-                        <button type="submit" class="bg-success p-2">Thêm</button>
+                        <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
                     </div>
                     @csrf
                 </form>
