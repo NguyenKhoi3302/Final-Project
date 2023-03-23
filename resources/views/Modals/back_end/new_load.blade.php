@@ -1,3 +1,9 @@
+<?php
+
+if (!isset($news_list) || !count($news_list)) {
+    return;
+}
+?>
 @foreach($news_list as $news)
     <tr>
         <th class="text-muted">{{$news->id}}</th>
@@ -35,28 +41,30 @@
             </button>
         </td>
         <td class="text-center">
-            <a href="/admin/news/hot/{{$news->id}}">
-                @if($news->hot == 0)
-                    <i class="zmdi zmdi-star-outline" style="font-size: 20px"></i>
-                @else
-                    <i class="zmdi zmdi-star" style="font-size: 20px"></i>
-                @endif
+            <a href="#" onclick="changeHotsNew({{$news->id}})">
+                <input type="checkbox" id="js-switch-hot-{{$news->id}}" class="js-switch-new" {{$news->hot == 1 ? "checked" : ""}} />
+                <script>
+                    var elem = document.querySelector('#js-switch-hot-{{$news->id}}');
+                    var init = new Switchery(elem);
+                </script>
+            </a>
+        </td>
+        <td>
+            <a href="#" onclick="changeStatustusNew({{$news->id}})">
+                <input type="checkbox" id="js-switch-{{$news->id}}" class="js-switch-new" {{$news->appear == 1 ? "checked" : ""}} />
+                <script>
+                    var elem = document.querySelector('#js-switch-{{$news->id}}');
+                    var init = new Switchery(elem);
+                </script>
+
             </a>
         </td>
         <td class="text-center">
-            <a href="/admin/news/appear/{{$news->id}}">
-                @if($news->appear == 0)
-                    <i class="zmdi zmdi-eye" style="font-size: 20px"></i>
-                @else
-                    <i class="zmdi zmdi-eye-off" style="font-size: 20px"></i>
-                @endif
-            </a>
-        </td>
-        <td class="text-center">
-            <a  class="btn waves-effect waves-light btn-warning" href="{{url('admin/news/update/'.$news->id)}}">
+            <a class="btn waves-effect waves-light btn-warning" href="{{url('admin/news/update/'.$news->id)}}">
                 <i class="zmdi zmdi-edit" style="font-size: 20px"></i>
             </a>
-            <a    class="btn waves-effect waves-light btn-danger disabled" onclick="return confirm('Bạn có chắc chắn muốn xoá?')"
+            <a class="btn waves-effect waves-light btn-danger disabled"
+               onclick="return confirm('Bạn có chắc chắn muốn xoá?')"
                href="{{url('admin/news/delete/'.$news->id)}}">
                 <i class="zmdi zmdi-delete" style="font-size: 20px"></i>
             </a>

@@ -111,7 +111,7 @@ class NewsController extends Controller
         }
         $news->updated_at = now();
         $news->save();
-        return redirect('admin/news');
+        return response()->json([]);
     }
     function appear($id){
         $news = News::find($id);
@@ -123,7 +123,7 @@ class NewsController extends Controller
         }
         $news->updated_at = now();
         $news->save();
-        return redirect('admin/news');
+      return response()->json([]);
     }
     function update($id){
         $n = News::find($id);

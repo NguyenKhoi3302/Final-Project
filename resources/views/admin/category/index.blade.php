@@ -29,15 +29,11 @@
                     @foreach($data as $item)
                         <tr>
                             <td>{{$item->name}}</td>
-                            @if($item->appear === 1)
-                                <td style="text-align: center"><a
-                                        href="{{url('admin/category/changeStatus',$item->id)}}"><span
-                                            class="label label-success">active</span></a></td>
-                            @elseif($item->appear === 0)
-                                <td style="text-align: center"><a
-                                        href="{{url('admin/category/changeStatus',$item->id)}}"><span
-                                            class="label label-danger">inactive</span></a></td>
-                            @endif
+                            <td style="text-align: center">
+                                <a href="#" onclick="changeStatusCate({{$item->id}})">
+                                    <input type="checkbox" id="js-switch-categori" class="js-switch-categori" {{$item->appear == 1 ? "checked" : ""}} />
+                                </a>
+                            </td>
                             <td style="text-align: center"><?= date("H:i:s d-m-Y", strtotime($item->created_at))  ?></td>
                             <td style="text-align: right">
                                 <a onclick="delete_category({{$item->id}})" data-toggle="modal" data-target="#modal-delete-category">
@@ -70,6 +66,25 @@
 @push('js')
     <script src="{{url('assets')}}/cutstom-js/category.js"></script>
         <script>
+
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch-categori'));
+            elems.forEach(function(html) {
+                var switchery = new Switchery(html, { color: '#1AB394' });
+            });
+            // ---------------switchery------------------------
+
+            function changeStatusCate(id){
+                event.preventDefault()
+                $.ajax({
+                    url: 'http://127.0.0.1:8000/admin/product_category/changeStatus/' + id,
+                    method: 'get',
+                    success: function(response) {
+                        toastr.success('Cập nhật trạng thái thành công');
+                    }
+                });
+            }
+            //------------------changeStattus----------------------------
+
             $(document).ready(function() {
                 @if (Session::has('msg'))
                 toastr.success('{{ Session::get('msg') }}');

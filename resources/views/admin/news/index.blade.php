@@ -129,13 +129,17 @@
                             </a>
                         </td>
                         <td class="text-center">
-                            <a href="/admin/news/appear/{{$news->id}}">
-                                @if($news->appear == 0)
-                                    <i class="zmdi zmdi-eye" style="font-size: 20px"></i>
-                                @else
-                                    <i class="zmdi zmdi-eye-off" style="font-size: 20px"></i>
-                                @endif
+                            <a href="#" onclick="changestusNew({{$news->id}})" >
+                                <input type="checkbox" class="js-switch-new" {{$news->appear == 1 ? "checked" : ""}} />
+
                             </a>
+{{--                            <a href="/admin/news/appear/{{$news->id}}">--}}
+{{--                                @if($news->appear == 0)--}}
+{{--                                    <i class="zmdi zmdi-eye" style="font-size: 20px"></i>--}}
+{{--                                @else--}}
+{{--                                    <i class="zmdi zmdi-eye-off" style="font-size: 20px"></i>--}}
+{{--                                @endif--}}
+{{--                            </a>--}}
                         </td>
                         <td class="text-center">
                             <a class="mr-3" href="{{url('admin/news/update/'.$news->id)}}">
@@ -187,4 +191,5 @@
 @endsection
 @push('js')
     <script src="{{url('assets')}}/cutstom-js/new.js"></script>
+
 @endpush

@@ -26,20 +26,16 @@ if (!isset($products_load) || !count($products_load)) {
         </td>
         <td style="text-align: center ">{{$item->bought}}</td>
         <td style="text-align: center ">{{$item->view}}</td>
-        @if($item->appear === 1)
-            <td style="text-align: center">
-                <div class="mb-1">
-                    <a  href="{{url('admin/product/changeStatus',$item->id)}}"><span
-                            class="label label-success"><i
-                                class="ion-checkmark"></i> đang bán</span></a>
-                </div>
-            </td>
-        @elseif($item->appear === 0)
-            <td style="text-align: center"><a
-                    href="{{url('admin/product/changeStatus',$item->id)}}"><span
-                        class="label label-danger"><i class="ion-locked"></i> tạm dừng</span></a>
-            </td>
-        @endif
+        <td style="text-align: center">
+            <a href="#" onclick="changestus({{$item->id}})" >
+                <input type="checkbox" class="js-switch" {{$item->appear === 1 ? "checked" : ""}}  />
+                <script>
+                    var elem = document.querySelector('.js-switch');
+                    var init = new Switchery(elem);
+                </script>
+            </a>
+        </td>
+
 
         <td style="text-align: right">
             <a title="thêm thuộc tính" data-original-title="thêm thuộc tính"

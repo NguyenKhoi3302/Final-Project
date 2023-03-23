@@ -69,7 +69,7 @@
                                     <div class="col">
                                         <fieldset class="form-group">
                                             <label for="exampleInputEmail1">* MÔ TẢ SẢN PHẨM</label>
-                                            <textarea class="c-tinymce" name="description" rows="5">{{$product->description}}</textarea>
+                                            <textarea name="description" id="description" rows="10" class="form-control">{{$product->description}}</textarea>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -77,7 +77,7 @@
                                     <div class="col">
                                         <fieldset class="form-group">
                                             <label for="exampleInputEmail1">* NỘI DUNG SẢN PHẨM</label>
-                                            <textarea class="c-tinymce" name="contents" rows="5">{{$product->contents}}</textarea>
+                                            <textarea name="contents" id="content" rows="10" class="form-control">{{$product->contents}}</textarea>
                                         </fieldset>
                                     </div>
                                 </div>
@@ -113,6 +113,13 @@
     <script src="https://cdn.tiny.cloud/1/uia8on2oc5ua75809jee46xcvbpkgb46y5e3bzw1hm6et9wc/tinymce/5/tinymce.min.js"></script>
     <script src="{{url('assets')}}/cutstom-js/product.js"></script>
     <script>
+        if($("textarea#description").length){
+            ClassicEditor
+                .create( document.querySelector( 'textarea#description' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        }
         $(document).ready(function () {
             @if (Session::has('msg'))
             toastr.success('{{ Session::get('msg') }}');
@@ -121,45 +128,45 @@
             @endif
         });
 
-        tinymce.init({
-            selector: 'textarea.c-tinymce',
-            plugins: 'code print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help',
-            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen | link image media | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment',
-            image_advtab: true,
-            height: 400,
-            //local upload
-            images_upload_handler: function (blobInfo, success, failure) {
-                var xhr, formData;
+        {{--tinymce.init({--}}
+        {{--    selector: 'textarea.c-tinymce',--}}
+        {{--    plugins: 'code print preview fullpage searchreplace autolink directionality visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern help',--}}
+        {{--    toolbar: 'formatselect | bold italic strikethrough forecolor backcolor permanentpen | link image media | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent | removeformat | addcomment',--}}
+        {{--    image_advtab: true,--}}
+        {{--    height: 400,--}}
+        {{--    //local upload--}}
+        {{--    images_upload_handler: function (blobInfo, success, failure) {--}}
+        {{--        var xhr, formData;--}}
 
-                xhr = new XMLHttpRequest();
-                xhr.withCredentials = true;
-                xhr.open('POST', '{{url('admin/tinymce/upload')}}');
+        {{--        xhr = new XMLHttpRequest();--}}
+        {{--        xhr.withCredentials = true;--}}
+        {{--        xhr.open('POST', '{{url('admin/tinymce/upload')}}');--}}
 
-                xhr.onload = function() {
-                    var json;
+        {{--        xhr.onload = function() {--}}
+        {{--            var json;--}}
 
-                    if (xhr.status != 200) {
-                        failure('HTTP Error: ' + xhr.status);
-                        return;
-                    }
+        {{--            if (xhr.status != 200) {--}}
+        {{--                failure('HTTP Error: ' + xhr.status);--}}
+        {{--                return;--}}
+        {{--            }--}}
 
-                    json = JSON.parse(xhr.responseText);
+        {{--            json = JSON.parse(xhr.responseText);--}}
 
-                    if (!json || typeof json.location != 'string') {
-                        failure('Invalid JSON: ' + xhr.responseText);
-                        return;
-                    }
+        {{--            if (!json || typeof json.location != 'string') {--}}
+        {{--                failure('Invalid JSON: ' + xhr.responseText);--}}
+        {{--                return;--}}
+        {{--            }--}}
 
-                    success(json.location);
-                };
+        {{--            success(json.location);--}}
+        {{--        };--}}
 
-                formData = new FormData();
-                formData.append('_token', '{{csrf_token()}}');
-                formData.append('file', blobInfo.blob(), blobInfo.filename());
+        {{--        formData = new FormData();--}}
+        {{--        formData.append('_token', '{{csrf_token()}}');--}}
+        {{--        formData.append('file', blobInfo.blob(), blobInfo.filename());--}}
 
-                xhr.send(formData);
-            },
-        });
+        {{--        xhr.send(formData);--}}
+        {{--    },--}}
+        {{--});--}}
     </script>
 @endpush
 

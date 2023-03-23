@@ -53,3 +53,18 @@ function delete_product(id){
     popup.find('input[name=item_id]').val(id)
 }
 
+function changestus(id){
+    event.preventDefault()
+    $.ajax({
+        url: 'http://127.0.0.1:8000/admin/product/changeStatus/' + id,
+        method: 'get',
+        success: function(response) {
+            toastr.success('Cập nhật trạng thái thành công');
+        }
+    });
+}
+var rangeInput = $('rprice_range');
+rangeInput.on('input', function() {
+    var value = rangeInput.val();
+   alert(value)
+});

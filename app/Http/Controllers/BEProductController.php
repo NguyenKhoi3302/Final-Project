@@ -130,7 +130,7 @@ class BEProductController extends Controller
         Product::where('id', $id)->update(['appear' => $appear]);
 
 
-        return redirect()->back()->with('msg', 'Thay đổi trạng thái thành công');
+       return response()->json([]);
 
     }
 

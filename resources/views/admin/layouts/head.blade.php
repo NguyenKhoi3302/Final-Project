@@ -10,7 +10,7 @@
 <title>Uplon - Responsive Admin Dashboard Template</title>
 
 <!-- Switchery css -->
-<link href="{{asset('assets-admin/plugins/switchery/switchery.min.css')}}" rel="stylesheet" />
+{{--<link href="{{asset('assets-admin/plugins/switchery/switchery.min.css')}}" rel="stylesheet" />--}}
 
 <!-- App Favicon -->
 <link rel="shortcut icon" href="{{asset('assets-admin/images/favicon.ico')}}">
@@ -47,6 +47,8 @@
 <link href="{{asset('assets-admin/plugins/fileuploads/css/dropify.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.css')}}" rel="stylesheet" type="text/css">
 <link href="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.skinModern.css')}}" rel="stylesheet" type="text/css">
+<link href="{{asset('assets-admin/css/switchery.min.css')}}" rel="stylesheet">
+
 @stack('styles')
 
 @livewireStyles

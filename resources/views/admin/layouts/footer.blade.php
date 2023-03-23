@@ -97,4 +97,5 @@
 
 <script src="{{asset('assets-admin/plugins/ion-rangeslider/ion.rangeSlider.min.js')}}"></script>
 <script src="{{asset('assets-admin/pages/jquery.ui-sliders.js')}}"></script>
+<script src="{{asset('assets-admin/plugins/switchery/switchery.min.js')}}"></script>
 @livewireScripts

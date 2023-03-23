@@ -141,7 +141,8 @@ Route::prefix('admin')->group(function (){
     Route::get('brands', [BEBrandsController::class, 'index']);
     Route::post('brand/delete', [BEBrandsController::class, 'delete']);
     Route::post('brand/save', [BEBrandsController::class, 'save']);
-    Route::post('brand/update', [BEBrandsController::class, 'update']);
+    Route::get('brand/update/{id}', [BEBrandsController::class, 'update']);
+    Route::post('brand/save/update', [BEBrandsController::class, 'save_update']);
     Route::get('brand/changeStatus/{id}', [BEBrandsController::class, 'change_status']);
 
 // Products

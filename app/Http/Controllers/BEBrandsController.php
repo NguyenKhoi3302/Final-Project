@@ -36,7 +36,7 @@ class BEBrandsController extends Controller
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('image/brands/'), $imageName);
-            $Brand->images = 'image/brands/' . $imageName;
+            $Brand->image = 'image/brands/' . $imageName;
             $Brand->save();
         } else {
             $Brand->image = '';
@@ -56,7 +56,8 @@ class BEBrandsController extends Controller
             $appear = 1;
         }
         Brands::where('id', $id)->update(['appear' => $appear]);
-        return redirect()->back()->with('msg', 'Thay đổi trạng thái thành công');
+
+        return response()->json([]);
 
     }
 
@@ -67,14 +68,30 @@ class BEBrandsController extends Controller
         return redirect()->back()->with('msg', 'Xóa thành công');
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id){
+        $brands = Brands::find($id);
+        return response()->json( $brands);
+    }
+
+    public function save_update(Request $request)
     {
         $brands = Brands::where('id', $request->item_id)->first();
         $slug = Str::slug($request->name);
         $brands->fill([
             'name' => $request->name,
+            'description' => $request->description,
+            'keywords' => $request->keywords,
+            'sort' => Brands::max('sort') + 1,
             'slug' => $slug
         ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('image/brands/'), $imageName);
+            $brands->image = 'image/brands/' . $imageName;
+            $brands->save();
+        }
+
         $brands->save();
         return redirect()->back()->with('msg', 'Cập nhật thành công');
     }

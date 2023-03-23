@@ -29,15 +29,11 @@
                         @foreach($data as $item)
                             <tr>
                                 <td>{{$item->name}}</td>
-                                @if($item->appear === 1)
-                                    <td style="text-align: center"><a
-                                            href="{{url('admin/brand/changeStatus',$item->id)}}"><span
-                                                class="label label-success">active</span></a></td>
-                                @elseif($item->appear === 0)
-                                    <td style="text-align: center"><a
-                                            href="{{url('admin/brand/changeStatus',$item->id)}}"><span
-                                                class="label label-danger">inactive</span></a></td>
-                                @endif
+                                <td style="text-align: center">
+                                    <a href="#" onclick="changeStatusBrand({{$item->id}})">
+                                        <input type="checkbox" id="js-switch-brand" class="js-switch-brand" {{$item->appear == 1 ? "checked" : ""}} />
+                                    </a>
+                                </td>
                                 <td style="text-align: center"><?= date("H:i d-m-Y", strtotime($item->created_at)) ?></td>
                                 <td style="text-align: right">
                                     <a onclick="delete_brand({{$item->id}})" data-toggle="modal"
@@ -70,6 +66,23 @@
 @push('js')
     <script src="{{url('assets')}}/cutstom-js/brand.js"></script>
     <script>
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch-brand'));
+        elems.forEach(function(html) {
+            var switchery = new Switchery(html, { color: '#1AB394' });
+        });
+        // ---------------switchery------------------------
+
+        function changeStatusBrand(id){
+            event.preventDefault()
+            $.ajax({
+                url: 'http://127.0.0.1:8000/admin/brand/changeStatus/' + id,
+                method: 'get',
+                success: function(response) {
+                    toastr.success('Cập nhật trạng thái thành công');
+                }
+            });
+        }
+        //------------------changeStattus----------------------------
         $(document).ready(function () {
             @if (Session::has('msg'))
             toastr.success('{{ Session::get('msg') }}');
@@ -88,7 +101,7 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="mySmallModalLabel">THÊM THƯƠNG HIỆU SẢN PHẨM</h5>
                 </div>
-                <form action="{{url('admin/brand/save')}}" method="post">
+                <form action="{{url('admin/brand/save')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <div class="form-group">
@@ -154,14 +167,10 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="mySmallModalLabel">CẬP NHẬT DANH MỤC</h5>
                 </div>
-                <form action="{{url('admin/brand/update')}}" method="post">
+                <form action="{{url('admin/brand/save/update')}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <div class="modal-body">
-                        <fieldset class="form-group">
-                            <input type="hidden" name="item_id" class="item_id">
-                            <label for="exampleInputPassword1">Tiêu đề</label>
-                            <input type="text" name="name" class="form-control" autofocus required/>
-                        </fieldset>
+                    <div class="modal-body" id="body-brands">
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>

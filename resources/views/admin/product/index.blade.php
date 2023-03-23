@@ -137,20 +137,12 @@
                             </td>
                             <td style="text-align: center ">{{$item->bought}}</td>
                             <td style="text-align: center ">{{$item->view}}</td>
-                            @if($item->appear === 1)
-                                <td style="text-align: center">
-                                    <div class="mb-1">
-                                        <a  href="{{url('admin/product/changeStatus',$item->id)}}"><span
-                                                class="label label-success"><i
-                                                    class="ion-checkmark"></i> đang bán</span></a>
-                                    </div>
-                                </td>
-                            @elseif($item->appear === 0)
-                                <td style="text-align: center"><a
-                                        href="{{url('admin/product/changeStatus',$item->id)}}"><span
-                                            class="label label-danger"><i class="ion-locked"></i> tạm dừng</span></a>
-                                </td>
-                            @endif
+                            <td style="text-align: center">
+                                <a href="#" onclick="changestus({{$item->id}})" >
+                                    <input type="checkbox" class="js-switch" {{$item->appear === 1 ? "checked" : ""}}  />
+                                </a>
+                            </td>
+
 
 
                             <td style="text-align: right">
@@ -190,7 +182,11 @@
 @push('js')
     <script src="{{url('assets')}}/cutstom-js/product.js"></script>
     <script>
+        var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
 
+        // elems.forEach(function(html) {
+        //     var switchery = new Switchery(html, { color: '#1AB394' });
+        // });
 
         const dragItems = document.querySelectorAll('.drag-item');
 

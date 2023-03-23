@@ -42,9 +42,8 @@ class BECategoryCotroller extends Controller
         }
 
         Category::where('id', $id)->update(['appear' => $appear]);
-        Toastr::success('msg', 'Thay đổi trạng thái thành công');
 
-        return redirect()->back()->with('msg', 'Thay đổi trạng thái thành công');
+      return response()->json([]);
 
     }
 
