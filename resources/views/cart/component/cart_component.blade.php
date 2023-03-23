@@ -164,7 +164,7 @@
             <div class="container">
                 @if(!empty($cart))
                     <div class="cart_wrap">
-                        <div class="left_col">
+                        <div class="left_col update_cart_url" data-url="{{ route('updateCart') }}">
                             @php $i=1; $total = 0; @endphp
                             @foreach($cart as $id => $item)
                                 @php $total += $item['price']*$item['quantity']; @endphp
@@ -187,18 +187,18 @@
                                     </div>
                                     <div class="actions">
                                         <div class="quantity_btn">
-                                            <div class="minus quant">
+                                            <div class="minus quant" data-id="{{ $id }}">
                                                 <i class="fas fa-minus"></i>
                                             </div>
-                                            <div class="quantity">
+{{--                                            <div class="quantity">--}}
                                                 <input max="99" min="1" value="{{ $item['quantity'] }}" type="number" class="quatity text_center">
-                                            </div>
-                                            <div class="plus quant">
+{{--                                            </div>--}}
+                                            <div class="plus quant" data-id="{{ $id }}">
                                                 <i class="fas fa-plus"></i>
                                             </div>
                                         </div>
                                         <div class="cart_action">
-                                            <a href="" class="cart_update" data-id="{{ $id }}"><i class="far fa-edit"></i></a>
+{{--                                            <a href="" class="cart_update" data-id="{{ $id }}"><i class="far fa-edit"></i></a>--}}
                                             <a href="" class="cart_delete" data-id="{{ $id }}"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </div>
@@ -285,7 +285,7 @@
                                 </div>
                                 <div class="go-checkout text_center">
                                     @if(Auth::user())
-                                        <a href="{{ route('order') }}" class="btn_primary btn text_center">Tiến hành thanh toán</a>
+                                        <a href="{{ route('order') }}" class="btn_primary btn-order btn text_center">Tiến hành thanh toán</a>
                                     @else
                                         <span class="notify">Bạn cần đăng nhập để thanh toán</span>
                                         <a class="btn_small btn_secondary" href="{{ route('login') }}">Đăng nhập</a>
@@ -402,6 +402,7 @@
 
 </section>
 @push('js')
+
 <script>
     $(document).ready(function () {
         $.ajaxSetup({
@@ -411,7 +412,7 @@
         });
         $('.btn-order').on('click',function (e) {
             // e.preventDefault();
-            const payment_method = $('#payment_method').val();
+            const payment_method = $('.payment_wrap input:checked').val();
             $.ajax({
                 url: '{{route("applyPayment")}}',
                 method: 'POST',

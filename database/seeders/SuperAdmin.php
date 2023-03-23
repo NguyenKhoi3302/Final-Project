@@ -47,7 +47,7 @@ class SuperAdmin extends Seeder
         $permissions = Permission::pluck('id','id')->all();
         $role = Role::findByName('Super-Admin');
         //Thay đổi người mà muốn gán super-admin
-        $user = \App\Models\User::where('email','linhbq89@gmail.com')->first();
+        $user = \App\Models\User::where('email','beeswatch.online@gmail.com')->first();
 
         $role->syncPermissions($permissions);
         $user->assignRole([$role->id]);

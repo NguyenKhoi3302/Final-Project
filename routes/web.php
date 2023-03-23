@@ -34,7 +34,7 @@ use App\Http\Controllers\PageController;
 Route::get('/', [MainController::class, 'index', 'contact']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::get('/about', [MainController::class, 'about']);
-Route::get('/search', [MainController::class, 'search']);
+//Route::get('/search', [MainController::class, 'search']);
 Route::get('/contact', [MainController::class, 'contact']);
 Route::post('/send-contact', [MainController::class, 'sendContact']);
 

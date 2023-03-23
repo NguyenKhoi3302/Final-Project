@@ -37,7 +37,7 @@ class CartController extends Controller
 
         return response()->json([
             'code' => 200,
-            'message' => 'succes !!',
+            'message' => 'Success !!',
         ],status: 200);
     }
 
@@ -100,7 +100,6 @@ class CartController extends Controller
         $data =['footer' => $footer, 'cart' => $cart];
         return view('cart.order', $data);
     }
-
     public function save_order(Request $request){
         $request->validate([
             'name' => 'required',
@@ -118,6 +117,7 @@ class CartController extends Controller
         $order->phone = $request->phone;
         $order->address = $request->address;
         $order->code = $code;
+        $order->status = 'Chờ xác nhận';
         $order->note = $request->note;
         $order->total = $total ?? $request->total;
         $order->save();
@@ -175,14 +175,8 @@ class CartController extends Controller
             "vnp_ReturnUrl" => $vnp_Returnurl,
             "vnp_TxnRef" => $vnp_TxnRef,
         );
-
-        if (isset($vnp_BankCode) && $vnp_BankCode != "") {
-            $inputData['vnp_BankCode'] = $vnp_BankCode;
-        }
-        if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {
-            $inputData['vnp_Bill_State'] = $vnp_Bill_State;
-        }
-
+        if (isset($vnp_BankCode) && $vnp_BankCode != "") {$inputData['vnp_BankCode'] = $vnp_BankCode;}
+        if (isset($vnp_Bill_State) && $vnp_Bill_State != "") {$inputData['vnp_Bill_State'] = $vnp_Bill_State;}
         //var_dump($inputData);
         ksort($inputData);
         $query = "";
@@ -211,5 +205,5 @@ class CartController extends Controller
         header('Location: ' . $vnp_Url);
         die();
             // vui lòng tham khảo thêm tại code demo
-        }
+    }
 }

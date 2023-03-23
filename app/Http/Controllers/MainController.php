@@ -99,7 +99,6 @@ class MainController extends Controller
     function news(){
         $page = DB::table('pages')->where('name', 'Tin tức')->first();
         $page_meta = DB::table('page_meta')->where('page_id', $page->id)->get();
-
         foreach ($page_meta as $val){
             switch ($val->meta_key){
                 case'choose_news_cat':
@@ -107,23 +106,19 @@ class MainController extends Controller
                         $cat_arr = json_decode($val->meta_value);
                         $cat = DB::table('news_categories')->whereIn('id', $cat_arr)->get();
                     }
-                    else{
-                        $cat = DB::table('news_categories')->get();
-                    }
+                    else{$cat = DB::table('news_categories')->get();}
                     break;
                 case 'choose_hot_posts':
                     if(!empty($val->meta_value)){
                         $news_arr = json_decode($val->meta_value);
                         $hot_news = DB::table('news')->whereIn('id', $news_arr)->get();
                     }
-                    else{
-                        $hot_news = DB::table('news')->where('appear', 1)->get();
-                    }
+                    else{$hot_news = DB::table('news')->where('appear', 1)->limit(5)->get();}
                     break;
             }
         }
         $footer = $this->footer();
-        $news = DB::table('news')->where('appear', 1)->Paginate(12);
+        $news = DB::table('news')->where('appear', 1)->Paginate(6);
         $data = ['footer'=>$footer, 'cat'=>$cat, 'news' => $news, 'page'=> $page, 'page_meta' => $page_meta,'hot_news' => $hot_news ];
         return view('client.news', $data);
     }

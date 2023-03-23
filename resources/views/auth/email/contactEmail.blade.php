@@ -18,8 +18,8 @@
         .mail_container{
             background-color: #E4F1F7;
             margin: 0 auto;
-            max-width: 600px;
-            padding: 3.125rem 3.75rem 11rem;
+            max-width: 1200px;
+            padding: 3.125rem 3.75rem 3rem;
         }
         h1{
             color: #04A9F4;
@@ -30,10 +30,11 @@
         }
         .mail_inner{
             height: auto;
-            width: 100%;
+            width: 600px;
             background-color: #fff;
             padding: 1.875rem 2.5rem;
-            box-shadow: 0 0 15px #9d9d9d;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #e1e1e1;
             position: relative;
             z-index: 2;
         }

@@ -20,19 +20,21 @@ class ProductController extends Controller
     function single_product($slug){
         $products = Product::where('slug',$slug)->first();
         $id = $products->id;
-       $productLimit  = DB::table('products')->where('id', '=', $products->pr_category_id)->limit(4)->get();
-       $productsDetail  = DB::table('product_details')->where('product_id', '=', $id)->get();
-       $brands = DB::table('brands')->where('id', '=', $products->brand_id)->get();
-       $cats = DB::table('product_categories')->where('id', '=', $products->pr_category_id)->get();
-       $footer = $this->footer();
-       $data = ['footer'=> $footer, 'products' => $products, 'productsDetail'=>$productsDetail, 'brands'=>$brands, 'cats'=>$cats,'productLimit'=>$productLimit];
+        $productLimit  = DB::table('products')->where('id', '=', $products->pr_category_id)->limit(4)->get();
+        $productsDetail  = DB::table('product_details')->where('product_id', '=', $id)->get();
+        $brands = DB::table('brands')->where('id', '=', $products->brand_id)->get();
+        $cats = DB::table('product_categories')->where('id', '=', $products->pr_category_id)->get();
+        $footer = $this->footer();
+        $data = ['footer'=> $footer, 'products' => $products, 'productsDetail'=>$productsDetail, 'brands'=>$brands, 'cats'=>$cats,'productLimit'=>$productLimit];
         // $data = ['footer'=> $footer, 'products' => $products];
         return view("client.single-product", $data);
     }
     public function search(Request $request){
         $keyword = $request->q;
+        $footer = $this->footer();
         $products = Product::where('name','like','%'. $keyword.'%')->paginate(8);
-        return view('client.search',compact('products'));
+        $data = ['footer'=> $footer, 'products' => $products];
+        return view('client.search', $data);
     }
 
     //ssắp xếp theo thường hiệu

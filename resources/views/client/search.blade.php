@@ -1,14 +1,15 @@
 @extends('layouts.guest')
 @section('content')
-    @foreach($news_list as $item)
-        {{$item->title}}
-    @endforeach
-    @foreach($pd_list as $item)
-        {{$item->name}}
-    @endforeach
-@endsection
+{{--    @foreach($news_list as $item)--}}
+{{--        {{$item->title}}--}}
+{{--    @endforeach--}}
+{{--    @foreach($pd_list as $item)--}}
+{{--        {{$item->name}}--}}
+{{--    @endforeach--}}
+{{--@endsection--}}
 <section class="shop_container grid-container">
   <div class="shop_main">
+      <h1 class="sec_title text_center">Kết quả tìm kiếm cho: @php echo $_GET['q'] @endphp</h1>
     <div class="shop_item_wrap grid">
       @foreach($products as $product)
       <div class="item" style="width: 25%">

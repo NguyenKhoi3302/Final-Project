@@ -32,7 +32,7 @@
             <div class="prod_count">
                 <strong>12</strong>
                 <span>sản phẩm trong tổng số</span>
-                <strong>{{ $products->count() }}</strong>
+                <strong>{{ $products->total() }}</strong>
             </div>
             <div class="prod_soft">
                 <span>Sắp xếp theo mặc định</span>
@@ -122,7 +122,7 @@
                 </figure>
                 <div class="prod_cont">
                     <div class="prod_name">
-                        <a href="{{url('single-product/'.$product->id)}}">{{$product->name}}</a>
+                        <a href="{{url('single-product/'.$product->slug)}}">{{$product->name}}</a>
                     </div>
                     <div class="prod_des">
                         {{ $product->description }}

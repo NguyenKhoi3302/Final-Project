@@ -17,16 +17,21 @@
 @endforeach
 @section('content')
 <section class="section news_sec">
+    <div class="section_heading">
+        <div class="title_group text_center">
+            <div class="bg_title">
+                NEWS
+            </div>
+            <div class="sec_title">
+                {{$news_page_title}}
+            </div>
+            <div class="sec_des">
+                {{$news_page_des}}
+            </div>
+        </div>
+    </div>
     <div class="grid-container">
         <div class="grid-66">
-            <div class="section_heading">
-                <div class="sec_title">
-                    {{$news_page_title}}
-                </div>
-                <div class="sec_des">
-                    {{$news_page_des}}
-                </div>
-            </div>
             <div class="news_wrap">
                 {{-- Lấy tin tức--}}
                 @foreach($news as $new)
@@ -45,7 +50,6 @@
                             </div>
                             <div class="news_date">
                                 <span>{{$new->created_at}}</span>
-                                <a class="btn_small btn_secondary" href="{{url('/single-news/'.$new->slug)}}">Xem chi tiết</a>
                             </div>
                         </div>
                     </div>
@@ -81,34 +85,35 @@
             </div>
         </div>
         <div class="grid-30">
-            <iframe
-                src="{{$link_fanpage}}"
-                width="340" height="130" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-                allowfullscreen="true"
-                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             <div class="item">
                 <h4 class="item_head">
-                    <i class="far fa-newspaper"></i> Danh mục tin
+                     Danh mục tin tức
                 </h4>
                 <ul>
                     @foreach($cat as $item)
                     <li>
-                        <a href="{{url('/news-category/'.$item->slug)}}">{{$item->name}}</a>
+                        <a href="{{url('/news-category/'.$item->slug)}}">{{$item->name}}
+                            <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.625 0.8125L5.3125 5.5L0.625 10.1875" stroke="#666666" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </a>
                     </li>
                     @endforeach
                 </ul>
             </div>
             <div class="item">
                 <h4 class="item_head">
-                    <i class="far fa-newspaper"></i> Tin xem nhiều
+                     Tin tức nổi bật
                 </h4>
                 <ul>
                     @foreach($hot_news as $item)
-                        <li>
-                            <a href="{{url('/single-news/'.$item->slug)}}">
-                                {{$item->title}}
-                            </a>
-                        </li>
+                    <li>
+                        <a href="{{url('/single-news/'.$item->slug)}}">{{$item->title}}
+                            <svg width="6" height="11" viewBox="0 0 6 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.625 0.8125L5.3125 5.5L0.625 10.1875" stroke="#666666" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </a>
+                    </li>
                     @endforeach
                 </ul>
             </div>

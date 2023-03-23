@@ -34,25 +34,12 @@ $(document).ready(function (){
         jQuery(".payment_wrap .payment_des").slideUp();
         jQuery(this).addClass("active");
         jQuery(this).children(".payment_des").slideDown();
+        jQuery(".payment_wrap input").prop( "checked", false);
+        jQuery(this).children().children().prop( "checked", true);
     })
     cart_quantity()
 })
 function cart_quantity(){
-    jQuery(".quantity_btn .quant").click(function(e){
-        e.preventDefault();
-        if(jQuery(this).hasClass("minus")){
-            var val = jQuery(this).next().children().val();
-            new_val = val--;
-            console.log(val)
-            jQuery(this).next().children().val((val+1));
-        }
-        if(jQuery(this).hasClass("plus")){
-            var val = jQuery(this).prev().children().val();
-            new_val = Number(val) + 1;
-            console.log(new_val)
-            jQuery(this).next().children().attr('value', Number(new_val));
-        }
-    })
 }
 function swiper(){
     var about = new Swiper(".about_swiper",{

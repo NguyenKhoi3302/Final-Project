@@ -31,13 +31,8 @@ return new class extends Migration
             $table->string('sku', 100); //
             $table->tinyInteger('appear')->default(1); // Ẩn hiện
             $table->timestamps();
-<<<<<<< HEAD
             $table->foreign('pr_category_id')->references('id')->on('product_categories');
             $table->foreign('brand_id')->references('id')->on('brands');
-=======
-//             $table->foreign('pr_category_id')->references('id')->on('product_categories');
-//             $table->foreign('brand_id')->references('id')->on('brands');
->>>>>>> 700d813472e23e95495daf3ac90f75f4a3751d03
         });
     }
 

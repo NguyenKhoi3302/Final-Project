@@ -31,7 +31,7 @@
 <script src="{{asset('assets/js/counterUp.js')}}"></script>
 <script src="{{asset('assets/js/swiper.js')}}"></script>
 <script src="{{asset('assets/js/frontend.js')}}"></script>
-@livewireScripts
 @stack('js')
+@livewireScripts
 
 </html>
