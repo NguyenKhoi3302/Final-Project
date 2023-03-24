@@ -26,11 +26,7 @@
             <td class="text-center">
               <a href="#" data-id="{{$productComment->id}}" data-appear="{{$productComment->appear}}"
                 class="btn-appear">
-                @if($productComment->appear == 1)
-                <i class="zmdi zmdi-eye" style="font-size: 20px"></i>
-                @else
-                <i class="zmdi zmdi-eye-off" style="font-size: 20px"></i>
-                @endif
+                  <input type="checkbox" id="js-switch-status-product-comment" class="js-switch-status-product-comment" {{$productComment->appear ? "checked" : ""}} />
               </a>
             </td>
             <td style="text-align: center">
@@ -83,6 +79,10 @@
 @push('js')
 <script src="{{url('assets')}}/cutstom-js/product_comment.js"></script>
 <script>
+    var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch-status-product-comment'));
+    elems.forEach(function(html) {
+        var switchery = new Switchery(html, { color: '#1AB394' });
+    });
   $(document).ready(function () {
             @if (Session::has('msg'))
             toastr.success('{{ Session::get('msg') }}');
@@ -112,6 +112,7 @@
               if (response.success) {
                   $('.btn-appear[data-id="' + id + '"]').data('appear', appear);
                   $('.btn-appear[data-id="' + id + '"]').find('i').toggleClass('zmdi-eye zmdi-eye-off')
+                  toastr.success('Thay đổi trạng thái thành công');
               }
           },
           error: function (response) {

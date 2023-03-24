@@ -18,16 +18,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Category::factory()->count(5)->create();
-        Product::factory()->count(20)->create();
-        Brands::factory()->count(5)->create();
-        ProductComment::factory()->count(5)->create();
+//        Category::factory()->count(5)->create();
+//        Product::factory()->count(20)->create();
+//        Brands::factory()->count(5)->create();
+//        ProductComment::factory()->count(5)->create();
         \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        
+
     }
 }

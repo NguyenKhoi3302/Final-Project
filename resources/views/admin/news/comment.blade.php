@@ -25,7 +25,7 @@ Danh sách tin tức
 
     <div class="row">
         <div class="col-xs-12 col-md-12 col-lg-12 col-xl-12">
-            <table class="table table-bordered mb-0 news_table">
+            <table class="table table-striped table-bordered" cellspacing="0" width="100%">
                 <thead>
                     <tr>
                         <th><span>ID</span></th>
@@ -52,11 +52,7 @@ Danh sách tin tức
                         <td class="text-center">
                             <a href="#" data-id="{{$newsComment->id}}" data-appear="{{$newsComment->appear}}"
                                 class="btn-appear">
-                                @if($newsComment->appear == 1)
-                                <i class="zmdi zmdi-eye" style="font-size: 20px"></i>
-                                @else
-                                <i class="zmdi zmdi-eye-off" style="font-size: 20px"></i>
-                                @endif
+                                <input type="checkbox" id="js-switch-status-new-comment" class="js-switch-status-new-comment" {{$newsComment->appear ? "checked" : ""}} />
                             </a>
                         </td>
                         <td class="text-center">
@@ -128,6 +124,12 @@ Danh sách tin tức
 @endpush
 @push('js')
 <script>
+
+    var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch-status-new-comment'));
+    elems.forEach(function(html) {
+        var switchery = new Switchery(html, { color: '#1AB394' });
+    });
+
     $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -151,6 +153,7 @@ Danh sách tin tức
                 if (response.success) {
                     $('.btn-appear[data-id="' + id + '"]').data('appear', appear);
                     $('.btn-appear[data-id="' + id + '"]').find('i').toggleClass('zmdi-eye zmdi-eye-off')
+                    toastr.success('Thay đổi trạng thái thành công');
                 }
             },
             error: function (response) {

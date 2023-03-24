@@ -71,10 +71,15 @@
                             <span class="unvalid">@error('date_expire') {{$message}} @enderror</span>
                         </div>
                     </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form_group">
+                                    <button type="submit" class="btn btn-primary">XÁC NHẬN</button>
+                                </div>
+                            </div>
 
-                    <div class="form_group">
-                        <button type="submit" class="bg-success p-2">Thêm mã</button>
-                    </div>
+                        </div>
+
                     @csrf
                 </form>
             </div>

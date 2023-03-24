@@ -121,9 +121,8 @@ Route::prefix('admin')->middleware(['auth','role:Admin|Super-Admin'])->group(fun
             Route::get('/category/update/{id}', [CategoryController::class, 'update_cat']);
             Route::post('/category/update/{id}', [CategoryController::class, 'update_cat_']);
         });
-        Route::middleware('can:news-comment')->group(function(){
-
         // News comments
+        Route::middleware('can:news-comment')->group(function(){
             Route::get('/news/comment', [NewsController::class,'comment'])->name('admin.news.comment');
             Route::post('/news/changeAppear',[NewsController::class,'change'])->name('admin.newsComment.changeAppear');
             Route::post('/newsComment/destroy',[NewsController::class,'destroy'])->name('admin.newsComment.destroy');
@@ -191,7 +190,8 @@ Route::prefix('admin')->middleware(['auth','role:Admin|Super-Admin'])->group(fun
         Route::get('brands', [BEBrandsController::class, 'index']);
         Route::post('brand/delete', [BEBrandsController::class, 'delete']);
         Route::post('brand/save', [BEBrandsController::class, 'save']);
-        Route::post('brand/update', [BEBrandsController::class, 'update']);
+        Route::get('brand/update/{id}', [BEBrandsController::class, 'update']);
+        Route::post('brand/save/update', [BEBrandsController::class, 'save_update']);
         Route::get('brand/changeStatus/{id}', [BEBrandsController::class, 'change_status']);
         //Product attribute
         Route::get('product/attributes/{id}', [BEProductAttributeController::class, 'product_attribute']);

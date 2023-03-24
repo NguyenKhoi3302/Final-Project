@@ -107,7 +107,7 @@ class BEProductController extends Controller
         }
 
         $products->save();
-        return redirect(route('admin/products'))->with('msg', 'Thêm thành công');
+        return redirect(route('admin.products'))->with('msg', 'Thêm thành công');
 
     }
 
@@ -130,7 +130,7 @@ class BEProductController extends Controller
         Product::where('id', $id)->update(['appear' => $appear]);
 
 
-        return redirect()->back()->with('msg', 'Thay đổi trạng thái thành công');
+       return response()->json([]);
 
     }
 
@@ -169,7 +169,7 @@ class BEProductController extends Controller
         }
 
         $products->save();
-        return redirect(route('admin/products'))->with('msg', 'Cập nhật sản phẩm thành công');
+        return redirect('admin.products')->with('msg', 'Cập nhật sản phẩm thành công');
     }
 
 
