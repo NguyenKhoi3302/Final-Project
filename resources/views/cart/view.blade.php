@@ -7,8 +7,8 @@
 <script>
     function cartDelete(event){
         event.preventDefault();
-        let urlDeleteCart = $('.cart').data('url');
-        let id = $(this).data('id');
+        let urlDeleteCart = $('.cart').attr('data-url');
+        let id = $(this).attr('data-id');
         $.ajax({
             type:"GET",
             url: urlDeleteCart,
@@ -25,7 +25,6 @@
     }
 
     $(function(){
-        $(document).on('click','.cart_update', cartUpdate)
         $(document).on('click','.cart_delete', cartDelete)
     });
     $(document).ready(function(){
@@ -37,7 +36,7 @@
                 quan = input.val(),
                 url = jQuery('.update_cart_url').attr('data-url');
             $.ajax({
-                type:"GET",
+                type:"POST",
                 url: url,
                 data: {id: id, quatity: quan},
                 success: function (data){
@@ -51,25 +50,47 @@
             });
         })
         $(document).delegate(".quant.minus"," click", function(){
-            var input = jQuery(this).next();
-            input.val(parseInt(input.val()) - 1);
-            input.change();
-            var id = jQuery(this).attr('data-id'),
-                quan = input.val(),
-                url = jQuery('.update_cart_url').attr('data-url');
-            $.ajax({
-                type:"GET",
-                url: url,
-                data: {id: id, quatity: quan},
-                success: function (data){
-                    if(data.code === 200){
-                        $('.cart_wrapper').html(data.cart_component);
-                    }
-                },
-                error: function (){
+            var input = jQuery(this).next(),
+                id = jQuery(this).attr('data-id');
+            if(input.val() > 1){
+                input.val(parseInt(input.val()) - 1);
+                input.change();
+                var quan = input.val();
+                var url = jQuery('.update_cart_url').attr('data-url');
+                $.ajax({
+                    type:"GET",
+                    url: url,
+                    data: {id: id, quatity: quan},
+                    success: function (data){
+                        if(data.code === 200){
+                            $('.cart_wrapper').html(data.cart_component);
+                        }
+                    },
+                    error: function (){
 
+                    }
+                });
+            }
+            else{
+                var boolean = confirm("Bạn muốn xoá sản phẩm này khỏi giỏ hàng?");
+                if(boolean){
+                    let urlDeleteCart = $('.cart').attr('data-url');
+                    $.ajax({
+                        type:"GET",
+                        url: urlDeleteCart,
+                        data: {id: id},
+                        success: function (data){
+                            if(data.code === 200){
+                                $('.cart_wrapper').html(data.cart_component);
+                            }
+                        },
+                        error: function (){
+
+                        }
+                    });
                 }
-            });
+            }
+
         })
     })
 </script>

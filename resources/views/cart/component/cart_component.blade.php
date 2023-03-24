@@ -278,10 +278,6 @@
                                             Thực hiện thanh toán qua ví điện tử VNPay của chúng tôi. Vui lòng giữ mã đơn hàng của bạn
                                         </div>
                                     </div>
-{{--                                    <select name="payment_method" id="payment_method">--}}
-{{--                                        <option value="cod">Thanh toán tiền mặt</option>--}}
-{{--                                        <option value="vnpay">VNPAY</option>--}}
-{{--                                    </select>--}}
                                 </div>
                                 <div class="go-checkout text_center">
                                     @if(Auth::user())
@@ -294,97 +290,6 @@
                             </div>
                         </div>
                     </div>
-{{--                <div class="row">--}}
-{{--                    <table class="table update_cart_url" data-url="{{ route('updateCart') }}">--}}
-{{--                        <thead>--}}
-{{--                            <tr>--}}
-{{--                                <th scope="col">STT</th>--}}
-{{--                                <th scope="col">Hình ảnh</th>--}}
-{{--                                <th scope="col">Tên sản phẩm</th>--}}
-{{--                                <th scope="col">Giá</th>--}}
-{{--                                <th scope="col">Số lượng</th>--}}
-{{--                                <th scope="col">Tạm tính</th>--}}
-{{--                                <th scope="col">Hành động</th>--}}
-{{--                            </tr>--}}
-{{--                        </thead>--}}
-{{--                        <tbody>--}}
-{{--                            @php $i=1; $total = 0; @endphp--}}
-{{--                            @foreach($cart as $id => $item)--}}
-{{--                            @php $total += $item['price']*$item['quantity']; @endphp--}}
-{{--                            <tr>--}}
-{{--                                <td scope="row" class="text_center">{{ $i }}</td>--}}
-{{--                                <td><img src="{{ $item['images'] }}"></td>--}}
-{{--                                <td>{{ $item['name'] }}</td>--}}
-{{--                                <td>{{ number_format($item['price'], 0 , ',','.') }} vnđ</td>--}}
-{{--                                <td class="text_center">--}}
-{{--                                    <input max="99" min="1" value="{{ $item['quantity'] }}" type="number"--}}
-{{--                                        class="quatity text_center">--}}
-{{--                                </td>--}}
-{{--                                <td>{{ number_format($item['price']*$item['quantity'], 0 , ',','.') }} vnđ</td>--}}
-{{--                                <td class="text_center">--}}
-{{--                                    <a href="" class="cart_update" data-id="{{ $id }}"><i class="far fa-edit"></i></a>--}}
-{{--                                    <a href="" class="cart_delete" data-id="{{ $id }}"><i--}}
-{{--                                            class="fas fa-trash-alt"></i></a>--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                            @php $i++; @endphp--}}
-{{--                            @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-
-{{--                    <div class="right_block">--}}
-{{--                        <ul>--}}
-{{--                            <li>--}}
-{{--                                <strong>TỔNG PHỤ:</strong>--}}
-{{--                                <span>{{ number_format($total, 0, ',', '.') }} vnđ</span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <strong>GIAO HÀNG:</strong>--}}
-{{--                                <span>Miễn phí vận chuyển</span>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <form action="{{ route('apply') }}" method="post">--}}
-{{--                                    @csrf--}}
-{{--                                    <strong>MÃ GIẢM GIÁ:</strong>--}}
-{{--                                    <input type="text" name="coupon" value="{{ Session::get('coupon_code')}}">--}}
-{{--                                    <div><button>APPLY</button></div>--}}
-{{--                                </form>--}}
-{{--                            </li>--}}
-{{--                            <li>--}}
-{{--                                <strong>PHƯƠNG THỨC:</strong>--}}
-{{--                                <select name="payment_method" id="payment_method">--}}
-{{--                                    <option value="cod">Thanh toán tiền mặt</option>--}}
-{{--                                    <option value="vnpay">VNPAY</option>--}}
-{{--                                </select>--}}
-{{--                            </li>--}}
-
-
-{{--                            <li>--}}
-{{--                                <strong>TỔNG:</strong>--}}
-{{--                                <?php--}}
-{{--                                    if($total > Session::get('min_total')){--}}
-{{--                                        if(($total * Session::get('discount') /100) > (Session::get('max_discount'))){--}}
-{{--                                            $total =$total - Session::get('max_discount');--}}
-{{--                                        }else{--}}
-{{--                                            $total =$total - ($total * Session::get('discount') /100);--}}
-{{--                                        }--}}
-{{--                                    }else{--}}
-{{--                                        $total = $total - 0;--}}
-{{--                                    }--}}
-{{--                            ?>--}}
-{{--                                <h1>{{ number_format($total, 0, ',', '.') }}</h1>--}}
-{{--                            </li>--}}
-{{--                            <li class="checkout">--}}
-{{--                                @if(Auth::user())--}}
-{{--                                <a href="{{ route('order') }}" class="btn-order">Tiến hành thanh toán</a>--}}
-{{--                                @else--}}
-{{--                                Vui lòng <a href="{{ route('login') }}">Đăng nhập</a> khi thanh toán--}}
-{{--                                @endif--}}
-{{--                            </li>--}}
-{{--                        </ul>--}}
-{{--                    </div>--}}
-
-{{--                </div>--}}
                 @else
                     <div class="cart_empty">
                         <div class="img_wrap">

@@ -23,7 +23,8 @@ class CartController extends Controller
         $cart = session()->get('cart');
         if(isset($cart[$id])){
             $cart[$id]['quantity'] = $cart[$id]['quantity'] + 1;
-        }else{
+        }
+        else{
             $cart[$id] = [
                 'name' => $products->name,
                 'price' => $products->price,
@@ -34,7 +35,6 @@ class CartController extends Controller
             ];
         }
         session()->put('cart', $cart);
-
         return response()->json([
             'code' => 200,
             'message' => 'Success !!',

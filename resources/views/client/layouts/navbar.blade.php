@@ -61,8 +61,13 @@
   <form id="login_box" action="{{ route('login.action') }}" method="post">
     @csrf
     <h4>Đăng nhập</h4>
-    <input type="email" placeholder="Enter mail" name="email" value="{{ old('email') }}">
-    <input type="password" placeholder="Enter Password" name="password">
+      <div class="form_group">
+          <input type="email" placeholder="Enter mail" name="email" value="{{ old('email') }}">
+      </div>
+      <div class="form_group">
+          <input type="password" placeholder="Enter Password" name="password">
+          <a href="{{ route('forget.password.get') }}">Quên?</a>
+      </div>
     <input type="submit" class="btn_small btn_secondary" value="Đăng nhập">
     <a href="{{ route('register') }}">Tạo tài khoản</a>
   </form>

@@ -47,13 +47,14 @@ Route::get('/news-category/{slug}', [CategoryController::class, 'category'])->na
 // Products
     Route::get('/shop', [ProductController::class, 'shop'])->name('shop');
     Route::get('/single-product/{slug}', [ProductController::class, 'single_product'])->name('single-product');
-//fillter
+//filter
     Route::get('/shop/brand/{id}', [ProductController::class, 'fillter_brand']);//theo thuơng hiệu``
     Route::get('/shop/category/{id}', [ProductController::class, 'fillter_category']);//theo loại
     Route::get('/shop/ascending', [ProductController::class, 'fillter_ascending']);//tăng dần
     Route::get('/shop/decrease', [ProductController::class, 'fillter_decrease']);//giảm dần
     Route::get('/shop/view', [ProductController::class, 'fillter_view']);//lượt xem
-//end fillter
+    Route::post('/shop/filter', [ProductController::class, 'filter'])->name('productsFilter');
+//end filter
 // Cart
 Route::get('/add-cart/{id}', [CartController::class, 'add_cart'])->name('addCart');
 Route::get('/show-cart', [CartController::class, 'show_cart'])->name('showCart');
