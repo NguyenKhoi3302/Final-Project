@@ -107,7 +107,7 @@ class BEProductController extends Controller
         }
 
         $products->save();
-        return redirect(route('admin/products'))->with('msg', 'Thêm thành công');
+        return redirect(route('admin.products'))->with('msg', 'Thêm thành công');
 
     }
 
@@ -169,7 +169,7 @@ class BEProductController extends Controller
         }
 
         $products->save();
-        return redirect(route('admin/products'))->with('msg', 'Cập nhật sản phẩm thành công');
+        return redirect('admin.products')->with('msg', 'Cập nhật sản phẩm thành công');
     }
 
 

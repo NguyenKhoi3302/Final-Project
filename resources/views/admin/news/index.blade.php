@@ -131,7 +131,6 @@
                         <td class="text-center">
                             <a href="#" onclick="changestusNew({{$news->id}})" >
                                 <input type="checkbox" class="js-switch-new" {{$news->appear == 1 ? "checked" : ""}} />
-
                             </a>
 {{--                            <a href="/admin/news/appear/{{$news->id}}">--}}
 {{--                                @if($news->appear == 0)--}}

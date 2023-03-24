@@ -27,15 +27,14 @@ if (!isset($products_load) || !count($products_load)) {
         <td style="text-align: center ">{{$item->bought}}</td>
         <td style="text-align: center ">{{$item->view}}</td>
         <td style="text-align: center">
-            <a href="#" onclick="changestus({{$item->id}})" >
-                <input type="checkbox" class="js-switch" {{$item->appear === 1 ? "checked" : ""}}  />
+            <a href="#" onclick="changestus({{$item->id}})">
+                <input type="checkbox" class="js-switch-{{$item->id}}" {{$item->appear === 1 ? "checked" : ""}}  />
                 <script>
-                    var elem = document.querySelector('.js-switch');
+                    var elem = document.querySelector('.js-switch-{{$item->id}}');
                     var init = new Switchery(elem);
                 </script>
             </a>
         </td>
-
 
         <td style="text-align: right">
             <a title="thêm thuộc tính" data-original-title="thêm thuộc tính"
