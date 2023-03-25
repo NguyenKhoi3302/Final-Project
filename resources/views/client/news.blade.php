@@ -46,7 +46,7 @@
                                 <a href="{{url('/single-news/'.$new->slug)}}">{{$new->title}}</a>
                             </div>
                             <div class="news_des">
-                                {{$new->content}}
+                                {!! $new->summary !!}
                             </div>
                             <div class="news_date">
                                 <span>{{$new->created_at}}</span>

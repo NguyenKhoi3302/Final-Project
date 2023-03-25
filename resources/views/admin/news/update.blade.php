@@ -40,7 +40,7 @@
                         <label for="image">Chọn ảnh <span class="required">*</span></label>
                         <a href="/admin/media/popup" class="btn btn-primary text-white choose_img_btn" data-key="image">Chọn hình ảnh</a>
                         <img src="{!! asset(App\Http\Controllers\Controller::get_img_url($news->image)) !!}" class="image img_result">
-                        <input type="hidden" name="image" value="{{$news->image}}">
+                        <input type="hidden" class="image" name="image" value="{{$news->image}}">
                         <span class="unvalid">@error('image') {{$message}} @enderror</span>
                     </div>
                     <div class="form_group mb-3">

@@ -44,7 +44,9 @@
                             <td>{{$page->keywords}}</td>
                             <td class="text-center">
                                 <a href="{{url('admin/page/update/'.$page->id)}}">
-                                    <i class="zmdi zmdi-edit" style="font-size: 20px"></i>
+                                    <button class="btn waves-effect waves-light btn-warning">
+                                        <i class="fa fa-pencil"></i>
+                                    </button>
                                 </a>
                             </td>
                         </tr>

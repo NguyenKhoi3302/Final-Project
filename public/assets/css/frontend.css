@@ -2301,12 +2301,13 @@ input, textarea, select{
     display: none;
 }
 .news_sec .news_wrap{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column-gap: 20px;
-    grid-row-gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 .news_sec .news_wrap .news_item{
+    width: calc(50% - 10px);
+    margin-bottom: 25px;
     position: relative;
     background-color: #fff;
     padding: 15px;

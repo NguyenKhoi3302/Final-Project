@@ -48,11 +48,14 @@ class ProductController extends Controller
         elseif($brand == 'all' && $cat_id != 'all'){
             $products = DB::table('products')->where('pr_category_id', $cat_id)->orderBy($sortby, $sort)->Paginate(12);
         }
-        else {
+        elseif($brand !='all' && $cat_id != 'all'){
             $products = DB::table('products')->where([
                 ['pr_category_id', $cat_id],
                 ['brand_id', $brand],
             ])->orderBy($sortby, $sort)->Paginate(12);
+        }
+        else{
+            $products = DB::table('products')->orderBy($sortby, $sort)->Paginate(12);
         }
         return view('Modals.shop', compact('products'));
     }

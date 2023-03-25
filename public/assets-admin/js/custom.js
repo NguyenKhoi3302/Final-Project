@@ -89,6 +89,7 @@ function repeater(){
         }
         else{
             var data = []
+            data.push(id);
         }
         //code xuất dữ liệu
         $(this).parents(".relationship").next().val(data);

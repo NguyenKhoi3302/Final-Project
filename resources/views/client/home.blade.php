@@ -111,7 +111,7 @@
                         {{-- {!! App\Http\Controllers\Controller::get_img_attachment($item->images)!!}--}}
                         <img src="{{asset($item->images)}}" alt="">
                         <div class="home_prod_cont">
-                            <p>{{$item->description}}</p>
+                            <p>{!! $item->description !!}</p>
                             <svg width="51" height="51" viewBox="0 0 51 51" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -239,8 +239,8 @@
                 @foreach($brands as $item)
                 <div class="swiper-slide">
                     <a href="{{url('/brand/'.$item->slug)}}">
-                        {{-- {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}--}}
-                        <img src="{{asset($item->image)}}" alt="">
+                         {!! App\Http\Controllers\Controller::get_img_attachment($item->image)!!}
+{{--                        <img src="{{asset($item->image)}}" alt="">--}}
                     </a>
                 </div>
                 @endforeach

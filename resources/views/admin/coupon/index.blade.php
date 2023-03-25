@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card-box table-responsive">
-                <h4 class="m-t-0 header-title" style="text-align: center">DANH SÁCH MAIL ĐƯỢC GỬI</h4>
+                <h4 class="m-t-0 header-title" style="text-align: center">DANH SÁCH MÃ GIẢM GIÁ</h4>
                 <hr>
                 @if(count($coupon_list) > 0)
                     <table class="table table-striped table-bordered" cellspacing="0" width="100%">

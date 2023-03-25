@@ -20,8 +20,8 @@
                             </span>
         </td>
         <td>
-            <button class="w_content label-success text-white border-0">
-                <a href="/admin/order/detail/{{$item->id}}">Xem chi tiết</a>
+            <button class="w_content label-success text-white border-0 m-auto btn ">
+                <a href="/admin/order/detail/{{$item->id}}"><i class="zmdi zmdi-eye text-white"></i></a>
             </button>
         </td>
         {{-- <td class="text-center">--}}

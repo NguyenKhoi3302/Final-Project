@@ -139,11 +139,13 @@
                                             <div class="chose">
                                                 <ul>
                                                     @foreach($news_cat as $cat)
-                                                        @foreach(json_decode($item->meta_value) as $chose_cat)
-                                                            @if($chose_cat == $cat->id)
-                                                                <li data-id="{{$cat->id}}">{{$cat->name}}</li>
-                                                            @endif
-                                                        @endforeach
+                                                        @if(!empty($item->meta_value))
+                                                            @foreach(json_decode($item->meta_value) as $chose_cat)
+                                                                @if($chose_cat == $cat->id)
+                                                                    <li data-id="{{$cat->id}}">{{$cat->name}}</li>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -182,20 +184,22 @@
                                             <div class="list_block">
                                                 <ul>
                                                     @foreach($posts as $post)
-                                                        @if(!in_array($post->id, json_decode($item->meta_value)))
+{{--                                                        @if(!in_array($post->id, json_decode($item->meta_value)))--}}
                                                             <li data-id="{{$post->id}}">{{$post->title}}</li>
-                                                        @endif
+{{--                                                        @endif--}}
                                                     @endforeach
                                                 </ul>
                                             </div>
                                             <div class="chose">
                                                 <ul>
                                                     @foreach($posts as $post)
-                                                        @foreach(json_decode($item->meta_value) as $chose_cat)
-                                                            @if($chose_cat == $post->id)
-                                                                <li data-id="{{$post->id}}">{{$post->title}}</li>
-                                                            @endif
-                                                        @endforeach
+                                                        @if(!empty($item->meta_value))
+                                                            @foreach(json_decode($item->meta_value) as $chose_cat)
+                                                                @if($chose_cat == $post->id)
+                                                                    <li data-id="{{$post->id}}">{{$post->title}}</li>
+                                                                @endif
+                                                            @endforeach
+                                                        @endif
                                                     @endforeach
                                                 </ul>
                                             </div>

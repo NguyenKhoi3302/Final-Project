@@ -115,7 +115,7 @@
                             </div>
                         </div>
                         <figure class="imghvr-zoom-in">
-                            <img src="{{ asset('/images/prod_img.png') }}" alt="example-image">
+                            <img src="{{ asset($product->images) }}" alt="example-image">
                             <figcaption>
                                 <div class="icon_wrap">
                                     <a title="Thêm vào giỏ hàng" href="#" class="add_to_cart_btn add_cart"

@@ -123,7 +123,7 @@
         var delay = $(this).attr('data-delay')?$(this).attr('data-delay'):100; //default is 100
         var time = $(this).attr('data-time')?$(this).attr('data-time'):1200; //default is 1200
          $('[data-plugin="counterup"]').each(function(idx, obj) {
-            $(this).counterUp({
+            $(this).countUp({
                 delay: 100,
                 time: 1200
             });

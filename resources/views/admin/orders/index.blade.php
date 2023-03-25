@@ -76,7 +76,7 @@ Danh sách đơn hàng
                         <th style="text-align: center"><span>Trạng thái</span></th>
                         <th style="text-align: center"><span>Tổng</span></th>
                         <th style="text-align: center"><span>Ngày tạo</span></th>
-                        <th style="text-align: center"><span>Hành động</span></th>
+                        <th style="text-align: center"><span>Xem chi tiết</span></th>
                     </tr>
                 </thead>
                 <tbody id="body-load-order">
@@ -109,7 +109,9 @@ Danh sách đơn hàng
                         </td>
                         <td>
                             <button class="w_content label-success text-white border-0">
-                                <a href="/admin/order/detail/{{$item->id}}">Xem chi tiết</a>
+                                <a href="/admin/order/detail/{{$item->id}}">
+                                    <i class="zmdi zmdi-eye"></i>
+                                </a>
                             </button>
                         </td>
                         {{-- <td class="text-center">--}}
