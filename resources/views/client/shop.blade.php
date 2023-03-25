@@ -7,7 +7,7 @@
             <ul>
                 @foreach($cats as $cat)
                 <li>
-                    <a href="{{url('/shop/category/'.$cat->id)}}">
+                    <a href="{{url('/shop/category/'.$cat->slug)}}">
                         {{$cat->name}}
                     </a>
                 </li>
@@ -19,7 +19,7 @@
             <ul>
                 @foreach($brands as $brand)
                 <li>
-                    <a href="{{url('/shop/brand/'.$brand->id)}}">
+                    <a href="{{url('/shop/brand/'.$brand->slug)}}">
                         {{$brand->name}}
                     </a>
                 </li>
@@ -121,8 +121,9 @@
                     @endif
                 </figure>
                 <div class="prod_cont">
+                    {{-- {{dd($product->slug)}} --}}
                     <div class="prod_name">
-                        <a href="{{url('single-product/'.$product->id)}}">{{$product->name}}</a>
+                        <a href="{{url('single-product/'.$product->slug)}}">{{$product->name}}</a>
                     </div>
                     <div class="prod_des">
                         {{ $product->description }}

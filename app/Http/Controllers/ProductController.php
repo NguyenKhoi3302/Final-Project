@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brands;
 
 class ProductController extends Controller
 {
@@ -19,6 +21,7 @@ class ProductController extends Controller
     }
     function single_product($slug){
         $products = Product::where('slug',$slug)->first();
+        // dd($products);
         $id = $products->id;
        $productLimit  = DB::table('products')->where('id', '=', $products->pr_category_id)->limit(4)->get();
        $productsDetail  = DB::table('product_details')->where('product_id', '=', $id)->get();
@@ -36,8 +39,9 @@ class ProductController extends Controller
     }
 
     //ssắp xếp theo thường hiệu
-    function fillter_brand(Request $request){
-        $products = DB::table('products')->where('pr_category_id', '=', $request->id )->orderBy('created_at', 'desc')->Paginate(12);
+    function fillter_brand($slug){
+        $brand = Brands::where('slug', $slug)->first();
+        $products = DB::table('products')->where('brand_id', '=', $brand->id )->orderBy('created_at', 'desc')->Paginate(12);
         $cats = DB::table('product_categories')->get();
         $brands = DB::table('brands')->get();
         $footer = $this->footer();
@@ -45,8 +49,9 @@ class ProductController extends Controller
         return view ('client.shop-fillter', $data);
     }
     //ssắp xếp theo loại
-    function fillter_category(Request $request){
-        $products = DB::table('products')->where('brand_id', '=', $request->id )->orderBy('created_at', 'desc')->Paginate(12);
+    function fillter_category($slug){
+        $category = Category::where('slug', $slug)->first();
+        $products = DB::table('products')->where('pr_category_id', '=', $brand->id )->orderBy('created_at', 'desc')->Paginate(12);
         $cats = DB::table('product_categories')->get();
         $brands = DB::table('brands')->get();
         $footer = $this->footer();
