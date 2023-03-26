@@ -184,7 +184,13 @@
                             <tr>
                                 <td scope="row" class="text_center">{{ $i }}</td>
                                 <td><img src="{{ $item['images'] }}"></td>
-                                <td>{{ $item['name'] }}</td>
+                                <td>
+                                    <div>
+                                        <p>{{ $item['name'] }}</p>
+                                        <p>Size: {{$item['options']['size']}}</p>
+                                        <p>Color: {{$item['options']['color']}}</p>
+                                    </div>
+                                </td>
                                 <td>{{ number_format($item['price'], 0 , ',','.') }} vnđ</td>
                                 <td class="text_center">
                                     <input max="99" min="1" value="{{ $item['quantity'] }}" type="number"

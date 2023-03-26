@@ -16,21 +16,24 @@ use Str;
 
 class CartController extends Controller
 {
-    public function add_cart($id){
+    public function add_cart($id, Request $request){
         // session()->forget('cart');
 
         $products = Products::find($id);
         $cart = session()->get('cart');
         if(isset($cart[$id])){
-            $cart[$id]['quantity'] = $cart[$id]['quantity'] + 1;
+            $cart[$id]['quantity'] = $cart[$id]['quantity'] + (int)($request->qty ?? 1);
         }else{
             $cart[$id] = [
                 'name' => $products->name,
                 'price' => $products->price,
-                'quantity' => 1,
+                'quantity' => $request->qty ?? 1,
                 'images' => $products->images,
                 'total' => $products->total,
-
+                'options' => [
+                    'size' => $request->size,
+                    'color' => $request->color
+                ]
             ];
         }
         session()->put('cart', $cart);

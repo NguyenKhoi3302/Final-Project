@@ -1,4 +1,5 @@
 @extends('layouts.guest')
+{{-- {{dd(session()->get('cart'))}} --}}
 @section('content')
 <section class="shop_container grid-container">
     <div class="shop_aside grid-25">

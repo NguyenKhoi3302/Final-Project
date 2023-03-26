@@ -76,16 +76,32 @@
                 <div class="description">
                     {{ $products->description}}
                 </div>
+
+                <div class="product_action">
+                    {{-- @livewire('option-cart-component', ['products' => $products]) --}}
+                    @foreach($products->productDetails as $productDetail)
+                    <div class="qtty_box">
+                        <label for="">{{$productDetail->color}}</label>
+                        <input type="checkbox" name="color" value="{{$productDetail->color}}">
+                    </div>
+                    @endforeach
+                    <select name="size" id="">
+                        @foreach($products->productDetails as $productDetail)
+                        <option value="{{$productDetail->size}}">{{$productDetail->size}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="product_action">
                     <div class="qtty_box">
                         <span class="qtty_minus">
                             <i class="fas fa-minus"></i>
                         </span>
-                        <input max="99" min="1" value="1" type="number" name="">
+                        <input max="99" min="1" value="1" type="number" name="qty">
                         <span class="qtty_plus">
                             <i class="fas fa-plus"></i>
                         </span>
                     </div>
+
                     <a href="#" class="add_to_cart_btn add_cart"
                         data-url="{{ route('addCart', ['id' => $products->id]) }}">
                         Thêm vào giỏ hàng
@@ -182,7 +198,7 @@
                                                 <span class="qtty_minus">
                                                     <i class="fas fa-minus"></i>
                                                 </span>
-                                                <input max="99" min="1" value="1" type="number" name="">
+                                                <input max="99" min="1" value="1" type="number" name="qty">
                                                 <span class="qtty_plus">
                                                     <i class="fas fa-plus"></i>
                                                 </span>
@@ -286,8 +302,34 @@
                 });
                 // alert('123')
             }
-            $(function(){
-                $('.add_cart').on('click', addcart)
-            });
+    $(function () {
+        $(".add_cart").on("click", function (e) {
+            e.preventDefault();
+            const url = $(this).data("url");
+            const size = $('select[name="size"]').val();
+            const color = $('input[name="color"]').val();
+            const qty = $('input[name="qty"]').val();
+            if (size && color) {
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    dataType: "json",
+                    data: {
+                        size: size,
+                        qty: qty,
+                        color: color.toLowerCase(),
+                    },
+                    success: function (data) {
+                        if (data.code === 200) {
+                            alert("thêm sản phẩm thành công !!");
+                        }
+                    },
+                });
+            } else {
+                alert("Bạn chưa chọn đủ thuộc tính sản phẩm");
+            }
+        });
+    });
+
 </script>
 @endsection
