@@ -9,10 +9,11 @@
         event.preventDefault();
         let urlDeleteCart = $('.cart').attr('data-url');
         let id = $(this).attr('data-id');
+        let pro_id = $(this).attr('data-id-pro');
         $.ajax({
             type:"GET",
             url: urlDeleteCart,
-            data: {id: id},
+            data: {id: id, pro_id:pro_id},
             success: function (data){
                 if(data.code === 200){
                     $('.cart_wrapper').html(data.cart_component);
@@ -36,7 +37,7 @@
                 quan = input.val(),
                 url = jQuery('.update_cart_url').attr('data-url');
             $.ajax({
-                type:"POST",
+                type:"GET",
                 url: url,
                 data: {id: id, quatity: quan},
                 success: function (data){

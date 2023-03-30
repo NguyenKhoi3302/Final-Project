@@ -20,8 +20,8 @@ return new class extends Migration
             $table->text('message');
             $table->tinyInteger('appear')->default(1);
             $table->timestamps();
-             $table->foreign('product_id')->references('id')->on('products');
-             $table->foreign('user_id')->references('id')->on('users');
+//             $table->foreign('product_id')->references('id')->on('products');
+//             $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

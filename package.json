@@ -13,6 +13,8 @@
     },
     "dependencies": {
         "@ckeditor/ckeditor5-build-classic": "^36.0.1",
+        "sweetalert": "^2.1.2",
+        "sweetalert2": "^11.7.3",
         "switchery": "^0.0.2"
     }
 }

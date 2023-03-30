@@ -7,7 +7,7 @@
         <td>{{$item->code}}</td>
         <td>
             <select data-id="{{$item->id}}" onchange="update_status(event)" id="status" name="status" class="form-control status-change">
-                <option <?php if($item->status == "Đang Chờ Duyệt" ) { echo "selected"; } ?>value="Đang Chờ Duyệt">Đang Chờ Duyệt</option>
+                <option <?php if($item->status == "Chờ xác nhận" ) { echo "selected"; } ?>value="Chờ xác nhận">Chờ xác nhận</option>
                 <option <?php if($item->status == "Đang giao hàng" ) { echo "selected"; } ?> value="Đang giao hàng">Đang Giao Hàng</option>
                 <option <?php if($item->status == "Giao thành công" ) { echo "selected"; } ?> value="Giao thành công">Giao Thành Công</option>
             </select>

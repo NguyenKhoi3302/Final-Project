@@ -212,7 +212,9 @@
     </div>
 </section>
 <input id="filter_input" type="hidden" data-cat="all" data-brand="all" data-url="{{route('productsFilter')}}" data-sort="created_at-desc">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
+
     jQuery(document).delegate(".shop_aside .block_wrap li", "click", function(e){
         e.preventDefault();
         var id = jQuery(this).attr('data-id'),
@@ -268,9 +270,20 @@
             url:urlcart,
             dataType: 'json',
             success: function (data){
-                if(data.code === 200){
-                    alert ('Thêm sản phẩm thành công !!');
-                }
+                Swal.fire({
+                    title: 'Thêm vào giỏ hàng thành công !!',
+                    text: "Bạn có muốn kiểm tra giỏ hàng không?",
+                    icon: 'success',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Có'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "/show-cart";
+                    }
+                })
+
             },
             error: function (){
 

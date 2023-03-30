@@ -15,7 +15,6 @@ class OrdersController extends Controller
     {
         $list = DB::table('orders')->orderBy('created_at', 'desc')->Paginate(2);
         $customers = DB::table('users')->select('name', 'id')->get();
-
         $data = ['list' => $list, 'customers' => $customers];
         return view("admin/orders/index", $data);
     }
@@ -45,9 +44,9 @@ class OrdersController extends Controller
             $query->where('code', $code);
         }
         if ($arrange == 'newest') {
-            $query->orderBy('created_at', 'desc')->take(10);
+            $query->orderBy('updated_at', 'desc')->limit(10);
         } else if ($arrange == 'oldest') {
-            $query->orderBy('created_at', 'asc')->take(10);
+            $query->orderBy('updated_at', 'asc')->limit(10);
         }
 
         $list = $query->get();

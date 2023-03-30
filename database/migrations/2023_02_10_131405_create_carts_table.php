@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->integer('id')->autoIncrement();
-            $table->integer('product_id');
-            $table->integer('user_id');
+            $table->integer('product_id')->nullable();
+            $table->integer('user_id')->nullable();
             $table->timestamps();
-             $table->foreign('product_id')->references('id')->on('products');
-             $table->foreign('user_id')->references('id')->on('users');
+//             $table->foreign('product_id')->references('id')->on('products');
+//             $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

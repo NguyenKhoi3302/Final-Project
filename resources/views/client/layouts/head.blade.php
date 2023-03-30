@@ -29,9 +29,7 @@
 <link rel="stylesheet" href="{{asset('assets/css/stylesheet.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/frontend.css')}}">
 <link rel="stylesheet" href="{{asset('assets/css/imagehover.css')}}">
-
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-
 <title>@yield('title')</title>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XM292M7CY4"></script>

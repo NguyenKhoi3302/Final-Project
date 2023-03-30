@@ -162,10 +162,10 @@
         <div class="cart" data-url="{{ route('deleteCart') }}">
             <h1 class="text_center sec_title">Giỏ hàng của bạn</h1>
             <div class="container">
-                @if(!empty($cart))
+                @if(isset($cart) && count($cart) > 0 )
                     <div class="cart_wrap">
                         <div class="left_col update_cart_url" data-url="{{ route('updateCart') }}">
-                            @php $i=1; $total = 0; @endphp
+                            @php  $i=1; $total = 0; @endphp
                             @foreach($cart as $id => $item)
                                 @php $total += $item['price']*$item['quantity']; @endphp
                                 <div class="cart_item">
@@ -199,7 +199,7 @@
                                         </div>
                                         <div class="cart_action">
 {{--                                            <a href="" class="cart_update" data-id="{{ $id }}"><i class="far fa-edit"></i></a>--}}
-                                            <a href="" class="cart_delete" data-id="{{ $id }}"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="" data-id-pro="@if(auth()->check()) {{$item->product_id}} @else {{ $item['product_id'] }} @endif " class="cart_delete" data-id="{{ $id }}"><i class="fas fa-trash-alt"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -234,11 +234,11 @@
                                     </div>
                                     <div class="item">
                                         <span>Giảm giá: </span>
-                                        <strong>{{number_format($total * Session::get('discount') /100, 0, ',', '.') }}đ</strong>
+                                        <strong style=" text-decoration: line-through;">{{number_format($total * Session::get('discount') /100, 0, ',', '.') }}đ</strong>
                                     </div>
                                     <div class="item">
                                         <span>Giao hàng </span>
-                                        <strong>Miễn phí</strong>
+                                        <strong>30.000đ</strong>
                                     </div>
                                 </div>
                                 <div class="total">
@@ -255,6 +255,8 @@
                                             else{
                                                 $total = $total - 0;
                                             }
+
+                                            $total = $total += 30000
                                         ?>
                                     <strong>{{ number_format($total, 0, ',', '.') }}đ</strong>
                                 </div>
