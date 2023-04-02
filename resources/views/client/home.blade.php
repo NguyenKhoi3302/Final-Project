@@ -69,7 +69,6 @@
 @break
 @endswitch
 @endforeach
-
 @section('content')
 <style>
     h3 {

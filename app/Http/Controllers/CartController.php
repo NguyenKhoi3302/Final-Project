@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\confirmOrder;
 use App\Models\Cart;
 use Illuminate\Http\Request;
 use App\Models\Products;
 use App\Models\orders;
 use App\Models\order_details;
+use App\Models\coupon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 use DB;
@@ -28,24 +31,15 @@ class CartController extends Controller
             } else {
                 $cart[$id] = [
                     'product_id' => $product->id,
-                    'name' => $product->name,
-                    'price' => $product->price,
                     'quantity' => 1,
-                    'images' => $product->images,
-                    'total' => $product->total,
                 ];
             }
             session()->put('cart', $cart);
         } else {
-//            dd( $product->name);
             Cart::create([
                 'user_id' => auth()->id(),
                 'product_id' => $id,
-                'name' => $product->name,
-                'price' => $product->price,
                 'quantity' => 1,
-                'images' => $product->images,
-                'total' => $product->total,
             ]);
         }
 
@@ -55,16 +49,14 @@ class CartController extends Controller
         ], 200);
     }
 
-
     public function show_cart()
     {
         if (auth()->check()) {
             $user = auth()->user();
             $cart = Cart::where('user_id', $user->id)->get();
-        } else {
+        }
+        else {
             $cart = session()->get('cart');
-
-
         }
         $footer = $this->footer();
         $data = ['footer' => $footer, 'cart' => $cart];
@@ -73,33 +65,32 @@ class CartController extends Controller
 
     }
 
-
     public function delete_cart(Request $request)
     {
         if (auth()->check()) {
             $user = auth()->user();
-            $cart_db = Cart::where('product_id', $request->pro_id)->first();
+            $cart_db = Cart::where('id', $request->id)->first();
             $cart_db->delete();
             $cart = Cart::where('user_id', $user->id)->get();
-        } else {
+        }
+        else {
             $cart = session()->get('cart');
             unset($cart[$request->id]);
             session()->put('cart', $cart);
             $cart = session()->get('cart');
         }
-
         $cartComponent = view('cart.component.cart_component', compact('cart'))->render();
         return response()->json(['cart_component' => $cartComponent,
             'code' => 200], status: 200);
     }
-
 
     public function update_cart(Request $request)
     {
         if ($request->id && $request->quatity) {
             if (auth()->check()) {
                 $user = auth()->user();
-                $cart = Cart::where('user_id', $user->id)->first();
+                $id = $_GET['id'];
+                $cart = Cart::where('id', $id)->first();
                 if ($cart) {
                     $cart->quantity = $request->quatity;
                     $cart->save();
@@ -117,23 +108,48 @@ class CartController extends Controller
         }
     }
 
-
     public function apply_coupon(Request $request)
     {
         // $request->session()->flush();
-        $coupon = DB::table('coupon')->where('coupon_code', '=', $request->input('coupon'))->first();
-        if ($coupon) {
-            $message = "Áp dụng thành công";
-            Session::put('id', $coupon->id);
-            Session::put('coupon_code', $coupon->coupon_code);
-            Session::put('discount', $coupon->discount);
-            Session::put('min_total', $coupon->min_total);
-            Session::put('max_discount', $coupon->max_discount);
-        } else {
-            session::forget(['carcoupon_codet', 'discount']);
-            $message = "Mã không tồn tại";
+        $coupon = coupon::where('coupon_code', '=', $request->input('coupon'))->first();
+        $used = $coupon->user_id;
+        if(empty($used)){
+            $used = '';
         }
-        return redirect()->route('showCart');
+        else{
+            $used = json_decode($used);
+        }
+        $remain = $coupon->remaining;
+        if ($coupon) {
+            if(strtotime(date('Y-m-d')) > strtotime($coupon->date_expire)){
+                Session::put('message', "Mã đã hết hạn");
+            }
+            elseif($remain < 1){
+                Session::put('message', "Mã đã hết lượt sử dụng");
+            }
+            elseif(strtotime(date('Y-m-d')) < strtotime($coupon->date_start)){
+                Session::put('message', "Mã không khả dụng");
+            }
+            elseif(in_array(auth()->id(), $used)){
+                Session::put('message', "Bạn đã sử dụng mã này rồi");
+            }
+            else{
+                $c = [
+                    'id' => $coupon->id,
+                    'coupon_code' => $coupon->coupon_code,
+                    'discount' => $coupon->discount,
+                    'min_total' => $coupon->min_total,
+                    'max_discount' => $coupon->max_discount,
+                    'coupon_type' => $coupon->coupon_type,
+                ];
+                Session::put('coupon', $c);
+                Session::put('message', "Áp dụng thành công");
+            }
+        }
+        else {
+            session::forget(['carcoupon_codet', 'discount']);
+        }
+        return redirect()->route('order');
     }
 
     public function apply_payment(Request $request)
@@ -153,7 +169,7 @@ class CartController extends Controller
 
         $footer = $this->footer();
         $data = ['footer' => $footer, 'cart' => $cart];
-        return view('cart.order', $data);
+            return view('cart.order', $data);
     }
 
     public function save_order(Request $request)
@@ -164,6 +180,27 @@ class CartController extends Controller
             'address' => 'required',
             'note' => 'max: 1000',
         ]);
+        //update coupon
+        if(!empty(Session::get('coupon'))){
+            $id_coupon = Session::get('coupon')['id'];
+            $coupon = coupon::where('id', $id_coupon)->first();
+            $remain = $coupon->remaining;
+            $used = $coupon->user_id;
+            $discont = $coupon->discount;
+            $counpon_type = $coupon->coupon_type;
+            if(empty($used)){
+                $used = '';
+            }
+            else{
+                $used = json_decode($used);
+            }
+            $remain -= 1;
+            $used[] = auth()->id();
+            $coupon->user_id = json_encode($used);
+            $coupon->remaining = $remain;
+            $coupon->save();
+        }
+        //save order
         $user = Auth::user();
         $code = Str::upper(Str::random(10));
         $payment_method = Session::get('payment_method');
@@ -171,6 +208,7 @@ class CartController extends Controller
         $order->user_id = $user->id;
         $order->name = $request->name;
         $order->phone = $request->phone;
+        $order->email = $request->email;
         $order->address = $request->address;
         $order->code = $code;
         $order->status = 'Chờ xác nhận';
@@ -186,19 +224,47 @@ class CartController extends Controller
         } else {
             $cart = Session::get('cart');
         }
+        $ship = 30000;
+        if($request->province == 'Thành phố Hồ Chí Minh'){
+            $ship = 0;
+        }
+        $mail_data = [
+            'cart' => $cart,
+            'phone' => $request->phone,
+            'address' => $request->address.' - '.$request->ward.' - '.$order->district.' - '.$request->province,
+            'name' => $request->name,
+            'total' =>  $order->total,
+//            'id' => $order->id,
+            'payment' => $payment_method,
+            'ship' => $ship,
+        ];
+        if(!empty($discont)){
+            $mail_data[] = [
+                'discount' => $discont,
+                'coupon_type' => $counpon_type
+            ];
+        }
         foreach ($cart as $key => $value) {
+            $product = DB::table('products')->where('id', $value['product_id'])->first();
             $order_details = new order_details;
             $order_details->order_id = $order->id;
-            $order_details->product_id = $key;
-            $order_details->product_name = $value['name'];
+            $order_details->product_id = $product->id;
+            $order_details->product_name = $product->name;
             $order_details->quantity = $value['quantity'];
-            $order_details->price = ($value['quantity'] * $value['price']);
+            $order_details->price = $product->price;
             $order_details->save();
+            $value->delete();
         }
+        Mail::send('auth.email.orderConfirm', ['data' => $mail_data], function($message) use($request){
+            $message->to($request->email);
+            $message->subject('Email xác nhận đơn hàng S - Watch');
+        });
         if ($payment_method === 'vnpay') {
             $this->vnpay($order->code, $order->total);
-        } else
-            $request->session()->forget(['cart', 'carcoupon_codet', 'discount', 'payment_method']);
+        }
+        else {
+            $request->session()->forget(['cart', 'carcoupon_codet', 'discount', 'payment_method', 'coupon', 'message']);
+        }
         return redirect()->route('shop');
     }
 

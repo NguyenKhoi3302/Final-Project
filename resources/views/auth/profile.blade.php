@@ -55,6 +55,32 @@
                                 @endif
                             </div>
                             <div class="input_wrap">
+                                <label for="lname">Tỉnh thành phố<span class="required">*</span></label>
+                                <select  id="province" name="province" required >
+                                    <option value="">Chọn tỉnh/thành phố</option>
+                                </select>
+                            </div>
+                            <div class="input_wrap">
+                                <label for="lname">Quân huyện<span class="required">*</span></label>
+                                <select  id="district" name="district" required>
+                                    @if(!empty($user->district))
+                                        <option value='{{$user->district}}'>{{$user->district}}</option>
+                                    @else
+                                        <option value="">Chọn Quận/huyên</option>
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="input_wrap">
+                                <label for="lname">Phường xã<span class="required">*</span></label>
+                                <select id="ward" name="ward" required>
+                                    @if(!empty($user->ward))
+                                        <option value='{{$user->ward}}'>{{$user->ward}}</option>
+                                    @else
+                                        <option value=''>Chọn phường/xã</option>
+                                    @endif
+                                </select>
+                            </div>
+                            <div class="input_wrap">
                                 <label for="address">Địa  chỉ <span class="required">*</span></label>
                                 <input type="text" id="address" name="address" value="{{$user->address}}">
                                 @if(!empty($errors->name))
@@ -151,4 +177,58 @@
             </div>
         </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        var province_current = '{{$user->province}}';
+        $.getJSON("https://provinces.open-api.vn/api/p/", function(provinces) {
+            var provinceSelect = $("#province");
+            provinceSelect.empty();
+            provinceSelect.append("<option value=''>Chọn tỉnh/thành phố</option>");
+            $.each(provinces, function(i, province) {
+                if(province.name == province_current){
+                    var select = 'selected';
+                }else{
+                    var select = '';
+                }
+                provinceSelect.append("<option "+select+" data-id='"+ province.code + "'  value='" + province.name + "'>" + province.name + "</option>");
+            });
+        });
+        $("#province").change(function() {
+            var provinceId = $(this).find(':selected').data('id');
+            $("#district").empty();
+            $("#ward").empty();
+            axios.get("https://provinces.open-api.vn/api/p/" + provinceId + "?depth=2")
+                .then(function(response) {
+                    var wardSelect = $("#ward");
+                    wardSelect.append("<option value=''>Chọn phường/xã</option>");
+                    var districtSelect = $("#district");
+                    districtSelect.append("<option value=''>Chọn quận/huyện</option>");
+                    $.each(response.data.districts, function(i, district) {
+                        districtSelect.append("<option data-id='"+ district.code + "' value='" + district.name + "'>" + district.name + "</option>");
+                    });
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        });
+
+        $("#district").change(function() {
+            var districtId =  $(this).find(':selected').data('id');
+
+            $("#ward").empty(); // Reset danh sách phường/xã
+
+            axios.get("https://provinces.open-api.vn/api/d/" + districtId + "?depth=2")
+                .then(function(response) {
+                    var wardSelect = $("#ward");
+                    wardSelect.append("<option value=''>Chọn phường/xã</option>");
+                    $.each(response.data.wards, function(i, ward) {
+                        wardSelect.append("<option data-id='" + ward.code + "' value='" + ward.name + "'>" + ward.name + "</option>");
+                    });
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        });
+    </script>
 @endsection

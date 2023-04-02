@@ -119,13 +119,28 @@ class Controller extends BaseController
     }
     public static function get_img_attachment($id){
         $image = DB::table('media')->where('id', $id)->first();
-        $html = '<img src="'.asset($image->url).'" alt="'.$image->alt.'"/>';
-
+        if(!empty($image)){
+            $html = '<img src="'.asset($image->url).'" alt="'.$image->alt.'"/>';
+        }
+        else{
+            $html = '<img src="" alt=""/>';
+        }
         return $html;
     }
     public static function get_img_url($id){
         $image = DB::table('media')->where('id', $id)->first();
-        return $image->url;
+        if(!empty($image)){
+            $url = $image->url;
+        }
+        else {
+            $url = '';
+        }
+        return $url;
+    }
+    public static function get_product($id){
+        $product = DB::table('products')->where('id', $id)->first();
+
+        return $product;
     }
 // {!! App\Http\Controllers\Controller::get_img_attachment($id)!!}
 // {!! App\Http\Controllers\Controller::get_img_url($id)!!}

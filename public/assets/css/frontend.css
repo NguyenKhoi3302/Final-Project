@@ -2973,6 +2973,7 @@ input[name='gender']{
     display: block;
     width: 160px;
 }
+.right_account .info_inner_wrap .input_wrap select,
 .right_account .info_inner_wrap .input_wrap input:not([type='file']){
     width: calc(100% - 160px);
     padding: 12px 20px;
@@ -3556,7 +3557,7 @@ p.comment-item__message {
     box-shadow: 0 0 15px #e1e1e1;
     margin-bottom: 20px;
 }
-.cart_page .cart_wrap .coupon_apply .title{
+.checkout_page .coupon_apply .title{
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -3564,17 +3565,17 @@ p.comment-item__message {
     color: #3155A6;
     margin-bottom: 15px;
 }
-.cart_page .cart_wrap .coupon_apply .title svg{
+.checkout_page .coupon_apply .title svg{
     margin-right: 15px;
 }
-.cart_page .cart_wrap .coupon_apply form{
+.checkout_page .coupon_apply form{
     display: flex;
     width: 100%;
     border-radius: 100px ;
     overflow: hidden;
     border: 1px solid #3155A6;
 }
-.cart_page .cart_wrap .coupon_apply form button{
+.checkout_page .coupon_apply form button{
     height: 40px;
     background-color:  #3155A6;
     font-weight: 600;
@@ -3588,11 +3589,12 @@ p.comment-item__message {
     outline: none;
     cursor: pointer;
 }
-.cart_page .cart_wrap .coupon_apply form input{
+.checkout_page .coupon_apply form input{
     width: 100%;
     outline: none !important;
     border: none;
     padding-left: 15px;
+    height: 40px;
 }
 .cart_page .cart_wrap .right_col .calculate{
     margin-bottom: 25px;
@@ -3679,11 +3681,11 @@ p.comment-item__message {
     top: -5px;
     background-color: #dcdcdc;
 }
-.checkout_page form{
+.checkout_page .checkout > form{
     display: grid;
     grid-template-columns: calc(65% - 15px) calc(35% - 15px);
     grid-column-gap: 30px;
-    margin-top: 60px;
+    margin-top: 25px;
     align-items: flex-start;
 }
 span.required{
@@ -3691,6 +3693,9 @@ span.required{
 }
 .w-50{
     width: 50%;
+}
+.w-33{
+    width: 33%;
 }
 .w-100{
     width: 100%;
@@ -3720,6 +3725,7 @@ span.required{
     margin-bottom: 20px;
 }
 .checkout_page .customer_info input,
+.checkout_page .customer_info select,
 .checkout_page .customer_info textarea{
     width: 100%;
     border: 1px solid #e1e1e1;
@@ -3764,4 +3770,16 @@ span.required{
 .checkout_page .order_reviews .total_pay strong{
     font-size: 22px;
     color: #F7941D;
+}
+span.result_coupon{
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+    margin-left: 20px;
+}
+span.result_coupon.success{
+    color: green;
+}
+span.result_coupon.fail{
+    color: red;
 }

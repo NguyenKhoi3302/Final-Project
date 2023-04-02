@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use App\Models\Cart;
+use Illuminate\Support\Facades\Session;
 
 
 
@@ -40,9 +42,29 @@ class UserController extends Controller
             if($request->remember){
                 Cookie::queue('email', $request->email, 7200);
                 Cookie::queue('password', $request->password, 7200);
-                return redirect($_SERVER['HTTP_REFERER']);
+//                return redirect($_SERVER['HTTP_REFERER']);
             }
-
+            $cart = session()->get('cart');
+            $uid = DB::table('users')->where('email', $request->email)->first();
+            $cart_db = DB::table('carts')->where('user_id', $uid->id)->get();
+            if(!empty($cart)) {
+                foreach ($cart as $c) {
+                    $existed = Cart::where('user_id', $uid->id)->where('product_id', $c['product_id'])->first();
+                    if ($existed) {
+                        //                    $ins = Cart::where('user_id', $uid->id)->first();
+                        $existed->quantity += $c['quantity'];
+                        $existed->save();
+                    } else {
+                        Cart::create([
+                            'user_id' => $uid->id,
+                            'product_id' => $c['product_id'],
+                            'quantity' => $c['quantity'],
+                        ]);
+                    }
+                }
+            }
+            Session::forget('cart');
+//            dd($cart_db);
             return redirect($_SERVER['HTTP_REFERER']);
         }
         else{
@@ -140,9 +162,12 @@ class UserController extends Controller
 
         $user->name = $request->input('name');
         $user->phone = $request->input('tel');
+        $user->province = $request->input('province');
+        $user->district = $request->input('district');
+        $user->ward = $request->input('ward');
         $user->address = $request->input('address');
         $user->update();
-        return redirect()->route('profile')->with('sussec','Cập  nhập  thành  công  !!');
+        return redirect()->route('profile')->with('success','Cập  nhập  thành  công  !!');
     }
 
     public function pass_update(Request $request){

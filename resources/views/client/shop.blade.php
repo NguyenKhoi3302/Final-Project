@@ -9,7 +9,7 @@
             <h3 class="block_title">Danh mục sản phẩm</h3>
             <ul>
                 @foreach($cats as $cat)
-                    <li data-id="{{$cat->id}}">
+                    <li data-id="{{$cat->id}}" data-tax="cat">
                         <div class="check_box">
                             <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M17.25 0.750488L6.75 11.25L1.5 6.00049" stroke="#F7941D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -26,7 +26,7 @@
             <h3 class="block_title">Thương hiệu</h3>
             <ul>
                 @foreach($brands as $brand)
-                <li data-id="{{$brand->id}}">
+                <li data-id="{{$brand->id}}" data-tax="brand">
                     <div class="check_box">
                         <svg width="18" height="12" viewBox="0 0 18 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.25 0.750488L6.75 11.25L1.5 6.00049" stroke="#F7941D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -218,18 +218,18 @@
     jQuery(document).delegate(".shop_aside .block_wrap li", "click", function(e){
         e.preventDefault();
         var id = jQuery(this).attr('data-id'),
+            tax = jQuery(this).attr('data-tax'),
             input = jQuery("#filter_input"),
             url = input.attr('data-url');
-        if(jQuery(this).parents(".block_wrap").hasClass('brands_box')){
-            input.attr('data-brand', id);
-            jQuery(".shop_aside .block_wrap.brands_box li").removeClass('active');
+        if(jQuery(this).hasClass('active')){
+            jQuery(this).removeClass('active');
+            input.attr('data-'+tax, 'all');
         }
-        else if(jQuery(this).parents(".block_wrap").hasClass('cat_box')){
-            input.attr('data-cat', id);
-            jQuery(".shop_aside .block_wrap.cat_box li").removeClass('active');
+        else{
+            jQuery(this).parent().children().removeClass('active');
+            jQuery(this).addClass('active')
+            input.attr('data-'+tax, id);
         }
-        jQuery(this).addClass('active');
-
         var brand = input.attr('data-brand'),
             cat = input.attr('data-cat'),
             sort = input.attr('data-sort'),
@@ -243,6 +243,7 @@
         });
         $('#shop_wrap').empty().load(url, {brand: brand, pd_cat: cat, sort_by: orderby, sort: order});
     })
+
     jQuery(document).delegate(".prod_soft > ul > li", "click", function(e){
         e.preventDefault()
         var value = jQuery(this).attr('data-sort'),
@@ -264,6 +265,7 @@
     })
     function addcart(event){
         event.preventDefault();
+        jQuery(".prod-popup.active").removeClass('active');
         let urlcart = $(this).data('url');
         $.ajax({
             type:"GET",

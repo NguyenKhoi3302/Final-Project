@@ -13,7 +13,7 @@
                 </a>
                 <div class="result-item__info">
                     <h3 class="result-item__name">
-                        <a href="{{route('single-product',[$result->id])}}">{{$result->name}}</a>
+                        <a href="{{route('single-product',[$result->slug])}}">{{$result->name}}</a>
                     </h3>
                     <span class="search_price">Giá: <strong>{{number_format($result->price, 0, ',', '.')}} vnđ</strong></span>
                 </div>

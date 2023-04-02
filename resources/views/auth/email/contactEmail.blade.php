@@ -16,40 +16,24 @@
             font-size: 1rem;
         }
         .mail_container{
-            background-color: #E4F1F7;
+            background-color: #d9dffa;
             margin: 0 auto;
             max-width: 1200px;
             padding: 3.125rem 3.75rem 3rem;
         }
         h1{
-            color: #04A9F4;
-            text-align: center;
-            letter-spacing: 0.6rem;
-            font-size: 3rem;
-            margin: 0 0 1.875rem;
+            font-size: 34px;
+            margin-bottom: 20px;
+            color: #3155A6;
         }
-        .mail_inner{
-            height: auto;
+        .box_email{
+            margin: 0 auto;
             width: 600px;
             background-color: #fff;
-            padding: 1.875rem 2.5rem;
+            padding: 40px 50px;
+            text-align: center;
             border-radius: 15px;
             box-shadow: 0 0 15px #e1e1e1;
-            position: relative;
-            z-index: 2;
-        }
-        .mail_inner:before{
-            width: 107%;
-            height: 100%;
-            position: absolute;
-            content: '';
-            left: 50%;
-            bottom: -150px;
-            transform: translateX(-50%);
-            background-image: url('https://beeswatch.online/img/envelop.png');
-            background-size: cover;
-            background-repeat: no-repeat;
-            z-index: -1;
         }
         .item{
             margin-bottom: 0.625rem;
@@ -62,13 +46,15 @@
             padding-bottom: 0.125rem;
             border-bottom: 1px solid #b0b0b0;
             color: rgba(51, 51, 51, 0.95);
+            font-size: 18px;
         }
         .item > span{
-            font-size: 0.75rem;
+            font-size: 14px;
             display: block;
-            color: #04A9F4;
+            color: #3155A6;
             font-weight: 500;
             margin-bottom: 0.18rem;
+            text-align: left;
         }
         @media only screen and (max-width: 767px) {
             .mail_container{
@@ -82,8 +68,8 @@
 </head>
 <body>
 <div class="mail_container">
-    <h1>MAIL LIÊN HỆ</h1>
-    <div class="mail_inner">
+    <div class="box_email">
+        <h1>MAIL LIÊN HỆ</h1>
         <div class="item">
             <span class="title">Tên người gửi:</span>
             <p>{{$data['name']}}</p>

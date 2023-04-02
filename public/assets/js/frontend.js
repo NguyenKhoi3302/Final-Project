@@ -37,11 +37,7 @@ $(document).ready(function (){
         jQuery(".payment_wrap input").prop( "checked", false);
         jQuery(this).children().children().prop( "checked", true);
     })
-    products_filter()
 })
-function products_filter(){
-
-}
 function swiper(){
     var about = new Swiper(".about_swiper",{
         slidesPerView: 3,
